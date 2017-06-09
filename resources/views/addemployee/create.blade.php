@@ -61,20 +61,28 @@
                     <div class="form-group">
                         {!! Form::label('skill', 'Skill:') !!}
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input type="hidden" value="" name="skill1">
                         <input type="checkbox" name="skill1" <?php if (isset($skill1) && $skill1=="Icer") echo "checked";?> value="Icer">Icer
                         &nbsp&nbsp&nbsp
+                        <input type="hidden" value="" name="skill2">
                         <input type="checkbox" name="skill2" <?php if (isset($skill2) && $skill2=="Labeler") echo "checked";?> value="Labeler">Labeler
                         &nbsp&nbsp&nbsp
+                        <input type="hidden" value="" name="skill3">
                         <input type="checkbox" name="skill3" <?php if (isset($skill3) && $skill3=="Mezzanine") echo "checked";?> value="Mezzanine">Mezzanine
                         &nbsp&nbsp&nbsp
+                        <input type="hidden" value="" name="skill4">
                         <input type="checkbox" name="skill4" <?php if (isset($skill4) && $skill4=="Stocker") echo "checked";?> value="Stocker">Stocker
                         &nbsp&nbsp&nbsp
+                        <input type="hidden" value="" name="skill5">
                         <input type="checkbox" name="skill5" <?php if (isset($skill5) && $skill5=="Runner") echo "checked";?> value="Runner">Runner
                         &nbsp&nbsp&nbsp
+                        <input type="hidden" value="" name="skill6">
                         <input type="checkbox" name="skill6" <?php if (isset($skill6) && $skill6=="QC") echo "checked";?> value="QC">QC
                         &nbsp&nbsp&nbsp
+                        <input type="hidden" value="" name="skill7">
                         <input type="checkbox" name="skill7" <?php if (isset($skill7) && $skill7=="Cleaner") echo "checked";?> value="Cleaner">Cleaner
                         &nbsp&nbsp&nbsp
+                        <input type="hidden" value="" name="skill8">
                         <input type="checkbox" name="skill8" <?php if (isset($skill8) && $skill8=="GiftBox") echo "checked";?> value="GiftBox">Gift Box
                     </div>
                     <div class="form-group">
