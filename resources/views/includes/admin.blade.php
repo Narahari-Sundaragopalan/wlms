@@ -10,6 +10,7 @@
 
     <div>
         <li style="list-style: none; text-align: left ">
+            <ul ><a href="{{ url('/administrator') }}" class="btn btn-danger" style="width: 150px; height: 30px; text-align: center;" >Home</a></ul>
             <ul ><a href="{{ url('/addemployee') }}" class="btn btn-danger" style="width: 150px; height: 30px; text-align: center;" >Add an Employee</a></ul>
             <!--<ul><a href="{{ url('/addremovefields') }}" class="btn btn-danger" style="width: 200px; height: 30px;">List of Employees</a></ul>-->
             <ul><a href="" class="btn btn-danger" style="width: 150px; height: 30px;">Schedule</a></ul>

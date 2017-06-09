@@ -12,11 +12,12 @@
             background-size: cover;
             text-align: center;
 
+
         }
 
 
     </style>
-    <body body background="images/burger.jpeg">
+    <body body background="images/pizza.jpg">
 
     <div style="width: 100%">
 

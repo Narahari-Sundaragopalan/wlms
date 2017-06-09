@@ -12,7 +12,7 @@
 
 
     </style>
-    <body background="{{ URL::to('/') }}/images/keyboard.jpeg">
+    <body background="{{ URL::to('/') }}/images/straw.jpg">
 
     <div style="width: 100%">
 
