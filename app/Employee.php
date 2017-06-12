@@ -15,7 +15,6 @@ class Employee extends Model
     'experience',
     'rating',
     'language',
-        'skill',
     'skill1',
     'skill2',
     'skill3',

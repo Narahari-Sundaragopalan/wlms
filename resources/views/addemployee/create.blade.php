@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('Skill:') !!}
+                        {!! Form::label('Skills:') !!}
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                         <input type="hidden" value="" name="skill1">
                         <input type="checkbox" name="skill1" <?php if (isset($skill1) && $skill1=="Icer") echo "checked";?> value="Icer">Icer
