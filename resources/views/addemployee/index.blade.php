@@ -19,7 +19,7 @@
 
 
     </style>
-    <body background="images/spices.jpg">
+    <body>
     <div style="width: 100%">
 
         @include('includes.admin')

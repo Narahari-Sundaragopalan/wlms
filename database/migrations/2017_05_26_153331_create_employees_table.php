@@ -20,15 +20,15 @@ class CreateEmployeesTable extends Migration
         $table->string('experience');
         $table->integer('rating');
         $table->string('language');
-        $table->string('skill');
-        $table->string('skill1');
-        $table->string('skill2');
-        $table->string('skill3');
-        $table->string('skill4');
-        $table->string('skill5');
-        $table->string('skill6');
-        $table->string('skill7');
-        $table->string('skill8');
+        $table->string('skill') -> nullable ();
+        $table->string('skill1') -> nullable ();
+        $table->string('skill2') -> nullable ();
+        $table->string('skill3') -> nullable ();
+        $table->string('skill4') -> nullable ();
+        $table->string('skill5') -> nullable ();
+        $table->string('skill6') -> nullable ();
+        $table->string('skill7') -> nullable ();
+        $table->string('skill8') -> nullable ();
         $table->timestamps();
     });
 

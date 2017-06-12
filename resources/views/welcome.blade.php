@@ -17,11 +17,12 @@
         <style>
             html, body {
                 background-color: #fff;
-                color: white;
+                color: mintcream;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
+                background-size: cover;
             }
 
             .full-height {
@@ -45,7 +46,7 @@
             }
 
             .content {
-                text-align: center;
+                text-align: Center;
             }
 
             .title {
@@ -67,7 +68,7 @@
             }
         </style>
     </head>
-    <body body background="images/herbs.jpg">
+    <body body background="images/ribeye.jpg">
     <div class="col-md-10 col-md-offset-1">
         <div class="flex-center position-ref full-height">
 

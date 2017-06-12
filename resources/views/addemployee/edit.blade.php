@@ -12,7 +12,7 @@
 
 
     </style>
-    <body background="{{ URL::to('/') }}/images/straw.jpg">
+    <body>
     <div style="width: 100%">
 
         @include('includes.admin')
