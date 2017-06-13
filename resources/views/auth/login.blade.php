@@ -1,7 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-    <body background="images/herbs.jpg">
+    <style>
+
+        html, body {
+
+            background-size: cover;
+            text-align: center;
+
+
+        }
+
+
+    </style>
+    <body background="images/ribeye.jpg">
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
