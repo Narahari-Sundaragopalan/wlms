@@ -92,8 +92,23 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'language' => [
+            'required' => 'Language is mandatory',
+        ],
+        'empid' => [
+            'required' => 'Employee ID is mandatory',
+        ],
+        'empname' => [
+            'required' => 'Employee Name is mandatory',
+        ],
+        'positiontype' => [
+            'required' => 'Position is mandatory',
+        ],
+        'experience' => [
+            'required' => 'Experience is mandatory',
+        ],
+        'rating' => [
+            'required' => 'Rating- Labeler is mandatory',
         ],
     ],
 

@@ -26,16 +26,20 @@
 
                     <h1>Add an employee</h1>
 
+                    @include('includes.error')
+                    @include('includes.flash')
+
+
                     {!! Form::open(['url' => 'addemployee']) !!}
-                    <div class="form-group">
+                    <div class="form-group{{ $errors->has('empid') ? ' has-error' : '' }}">
                         {!! Form::label('empid', 'Employee ID: ') !!}
                         {!! Form::text('empid',null,['class'=>'form-control']) !!}
                     </div>
-                    <div class="form-group">
+                    <div class="form-group{{ $errors->has('empname') ? ' has-error' : '' }}">
                         {!! Form::label('empname', 'Employee Name:') !!}
                         {!! Form::text('empname',null,['class'=>'form-control']) !!}
                     </div>
-                    <div class="form-group">
+                    <div class="form-group{{ $errors->has('positiontype') ? ' has-error' : '' }}">
                         {!! Form::label('positiontype', 'Position:') !!}
                         &nbsp&nbsp&nbsp&nbsp&nbsp
                         <input type="radio" name="positiontype" <?php if (isset($positiontype) && $positiontype=="Full-time") echo "checked";?> value="Full-time">Full-time
@@ -43,14 +47,14 @@
                         <input type="radio" name="positiontype" <?php if (isset($positiontype) && $positiontype=="Part-time") echo "checked";?> value="Part-time">Part-time
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group{{ $errors->has('experience') ? ' has-error' : '' }}">
                         {!! Form::label('experience', 'Experience:') !!}
                         <input type="radio" name="experience" <?php if (isset($experience) && $experience=="Trained") echo "checked";?> value="Trained">Trained
                         &nbsp&nbsp&nbsp
                         <input type="radio" name="experience" <?php if (isset($experience) && $experience=="Untrained") echo "checked";?> value="Untrained">Untrained
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group{{ $errors->has('language') ? ' has-error' : '' }}">
                         {!! Form::label('language', 'Language:') !!}
                         &nbsp&nbsp&nbsp
                         <input type="radio" name="language" <?php if (isset($language) && $language=="English") echo "checked";?> value="English">English
@@ -85,7 +89,7 @@
                         <input type="hidden" value="" name="skill8">
                         <input type="checkbox" name="skill8" <?php if (isset($skill8) && $skill8=="GiftBox") echo "checked";?> value="GiftBox">Gift Box
                     </div>
-                    <div class="form-group">
+                    <div class="form-group{{ $errors->has('rating') ? ' has-error' : '' }}">
                         {!! Form::label('rating', 'Rating- Labeler:') !!}
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                         <input type="radio" name="rating" <?php if (isset($rating) && $rating=="1") echo "checked";?> value="1">1
