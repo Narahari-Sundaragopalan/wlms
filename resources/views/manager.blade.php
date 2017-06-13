@@ -14,7 +14,7 @@
 
 
     </style>
-    <body body background="images/burger.jpeg">
+    <body body background="images/osburger.jpg">
     <div style="width: 100%">
 
         @include('includes.manage')
@@ -30,10 +30,10 @@
             <br>
             <div align="center"; >
 
-                <h1 style="color: brown">
+                <h1 style="color: black">
 
-                    <p><b><i> Welcome To  </i></b></p>
-                    <p><b><i>  Warehouse Labor Management System </i></b></p>
+                    <p><b> Welcome To  </b></p>
+                    <p><b>  Warehouse Labor Management System </b></p>
                 </h1>
 
 

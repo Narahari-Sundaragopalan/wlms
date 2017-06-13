@@ -97,7 +97,7 @@ return [
         ],
         'empid' => [
             'required' => 'Employee ID is mandatory',
-            'numeric' => 'Employee ID must be numeric'
+            'numeric' => 'Employee ID must be number'
         ],
         'empname' => [
             'required' => 'Employee Name is mandatory',

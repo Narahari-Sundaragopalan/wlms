@@ -47,7 +47,15 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav" >
-                    <li><a><b>Warehouse Labor Management System</b></a></li>
+
+                    @if (Auth::check())
+                       <li><a href="{{ url('/administrator') }}">Home</a></li>
+                    @endif
+
+
+                    <li><a href="{{ url('/') }}"><b>Omaha Steaks Warehouse Labor Management System</b></a></li>
+
+
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -55,7 +63,7 @@
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}"><b>LOGIN</b></a></li>
-                        <li><a href="{{ url('/register') }}"><b>REGISTER</b></a></li>
+                        <!--<li><a href="{{ url('/register') }}"><b>REGISTER</b></a></li>-->
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

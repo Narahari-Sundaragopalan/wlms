@@ -46,11 +46,13 @@ class AuthController extends Controller
 
             $role = DB::table('users')->where('email', $input['email'])->value('role');
 
+
+
             switch ($role)
             {
-                case 0: $this->redirectTo = '/administrator';
+                case 'Administrator': $this->redirectTo = '/administrator';
                     break;
-                case 1: $this->redirectTo = '/manager';
+                case 'Manager': $this->redirectTo = '/manager';
                     break;
                 default: $this->redirectTo = '';
                     break;
@@ -87,9 +89,9 @@ class AuthController extends Controller
     {
         switch ($data['role'])
         {
-            case 0: $this->redirectTo = '/administrator';
+            case 'Administrator': $this->redirectTo = '/administrator';
                 break;
-            case 1: $this->redirectTo = '/manager';
+            case 'Manager': $this->redirectTo = '/manager';
                 break;
             default: $this->redirectTo = '';
                 break;

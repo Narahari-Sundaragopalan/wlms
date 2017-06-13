@@ -58,8 +58,8 @@
 
 
                                 <select id="role" class="form-control" name="role">
-                                    <option value="0">Administrator</option>
-                                    <option value="1">Manager</option>
+                                    <option value="Administrator">Administrator</option>
+                                    <option value="Manager">Manager</option>
                                 </select>
 
                                 @if ($errors->has('role'))

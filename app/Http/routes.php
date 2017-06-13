@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index');
 Route::get('/administrator', 'AdministratorController@index');
 Route::get('/manager', 'ManagerController@index');
 Route::resource('addemployee', 'EmployeeController');
+Route::resource('user', 'CreateuserController');
