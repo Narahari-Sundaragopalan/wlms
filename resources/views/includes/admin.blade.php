@@ -1,5 +1,5 @@
 
-<div class="container" style="float: left;width: 15%; border-right: 2px solid black">
+<div class="container" style="float: left;width: 15%; border-right: 2px solid black; margin:0px; padding:0px;">
     <div style="height: 70%">
         <img class="center-block" src="{{URL::asset('/images/man.jpg')}}" alt="profile Pic" height="150" width="150">
     </div>
@@ -9,7 +9,7 @@
     <hr style="border-top: 1px solid #151515;">
 
     <div>
-        <li style="list-style: none; text-align: left ">
+        <li style="list-style: none; text-align: left; margin:0px; padding:0px; ">
             <ul ><a href="{{ url('/administrator') }}" class="btn btn-danger" style="width: 150px; height: 30px; text-align: center;" >Home</a></ul>
             <ul ><a href="{{ url('/addemployee') }}" class="btn btn-danger" style="width: 150px; height: 30px; text-align: center;" >Add an Employee</a></ul>
             <!--<ul><a href="{{ url('/addremovefields') }}" class="btn btn-danger" style="width: 200px; height: 30px;">List of Employees</a></ul>-->
