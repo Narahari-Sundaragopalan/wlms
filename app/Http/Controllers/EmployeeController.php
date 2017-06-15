@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Employee;
 use App\Http\Requests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Contracts\Validation\Validator;
+//use Illuminate\Contracts\Validation\Validator;
+use Validator;
 
 class EmployeeController extends Controller
 {
@@ -30,15 +31,19 @@ class EmployeeController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'empid' => 'bail|required|numeric',
-            'empname' => 'required|max:255',
-            'positiontype' => 'required',
-            'experience' => 'required',
-            'language' => 'required',
-            'rating' => 'required',
 
-        ]);
+     $validator = Validator::make($request->all(), [
+         'empid' => 'bail|required|numeric',
+         'empname' => 'required|max:255',
+         'positiontype' => 'required',
+         'experience' => 'required',
+         'language' => 'required',
+         'rating' => 'required',
+     ]);
+
+        if ($validator->fails()) {
+            return redirect('/addemployee/create')->withErrors($validator)->withInput();
+        }
 
         $employee = new Employee($request->all());
         $employee->save();

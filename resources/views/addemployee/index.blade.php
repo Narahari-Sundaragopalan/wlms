@@ -28,10 +28,12 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-1">
 
-                    <h1>Add an employee</h1>
+                    <h1 style="text-align: center">Employees</h1>
 
-                    <a href="{{url('/addemployee/create')}}" class="btn btn-success">Add an employee</a>
+                    <div class="pull-right">
+                    <a href="{{url('/addemployee/create')}}" class="btn btn-success">Add Employee</a>
                     <hr>
+                    </div>
                     <table class="table table-striped table-bordered table-hover" >
                         <thead>
                         <tr class="bg-info">

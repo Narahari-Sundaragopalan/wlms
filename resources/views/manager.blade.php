@@ -14,7 +14,7 @@
 
 
     </style>
-    <body body background="images/osburger.jpg">
+    <body background="images/osburger.jpg">
     <div style="width: 100%">
 
         @include('includes.manage')
