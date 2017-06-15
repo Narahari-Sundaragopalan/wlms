@@ -27,7 +27,17 @@ class CreateuserController extends Controller
 
 
     public function store(Request $request)
+
     {
+
+        $this->validate($request, [
+            'name' => 'bail|required',
+            'email' => 'required',
+            'password' => 'required',
+            'password_confirmation' => 'required',
+
+        ]);
+
         $input = $request->all();
         $this->populateCreateFields($input);
         $input['password'] = bcrypt($request['password']);

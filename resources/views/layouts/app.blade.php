@@ -60,7 +60,7 @@
 
 
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <div style="text-align: center; color: whitesmoke;"><b>Omaha Steaks</b></div>
+                    <div style="text-align: Center; color: whitesmoke; font-size: medium"><b>Omaha Steaks</b></div>
                 </a>
 
             </div>
@@ -88,8 +88,9 @@
                         <li><a href="{{ url('/login') }}"><b style="color: whitesmoke">Login</b></a></li>
                     @else
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color: whitesmoke">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color: whitesmoke; font-size: medium"><b>
+                                {{ Auth::user()->name }} <span class="caret"></span></b>
+
                             </a>
 
                             <ul class="dropdown-menu" role="menu">

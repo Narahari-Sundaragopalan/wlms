@@ -111,6 +111,18 @@ return [
         'rating' => [
             'required' => 'Rating- Labeler is mandatory',
         ],
+        'name' => [
+            'required' => 'The Name field is required.',
+        ],
+        'email' => [
+            'required' => 'The E-Mail Address field is required.',
+        ],
+        'password' => [
+            'required' => 'The Password field is required.',
+        ],
+        'password_confirmation' => [
+            'required' => 'The Confirm Password field is required.',
+        ],
     ],
 
     /*
