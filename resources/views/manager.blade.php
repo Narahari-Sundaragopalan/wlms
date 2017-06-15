@@ -24,27 +24,9 @@
                  <img class="pull-right" src="URL::asset('/images/logo.png')}}" alt="profile Pic" height="100" width="150">
              </div>-->
 
-
             <br>
             <br>
             <br>
-            <div align="center"; >
-
-                <h1 style="color: black">
-
-                    <p><b> Welcome To  </b></p>
-                    <p><b>  Warehouse Labor Management System </b></p>
-                </h1>
-
-
-            </div>
-            <div>
-
-                <marquee behavior="scroll" direction="left"><h3><b>Hi there!! Scheduling has just been made easier...</b></h3></marquee>
-
-            </div>
-
-
 
         </div>
     </div>

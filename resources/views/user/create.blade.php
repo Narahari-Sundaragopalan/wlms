@@ -39,24 +39,9 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
-                            <label for="role" class="col-md-4 control-label">Role</label>
-
-                            <div class="col-md-6">
-
-
-                            
-                                <select id="role" class="form-control" name="role">
-                                    <option value= 'Administrator' >Administrator</option>
-                                    <option value= 'Manager' >Manager</option>
-                                </select>
-
-                                @if ($errors->has('role'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('role') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Roles</label>
+                            <div class="col-md-6">{!! Form::select('role[]', array('1' => 'Administrator', '2' => 'Manager'), null, ['class' => 'form-control roles cds-select', 'style' => 'width: 50%; margin-top: 10px;']) !!}</div>
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">

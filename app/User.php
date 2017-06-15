@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
@@ -11,8 +12,11 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    use EntrustUserTrait;
+
     protected $fillable = [
-        'name', 'email','role', 'password',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -23,4 +27,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getRoleName()
+    {
+        return $this->roles->first()['display_name'];
+    }
 }

@@ -28,14 +28,15 @@
                 <div class="col-md-8 col-md-offset-1">
 
 
-<a href="{{url('/user/create')}}" class="btn btn-success">Add a user</a>
+                        <a href="{{url('/user/create')}}" class="btn btn-success">Create new User</a>
+
  <hr>
                     <table class="table table-striped table-bordered table-hover" >
                         <thead>
                         <tr class="bg-info">
                             <th>User Name</th>
+                            <th>Email</th>
                             <th>Role</th>
-                            <th>E-mail</th>
                             <th colspan="3", style="text-align: center">Actions</th>
                         </tr>
                         </thead>
@@ -43,8 +44,8 @@
                         @foreach($users as $user)
                         <tr>
                                 <td>{{ $user->name }}</td>
-                                <td>{{ $user->role }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td>{{ $user->getRoleName() }}</td>
                                 <td>
                                     {!! Form::open(['method' => 'DELETE', 'route'=>['user.destroy', $user->id]]) !!}
                                     {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}

@@ -23,7 +23,27 @@
         .fa-btn {
             margin-right: 6px;
         }
+
+        .navbar-static-top {
+            background-color: #2e3436;
+        }
+
+
+        .navbar-default{
+            text-align: center;
+
+        }
+        .header {
+            color: whitesmoke;
+            display: inline-block;
+            float: none;
+            padding-top: 1%;
+            font-size: x-large;
+        }
+
     </style>
+
+
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top">
@@ -38,23 +58,26 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <!-- Branding Image -->
-               <!-- <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
-                </a>-->
+
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <div style="text-align: center; color: whitesmoke;"><b>Omaha Steaks</b></div>
+                </a>
+
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav" >
+                <ul class="nav navbar-nav">
 
                     @if (Auth::check())
-                       <li><a href="{{ url('/administrator') }}">Home</a></li>
+                        <li><a href="{{ url('/home') }}"style="color: whitesmoke"><b style="font-size: medium">Home</b></a></li>
                     @endif
 
+                </ul>
 
-                    <li><a href="{{ url('/') }}"><b>Omaha Steaks Warehouse Labor Management System</b></a></li>
+                <ul class="header">
 
+                    <ul class="heading"><b> Warehouse Labor Management System</b></ul>
 
                 </ul>
 
@@ -62,11 +85,10 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}"><b>LOGIN</b></a></li>
-                        <!--<li><a href="{{ url('/register') }}"><b>REGISTER</b></a></li>-->
+                        <li><a href="{{ url('/login') }}"><b style="color: whitesmoke">Login</b></a></li>
                     @else
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color: whitesmoke">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 

@@ -85,9 +85,9 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md" >
+            <!--    <div class="title m-b-md" >
                     <b> Warehouse Labor Management System  </b>
-                </div>
+                </div>-->
 
                 <div class="links">
                 <!-- <a href="{{ url('/aboutus') }}">About Us</a>

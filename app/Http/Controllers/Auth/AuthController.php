@@ -30,7 +30,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new authentication controller instance.
@@ -39,27 +39,6 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        {
-            $input = input::only('email');
-
-            $this->middleware('guest', ['except' => 'logout']);
-
-            $role = DB::table('users')->where('email', $input['email'])->value('role');
-
-
-
-            switch ($role)
-            {
-                case 'Administrator': $this->redirectTo = '/administrator';
-                    break;
-                case 'Manager': $this->redirectTo = '/manager';
-                    break;
-                default: $this->redirectTo = '';
-                    break;
-            }
-
-
-        }
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
@@ -87,20 +66,9 @@ class AuthController extends Controller
     protected function create(array $data)
 
     {
-        switch ($data['role'])
-        {
-            case 'Administrator': $this->redirectTo = '/administrator';
-                break;
-            case 'Manager': $this->redirectTo = '/manager';
-                break;
-            default: $this->redirectTo = '';
-                break;
-        }
-
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'role'  => $data['role'],
             'password' => bcrypt($data['password']),
 
 

@@ -23,18 +23,6 @@
 
         @include('includes.admin')
 
-        <div class="container" style="float: right; width: 85%; ">
-            <div>
-                <h1> Welcome To </h1>
-                <h1> Warehouse Labor Management System </h1>
-            </div>
-
-            <div>
-
-                <marquee behavior="scroll" direction="left"><h3><b>Hi there!!Welcome !! Scheduling has just been made easier...</b></h3></marquee>
-
-            </div>
-        </div>
     </div>
     </body>
     </html>
