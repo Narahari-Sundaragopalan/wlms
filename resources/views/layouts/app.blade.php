@@ -29,7 +29,7 @@
         }
 
 
-        .navbar-default{
+        .navbar-default {
             text-align: center;
 
         }
@@ -39,6 +39,14 @@
             float: none;
             padding-top: 1%;
             font-size: x-large;
+
+        }
+
+        .brand {
+            margin-left: -75px;
+            text-align: center;
+            color: whitesmoke;
+            font-size: medium;
         }
 
     </style>
@@ -60,7 +68,7 @@
 
 
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <div style="text-align: Center; color: whitesmoke; font-size: medium"><b>Omaha Steaks</b></div>
+                    <div class= "brand"><b>Omaha Steaks</b></div>
                 </a>
 
             </div>
