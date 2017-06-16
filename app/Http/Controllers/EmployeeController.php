@@ -39,6 +39,8 @@ class EmployeeController extends Controller
          'experience' => 'required',
          'language' => 'required',
          'rating' => 'required',
+         'srating' => 'required',
+
      ]);
 
         if ($validator->fails()) {

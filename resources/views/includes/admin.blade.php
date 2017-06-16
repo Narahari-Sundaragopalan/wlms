@@ -1,5 +1,5 @@
 
-<div class="container" style="float: left;width: 15%; border-right: 2px solid black; margin:0px; padding:0px;">
+<div class="container" style="float: left;  width: 15%; border-right: 2px solid black; margin:0px; padding:0px;">
     <div style="height: 70%">
         <img class="center-block" src="{{URL::asset('/images/man.jpg')}}" alt="profile Pic" height="150" width="150">
     </div>

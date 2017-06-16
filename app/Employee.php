@@ -14,6 +14,7 @@ class Employee extends Model
     'positiontype',
     'experience',
     'rating',
+    'srating',
     'language',
     'skill1',
     'skill2',
@@ -22,6 +23,7 @@ class Employee extends Model
     'skill5',
     'skill6',
     'skill7',
-    'skill8'
+    'skill8',
+    'comment'
     ];
 }

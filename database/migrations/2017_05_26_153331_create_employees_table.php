@@ -18,7 +18,8 @@ class CreateEmployeesTable extends Migration
         $table->string('empname');
         $table->string('positiontype');
         $table->string('experience');
-        $table->integer('rating');
+        $table->string('rating',5);
+        $table->string('srating',5);
         $table->string('language');
         $table->string('skill') -> nullable ();
         $table->string('skill1') -> nullable ();
@@ -29,6 +30,7 @@ class CreateEmployeesTable extends Migration
         $table->string('skill6') -> nullable ();
         $table->string('skill7') -> nullable ();
         $table->string('skill8') -> nullable ();
+        $table->string('comment') -> nullable ();
         $table->timestamps();
     });
 

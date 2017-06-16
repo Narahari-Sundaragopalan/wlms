@@ -57,6 +57,14 @@
                                 <td>Rating- Labeler</td>
                                 <td><?php echo ($employee['rating']); ?></td>
                             </tr>
+                            <tr>
+                                <td>Stocker Rating</td>
+                                <td><?php echo ($employee['srating']); ?></td>
+                            </tr>
+                            <tr>
+                                <td>Comments</td>
+                                <td><?php echo ($employee['comment']); ?></td>
+                            </tr>
 
                             </tbody>
                         </table>

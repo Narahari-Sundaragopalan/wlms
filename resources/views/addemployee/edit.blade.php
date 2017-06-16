@@ -52,6 +52,10 @@
                         <input type="radio" name="language" <?php if (isset($language) && $language=="English") echo "checked";?> value="English"{{$employee->language == 'English' ? 'checked' : ''}}>English
                         &nbsp&nbsp&nbsp&nbsp
                         <input type="radio" name="language" <?php if (isset($language) && $language=="Spanish") echo "checked";?> value="Spanish"{{$employee->language == 'Spanish' ? 'checked' : ''}}>Spanish
+                        &nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="language" <?php if (isset($language) && $language=="Bilingual") echo "checked";?> value="Bilingual"{{$employee->language == 'Bilingual' ? 'checked' : ''}}>Bilingual
+                        &nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="language" <?php if (isset($language) && $language=="Others") echo "checked";?> value="Others"{{$employee->language == 'Others' ? 'checked' : ''}}>Others
                     </div>
 
                     <div class="form-group">
@@ -93,7 +97,29 @@
                         <input type="radio" name="rating" <?php if (isset($rating) && $rating=="4") echo "checked";?> value="4"{{$employee->rating == '4' ? 'checked' : ''}}>4
                         &nbsp&nbsp&nbsp&nbsp
                         <input type="radio" name="rating" <?php if (isset($rating) && $rating=="5") echo "checked";?> value="5"{{$employee->rating == '5' ? 'checked' : ''}}>5
+                        &nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="rating" <?php if (isset($rating) && $rating=="NA") echo "checked";?> value="NA"{{$employee->rating == 'NA' ? 'checked' : ''}}>NA
 
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('srating', 'Stocker Rating:') !!}
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="srating" <?php if (isset($srating) && $srating=="1") echo "checked";?> value="1"{{$employee->srating == '1' ? 'checked' : ''}}>1
+                        &nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="srating" <?php if (isset($srating) && $srating=="2") echo "checked";?> value="2"{{$employee->srating == '2' ? 'checked' : ''}}>2
+                        &nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="srating" <?php if (isset($srating) && $srating=="3") echo "checked";?> value="3"{{$employee->srating == '3' ? 'checked' : ''}}>3
+                        &nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="srating" <?php if (isset($srating) && $srating=="4") echo "checked";?> value="4"{{$employee->srating == '4' ? 'checked' : ''}}>4
+                        &nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="srating" <?php if (isset($srating) && $srating=="5") echo "checked";?> value="5"{{$employee->srating == '5' ? 'checked' : ''}}>5
+                        &nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="srating" <?php if (isset($srating) && $srating=="NA") echo "checked";?> value="NA"{{$employee->srating == 'NA' ? 'checked' : ''}}>NA
+
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('comment', 'Comments:') !!}
+                        {!! Form::text('comment',null,['class'=>'form-control']) !!}
                     </div>
 
                     <div class="form-group" style="text-align: left">

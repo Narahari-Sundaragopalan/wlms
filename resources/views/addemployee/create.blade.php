@@ -67,6 +67,10 @@
                         <input type="radio" name="language" value="English" {{(old('language') == "English") ? 'checked': ''}}>English
                         &nbsp&nbsp&nbsp&nbsp
                         <input type="radio" name="language" value="Spanish" {{(old('language') == "Spanish") ? 'checked': ''}}>Spanish
+                        &nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="language" value="Bilingual" {{(old('language') == "Bilingual") ? 'checked': ''}}>Bilingual
+                        &nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="language" value="Others" {{(old('language') == "Others") ? 'checked': ''}}>Others
                     </div>
 
                     <div class="form-group">
@@ -108,7 +112,29 @@
                         <input type="radio" name="rating" value="4" {{(old('rating') == "4") ? 'checked': ''}}>4
                         &nbsp&nbsp&nbsp&nbsp
                         <input type="radio" name="rating" value="5" {{(old('rating') == "5") ? 'checked': ''}}>5
+                        &nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="rating" value="NA" {{(old('srating') == "NA") ? 'checked': ''}}>NA
 
+                    </div>
+                    <div class="form-group{{ $errors->has('srating') ? ' has-error' : '' }}">
+                        {!! Form::label('srating', 'Stocker Rating:') !!}
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="srating" value="1" {{(old('srating') == "1") ? 'checked': ''}}>1
+                        &nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="srating" value="2" {{(old('srating') == "2") ? 'checked': ''}}>2
+                        &nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="srating" value="3" {{(old('srating') == "3") ? 'checked': ''}}>3
+                        &nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="srating" value="4" {{(old('srating') == "4") ? 'checked': ''}}>4
+                        &nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="srating" value="5" {{(old('srating') == "5") ? 'checked': ''}}>5
+                        &nbsp&nbsp&nbsp&nbsp
+                        <input type="radio" name="srating" value="NA" {{(old('srating') == "NA") ? 'checked': ''}}>NA
+
+                    </div>
+                    <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
+                        {!! Form::label('comment', 'Comments:') !!}
+                        {!! Form::text('comment',null,['class'=>'form-control']) !!}
                     </div>
 
                     <div class="form-group" style="text-align: left">

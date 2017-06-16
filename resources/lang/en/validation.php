@@ -111,6 +111,10 @@ return [
         'rating' => [
             'required' => 'Rating- Labeler is mandatory',
         ],
+        'srating' => [
+            'required' => 'Stocker Rating is mandatory',
+        ],
+
         'name' => [
             'required' => 'The Name field is required.',
         ],

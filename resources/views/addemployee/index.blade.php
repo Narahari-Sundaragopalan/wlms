@@ -44,7 +44,11 @@
                             <th>Language</th>
                             <th colspan="8", style="text-align: center">Skill</th>
                             <th>Labeler Rating</th>
+                            <th>Rating</th>
+                             <th>Stocker Rating</th>
+                             <th>Comments</th>
                             <th colspan="3", style="text-align: center">Actions</th>
+                            
                         </tr>
                         </thead>
                         <tbody>
@@ -65,6 +69,10 @@
                                 <td>{{ $employee->skill7 }}</td>
                                 <td>{{ $employee->skill8 }}</td>
                                 <td>{{ $employee->rating }}</td>
+                                <td>{{ $employee->srating }}</td>
+                                <td>{{ $employee->comment }}</td>
+
+
 
 
                                 <td><a href="{{url('addemployee',$employee->id)}}" class="btn btn-primary">Show</a></td>
