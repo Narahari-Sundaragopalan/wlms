@@ -44,7 +44,6 @@
                             <th>Language</th>
                             <th colspan="8", style="text-align: center">Skill</th>
                             <th>Labeler Rating</th>
-                            <th>Rating</th>
                              <th>Stocker Rating</th>
                              <th>Comments</th>
                             <th colspan="3", style="text-align: center">Actions</th>
