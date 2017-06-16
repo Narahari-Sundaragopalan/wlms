@@ -28,7 +28,7 @@
                 <div class="col-md-8 col-md-offset-1">
 
 
-                        <a href="{{url('/user/create')}}" class="btn btn-success">Create new User</a>
+                        <a href="{{url('/user/create')}}" class="btn btn-success">Create New User</a>
 
  <hr>
                     <table class="table table-striped table-bordered table-hover" >

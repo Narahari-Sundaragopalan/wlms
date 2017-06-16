@@ -43,7 +43,7 @@
                             <th>Experience</th>
                             <th>Language</th>
                             <th colspan="8", style="text-align: center">Skill</th>
-                            <th>Rating</th>
+                            <th>Labeler Rating</th>
                             <th colspan="3", style="text-align: center">Actions</th>
                         </tr>
                         </thead>
