@@ -86,7 +86,7 @@
                         <input type="checkbox" name="skill8" <?php if (isset($skill8) && $skill8=="GiftBox") echo "checked";?> value="GiftBox"{{$employee->skill8 == 'GiftBox' ? 'checked' : ''}}>Gift Box
                     </div>
                     <div class="form-group">
-                        {!! Form::label('rating', 'Rating- Labeler:') !!}
+                        {!! Form::label('rating', 'Labeler Rating:') !!}
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                         <input type="radio" name="rating" <?php if (isset($rating) && $rating=="1") echo "checked";?> value="1"{{$employee->rating == '1' ? 'checked' : ''}}>1
                         &nbsp&nbsp&nbsp&nbsp

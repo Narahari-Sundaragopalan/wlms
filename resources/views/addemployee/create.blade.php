@@ -101,7 +101,7 @@
                         <input type="checkbox" name="skill8" value="GiftBox" {{(old('skill8') == "GiftBox") ? 'checked': ''}}>Gift Box
                     </div>
                     <div class="form-group{{ $errors->has('rating') ? ' has-error' : '' }}">
-                        {!! Form::label('rating', 'Rating- Labeler:') !!}
+                        {!! Form::label('rating', 'Labeler Rating:') !!}
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                         <input type="radio" name="rating" value="1" {{(old('rating') == "1") ? 'checked': ''}}>1
                         &nbsp&nbsp&nbsp&nbsp
