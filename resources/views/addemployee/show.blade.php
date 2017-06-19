@@ -68,7 +68,18 @@
 
                             </tbody>
                         </table>
-                        <a href="{{url('/addemployee')}}" class="btn btn-primary" style=" width: 150px; height: 30px;">Close</a>
+                        
+                        <div>
+                       <tr>
+                        <td><a href="{{url('/addemployee')}}" class="btn btn-primary" style=" width: 150px; height: 30px;">Close</a></td>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <td><a href="{{route('addemployee.edit',$employee->id)}}" class="btn btn-warning">Update</a></td>
+                        
+                        <td>{!! Form::open(['method' => 'DELETE', 'route'=>['addemployee.destroy', $employee->id]]) !!}
+                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                    {!! Form::close() !!}</td>
+                           </tr>
+                             </div>   
                     </div>
                 </div>
             </div>
