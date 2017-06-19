@@ -28,12 +28,19 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-1">
 
-                    <h1 style="text-align: center">Employees</h1>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="pull-right">
+                                <a href="{{url('/addemployee/create')}}" class="btn btn-success">Add Employee</a>
+                                <hr>
+                            </div>
 
-                    <div class="pull-right">
-                    <a href="{{url('/addemployee/create')}}" class="btn btn-success">Add Employee</a>
-                    <hr>
-                    </div>
+                            <h2 style="text-align: center">Employees</h2>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+
+
                     <table class="table table-striped table-bordered table-hover" >
                         <thead>
                         <tr class="bg-info">
@@ -97,8 +104,9 @@
                         @endforeach
 
                         </tbody>
-
                     </table>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
