@@ -76,8 +76,20 @@
 
                                 <td><a href="{{url('addemployee',$employee->id)}}" class="btn btn-primary">Show</a></td>
                                 <td><a href="{{route('addemployee.edit',$employee->id)}}" class="btn btn-warning">Update</a></td>
+                                <script>
+
+                        function ConfirmDelete()
+                         {
+                           var x = confirm("Are you sure you want to delete?");
+                           if (x)
+                               return true;
+                             else
+                           return false;
+                        }
+                        </script>
+
                                 <td>
-                                    {!! Form::open(['method' => 'DELETE', 'route'=>['addemployee.destroy', $employee->id]]) !!}
+                                    {!! Form::open(['method' => 'DELETE', 'route'=>['addemployee.destroy', $employee->id],'onsubmit' => 'return ConfirmDelete()']) !!}
                                     {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                     {!! Form::close() !!}
                                 </td>
