@@ -22,18 +22,13 @@ Route::get('/administrator', 'AdministratorController@index');
 Route::get('/manager', 'ManagerController@index');
 Route::resource('addemployee', 'EmployeeController');
 Route::resource('user', 'CreateuserController');
-<<<<<<< 6f66f514f830d38926b273440525894693f6fabc
 Route::resource('Supervisor', 'SupervisorController');
 
 Route::resource('schedule', 'ScheduleController');
 Route::get('schedule/generate', 'ScheduleController@generate');
 Route::post('schedule/generate', 'ScheduleController@generate');
 
-=======
-//Route::resource('/password/securityquestions', 'Auth\PasswordController@getPasswordSecurityQuestions');
 Route::get('/changepassword', 'SettingsController@showChangePasswordForm');
 Route::post('/changepassword', 'SettingsController@updatePassword');
 
 
-    
->>>>>>> change password
