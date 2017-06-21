@@ -20,8 +20,12 @@
 
             <div class="row">
                 <div class="col-md-8 col-md-offset-1">
-                    <h1>Employee Details </h1>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                    <h1 style="text-align: center">Employee Details </h1>
 
+                            <div class="panel-body">
+                                <div class="table-responsive">
                     <div class="container">
                         <table class="table table-striped table-bordered table-hover">
                             <tbody>
@@ -71,9 +75,9 @@
                         
                         <div>
                        <tr>
-                        <td><a href="{{url('/addemployee')}}" class="btn btn-primary" style=" width: 150px; height: 30px;">Close</a></td>
+                        <td> <a href="{{url('/addemployee')}}" class="btn btn-primary" style=" width: 100px; height: 30px;">Close</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <td><a href="{{route('addemployee.edit',$employee->id)}}" class="btn btn-warning">Update</a></td>
+                        <a href="{{route('addemployee.edit',$employee->id)}}" class="btn btn-warning" style=" width: 100px; height: 30px;">Update</a>
                         
                         <script>
 
@@ -87,11 +91,15 @@
                         }
                         </script>
 
-                        <td>{!! Form::open(['method' => 'DELETE', 'route'=>['addemployee.destroy', $employee->id],'onsubmit' => 'return ConfirmDelete()']) !!}
+                        {!! Form::open(['method' => 'DELETE', 'route'=>['addemployee.destroy', $employee->id],'onsubmit' => 'return ConfirmDelete()']) !!}
                                     {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                     {!! Form::close() !!}</td>
                            </tr>
                              </div>   
+                    </div>
+                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Supervisor extends Model
 {
      protected $fillable=[
-     'id',
-     'name',
+     'supid',
+     'supname',
      'position'
     ]; 
 }
