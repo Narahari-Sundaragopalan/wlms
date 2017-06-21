@@ -23,3 +23,8 @@ Route::get('/manager', 'ManagerController@index');
 Route::resource('addemployee', 'EmployeeController');
 Route::resource('user', 'CreateuserController');
 Route::resource('Supervisor', 'SupervisorController');
+
+Route::resource('schedule', 'ScheduleController');
+Route::get('schedule/generate', 'ScheduleController@generate');
+Route::post('schedule/generate', 'ScheduleController@generate');
+

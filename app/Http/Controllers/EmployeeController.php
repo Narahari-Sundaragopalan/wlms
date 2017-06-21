@@ -38,8 +38,8 @@ class EmployeeController extends Controller
          'positiontype' => 'required',
          'experience' => 'required',
          'language' => 'required',
-         'rating' => 'required',
-         'srating' => 'required',
+         'labeler_rating' => 'required',
+         'stocker_rating' => 'required',
 
      ]);
 

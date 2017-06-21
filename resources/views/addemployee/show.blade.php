@@ -52,18 +52,18 @@
                             </tr>
                             <tr>
                                 <td>Skill</td>
-                                <td><?php echo ($employee['skill1']); ?>&nbsp&nbsp <?php echo ($employee['skill2']); ?> &nbsp &nbsp<?php echo ($employee['skill3']); ?>
-                                    &nbsp&nbsp <?php echo ($employee['skill4']); ?>&nbsp&nbsp <?php echo ($employee['skill5']); ?>&nbsp &nbsp <?php echo ($employee['skill6']); ?>
-                                    <?php echo ($employee['skill7']); ?>&nbsp &nbsp<?php echo ($employee['skill8']); ?></td>
+                                <td><?php if ($employee['icer']) { echo 'Icer';}; ?>&nbsp&nbsp <?php if ($employee['labeler']) {echo 'Labeler';}; ?> &nbsp &nbsp<?php if ($employee['mezzanine']) {echo 'Mezzanine';}; ?>
+                                    &nbsp&nbsp <?php if ($employee['stocker']) {echo 'Stocker';}; ?>&nbsp&nbsp <?php if ($employee['runner']) { echo 'Runner';}; ?>&nbsp &nbsp <?php if ($employee['qc']) {echo 'QC';}; ?>
+                                    <?php if ($employee['cleaner']) { echo 'Cleaner';}; ?>&nbsp &nbsp<?php if ($employee['gift_box']) {echo 'Gift Box';}; ?></td>
                             </tr>
 
                             <tr>
                                 <td>Rating- Labeler</td>
-                                <td><?php echo ($employee['rating']); ?></td>
+                                <td><?php echo ($employee['labeler_rating']); ?></td>
                             </tr>
                             <tr>
                                 <td>Stocker Rating</td>
-                                <td><?php echo ($employee['srating']); ?></td>
+                                <td><?php echo ($employee['stocker_rating']); ?></td>
                             </tr>
                             <tr>
                                 <td>Comments</td>

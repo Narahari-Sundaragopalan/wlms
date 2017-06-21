@@ -49,12 +49,7 @@
                             <th>Position</th>
                             <th>Experience</th>
                             <th>Language</th>
-                           <!-- <th colspan="8", style="text-align: center">Skill</th>
-                            <th>Labeler Rating</th>
-                             <th>Stocker Rating</th>
-                             <th>Comments</th>-->
                             <th colspan="3", style="text-align: center">Actions</th>
-                            
                         </tr>
                         </thead>
                         <tbody>
@@ -65,21 +60,6 @@
                                 <td>{{ $employee->positiontype }}</td>
                                 <td>{{ $employee->experience }}</td>
                                 <td>{{ $employee->language }}</td>
-                                <!--<td>{ $employee->skill }}</td>-->
-                                <!--<td>{{ $employee->skill1 }}</td>
-                                <td>{{ $employee->skill2 }}</td>
-                                <td>{{ $employee->skill3 }}</td>
-                                <td>{{ $employee->skill4 }}</td>
-                                <td>{{ $employee->skill5 }}</td>
-                                <td>{{ $employee->skill6 }}</td>
-                                <td>{{ $employee->skill7 }}</td>
-                                <td>{{ $employee->skill8 }}</td>
-                                <td>{{ $employee->rating }}</td>
-                                <td>{{ $employee->srating }}</td>
-                                <td>{{ $employee->comment }}</td> -->
-
-
-
 
                                 <td><a href="{{url('addemployee',$employee->id)}}" class="btn btn-primary">Show</a></td>
                                 <td><a href="{{route('addemployee.edit',$employee->id)}}" class="btn btn-warning">Update</a></td>

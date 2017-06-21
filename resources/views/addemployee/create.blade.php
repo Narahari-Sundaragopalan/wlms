@@ -76,60 +76,60 @@
                     <div class="form-group">
                         {!! Form::label('Skills:') !!}
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="skill1">
-                        <input type="checkbox" name="skill1" value="Icer" {{(old('skill1') == "Icer") ? 'checked': ''}}>Icer
+                        <input type="hidden" value="0" name="icer">
+                        <input type="checkbox" name="icer" value="1" {{(old('icer') == "1") ? 'checked': ''}}>Icer
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="skill2">
-                        <input type="checkbox" name="skill2" value="Labeler" {{(old('skill2') == "Labeler") ? 'checked': ''}}>Labeler
+                        <input type="hidden" value="0" name="labeler">
+                        <input type="checkbox" name="labeler" value="1" {{(old('labeler') == "1") ? 'checked': ''}}>Labeler
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="skill3">
-                        <input type="checkbox" name="skill3" value="Mezzanine" {{(old('skill3') == "Mezzanine") ? 'checked': ''}}>Mezzanine
+                        <input type="hidden" value="0" name="mezzanine">
+                        <input type="checkbox" name="mezzanine" value="1" {{(old('mezzanine') == "1") ? 'checked': ''}}>Mezzanine
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="skill4">
-                        <input type="checkbox" name="skill4" value="Stocker" {{(old('skill4') == "Stocker") ? 'checked': ''}}>Stocker
+                        <input type="hidden" value="0" name="stocker">
+                        <input type="checkbox" name="stocker" value="1" {{(old('stocker') == "1") ? 'checked': ''}}>Stocker
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="skill5">
-                        <input type="checkbox" name="skill5" value="Runner" {{(old('skill5') == "Runner") ? 'checked': ''}}>Runner
+                        <input type="hidden" value="0" name="runner">
+                        <input type="checkbox" name="runner" value="1" {{(old('runner') == "1") ? 'checked': ''}}>Runner
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="skill6">
-                        <input type="checkbox" name="skill6" value="QC" {{(old('skill6') == "QC") ? 'checked': ''}}>QC
+                        <input type="hidden" value="0" name="qc">
+                        <input type="checkbox" name="qc" value="1" {{(old('qc') == "1") ? '1': ''}}>QC
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="skill7">
-                        <input type="checkbox" name="skill7" value="Cleaner" {{(old('skill7') == "Cleaner") ? 'checked': ''}}>Cleaner
+                        <input type="hidden" value="0" name="cleaner">
+                        <input type="checkbox" name="cleaner" value="1" {{(old('cleaner') == "1") ? 'checked': ''}}>Cleaner
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="skill8">
-                        <input type="checkbox" name="skill8" value="GiftBox" {{(old('skill8') == "GiftBox") ? 'checked': ''}}>Gift Box
+                        <input type="hidden" value="0" name="gift_box">
+                        <input type="checkbox" name="gift_box" value="1" {{(old('gift_box') == "1") ? 'checked': ''}}>Gift Box
                     </div>
                     <div class="form-group{{ $errors->has('rating') ? ' has-error' : '' }}">
-                        {!! Form::label('rating', 'Labeler Rating:') !!}
+                        {!! Form::label('labeler_rating', 'Labeler Rating:') !!}
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="rating" value="1" {{(old('rating') == "1") ? 'checked': ''}}>1
+                        <input type="radio" name="labeler_rating" value="1" {{(old('labeler_rating') == "1") ? 'checked': ''}}>1
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="rating" value="2" {{(old('rating') == "2") ? 'checked': ''}}>2
+                        <input type="radio" name="labeler_rating" value="2" {{(old('labeler_rating') == "2") ? 'checked': ''}}>2
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="rating" value="3" {{(old('rating') == "3") ? 'checked': ''}}>3
+                        <input type="radio" name="labeler_rating" value="3" {{(old('labeler_rating') == "3") ? 'checked': ''}}>3
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="rating" value="4" {{(old('rating') == "4") ? 'checked': ''}}>4
+                        <input type="radio" name="labeler_rating" value="4" {{(old('labeler_rating') == "4") ? 'checked': ''}}>4
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="rating" value="5" {{(old('rating') == "5") ? 'checked': ''}}>5
+                        <input type="radio" name="labeler_rating" value="5" {{(old('labeler_rating') == "5") ? 'checked': ''}}>5
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="rating" value="NA" {{(old('srating') == "NA") ? 'checked': ''}}>NA
+                        <input type="radio" name="labeler_rating" value="NA" {{(old('labeler_rating') == "NA") ? 'checked': ''}}>NA
 
                     </div>
-                    <div class="form-group{{ $errors->has('srating') ? ' has-error' : '' }}">
-                        {!! Form::label('srating', 'Stocker Rating:') !!}
+                    <div class="form-group{{ $errors->has('stocker_rating') ? ' has-error' : '' }}">
+                        {!! Form::label('stocker_rating', 'Stocker Rating:') !!}
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="srating" value="1" {{(old('srating') == "1") ? 'checked': ''}}>1
+                        <input type="radio" name="stocker_rating" value="1" {{(old('stocker_rating') == "1") ? 'checked': ''}}>1
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="srating" value="2" {{(old('srating') == "2") ? 'checked': ''}}>2
+                        <input type="radio" name="stocker_rating" value="2" {{(old('stocker_rating') == "2") ? 'checked': ''}}>2
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="srating" value="3" {{(old('srating') == "3") ? 'checked': ''}}>3
+                        <input type="radio" name="stocker_rating" value="3" {{(old('stocker_rating') == "3") ? 'checked': ''}}>3
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="srating" value="4" {{(old('srating') == "4") ? 'checked': ''}}>4
+                        <input type="radio" name="stocker_rating" value="4" {{(old('stocker_rating') == "4") ? 'checked': ''}}>4
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="srating" value="5" {{(old('srating') == "5") ? 'checked': ''}}>5
+                        <input type="radio" name="stocker_rating" value="5" {{(old('stocker_rating') == "5") ? 'checked': ''}}>5
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="srating" value="NA" {{(old('srating') == "NA") ? 'checked': ''}}>NA
+                        <input type="radio" name="stocker_rating" value="NA" {{(old('stocker_rating') == "NA") ? 'checked': ''}}>NA
 
                     </div>
                     <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
