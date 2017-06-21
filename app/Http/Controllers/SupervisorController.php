@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\supervisor;
+use App\Supervisor;
 use App\Http\Requests;
 
 class SupervisorController extends Controller
