@@ -3,7 +3,9 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\CanResetPassword;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Log;
 
 class User extends Authenticatable
 {
@@ -16,7 +18,7 @@ class User extends Authenticatable
     use EntrustUserTrait;
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'security_question1', 'security_answer1', 'security_question2', 'security_answer2'
     ];
 
     /**
