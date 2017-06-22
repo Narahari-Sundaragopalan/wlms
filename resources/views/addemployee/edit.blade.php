@@ -61,28 +61,28 @@
                     <div class="form-group">
                         {!! Form::label('Skills:') !!}
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="icer">
+                        <input type="hidden" value="0" name="icer">
                         <input type="checkbox" name="icer" <?php if (isset($icer) && $icer=="1") echo "checked";?> value="1"{{$employee->icer == '1' ? 'checked' : ''}}>Icer
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="labeler">
+                        <input type="hidden" value="0" name="labeler">
                         <input type="checkbox" name="labeler" <?php if (isset($labeler) && $labeler=="1") echo "checked";?> value="1"{{$employee->labeler == '1' ? 'checked' : ''}}>Labeler
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="mezzanine">
+                        <input type="hidden" value="0" name="mezzanine">
                         <input type="checkbox" name="mezzanine" <?php if (isset($mezzanine) && $mezzanine=="1") echo "checked";?> value="1"{{$employee->labeler == '1' ? 'checked' : ''}}>Mezzanine
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="stocker">
+                        <input type="hidden" value="0" name="stocker">
                         <input type="checkbox" name="stocker" <?php if (isset($stocker) && $stocker=="1") echo "checked";?> value="1" {{$employee->stocker == '1' ? 'checked' : ''}}>Stocker
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="runner">
+                        <input type="hidden" value="0" name="runner">
                         <input type="checkbox" name="runner" <?php if (isset($runner) && $runner=="1") echo "checked";?> value="1"{{$employee->runner == '1' ? 'checked' : ''}}>Runner
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="qc">
+                        <input type="hidden" value="0" name="qc">
                         <input type="checkbox" name="qc" <?php if (isset($qc) && $qc=="1") echo "checked";?> value="1"{{$employee->qc == '1' ? 'checked' : ''}}>QC
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="cleaner">
+                        <input type="hidden" value="0" name="cleaner">
                         <input type="checkbox" name="cleaner" <?php if (isset($cleaner) && $cleaner=="1") echo "checked";?> value="1"{{$employee->cleaner == '1' ? 'checked' : ''}}>Cleaner
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="gift_box">
+                        <input type="hidden" value="0" name="gift_box">
                         <input type="checkbox" name="gift_box" <?php if (isset($gift_box) && $gift_box=="1") echo "checked";?> value="1"{{$employee->gift_box == '1' ? 'checked' : ''}}>Gift Box
                     </div>
                     <div class="form-group">
