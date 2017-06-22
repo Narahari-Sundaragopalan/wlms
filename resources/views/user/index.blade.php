@@ -51,8 +51,21 @@
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->getRoleName() }}</td>
-                                            <td>
-                                            {!! Form::open(['method' => 'DELETE', 'route'=>['user.destroy', $user->id]]) !!}
+                                           
+
+                                           <script>
+
+                        function ConfirmDelete()
+                         {
+                           var x = confirm("Are you sure you want to delete?");
+                           if (x)
+                               return true;
+                             else
+                           return false;
+                        }
+                        </script> 
+                                           <td>
+                                            {!! Form::open(['method' => 'DELETE', 'route'=>['user.destroy', $user->id], 'onsubmit' => 'return ConfirmDelete()']) !!}
                                             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                             {!! Form::close() !!}
                                             </td>
