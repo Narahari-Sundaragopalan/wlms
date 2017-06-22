@@ -33,9 +33,10 @@ class CreateuserController extends Controller
 
         $this->validate($request, [
             'name' => 'bail|required',
-            'email' => 'required',
-            'password' => 'required',
-            'password_confirmation' => 'required',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|confirmed',
+
+            
 
         ]);
 
