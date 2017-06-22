@@ -61,60 +61,60 @@
                     <div class="form-group">
                         {!! Form::label('Skills:') !!}
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="skill1">
-                        <input type="checkbox" name="skill1" <?php if (isset($skill1) && $skill1=="Icer") echo "checked";?> value="Icer"{{$employee->skill1 == 'Icer' ? 'checked' : ''}}>Icer
+                        <input type="hidden" value="" name="icer">
+                        <input type="checkbox" name="icer" <?php if (isset($icer) && $icer=="1") echo "checked";?> value="1"{{$employee->icer == '1' ? 'checked' : ''}}>Icer
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="skill2">
-                        <input type="checkbox" name="skill2" <?php if (isset($skill2) && $skill2=="Labeler") echo "checked";?> value="Labeler"{{$employee->skill2 == 'Labeler' ? 'checked' : ''}}>Labeler
+                        <input type="hidden" value="" name="labeler">
+                        <input type="checkbox" name="labeler" <?php if (isset($labeler) && $labeler=="1") echo "checked";?> value="1"{{$employee->labeler == '1' ? 'checked' : ''}}>Labeler
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="skill3">
-                        <input type="checkbox" name="skill3" <?php if (isset($skill3) && $skill3=="Mezzanine") echo "checked";?> value="Mezzanine"{{$employee->skill3 == 'Mezzanine' ? 'checked' : ''}}>Mezzanine
+                        <input type="hidden" value="" name="mezzanine">
+                        <input type="checkbox" name="mezzanine" <?php if (isset($mezzanine) && $mezzanine=="1") echo "checked";?> value="1"{{$employee->labeler == '1' ? 'checked' : ''}}>Mezzanine
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="skill4">
-                        <input type="checkbox" name="skill4" <?php if (isset($skill4) && $skill4=="Stocker") echo "checked";?> value="Stocker" {{$employee->skill4 == 'Stocker' ? 'checked' : ''}}>Stocker
+                        <input type="hidden" value="" name="stocker">
+                        <input type="checkbox" name="stocker" <?php if (isset($stocker) && $stocker=="1") echo "checked";?> value="1" {{$employee->stocker == '1' ? 'checked' : ''}}>Stocker
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="skill5">
-                        <input type="checkbox" name="skill5" <?php if (isset($skill5) && $skill5=="Runner") echo "checked";?> value="Runner"{{$employee->skill5 == 'Runner' ? 'checked' : ''}}>Runner
+                        <input type="hidden" value="" name="runner">
+                        <input type="checkbox" name="runner" <?php if (isset($runner) && $runner=="1") echo "checked";?> value="1"{{$employee->runner == '1' ? 'checked' : ''}}>Runner
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="skill6">
-                        <input type="checkbox" name="skill6" <?php if (isset($skill6) && $skill6=="QC") echo "checked";?> value="QC"{{$employee->skill6 == 'QC' ? 'checked' : ''}}>QC
+                        <input type="hidden" value="" name="qc">
+                        <input type="checkbox" name="qc" <?php if (isset($qc) && $qc=="1") echo "checked";?> value="1"{{$employee->qc == '1' ? 'checked' : ''}}>QC
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="skill7">
-                        <input type="checkbox" name="skill7" <?php if (isset($skill7) && $skill7=="Cleaner") echo "checked";?> value="Cleaner"{{$employee->skill7 == 'Cleaner' ? 'checked' : ''}}>Cleaner
+                        <input type="hidden" value="" name="cleaner">
+                        <input type="checkbox" name="cleaner" <?php if (isset($cleaner) && $cleaner=="1") echo "checked";?> value="1"{{$employee->cleaner == '1' ? 'checked' : ''}}>Cleaner
                         &nbsp&nbsp&nbsp
-                        <input type="hidden" value="" name="skill8">
-                        <input type="checkbox" name="skill8" <?php if (isset($skill8) && $skill8=="GiftBox") echo "checked";?> value="GiftBox"{{$employee->skill8 == 'GiftBox' ? 'checked' : ''}}>Gift Box
+                        <input type="hidden" value="" name="gift_box">
+                        <input type="checkbox" name="gift_box" <?php if (isset($gift_box) && $gift_box=="1") echo "checked";?> value="1"{{$employee->gift_box == '1' ? 'checked' : ''}}>Gift Box
                     </div>
                     <div class="form-group">
-                        {!! Form::label('rating', 'Labeler Rating:') !!}
+                        {!! Form::label('labeler_rating', 'Labeler Rating:') !!}
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="rating" <?php if (isset($rating) && $rating=="1") echo "checked";?> value="1"{{$employee->rating == '1' ? 'checked' : ''}}>1
+                        <input type="radio" name="labeler_rating" <?php if (isset($labeler_rating) && $labeler_rating=="1") echo "checked";?> value="1"{{$employee->labeler_rating == '1' ? 'checked' : ''}}>1
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="rating" <?php if (isset($rating) && $rating=="2") echo "checked";?> value="2"{{$employee->rating == '2' ? 'checked' : ''}}>2
+                        <input type="radio" name="labeler_rating" <?php if (isset($labeler_rating) && $labeler_rating=="2") echo "checked";?> value="2"{{$employee->labeler_rating == '2' ? 'checked' : ''}}>2
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="rating" <?php if (isset($rating) && $rating=="3") echo "checked";?> value="3"{{$employee->rating == '3' ? 'checked' : ''}}>3
+                        <input type="radio" name="labeler_rating" <?php if (isset($labeler_rating) && $labeler_rating=="3") echo "checked";?> value="3"{{$employee->labeler_rating == '3' ? 'checked' : ''}}>3
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="rating" <?php if (isset($rating) && $rating=="4") echo "checked";?> value="4"{{$employee->rating == '4' ? 'checked' : ''}}>4
+                        <input type="radio" name="labeler_rating" <?php if (isset($labeler_rating) && $labeler_rating=="4") echo "checked";?> value="4"{{$employee->labeler_rating == '4' ? 'checked' : ''}}>4
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="rating" <?php if (isset($rating) && $rating=="5") echo "checked";?> value="5"{{$employee->rating == '5' ? 'checked' : ''}}>5
+                        <input type="radio" name="labeler_rating" <?php if (isset($labeler_rating) && $labeler_rating=="5") echo "checked";?> value="5"{{$employee->labeler_rating == '5' ? 'checked' : ''}}>5
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="rating" <?php if (isset($rating) && $rating=="NA") echo "checked";?> value="NA"{{$employee->rating == 'NA' ? 'checked' : ''}}>NA
+                        <input type="radio" name="labeler_rating" <?php if (isset($labeler_rating) && $labeler_rating=="NA") echo "checked";?> value="NA"{{$employee->labeler_rating == 'NA' ? 'checked' : ''}}>NA
 
                     </div>
                     <div class="form-group">
-                        {!! Form::label('srating', 'Stocker Rating:') !!}
+                        {!! Form::label('stocker_rating', 'Stocker Rating:') !!}
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="srating" <?php if (isset($srating) && $srating=="1") echo "checked";?> value="1"{{$employee->srating == '1' ? 'checked' : ''}}>1
+                        <input type="radio" name="stocker_rating" <?php if (isset($stocker_rating) && $stocker_rating=="1") echo "checked";?> value="1"{{$employee->stocker_rating == '1' ? 'checked' : ''}}>1
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="srating" <?php if (isset($srating) && $srating=="2") echo "checked";?> value="2"{{$employee->srating == '2' ? 'checked' : ''}}>2
+                        <input type="radio" name="stocker_rating" <?php if (isset($stocker_rating) && $stocker_rating=="2") echo "checked";?> value="2"{{$employee->stocker_rating == '2' ? 'checked' : ''}}>2
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="srating" <?php if (isset($srating) && $srating=="3") echo "checked";?> value="3"{{$employee->srating == '3' ? 'checked' : ''}}>3
+                        <input type="radio" name="stocker_rating" <?php if (isset($stocker_rating) && $stocker_rating=="3") echo "checked";?> value="3"{{$employee->stocker_rating == '3' ? 'checked' : ''}}>3
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="srating" <?php if (isset($srating) && $srating=="4") echo "checked";?> value="4"{{$employee->srating == '4' ? 'checked' : ''}}>4
+                        <input type="radio" name="stocker_rating" <?php if (isset($stocker_rating) && $stocker_rating=="4") echo "checked";?> value="4"{{$employee->stocker_rating == '4' ? 'checked' : ''}}>4
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="srating" <?php if (isset($srating) && $srating=="5") echo "checked";?> value="5"{{$employee->srating == '5' ? 'checked' : ''}}>5
+                        <input type="radio" name="stocker_rating" <?php if (isset($stocker_rating) && $stocker_rating=="5") echo "checked";?> value="5"{{$employee->stocker_rating == '5' ? 'checked' : ''}}>5
                         &nbsp&nbsp&nbsp&nbsp
-                        <input type="radio" name="srating" <?php if (isset($srating) && $srating=="NA") echo "checked";?> value="NA"{{$employee->srating == 'NA' ? 'checked' : ''}}>NA
+                        <input type="radio" name="stocker_rating" <?php if (isset($stocker_rating) && $stocker_rating=="NA") echo "checked";?> value="NA"{{$employee->stocker_rating == 'NA' ? 'checked' : ''}}>NA
 
                     </div>
                     <div class="form-group">
