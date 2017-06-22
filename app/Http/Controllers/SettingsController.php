@@ -33,7 +33,7 @@ class SettingsController extends Controller
                 } else {
                     $user->password = bcrypt(Input::get('password'));
                     $user->save();
-                    return view('auth/passwords/passwordSet');
+                    return view('auth/passwords/passwordset');
                 }
             }
         }
