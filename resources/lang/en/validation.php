@@ -127,6 +127,15 @@ return [
         'password_confirmation' => [
             'required' => 'The Confirm Password field is required.',
         ],
+        'supid' => [
+            'required' => 'The Supervisor ID is mandatory.',
+        ],
+        'supname' => [
+            'required' => 'The Supervisor Name is mandatory.',
+        ],
+        'position' => [
+            'required' => 'The Position field is mandatory.',
+        ],
     ],
 
     /*

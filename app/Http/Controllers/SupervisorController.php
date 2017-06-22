@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Supervisor;
 use App\Http\Requests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Validator;
 
 class SupervisorController extends Controller
 {
@@ -27,7 +29,21 @@ class SupervisorController extends Controller
     }
 
    public function store(Request $request)
+
     {
+        $validator = Validator::make($request->all(), [
+            'supid' => 'bail|required|numeric',
+            'supname' => 'required|max:255',
+            'position' => 'required',
+
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/Supervisor/create')->withErrors($validator)->withInput();
+        }
+
+
         $supervisor= new Supervisor($request->all());
         $supervisor->save();
         return redirect('Supervisor');
@@ -38,7 +54,7 @@ class SupervisorController extends Controller
         $supervisor=Supervisor::find($id);
         return view('Supervisor.edit',compact('supervisor'));
     }
- 
+
   public function update($id,Request $request)
     {
         //
