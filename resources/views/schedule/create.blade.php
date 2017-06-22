@@ -10,9 +10,7 @@
             });
         });
     </script>
-    <head>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-    </head>
+
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -30,7 +28,7 @@
                     </div>
                     <div class="form-group{{ $errors->has('schedule_date') ? ' has-error' : '' }}">
                         <div class="col-md-4">{!! Form::label('schedule_date', '*Schedule Date:') !!}</div>
-                        <div class="col-md-6">{{ Form::text('schedule_date', null, array('id' => 'datepicker1'), ['class' => 'col-md-6 form-control', 'required',]) }}</div>
+                        <div class="col-md-6">{{ Form::text('schedule_date', null, array('id' => 'datepicker1'), ['class' => 'col-md-6 form-control', 'required','input type'=> 'date']) }}</div>
                     </div>
                     <div class="form-group{{ $errors->has('schedule_time') ? ' has-error' : '' }}">
                         <div class="col-md-4">{!! Form::label('schedule_time', '*Schedule Time:') !!}</div>
