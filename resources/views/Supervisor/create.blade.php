@@ -31,7 +31,7 @@
 
 
 
-                    <h1 style="text-align: center">Add Employee</h1>
+                    <h1 style="text-align: center">Add Supervisor</h1>
 
                     @include('includes.error')
                     @include('includes.flash')

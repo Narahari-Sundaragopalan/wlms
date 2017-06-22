@@ -129,6 +129,7 @@ return [
         ],
         'supid' => [
             'required' => 'The Supervisor ID is mandatory.',
+            'numeric' => 'The Supervisor ID must be a Number.',
         ],
         'supname' => [
             'required' => 'The Supervisor Name is mandatory.',

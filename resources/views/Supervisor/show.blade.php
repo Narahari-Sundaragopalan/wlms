@@ -49,7 +49,7 @@
 
                                         <div>
                                             <tr>
-                                                <td> <a href="{{url('/Supervisor')}}" class="btn btn-primary" style=" width: 100px; height: 30px;">Close</a>
+                                                <td> <a href="{{url('/Supervisor')}}" class="btn btn-primary" style=" width: 100px; height: 30px;">Back</a>
                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     <a href="{{route('Supervisor.edit',$supervisor->id)}}" class="btn btn-warning" style=" width: 100px; height: 30px;">Update</a>
 

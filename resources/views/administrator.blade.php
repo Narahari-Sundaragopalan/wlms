@@ -17,7 +17,7 @@
 
 
     </style>
-    <body body background="images/osburger.jpg">
+    <body body background="images/sole.jpg">
 
     <div style="width: 100%">
 

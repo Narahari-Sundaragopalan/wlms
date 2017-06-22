@@ -75,7 +75,7 @@
                         
                         <div>
                        <tr>
-                        <td> <a href="{{url('/addemployee')}}" class="btn btn-primary" style=" width: 100px; height: 30px;">Close</a>
+                        <td> <a href="{{url('/addemployee')}}" class="btn btn-primary" style=" width: 100px; height: 30px;">Back</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="{{route('addemployee.edit',$employee->id)}}" class="btn btn-warning" style=" width: 100px; height: 30px;">Update</a>
                         
