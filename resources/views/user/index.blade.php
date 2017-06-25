@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.userlayout')
 
 @section('content')
 
@@ -36,7 +36,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" >
+                                <table class="table table-striped table-bordered table-hover cds-datatable" >
                                 <thead>
                                 <tr class="bg-info">
                                     <th>User Name</th>
@@ -75,9 +75,25 @@
                             </table>
                             </div>
                         </div>
+                    </div>
                 </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+        @section('footer')
+            <style>
+                .table td { border: 0px !important; }
+                .tooltip-inner { white-space:pre-wrap; max-width: 400px; }
+            </style>
+
+            <script>
+                $(document).ready(function() {
+                    $('table.cds-datatable').on( 'draw.dt', function () {
+                        $('tr').tooltip({html: true, placement: 'auto' });
+                    } );
+                    $('tr').tooltip({html: true, placement: 'auto' });
+                } );
+            </script>
 @endsection

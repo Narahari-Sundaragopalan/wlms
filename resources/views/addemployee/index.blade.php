@@ -1,14 +1,9 @@
-@extends('layouts.app')
-
+@extends( 'layouts.userlayout')
 @section('content')
-
     <style>
 
         html, body {
-
             background-size: cover;
-
-
         }
 
         table {
@@ -17,92 +12,76 @@
             margin-right: auto;
         }
 
-
     </style>
-    <body>
-    <div style="width: 100%">
 
-        @include('includes.admin')
-        <div class="container" style="float: right; width: 85%; ">
+    @include('includes.admin')
 
-            <div class="row">
-                <div class="col-md-8 col-md-offset-1">
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="pull-right">
-                                <a href="{{url('/addemployee/create')}}" class="btn btn-success">Add Employee</a>
-                                <hr>
-                                 </div>
-                                 
-
-                                 <form action="/search" method="POST" role="search">
-                                  {{ csrf_field() }}
-                                   <div class="input-group">
-                                    <input type="text" class="form-control" name="q"
-                                     placeholder="Search users"> <span class="input-group-btn">
-                                    <button type="submit" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                    </button>
-                                   </span>
-                                      </div>
-                                     </form>
-
-
-                            <h2 style="text-align: center">Employees</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="pull-right">
+                            <form action="{{ url('/addemployee/create') }}" method="GET">{{ csrf_field() }}
+                                <button type="submit" id="create-patient" class="btn btn-success"><i class="fa fa-btn fa-file-o"></i>Add Employee</button>
+                            </form>
                         </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
+                        <div style="text-align: center"><h2>{{ 'Employees' }}</h2></div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped cds-datatable">
+                                <thead> <!-- Table Headings -->
+                                <tr class="bg-info">
+                                    {{--<th>User</th><th>Email</th><th>Status</th><th class="no-sort">Actions</th>--}}
+                                    <th>Employee ID</th>
+                                    <th>Employee Name</th>
+                                    <th>Position</th>
+                                    <th>Experience</th>
+                                    <th>Language</th>
+                                    <th style="text-align: center">Actions</th>
+                                </tr>
+                                </thead>
 
+                                <tbody> <!-- Table Body -->
+                                @foreach($employees as $employee)
 
-                    <table class="table table-striped table-bordered table-hover" >
-                        <thead>
-                        <tr class="bg-info">
-                            <th>Employee ID</th>
-                            <th>Employee Name</th>
-                            <th>Position</th>
-                            <th>Experience</th>
-                            <th>Language</th>
-                            <th colspan="3", style="text-align: center">Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($employees as $employee)
-                            <tr>
-                                <td>{{ $employee->empid }}</td>
-                                <td>{{ wordwrap($employee->empname,10,"\n",false) }}</td>
-                                <td>{{ $employee->positiontype }}</td>
-                                <td>{{ $employee->experience }}</td>
-                                <td>{{ $employee->language }}</td>
-
-                                <td><a href="{{url('addemployee',$employee->id)}}" class="btn btn-primary">Show</a></td>
-                                <td><a href="{{route('addemployee.edit',$employee->id)}}" class="btn btn-warning">Update</a></td>
-                                <script>
-
-                        function ConfirmDelete()
-                         {
-                           var x = confirm("Are you sure you want to delete?");
-                           if (x)
-                               return true;
-                             else
-                           return false;
-                        }
-                        </script>
-
-                                <td>
-                                    {!! Form::open(['method' => 'DELETE', 'route'=>['addemployee.destroy', $employee->id],'onsubmit' => 'return ConfirmDelete()']) !!}
-                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                                    {!! Form::close() !!}
-                                </td>
-                            </tr>
-                        @endforeach
-
-                        </tbody>
-                    </table>
-                            </div>
+                                    <tr>
+                                        <td class="table-text"><div>{{ $employee->empid  }}</div></td>
+                                        <td class="table-text">
+                                            <div>
+                                                <a href="{{ url('addemployee/'.$employee->id.'/edit') }}">{{ $employee->empname }}</a>
+                                            </div>
+                                        </td>
+                                        {{-- <td class="table-text"><div>{{ $employee->empname }}</div></td>--}}
+                                        <td class="table-text"><div>{{ $employee->positiontype }}</div></td>
+                                        <td class="table-text"><div>{{ $employee->experience }}</div></td>
+                                        <td class="table-text"><div>{{ $employee->language }}</div></td>
+                                        <td><a href="{{url('addemployee',$employee->id)}}" class="btn btn-primary">Details</a></td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('footer')
+    <style>
+        .table td { border: 0px !important; }
+        .tooltip-inner { white-space:pre-wrap; max-width: 400px; }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+            $('table.cds-datatable').on( 'draw.dt', function () {
+                $('tr').tooltip({html: true, placement: 'auto' });
+            } );
+            $('tr').tooltip({html: true, placement: 'auto' });
+        } );
+    </script>
 @endsection

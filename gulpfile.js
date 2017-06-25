@@ -12,5 +12,26 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+    mix.sass('app.scss', 'resources/assets/css');
+
+    mix.styles([
+        //'libs/bootstrap.min.css',
+        //'libs/font-awesome.min.css',
+        //'libs/select2.min.css',
+        //'libs/jquery.dataTables.min.css',
+        //'libs/bipartite.css',
+        'app.css'
+    ]);
+
+    mix.scripts([
+        //'libs/jquery.js',
+        //'libs/bootstrap.min.js',
+        //'libs/select2.min/js',
+        //'libs/jquery.dataTables.min.js',
+        //'libs/dataTables.bootstrap.min.js',
+        //'libs/bipartite.js'
+        'app.js'
+    ]);
+
+    mix.version(['public/css/all.css', 'public/js/all.js']);
 });
