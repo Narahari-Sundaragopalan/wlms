@@ -43,8 +43,10 @@
                         {!! Form::text('empid',null,['class'=>'form-control']) !!}
                     </div>
                     <div class="form-group{{ $errors->has('empname') ? ' has-error' : '' }}">
+
                         {!! Form::label('empname', 'Employee Name:') !!}
                         {!! Form::text('empname',null,['class'=>'form-control']) !!}
+
                     </div>
                     <div class="form-group{{ $errors->has('positiontype') ? ' has-error' : '' }}">
                         {!! Form::label('positiontype', 'Position:') !!}
