@@ -86,7 +86,7 @@
                                     </table>
                                     <div>
                                         <div class="col-md-6 col-md-offset-5">
-                                            <a href="{{route('addemployee.edit',$employee->id)}}" class="btn btn-primary" style=" width: 100px; height: 30px;">Update</a>
+                                            <a href="{{route('addemployee.edit',$employee->id)}}" class="btn btn-warning" style=" width: 100px; height: 30px;">Update</a>
                                         </div>
                                     </div>
                                 </div>

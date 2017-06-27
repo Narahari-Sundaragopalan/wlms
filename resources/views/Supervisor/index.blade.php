@@ -49,7 +49,7 @@
                                     @foreach($supervisor as $supervisor)
                                         <tr>
                                             <td>{{ $supervisor->supid }}</td>
-                                            
+
                                             <td class="table-text">
                                                 <div>
                                                     <a href="{{ url('Supervisor/'.$supervisor->id.'/edit') }}">{{ wordwrap($supervisor->supname, 10, "\n", false) }}</a>

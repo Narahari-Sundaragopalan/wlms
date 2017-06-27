@@ -83,12 +83,10 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-md-6 col-md-offset-5">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-user"></i> Create
                                 </button>
-                                <a href="{{ url('/user') }}"class="btn btn-primary" style="width: 100px; height: 33px;"> Back </a></ul>
-
                             </div>
                         </div>
                     </form>
