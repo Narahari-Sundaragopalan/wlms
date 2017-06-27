@@ -15,7 +15,15 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading" style="text-align: center"><h4> {{ 'Create Schedule' }}</h4></div>
+                <div class="panel-heading" style="text-align: center">
+
+                    <div class="pull-left">
+                        <a href="{{ url('/schedule') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
+                    </div>
+
+                    <h4> {{ 'Create Schedule' }}</h4>
+
+                </div>
 
                 <div class="panel-body">
                     {!! Form::open(['url' => 'schedule/generate', 'class' => 'form-horizontal']) !!}
@@ -44,7 +52,7 @@
                     </div>
 
                     <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
+                        <div class="col-md-6 col-md-offset-5">
                             {!! Form::button('<i class="fa fa-btn fa-table"></i>Create', ['type' => 'submit', 'class' => 'btn btn-primary']) !!}
                         </div>
                     </div>

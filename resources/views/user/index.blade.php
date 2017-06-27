@@ -7,8 +7,6 @@
         html, body {
 
             background-size: cover;
-
-
         }
 
         table {
@@ -23,7 +21,6 @@
     <div style="width: 100%">
     @include('includes.admin')
         <div class="container" style="float: right; width: 85%; ">
-
             <div class="row">
                 <div class="col-md-8 col-md-offset-1">
                     <div class="panel panel-default">
@@ -32,7 +29,7 @@
                                 <a href="{{url('/user/create')}}" class="btn btn-success">Create new User</a>
                                 <hr>
                             </div>
-                            <h2 style="text-align: center">Users</h2>
+                            <h3 style="text-align: center">Users</h3>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -42,7 +39,7 @@
                                     <th>User Name</th>
                                     <th>Email</th>
                                     <th>Role</th>
-                                    <th colspan="3", style="text-align: center">Actions</th>
+                                    <th style="text-align: center">Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -51,23 +48,10 @@
                                             <td>{{ wordwrap($user->name,10,"\n",false) }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->getRoleName() }}</td>
-                                           
-
-                                           <script>
-
-                        function ConfirmDelete()
-                         {
-                           var x = confirm("Are you sure you want to delete?");
-                           if (x)
-                               return true;
-                             else
-                           return false;
-                        }
-                        </script> 
-                                           <td>
-                                            {!! Form::open(['method' => 'DELETE', 'route'=>['user.destroy', $user->id], 'onsubmit' => 'return ConfirmDelete()']) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                                            {!! Form::close() !!}
+                                            <td>
+                                                <form action="{{ url('user/'.$user->id) }}" method="POST" onsubmit="return ConfirmDelete();">{{ csrf_field() }}{{ method_field('DELETE') }}
+                                                    <button type="submit" id="delete-user-{{ $user->id }}" class="btn btn-danger"><i class="fa fa-btn fa-trash"></i>Delete</button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -80,7 +64,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </body>
+
 @endsection
         @section('footer')
             <style>

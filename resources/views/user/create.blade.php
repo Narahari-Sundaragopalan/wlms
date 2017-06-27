@@ -1,12 +1,22 @@
-@extends('layouts.app')
+@extends('layouts.userlayout')
 
 @section('content')
+
+    <head>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    </head>
+
     <body background="images/herbs.jpg">
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Create New User</div>
+                <div class="panel-heading" style="text-align: center">
+                    <div class="pull-left">
+                        <a href="{{ url('/user') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
+                    </div>
+                    <h4>Create New User</h4>
+                </div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/user') }}">
                         {{ csrf_field() }}
@@ -87,4 +97,9 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('footer')
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 @endsection

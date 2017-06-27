@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.userlayout')
 
 @section('content')
     <style>
@@ -6,13 +6,14 @@
         html, body {
 
             background-size: cover;
-
-
         }
 
+        tr {
+            font-size: medium;
+        }
 
     </style>
-    <body >
+    <body>
     <div style="width: 100%">
 
         @include('includes.admin')
@@ -21,13 +22,25 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-1">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h1 style="text-align: center">Supervisor Details </h1>
+                        <div class="panel-heading" style="text-align: center">
+                            <div class="pull-left">
+                                <a href="{{ url('/Supervisor/') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
+                            </div>
+
+                            @if(Auth::check() && (Auth::user()->hasRole('admin')))
+                                <div class="pull-right">
+                                    <form action="{{ url('Supervisor/'.$supervisor->id) }}" method="POST" onsubmit="return ConfirmDelete();">{{ csrf_field() }}{{ method_field('DELETE') }}
+                                        <button type="submit" id="delete-user-{{ $supervisor->id }}" class="btn btn-danger"><i class="fa fa-btn fa-trash"></i>Delete</button>
+                                    </form>
+                                </div>
+                            @endif
+
+                            <h3>Supervisor Details </h3>
+                        </div>
 
                             <div class="panel-body">
                                 <div class="table-responsive">
-                                    <div class="container">
-                                        <table class="table table-striped table-bordered table-hover" style="height: 100px;width: 600px;">
+                                        <table class="table table-bordered table-striped cds-datatable">
                                             <tbody>
                                             <tr class="bg-info">
                                             <tr>
@@ -42,33 +55,13 @@
                                                 <td>Position</td>
                                                 <td><?php echo ($supervisor['position']); ?></td>
                                             </tr>
-
-
                                             </tbody>
                                         </table>
 
                                         <div>
-                                            <tr>
-                                                <td> <a href="{{url('/Supervisor')}}" class="btn btn-primary" style=" width: 100px; height: 30px;">Back</a>
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <a href="{{route('Supervisor.edit',$supervisor->id)}}" class="btn btn-warning" style=" width: 100px; height: 30px;">Update</a>
-
-                                                    <script>
-
-                                                        function ConfirmDelete()
-                                                        {
-                                                            var x = confirm("Are you sure you want to delete?");
-                                                            if (x)
-                                                                return true;
-                                                            else
-                                                                return false;
-                                                        }
-                                                    </script>
-
-                                                    {!! Form::open(['method' => 'DELETE', 'route'=>['Supervisor.destroy', $supervisor->id],'onsubmit' => 'return ConfirmDelete()']) !!}
-                                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                                                    {!! Form::close() !!}</td>
-                                            </tr>
+                                            <div class="col-md-6 col-md-offset-5">
+                                                <a href="{{route('Supervisor.edit',$supervisor->id)}}" class="btn btn-warning" style=" width: 100px; height: 30px;">Update</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +70,21 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-@stop
+@endsection
+
+    @section('footer')
+        <style>
+            .table td { border: 0px !important; }
+            .tooltip-inner { white-space:pre-wrap; max-width: 400px; }
+        </style>
+
+        <script>
+            $(document).ready(function() {
+                $('table.cds-datatable').on( 'draw.dt', function () {
+                    $('tr').tooltip({html: true, placement: 'auto' });
+                } );
+                $('tr').tooltip({html: true, placement: 'auto' });
+            } );
+        </script>
+@endsection

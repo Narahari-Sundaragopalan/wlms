@@ -26,7 +26,7 @@
                                 <button type="submit" id="create-patient" class="btn btn-success"><i class="fa fa-btn fa-file-o"></i>Add Employee</button>
                             </form>
                         </div>
-                        <div style="text-align: center"><h2>{{ 'Employees' }}</h2></div>
+                        <div style="text-align: center"><h3>{{ 'Employees' }}</h3></div>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
