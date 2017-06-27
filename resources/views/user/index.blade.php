@@ -48,7 +48,7 @@
                                 <tbody>
                                     @foreach($users as $user)
                                         <tr>
-                                            <td>{{ $user->name }}</td>
+                                            <td>{{ wordwrap($user->name,10,"\n",false) }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->getRoleName() }}</td>
                                            

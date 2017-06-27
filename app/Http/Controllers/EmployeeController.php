@@ -77,5 +77,19 @@ class EmployeeController extends Controller
         }
 
 
+    
+public function scopeSearchByKeyword($query, $keyword)
+{
+    if ($keyword!='') {
+        $query->where(function ($query) use ($keyword) {
+            $query->where("empid", "LIKE","%$keyword%")
+                ->orWhere("empname", "LIKE", "%$keyword%")
+                ->orWhere("email", "LIKE", "%$keyword%")
+                ->orWhere("phone", "LIKE", "%$keyword%");
+        });
+    }
+    return $query;
+}
+
     }
 

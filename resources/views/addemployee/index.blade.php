@@ -70,7 +70,7 @@
                         @foreach($employees as $employee)
                             <tr>
                                 <td>{{ $employee->empid }}</td>
-                                <td>{{ $employee->empname }}</td>
+                                <td>{{ wordwrap($employee->empname,10,"\n",false) }}</td>
                                 <td>{{ $employee->positiontype }}</td>
                                 <td>{{ $employee->experience }}</td>
                                 <td>{{ $employee->language }}</td>

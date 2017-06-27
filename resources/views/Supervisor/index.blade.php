@@ -57,7 +57,7 @@
                                     @foreach($supervisor as $supervisor)
                                         <tr>
                                             <td>{{ $supervisor->supid }}</td>
-                                            <td>{{ $supervisor->supname }}</td>
+                                            <td>{{ wordwrap($supervisor->supname,10,"\n",false) }}</td>
                                             <td>{{ $supervisor->position }}</td>
 
 

@@ -18,8 +18,14 @@
 
     {{--CDN for JQuery.--}}
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!-- <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> -->
+    <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script> -->
+
+    {{ Html::script('https://code.jquery.com/jquery-3.2.1.min.js') }}
+    {{ Html::script('https://code.jquery.com/ui/1.12.1/jquery-ui.min.js') }}
+    {{ Html::style('https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css') }}
 
 
     <style>

@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'nbanala@omahasteaks.com', 'name' => 'Omaha Steaks'],
+    'from' => ['address' => 'reddy.naveen0511@gmail.com', 'name' => 'Omaha Steaks'],
 
     /*
     |--------------------------------------------------------------------------
