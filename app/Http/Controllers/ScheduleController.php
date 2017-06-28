@@ -96,6 +96,25 @@ class ScheduleController extends Controller
             $j--;
         }
 
-        return view ('schedule.generate', compact('schedule_array', 'schedule_array_2'));
+        //Set Mezzanine
+        $total_lines = intval($conveyorLines) + intval($masteredLines);
+        $numOfMezzanine = intval(($total_lines / 3) + ($total_lines % 3));
+        $mezzanineArray = [];
+        $mezIndex = 1;
+
+        while ($mezIndex <= $numOfMezzanine) {
+            $mezzanine = 'T';
+            foreach ($employees as $employee) {
+                if ($employee->mezzanine) {
+                    if (!(array_search($employee->empname, $labeler_array, true)) && !(array_search($employee->empname, $stocker_array, true))) {
+                        $mezzanine = $employee->empname;
+                    }
+                }
+            }
+            $mezzanineArray[$mezIndex] = $mezzanine;
+            $mezIndex++;
+        }
+
+        return view ('schedule.generate', compact('schedule_array', 'schedule_array_2', 'mezzanineArray'));
     }
 }
