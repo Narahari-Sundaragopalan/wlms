@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::auth();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/administrator', 'AdministratorController@index');
@@ -30,7 +31,7 @@ Route::post('schedule/generate', 'ScheduleController@generate');
 Route::get('/changepassword', 'SettingsController@showChangePasswordForm');
 Route::post('/changepassword', 'SettingsController@updatePassword');
 // Route::resource('password/reset', 'SettingsController');
-Route::auth();
+
 
 
 

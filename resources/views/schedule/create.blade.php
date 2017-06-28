@@ -1,15 +1,11 @@
 @extends('layouts.userlayout')
 
 @section('content')
-    <script type="text/javascript">
-        $(function() {
-            $( "#datepicker1" ).datepicker({
-                changeMonth: true,
-                changeYear: true,
 
-            });
-        });
-    </script>
+    <head>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    </head>
 
 
     <div class="row">
@@ -36,11 +32,11 @@
                     </div>
                     <div class="form-group{{ $errors->has('schedule_date') ? ' has-error' : '' }}">
                         <div class="col-md-4">{!! Form::label('schedule_date', '*Schedule Date:') !!}</div>
-                        <div class="col-md-6">{{ Form::text('schedule_date', null, array('id' => 'datepicker1'), ['class' => 'col-md-6 form-control', 'required','input type'=> 'date']) }}</div>
+                        <div class="col-md-6">{{ Form::text('schedule_date', null, array('id' => 'datepicker1'), ['class' => 'col-md-6 form-control', 'required']) }}</div>
                     </div>
                     <div class="form-group{{ $errors->has('schedule_time') ? ' has-error' : '' }}">
                         <div class="col-md-4">{!! Form::label('schedule_time', '*Schedule Time:') !!}</div>
-                        <div class="col-md-6">{!! Form::text('schedule_time',null,['placeholder' => 'HH:MM','class'=>'form-control', 'required' ,'input type'=> 'time']) !!}</div>
+                        <div class="col-md-6">{!! Form::text('schedule_time',null, array('id' => 'timepicker'), ['placeholder' => 'HH:MM','class'=>'form-control', 'required']) !!}</div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-4">{!! Form::label('select', 'Conveyer Lines:', ['class' => 'control-label']) !!}</div>
@@ -66,9 +62,16 @@
 @section('footer')
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script>
         $(document).ready(function() {
             $( "#datepicker1" ).datepicker();
         });
+
+        $(document).ready(function() {
+            $( "#timepicker" ).timepicker();
+        });
+
+
     </script>
 @endsection
