@@ -82,7 +82,7 @@
                                     <input type="radio" name="language" value="English" {{(old('language') == "English") ? 'checked': ''}}>English
                                     <input type="radio" name="language" value="Spanish" {{(old('language') == "Spanish") ? 'checked': ''}}>Spanish
                                     <input type="radio" name="language" value="Bilingual" {{(old('language') == "Bilingual") ? 'checked': ''}}>Bilingual
-                                    <input type="radio" name="language" value="Others" {{(old('language') == "Others") ? 'checked': ''}}>Others
+                                    <input type="radio" name="language" value="Others" {{(old('language') == "Others") ? 'checked': ''}}>Other
                             </div>
 
                             <div class="form-group">

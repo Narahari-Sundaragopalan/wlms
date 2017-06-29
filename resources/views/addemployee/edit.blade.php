@@ -82,7 +82,7 @@
                                 <input type="radio" name="language" <?php if (isset($language) && $language=="English") echo "checked";?> value="English"{{$employee->language == 'English' ? 'checked' : ''}}>English
                                 <input type="radio" name="language" <?php if (isset($language) && $language=="Spanish") echo "checked";?> value="Spanish"{{$employee->language == 'Spanish' ? 'checked' : ''}}>Spanish
                                 <input type="radio" name="language" <?php if (isset($language) && $language=="Bilingual") echo "checked";?> value="Bilingual"{{$employee->language == 'Bilingual' ? 'checked' : ''}}>Bilingual
-                                <input type="radio" name="language" <?php if (isset($language) && $language=="Others") echo "checked";?> value="Others"{{$employee->language == 'Others' ? 'checked' : ''}}>Others
+                                <input type="radio" name="language" <?php if (isset($language) && $language=="Others") echo "checked";?> value="Others"{{$employee->language == 'Others' ? 'checked' : ''}}>Other
                             </div>
 
                             <div class="form-group">
