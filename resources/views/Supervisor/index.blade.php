@@ -31,7 +31,7 @@
                                 <hr>
                             </div>
 
-                            <h2 style="text-align: center">Supervisor</h2>
+                            <h2 style="text-align: center">Supervisors</h2>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
