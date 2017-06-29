@@ -33,7 +33,7 @@ class EmployeeController extends Controller
     {
 
      $validator = Validator::make($request->all(), [
-         'empid' => 'bail|required|numeric',
+         'empid' => 'bail|required|numeric|unique:employees',
          'empname' => 'required|max:255',
          'positiontype' => 'required',
          'experience' => 'required',

@@ -97,7 +97,8 @@ return [
         ],
         'empid' => [
             'required' => 'Employee ID is mandatory',
-            'numeric' => 'Employee ID must be number'
+            'numeric' => 'Employee ID must be number',
+            'unique' => 'Employee ID has already been taken'
         ],
         'empname' => [
             'required' => 'Employee Name is mandatory',
@@ -130,6 +131,7 @@ return [
         'supid' => [
             'required' => 'The Supervisor ID is mandatory.',
             'numeric' => 'The Supervisor ID must be a Number.',
+            'unique' => 'Supervisor ID has already been taken'
         ],
         'supname' => [
             'required' => 'The Supervisor Name is mandatory.',

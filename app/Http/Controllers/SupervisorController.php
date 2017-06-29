@@ -32,7 +32,7 @@ class SupervisorController extends Controller
 
     {
         $validator = Validator::make($request->all(), [
-            'supid' => 'bail|required|numeric',
+            'supid' => 'bail|required|numeric|unique:supervisors',
             'supname' => 'required|max:255',
             'position' => 'required',
 

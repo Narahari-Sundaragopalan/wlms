@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'reddy.naveen0511@gmail.com', 'name' => 'Omaha Steaks'],
+    'from' => ['address' => 'Johnw@omahasteaks.com', 'name' => 'Omaha Steaks'],
 
     /*
     |--------------------------------------------------------------------------
@@ -68,7 +68,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
+    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
     /*
     |--------------------------------------------------------------------------
