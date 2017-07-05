@@ -19,8 +19,8 @@ class ScheduleController extends Controller
     }
 
     public function create() {
-        $conveyorLines = range(1,32);
-        $masteredLines = range(1,32);
+        $conveyorLines = range(0,32);
+        $masteredLines = range(0,32);
         return view('schedule.create', compact('conveyorLines', 'masteredLines'));
     }
 
@@ -103,23 +103,59 @@ class ScheduleController extends Controller
 
         //Set Mezzanine
         $total_lines = intval($conveyorLines) + intval($masteredLines);
-        $numOfMezzanine = intval(($total_lines / 3) + ($total_lines % 3));
-        $mezzanineArray = [];
-        $mezIndex = 1;
+        $numOfMezzanineWorkers = intval($total_lines / 3);
+        if(intval($total_lines) % 3 != 0) {
+            $numOfMezzanineWorkers += 1;
+        }
+        $arr = array();
 
-        while ($mezIndex <= $numOfMezzanine) {
+        //Function to create Line number setup for mezzanine workers
+        $arr =  $this->createMezzanineArray($total_lines, $numOfMezzanineWorkers);
+        $lineIndexer = 1;
+        $startIndexer = 0; $endIndex = 0;
+        $lineArray= [];
+
+        //Create line number setup
+        for($i = 0; $i < sizeof($arr); $i++) {
+            $endIndex += $arr[$i];
+            $lineArray [$i] = $lineIndexer . '-' . $endIndex;
+            $lineIndexer+= $arr[$i];
+        }
+
+        //Array for Schedule
+        $mezzanineArray = [];
+        //Index to maintain in array
+        $mezIndex = 0;
+        //Array to save assigned workers
+        $mezArray = [];
+
+        while ($mezIndex < $numOfMezzanineWorkers) {
             $mezzanine = 'T';
             foreach ($employees as $employee) {
                 if ($employee->mezzanine) {
                     if (!(array_search($employee->empname, $labeler_array, true)) && !(array_search($employee->empname, $stocker_array, true))) {
                         $mezzanine = $employee->empname;
+                        $mezArray[$mezIndex] = $mezzanine;
                     }
                 }
             }
-            $mezzanineArray[$mezIndex] = $mezzanine;
+            $mezzanineArray[$mezIndex] = ['lines' => $lineArray[$mezIndex], 'name' => $mezzanine];
             $mezIndex++;
         }
-
         return view ('schedule.generate', compact('schedule_array', 'schedule_array_2', 'mezzanineArray'));
+    }
+
+    public function createMezzanineArray($lines, $workers) {
+
+        $arr = [];
+        for($i = 0; $i < $workers; $i++) {
+            $arr[$i] = intval($lines / $workers);
+        }
+
+        for ($i = 0; $i< ($lines % $workers); $i++) {
+            $arr[$i] += 1;
+        }
+        return $arr;
+
     }
 }

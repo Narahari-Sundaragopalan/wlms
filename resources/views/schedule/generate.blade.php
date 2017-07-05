@@ -66,6 +66,26 @@
                             </table>
                         </div>
 
+                        <h3 style="text-align: center">Mezzanine Responsible</h3>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped cds-datatable">
+                                <thead> <!-- Table Headings -->
+                                <th>Lines</th>
+                                <th>Incharge</th>
+                                </thead>
+                                <tbody>
+                                @foreach($mezzanineArray as $i => $value)
+                                    <tr class="bg-info">
+                                    <tr>
+                                        <td><?php echo ($mezzanineArray[$i]['lines']); ?></td>
+                                        <td><?php echo ($mezzanineArray[$i]['name']); ?></td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
                 </div>
             </div>
