@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'Johnw@omahasteaks.com', 'name' => 'Omaha Steaks'],
+    'from' => ['address' => 'postmaster@sandbox83a64b54ad2241b9a982caf506835c17.mailgun.org', 'name' => 'Omaha Steaks'],
 
     /*
     |--------------------------------------------------------------------------

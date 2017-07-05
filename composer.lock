@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a2d1c3a735d84b9155a3492506fe0e9",
+    "content-hash": "923b3dc750722c2ebac5b6000de2842b",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -159,6 +159,124 @@
                 "string"
             ],
             "time": "2015-11-06T14:35:42+00:00"
+        },
+        {
+            "name": "guzzlehttp/guzzle",
+            "version": "4.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle.git",
+                "reference": "13a8e5acff26b0a87d353042170b48976da004a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/13a8e5acff26b0a87d353042170b48976da004a1",
+                "reference": "13a8e5acff26b0a87d353042170b48976da004a1",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/streams": "~2.1",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "phpunit/phpunit": "~4.0",
+                "psr/log": "~1.0"
+            },
+            "suggest": {
+                "ext-curl": "Guzzle will use specific adapters if cURL is present"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle is a PHP HTTP client library and framework for building RESTful web service clients",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "client",
+                "curl",
+                "framework",
+                "http",
+                "http client",
+                "rest",
+                "web service"
+            ],
+            "time": "2016-07-15T17:44:18+00:00"
+        },
+        {
+            "name": "guzzlehttp/streams",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/streams.git",
+                "reference": "f91b721d73f0e561410903b3b3c90a5d0e40b534"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/streams/zipball/f91b721d73f0e561410903b3b3c90a5d0e40b534",
+                "reference": "f91b721d73f0e561410903b3b3c90a5d0e40b534",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Stream\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Provides a simple abstraction over streams of data (Guzzle 4+)",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "Guzzle",
+                "stream"
+            ],
+            "time": "2014-08-17T21:15:53+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1138,16 +1256,16 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.3.2",
+            "version": "v3.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "4054a102470665451108f9b59305c79176ef98f0"
+                "reference": "67535f1e3fd662bdc68d7ba317c93eecd973617e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/4054a102470665451108f9b59305c79176ef98f0",
-                "reference": "4054a102470665451108f9b59305c79176ef98f0",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/67535f1e3fd662bdc68d7ba317c93eecd973617e",
+                "reference": "67535f1e3fd662bdc68d7ba317c93eecd973617e",
                 "shasum": ""
             },
             "require": {
@@ -1197,7 +1315,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-04T18:15:29+00:00"
+            "time": "2017-06-09T14:53:08+00:00"
         },
         {
             "name": "symfony/finder",
@@ -3201,16 +3319,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.3.2",
+            "version": "v3.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "9752a30000a8ca9f4b34b5227d15d0101b96b063"
+                "reference": "1f93a8d19b8241617f5074a123e282575b821df8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/9752a30000a8ca9f4b34b5227d15d0101b96b063",
-                "reference": "9752a30000a8ca9f4b34b5227d15d0101b96b063",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/1f93a8d19b8241617f5074a123e282575b821df8",
+                "reference": "1f93a8d19b8241617f5074a123e282575b821df8",
                 "shasum": ""
             },
             "require": {
@@ -3252,7 +3370,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-02T22:05:06+00:00"
+            "time": "2017-06-15T12:58:50+00:00"
         },
         {
             "name": "webmozart/assert",
