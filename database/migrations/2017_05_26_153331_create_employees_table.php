@@ -30,6 +30,7 @@ class CreateEmployeesTable extends Migration
         $table->boolean('cleaner') -> nullable ();
         $table->boolean('gift_box') -> nullable ();
         $table->string('comment') -> nullable ();
+        $table->softDeletes();
         $table->timestamps();
     });
 
