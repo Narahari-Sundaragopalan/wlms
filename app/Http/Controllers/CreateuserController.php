@@ -13,7 +13,12 @@ use Log;
 
 class CreateuserController extends Controller
 {
-	public function index()
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    public function index()
     {
         $users = User::all();
         $this->viewData['users'] = $users;

@@ -30,8 +30,20 @@
                             </div>
 
                             @if(Auth::check() && (Auth::user()->hasRole('admin')))
+                                <script>
+                                function ConfirmDelete() {
+    var x = confirm("Are you sure you want to delete?");
+
+    if (x) {
+        return true;
+    } else {
+        return false;
+    }
+}
+</script>
+
                                 <div class="pull-right">
-                                    <form action="{{ url('addemployee/'.$employee->id) }}" method="POST" onsubmit="return ConfirmDelete();">{{ csrf_field() }}{{ method_field('DELETE') }}
+                                    <form action="{{ url('addemployee/'.$employee->id) }}" method="POST" onsubmit=" ConfirmDelete();">{{ csrf_field() }}{{ method_field('DELETE') }}
                                         <button type="submit" id="delete-user-{{ $employee->id }}" class="btn btn-danger"><i class="fa fa-btn fa-trash"></i>Delete</button>
                                     </form>
                                 </div>

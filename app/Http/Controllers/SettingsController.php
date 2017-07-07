@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 class SettingsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function showChangePasswordForm()
     {
         if (view()->exists('auth.passwords.change')) {

@@ -32,7 +32,7 @@ class HomeController extends Controller
             else if($user->hasRole('manager'))
                 return view('manager', compact('user'));
             else
-                return view('home');
+                return view('home',compact('user'));
         }
 
     }
