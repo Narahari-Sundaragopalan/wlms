@@ -51,16 +51,22 @@
             font-size: x-large;
 
         }
+        .navbar{
+            padding-right: 0;
+            padding-left: 0;
+        }
 
         .brand {
             margin-left: -75px;
             text-align: left;
             color: whitesmoke;
             font-size: medium;
+            padding-left: 0;
         }
         .navbar-nav{
             float: right;
             margin-right: -75px;
+            padding-right: 0;
         }
 
     </style>
