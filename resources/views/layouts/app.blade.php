@@ -25,7 +25,10 @@
     <style>
         body {
             font-family: 'Lato';
+            
         }
+       
+        
 
         .fa-btn {
             margin-right: 6px;
@@ -51,9 +54,13 @@
 
         .brand {
             margin-left: -75px;
-            text-align: center;
+            text-align: left;
             color: whitesmoke;
             font-size: medium;
+        }
+        .navbar-nav{
+            float: right;
+            margin-right: -75px;
         }
 
     </style>
