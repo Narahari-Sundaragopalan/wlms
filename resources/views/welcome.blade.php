@@ -41,7 +41,7 @@
 
             .top-right {
                 position: absolute;
-                right: 10px;
+                right: auto;
                 top: 18px;
             }
 

@@ -1,7 +1,7 @@
 
 <div class="container" style="float: left;width: 20%; border-right: 2px solid black">
     <div style="height: 70%">
-        <img class="center-block" src="{{URL::asset('/images/man.jpg')}}" alt="profile Pic" height="150" width="150">
+        <img class="img-responsive" src="{{URL::asset('/images/man.jpg')}}" alt="Chania" height="150" width="150">
     </div>
     <div>
         <h4 style="text-align: center; color: black"> Manager </h4>

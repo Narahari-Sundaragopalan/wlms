@@ -35,16 +35,18 @@
         }
 
         .navbar-static-top {
-            background-color: #2e3436;
-            
+            background-color: #2e3436;   
 
         }
-
-
         .navbar-default {
             text-align: center;
 
         }
+
+        .dropdown{
+            background-color: transparent; 
+        }
+
         .header {
             color: whitesmoke;
             display: inline-block;
