@@ -36,6 +36,8 @@
 
         .navbar-static-top {
             background-color: #2e3436;
+            
+
         }
 
 
@@ -50,15 +52,20 @@
             padding-top: 1%;
             font-size: x-large;
 
-        }
 
-        .brand {
-            margin-left: -75px;
-            text-align: left;
-            color: whitesmoke;
-            font-size: medium;
-            padding-left: 0;
         }
+@media (min-width: 768px) {
+        .brand {
+            margin: 0 auto;
+            width: 100%;
+            text-align:center;
+            font-size: medium;
+            color: whitesmoke;
+            left: 0px;
+            position: absolute;
+            right: 40px;
+        }
+    }
         
     </style>
 
@@ -77,29 +84,30 @@
                     <span class="icon-bar"></span>
                 </button>
 
-
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <div class= "brand"><b>Omaha Steaks</b></div>
+ </div>
+                <a class="navbar-brand" >
+                    <div class= "brand"><b>Warehouse Labor Management System</b></div>
                 </a>
 
-            </div>
+           
 
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+            <div class="navbar-collapse collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav navbar-left">
+
+                <li><a style="color: whitesmoke;"  href="{{ url('/') }}">
+                   <b style="font-size: medium"> omaha steaks</b>
+                </a></li>
+                
 
                     @if (Auth::check())
-                        <li><a href="{{ url('/home') }}"style="color: whitesmoke"><b style="font-size: medium">Home</b></a></li>
+                        <li><a href="{{ url('/home') }}" style="color: whitesmoke"><b style="font-size: medium">Home</b></a></li>
                     @endif
+                    
 
                 </ul>
 
-                <ul class="header">
-
-                    <ul class="heading"><b> Warehouse Labor Management System</b></ul>
-
-                </ul>
-
+                
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->

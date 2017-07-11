@@ -38,7 +38,7 @@
                                     <th>Employee Name</th>
                                     <th>Position</th>
                                     <th>Experience</th>
-                                    <th>Language</th>
+                                    <!-- <th>Language</th> -->
                                     <th style="text-align: center">Actions</th>
                                 </tr>
                                 </thead>
@@ -56,7 +56,7 @@
                                         {{-- <td class="table-text"><div>{{ $employee->empname }}</div></td>--}}
                                         <td class="table-text"><div>{{ $employee->positiontype }}</div></td>
                                         <td class="table-text"><div>{{ $employee->experience }}</div></td>
-                                        <td class="table-text"><div>{{ $employee->language }}</div></td>
+                                        <!-- <td class="table-text"><div>{{ $employee->language }}</div></td> -->
                                         <td><a href="{{url('addemployee',$employee->id)}}" class="btn btn-primary">Details</a></td>
                                     </tr>
                                 @endforeach

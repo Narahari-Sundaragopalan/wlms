@@ -78,11 +78,13 @@
                             </div>
 
                             <div class="form-group">
-                                {!! Form::label('language', 'Language:') !!}
-                                <input type="radio" name="language" <?php if (isset($language) && $language=="English") echo "checked";?> value="English"{{$employee->language == 'English' ? 'checked' : ''}}>English
-                                <input type="radio" name="language" <?php if (isset($language) && $language=="Spanish") echo "checked";?> value="Spanish"{{$employee->language == 'Spanish' ? 'checked' : ''}}>Spanish
-                                <input type="radio" name="language" <?php if (isset($language) && $language=="Bilingual") echo "checked";?> value="Bilingual"{{$employee->language == 'Bilingual' ? 'checked' : ''}}>Bilingual
-                                <input type="radio" name="language" <?php if (isset($language) && $language=="Others") echo "checked";?> value="Others"{{$employee->language == 'Others' ? 'checked' : ''}}>Other
+                                {!! Form::label('Language:') !!}
+                                <input type="hidden" value="0" name="english">
+                                <input type="checkbox" name="english" <?php if (isset($english) && $english=="1") echo "checked";?> value="1"{{$employee->english == '1' ? 'checked' : ''}}>English
+                                <input type="hidden" value="0" name="spanish">
+                                <input type="checkbox" name="spanish" <?php if (isset($spanish) && $spanish=="1") echo "checked";?> value="1"{{$employee->spanish == '1' ? 'checked' : ''}}>Spanish
+                                <input type="hidden" value="0" name="other">
+                                <input type="checkbox" name="other" <?php if (isset($other) && $other=="1") echo "checked";?> value="1"{{$employee->other == '1' ? 'checked' : ''}}>Other
                             </div>
 
                             <div class="form-group">
@@ -92,7 +94,7 @@
                                 <input type="hidden" value="0" name="labeler">
                                 <input type="checkbox" name="labeler" <?php if (isset($labeler) && $labeler=="1") echo "checked";?> value="1"{{$employee->labeler == '1' ? 'checked' : ''}}>Labeler
                                 <input type="hidden" value="0" name="mezzanine">
-                                <input type="checkbox" name="mezzanine" <?php if (isset($mezzanine) && $mezzanine=="1") echo "checked";?> value="1"{{$employee->labeler == '1' ? 'checked' : ''}}>Mezzanine
+                                <input type="checkbox" name="mezzanine" <?php if (isset($mezzanine) && $mezzanine=="1") echo "checked";?> value="1"{{$employee->mezzanine == '1' ? 'checked' : ''}}>Mezzanine
                                 <input type="hidden" value="0" name="stocker">
                                 <input type="checkbox" name="stocker" <?php if (isset($stocker) && $stocker=="1") echo "checked";?> value="1" {{$employee->stocker == '1' ? 'checked' : ''}}>Stocker
                                 <input type="hidden" value="0" name="runner">

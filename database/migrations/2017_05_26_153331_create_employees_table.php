@@ -20,7 +20,9 @@ class CreateEmployeesTable extends Migration
         $table->string('experience');
         $table->string('labeler_rating',5);
         $table->string('stocker_rating',5);
-        $table->string('language');
+        $table->boolean('english')-> nullable();
+        $table->boolean('spanish')-> nullable();
+        $table->boolean('other')-> nullable();
         $table->boolean('icer') -> nullable ();
         $table->boolean('labeler') -> nullable ();
         $table->boolean('mezzanine') -> nullable ();

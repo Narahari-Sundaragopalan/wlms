@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-@extends('layouts.app')
+@extends('layouts.userlayout')
 
 @section('content')
     <html lang="{{ config('app.locale') }}">

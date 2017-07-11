@@ -77,12 +77,14 @@
 
                             </div>
 
-                            <div class="form-group{{ $errors->has('language') ? ' has-error' : '' }}">
-                                {!! Form::label('language', 'Language:') !!}
-                                    <input type="radio" name="language" value="English" {{(old('language') == "English") ? 'checked': ''}}>English
-                                    <input type="radio" name="language" value="Spanish" {{(old('language') == "Spanish") ? 'checked': ''}}>Spanish
-                                    <input type="radio" name="language" value="Bilingual" {{(old('language') == "Bilingual") ? 'checked': ''}}>Bilingual
-                                    <input type="radio" name="language" value="Others" {{(old('language') == "Others") ? 'checked': ''}}>Other
+                            <div class="form-group{{ $errors->has('english') ? ' has-error' : '' }}">
+                                {!! Form::label('Language:') !!}
+                                    <input type="hidden" value="0" name="english">
+                                    <input type="checkbox" name="english" value="1" {{(old('english') == "1") ? 'checked': ''}}>English
+                                    <input type="hidden" value="0" name="spanish">
+                                    <input type="checkbox" name="spanish" value="1" {{(old('spanish') == "1") ? 'checked': ''}}>Spanish
+                                    <input type="hidden" value="0" name="other">
+                                    <input type="checkbox" name="other" value="1" {{(old('other') == "1") ? 'checked': ''}}>Other
                             </div>
 
                             <div class="form-group">

@@ -92,9 +92,15 @@ return [
     */
 
     'custom' => [
-        'language' => [
-            'required' => 'Language is mandatory',
+        'english' => [
+            'required_without_all' => 'Language is mandatory',
         ],
+        'spanish' => [
+        'required_without_all' => 'Language is mandatory',
+        ],
+        'other' => [
+         'required_without_all' => 'Language is mandatory',
+         ],
         'empid' => [
             'required' => 'Employee ID is mandatory',
             'numeric' => 'Employee ID must be number',

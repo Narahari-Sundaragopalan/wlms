@@ -44,7 +44,9 @@ class EmployeeController extends Controller
          'empname' => 'required|max:255',
          'positiontype' => 'required',
          'experience' => 'required',
-         'language' => 'required',
+         'english'=>'required_without_all: spanish, other',
+         'spanish'=>'required_without_all: english, other',
+         'other'=>'required_without_all: english, spanish',
          'labeler_rating' => 'required',
          'stocker_rating' => 'required',
 
