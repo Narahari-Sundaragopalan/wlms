@@ -78,9 +78,9 @@
                                         </tr>
                                         <tr>
                                             <td>Skills</td>
-                                            <td><?php if ($employee['icer']) { echo 'Icer';}; ?>&nbsp&nbsp <?php if ($employee['labeler']) {echo 'Labeler';}; ?> &nbsp &nbsp<?php if ($employee['mezzanine']) {echo 'Mezzanine';}; ?>
-                                                &nbsp&nbsp <?php if ($employee['stocker']) {echo 'Stocker';}; ?>&nbsp&nbsp <?php if ($employee['runner']) { echo 'Runner';}; ?>&nbsp &nbsp <?php if ($employee['qc']) {echo 'QC';}; ?>
-                                                <?php if ($employee['cleaner']) { echo 'Cleaner';}; ?>&nbsp &nbsp<?php if ($employee['gift_box']) {echo 'Gift Box';}; ?></td>
+                                            <td><?php if ($employee['icer']) { echo 'Icer';}; ?> <?php if ($employee['labeler']) {echo 'Labeler';}; ?> <?php if ($employee['mezzanine']) {echo 'Mezzanine';}; ?>
+                                                <?php if ($employee['stocker']) {echo 'Stocker';}; ?> <?php if ($employee['runner']) { echo 'Runner';}; ?> <?php if ($employee['qc']) {echo 'QC';}; ?>
+                                                <?php if ($employee['cleaner']) { echo 'Cleaner';}; ?> <?php if ($employee['gift_box']) {echo 'Gift Box';}; ?></td>
                                         </tr>
                                         <tr>
                                             <td>Rating- Labeler</td>

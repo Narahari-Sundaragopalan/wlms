@@ -14,10 +14,9 @@ class CreateSchedulesTable extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('mlines');
-            $table->integer('slines');
-            $table->date('date');
-            $table->integer('line');
+            $table->string('date')->nullable();
+            $table->string('time')->nullable();
+            $table->json('schedule');
             $table->timestamps();
         });
         

@@ -32,6 +32,7 @@ Route::get('/changepassword', 'SettingsController@showChangePasswordForm');
 Route::post('/changepassword', 'SettingsController@updatePassword');
 // Route::resource('password/reset', 'SettingsController');
 
-
+Route::get('downloadReport/xls', 'ScheduleController@downloadReport');
+Route::post('downloadReport/xls', 'ScheduleController@downloadReport');
 
 
