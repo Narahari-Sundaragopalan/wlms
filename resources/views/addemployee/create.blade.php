@@ -4,7 +4,24 @@
 
     <head>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
+<script>
+
+$("#checkall").click(function (){
+     if ($("#checkall").is(':checked')){
+        $(".checkboxes").each(function (){
+           $(this).prop("checked", 1);
+           });
+        }else{
+           $(".checkboxes").each(function (){
+                $(this).prop("checked", 0);
+           });
+        }
+ });
+
+</script>
     </head>
+
 
     <style>
 
@@ -90,24 +107,30 @@
                             <div class="form-group">
                                 {!! Form::label('Skills:') !!}
 
-                                    <input type="hidden" value="0" name="icer">
-                                    <input type="checkbox" name="icer" value="1" {{(old('icer') == "1") ? 'checked': ''}}>Icer
-                                    <input type="hidden" value="0" name="labeler">
-                                    <input type="checkbox" name="labeler" value="1" {{(old('labeler') == "1") ? 'checked': ''}}>Labeler
-                                    <input type="hidden" value="0" name="mezzanine">
-                                    <input type="checkbox" name="mezzanine" value="1" {{(old('mezzanine') == "1") ? 'checked': ''}}>Mezzanine
-                                    <input type="hidden" value="0" name="stocker">
-                                    <input type="checkbox" name="stocker" value="1" {{(old('stocker') == "1") ? 'checked': ''}}>Stocker
-                                    <input type="hidden" value="0" name="runner">
-                                    <input type="checkbox" name="runner" value="1" {{(old('runner') == "1") ? 'checked': ''}}>Runner
-                                    <input type="hidden" value="0" name="qc">
-                                    <input type="checkbox" name="qc" value="1" {{(old('qc') == "1") ? '1': ''}}>QC
-                                    <input type="hidden" value="0" name="cleaner">
-                                    <input type="checkbox" name="cleaner" value="1" {{(old('cleaner') == "1") ? 'checked': ''}}>Cleaner
-                                    <input type="hidden" value="0" name="gift_box">
-                                    <input type="checkbox" name="gift_box" value="1" {{(old('gift_box') == "1") ? 'checked': ''}}>Gift Box
+                                    <input type="hidden"  value="0" name="icer">
+                                    <input type="checkbox" class='checkboxes' name="icer" value="1" {{(old('icer') == "1") ? 'checked': ''}}>Icer
+                                    <input type="hidden"  value="0" name="labeler">
+                                    <input type="checkbox" class='checkboxes' name="labeler" value="1" {{(old('labeler') == "1") ? 'checked': ''}}>Labeler
+                                    <input type="hidden"  value="0" name="mezzanine">
+                                    <input type="checkbox" class='checkboxes' name="mezzanine" value="1" {{(old('mezzanine') == "1") ? 'checked': ''}}>Mezzanine
+                                    <input type="hidden"  value="0" name="stocker">
+                                    <input type="checkbox" class='checkboxes' name="stocker" value="1" {{(old('stocker') == "1") ? 'checked': ''}}>Stocker
+                                    <input type="hidden"  value="0" name="runner">
+                                    <input type="checkbox" class='checkboxes' name="runner" value="1" {{(old('runner') == "1") ? 'checked': ''}}>Runner
+                                    <input type="hidden"  value="0" name="qc">
+                                    <input type="checkbox" class='checkboxes' name="qc" value="1" {{(old('qc') == "1") ? '1': ''}}>QC
+                                    <input type="hidden"  value="0" name="cleaner">
+                                    <input type="checkbox" class='checkboxes' name="cleaner" value="1" {{(old('cleaner') == "1") ? 'checked': ''}}>Cleaner
+                                    <input type="hidden"  value="0" name="gift_box">
+                                    <input type="checkbox" class='checkboxes' name="gift_box" value="1" {{(old('gift_box') == "1") ? 'checked': ''}}>Gift Box
 
+                            <div class="row">
+                            Select All: <input id="checkall" class='' type="checkbox">
                             </div>
+                            </div>
+                            
+
+
 
                             <div class="form-group{{ $errors->has('labeler_rating') ? ' has-error' : '' }}">
                                 {!! Form::label('labeler_rating', 'Labeler Rating:') !!}

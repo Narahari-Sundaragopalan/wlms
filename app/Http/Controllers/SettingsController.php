@@ -34,7 +34,7 @@ class SettingsController extends Controller
                 return view('auth.passwords.passwordMismatch');
             } else {
                 if (!Hash::check(Input::get('old_password'), $user->password)) {
-                    return view('auth.passwords.passwordMismatch');
+                    return view('auth.passwords.passwordmismatch');
                 } else {
                     $user->password = bcrypt(Input::get('password'));
                     $user->save();

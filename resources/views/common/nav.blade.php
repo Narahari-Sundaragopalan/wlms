@@ -22,7 +22,7 @@
             <ul class="nav navbar-nav">
 
                 @if (Auth::check())
-                    <li><a href="{{ url('/home') }}"style="color: whitesmoke"><b style="font-size: medium">Home</b></a></li>
+                    <li><a href="{{ url('/home') }}" style="color: whitesmoke"><b style="font-size: medium">Home</b></a></li>
                 @endif
 
             </ul>
@@ -93,5 +93,7 @@
         font-size: medium;
         margin-left: 10px;
     }
-
+.caret{
+    background-color: transparent;
+}
 </style>
