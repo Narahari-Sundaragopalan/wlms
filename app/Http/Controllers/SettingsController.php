@@ -31,7 +31,7 @@ class SettingsController extends Controller
             );
             $validator = Validator::make(Input::all(), $rules);
             if ($validator->fails()) {
-                return view('auth.passwords.passwordMismatch');
+                return view('auth.passwords.passwordmismatch');
             } else {
                 if (!Hash::check(Input::get('old_password'), $user->password)) {
                     return view('auth.passwords.passwordmismatch');
