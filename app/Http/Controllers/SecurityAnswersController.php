@@ -72,12 +72,13 @@ class SecurityAnswersController extends Controller
      protected function resetPasswordSuccess(Request $request)
     {
          try {
+
              $email = $request->email;
             $password = Hash::make($request->password);
              $user = User::where('email', $email)->first();
             $user->password = $password;
             $user->save();
-             return view ('auth/password/passwordset');
+             return view ('auth/passwords/passwordset');
         }
         catch (\Exception $e)
         {
