@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="372cae13-0f83-408c-a920-7842930bf6a1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/SecurityAnswersController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SecurityAnswersController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/passwords/buttons.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/buttons.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/passwords/change.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/change.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/passwords/passwordmismatch.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/passwordmismatch.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/passwords/passwordreset.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/passwordreset.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/passwords/passwordset.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/passwordset.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/passwords/security.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/security.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/validation.php" afterPath="$PROJECT_DIR$/resources/lang/en/validation.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/passwords/securityques.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/securityques.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/passwords/securityquestionset.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/securityquestionset.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,13 +18,72 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="SecurityAnswersController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SecurityAnswersController.php">
+      <file leaf-file-name="securityques.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/auth/passwords/securityques.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="20" column="77" lean-forward="false" selection-start-line="20" selection-start-column="61" selection-end-line="20" selection-end-column="77" />
+              <folding>
+                <marker date="1499977355680" expanded="true" signature="812:1156" ph="..." />
+                <marker date="1499977355680" expanded="true" signature="827:1154" ph="..." />
+                <marker date="1499977355680" expanded="true" signature="850:1103" ph="..." />
+                <marker date="1499977355680" expanded="true" signature="1749:2093" ph="..." />
+                <marker date="1499977355680" expanded="true" signature="1764:2091" ph="..." />
+                <marker date="1499977355680" expanded="true" signature="1787:2040" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="validation.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/lang/en/validation.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="156" column="25" lean-forward="false" selection-start-line="156" selection-start-column="25" selection-end-line="156" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="880">
+              <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/addemployee/create.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="528">
+              <caret line="45" column="27" lean-forward="false" selection-start-line="45" selection-start-column="27" selection-end-line="46" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SecurityAnswersController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SecurityAnswersController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1056">
               <caret line="80" column="41" lean-forward="false" selection-start-line="80" selection-start-column="41" selection-end-line="80" selection-end-column="41" />
               <folding>
                 <element signature="e#40#76#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SecurityquestionsresetController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SecurityquestionsresetController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="506">
+              <caret line="48" column="29" lean-forward="false" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
+              <folding>
+                <element signature="e#40#68#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,7 +141,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/SupervisorController.php" />
         <option value="$PROJECT_DIR$/resources/views/administrator.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/Supervisor/create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/lang/en/validation.php" />
         <option value="$PROJECT_DIR$/resources/views/Supervisor/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/schedule/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/user/create.blade.php" />
@@ -121,9 +170,10 @@
         <option value="$PROJECT_DIR$/resources/views/auth/passwords/passwordmismatch.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/passwords/security.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/auth/passwords/securityques.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/passwords/securityquestionset.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SecurityAnswersController.php" />
+        <option value="$PROJECT_DIR$/resources/views/auth/passwords/securityques.blade.php" />
+        <option value="$PROJECT_DIR$/resources/lang/en/validation.php" />
       </list>
     </option>
   </component>
@@ -433,6 +483,28 @@
               <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lang" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="en" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="omahasteaks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="omahasteaks" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -646,12 +718,12 @@
       <workItem from="1499699598108" duration="13436000" />
       <workItem from="1499784940593" duration="3053000" />
       <workItem from="1499797952788" duration="3717000" />
-      <workItem from="1499871623182" duration="19470000" />
+      <workItem from="1499871623182" duration="22290000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="172029000" />
+    <option name="totallyTimeSpent" value="174849000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1932" height="1038" extended-state="0" />
@@ -689,7 +761,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/ProfileController.php" />
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SupervisorController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-784">
@@ -868,24 +939,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SecurityquestionsresetController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="48" column="29" lean-forward="false" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
-          <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/addemployee/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="48" column="97" lean-forward="false" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="97" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -954,14 +1007,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="22" column="60" lean-forward="false" selection-start-line="22" selection-start-column="60" selection-end-line="22" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1054,28 +1099,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/passwords/securityques.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="30" lean-forward="false" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
-          <folding>
-            <marker date="1499966854253" expanded="true" signature="709:1053" ph="..." />
-            <marker date="1499966854253" expanded="true" signature="724:1051" ph="..." />
-            <marker date="1499966854253" expanded="true" signature="747:1000" ph="..." />
-            <marker date="1499966854253" expanded="true" signature="1646:1990" ph="..." />
-            <marker date="1499966854253" expanded="true" signature="1661:1988" ph="..." />
-            <marker date="1499966854253" expanded="true" signature="1684:1937" ph="..." />
-          </folding>
+        <state relative-caret-position="880">
+          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SecurityAnswersController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
+        <state relative-caret-position="1056">
           <caret line="80" column="41" lean-forward="false" selection-start-line="80" selection-start-column="41" selection-end-line="80" selection-end-column="41" />
           <folding>
             <element signature="e#40#76#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SecurityquestionsresetController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="48" column="29" lean-forward="false" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/addemployee/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="45" column="27" lean-forward="false" selection-start-line="45" selection-start-column="27" selection-end-line="46" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/auth/passwords/securityques.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="20" column="77" lean-forward="false" selection-start-line="20" selection-start-column="61" selection-end-line="20" selection-end-column="77" />
+          <folding>
+            <marker date="1499977355680" expanded="true" signature="812:1156" ph="..." />
+            <marker date="1499977355680" expanded="true" signature="827:1154" ph="..." />
+            <marker date="1499977355680" expanded="true" signature="850:1103" ph="..." />
+            <marker date="1499977355680" expanded="true" signature="1749:2093" ph="..." />
+            <marker date="1499977355680" expanded="true" signature="1764:2091" ph="..." />
+            <marker date="1499977355680" expanded="true" signature="1787:2040" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/lang/en/validation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="156" column="25" lean-forward="false" selection-start-line="156" selection-start-column="25" selection-end-line="156" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>

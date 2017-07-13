@@ -8,6 +8,9 @@
                     <div class="panel-heading">Please answer the security questions below</div>
                     <div class="panel-body">
 
+                        @include('includes.error')
+                        @include('includes.flash')
+
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/securityques') }}">
                             {{ csrf_field() }}
                         <div class="form-group {{ $errors->has('security_question1') ? ' has-error' : '' }}" style="text-align: center">

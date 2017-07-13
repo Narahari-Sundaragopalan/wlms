@@ -145,6 +145,18 @@ return [
         'position' => [
             'required' => 'The Position field is mandatory.',
         ],
+        'security_question1' => [
+            'required' => 'Please select the security question.',
+        ],
+        'security_question2' => [
+            'required' => 'Please select the security question.',
+        ],
+        'security_answer1' => [
+            'required' => 'Answer field cannot be blank.',
+        ],
+        'security_answer2' => [
+            'required' => 'Answer field cannot be blank.',
+        ],
     ],
 
     /*
