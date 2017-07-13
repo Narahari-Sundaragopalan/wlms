@@ -8,7 +8,9 @@ use App\Http\Requests;
 use App\Employee;
 use App\Schedule;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Session;
 
 class ScheduleController extends Controller
 {
@@ -61,10 +63,10 @@ class ScheduleController extends Controller
                 }
             }
             if($labeler == '') {
-                $labeler = 'T';
+                $labeler = 'Temp';
                 $count++;
             }
-            $line = ['line_number' => $count, 'labeler' => $labeler, 'icer' => 'T'];
+            $line = ['line_number' => $count, 'labeler' => $labeler, 'icer' => 'Temp'];
             array_push($this->schedule_array, $line);
             $i--;
         }
@@ -99,13 +101,13 @@ class ScheduleController extends Controller
             }
             // If Labeler and Stocker are not set, set them as Default Temps
             if($labeler == '') {
-                $labeler = 'T';
+                $labeler = 'Temp';
             }
             if ($stocker == '') {
-                $stocker = 'T';
+                $stocker = 'Temp';
                 $count++;
             }
-            $line = ['line_number' => $count, 'labeler' => $labeler, 'stocker' => $stocker, 'icer' => 'T'];
+            $line = ['line_number' => $count, 'labeler' => $labeler, 'stocker' => $stocker, 'icer' => 'Temp'];
             array_push($this->schedule_array_2, $line);
             $j--;
         }
@@ -138,7 +140,7 @@ class ScheduleController extends Controller
         $mezArray = [];
 
         while ($k < $numOfMezzanineWorkers) {
-            $mezzanine = 'T';$mezzanineSet = false;
+            $mezzanine = 'Temp';$mezzanineSet = false;
             foreach ($employees as $employee) {
                 if ($employee->mezzanine && !($mezzanineSet)) {
                     if (!(array_search($employee->empname, $labeler_array, true)) && !(array_search($employee->empname, $stocker_array, true)) && !(array_search($employee->empname, $mezArray, true))) {
@@ -214,6 +216,9 @@ class ScheduleController extends Controller
         $schedule->date = $scheduleDate;
         $schedule->time = $timeOfSchedule;
         $schedule->save();
+
+        $currentSchedule = Schedule::all()->last()->id;
+        $this->viewData['id'] = $currentSchedule;
 
         return view ('schedule.generate', $this->viewData);
     }
@@ -538,5 +543,94 @@ class ScheduleController extends Controller
 
     public function show() {
         echo "Show Function to be implemented with View Old Schedules";
+    }
+
+    public function edit($id) {
+
+        $scheduler = Schedule::find($id);
+        $employees = Employee::all();
+        $empList = $employees->pluck('empname');
+        $this->viewData = json_decode($scheduler->schedule, true);
+        $currentSchedule['schedule_array'] = $this->viewData['schedule_array'];
+
+        $currentSchedule['schedule_array_2'] = $this->viewData['schedule_array_2'];
+        $currentSchedule['runnerArray'] = $this->viewData['runnerArray'];
+        $currentSchedule['mezzanineArray'] = $this->viewData['mezzanineArray'];
+        $currentSchedule['employees'] = $empList;
+        $currentSchedule['id'] = $id;
+
+        return view ('schedule.edit', $currentSchedule);
+    }
+
+    public function update($id, Request $request) {
+
+        //Get the current schedule from the database
+        $scheduler = Schedule::find($id);
+        $this->viewData = json_decode($scheduler->schedule, true);
+        $schedule_array = $this->viewData['schedule_array'];
+        $schedule_array_2 = $this->viewData['schedule_array_2'];
+        $runnerArray = $this->viewData['runnerArray'];
+        $mezzanineArray = $this->viewData['mezzanineArray'];
+
+        $labeler_ConveyorLine = $request['labeler_conveyor'];
+        $labeler_MasterLine = $request['labeler_master'];
+        $stocker_MasterLine = $request['stocker_master'];
+        $mezzanine = $request['mezzanine'];
+        $runner = $request['runner'];
+
+        //Validation check
+
+        /*if(count(array_intersect($labeler_ConveyorLine, $labeler_MasterLine))) {
+            Session::flash('message', 'Labelers are same in 2 lines');
+            return Redirect::back();
+        } elseif (count(array_unique($labeler_ConveyorLine)) > 1) {
+
+        }*/
+
+        for($i = 0; $i < sizeof($labeler_ConveyorLine); $i++) {
+            if(!empty($labeler_ConveyorLine[$i])) {
+                $schedule_array[$i]['labeler'] = $labeler_ConveyorLine[$i];
+            }
+        }
+
+
+        for($i = 0; $i < sizeof($labeler_MasterLine); $i++) {
+            if(!empty($labeler_MasterLine[$i])) {
+                $schedule_array_2[$i]['labeler'] = $labeler_MasterLine[$i];
+            }
+        }
+
+
+        for($i = 0; $i < sizeof($stocker_MasterLine); $i++) {
+            if(!empty($stocker_MasterLine[$i])) {
+                $schedule_array_2[$i]['stocker'] = $stocker_MasterLine[$i];
+            }
+        }
+
+
+        for($i = 0; $i < sizeof($mezzanine); $i++) {
+            if(!empty($mezzanine[$i])) {
+                $mezzanineArray[$i]['name'] = $mezzanine[$i];
+            }
+        }
+
+
+        for($i = 0; $i < sizeof($runner); $i++) {
+            if(!empty($runner[$i])) {
+                $runnerArray[$i]['name'] = $runner[$i];
+            }
+        }
+
+        $this->viewData['schedule_array'] = $schedule_array;
+        $this->viewData['schedule_array_2'] = $schedule_array_2;
+        $this->viewData['runnerArray'] = $runnerArray;
+        $this->viewData['mezzanineArray'] = $mezzanineArray;
+        $this->viewData['id'] = $id;
+
+        $scheduler->schedule = json_encode($this->viewData);
+
+        $scheduler->update();
+        return view ('schedule.generate', $this->viewData);
+
     }
 }

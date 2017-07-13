@@ -22,6 +22,9 @@
                                 <button type="submit" class="btn btn-success" style="background-color: #2ca02c;">Download Schedule</button>
                             </form>
                         </div>
+                        <div class="pull-left">
+                            <a href="{{ url('/schedule/create') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
+                        </div>
                         <br>
                         <div style="text-align: center"><h2>{{ 'Schedule Details' }}</h2></div>
                     </div>
@@ -111,7 +114,9 @@
                                 </tbody>
                             </table>
                         </div>
-
+                        <div class="col-md-6 col-md-offset-5">
+                        <a href="{{route('schedule.edit', $id)}}" class="btn btn-primary">Update</a>
+                        </div>
                     </div>
                 </div>
             </div>
