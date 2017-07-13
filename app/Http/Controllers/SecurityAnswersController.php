@@ -77,7 +77,7 @@ class SecurityAnswersController extends Controller
              $user = User::where('email', $email)->first();
             $user->password = $password;
             $user->save();
-             return view ('auth/password/passwordSet');
+             return view ('auth/password/passwordset');
         }
         catch (\Exception $e)
         {
