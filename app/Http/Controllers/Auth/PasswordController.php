@@ -36,8 +36,9 @@ class PasswordController extends Controller
     }
     
 
-    // protected function getPasswordSecurityQuestions(Request $request)
-    // {
+     protected function getPasswordSecurityQuestions(Request $request)
+     {
+         dd("Hello");
     //     try {
     //         $email = $request->email;
     //         $user = User::where('email', $email)->first();
@@ -47,7 +48,7 @@ class PasswordController extends Controller
     //     {
     //         return view('errors/503');
     //     }
-    // }
+     }
     // protected function resetPassword(Request $request)
     // {
     //     try {

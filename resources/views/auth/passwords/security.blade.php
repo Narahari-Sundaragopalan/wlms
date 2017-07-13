@@ -17,7 +17,7 @@
                             </div>
                         @endif
 
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/resetPassword') }}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/passwordreset') }}">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -30,7 +30,7 @@
 
 
                             <div class="form-group{{ $errors->has('security_question1') ? ' has-error' : '' }}">
-                                <label for="security_question1" class="col-md-4 control-label"><?php echo ($user['security_question1']); ?>Your Mothers Maiden Name:</label>
+                                <label for="security_question1" class="col-md-4 control-label"><?php echo ($user['security_question1']); ?></label>
 
                                 <div class="col-md-6">
                                     <input id="security_answer1" type="password" class="form-control" name="security_answer1" value="{{ old('security_answer1') }}">
@@ -44,7 +44,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('security_question2') ? ' has-error' : '' }}">
-                                <label for="security_question2" class="col-md-4 control-label"><?php echo ($user['security_question2']); ?>Your First Car:</label>
+                                <label for="security_question2" class="col-md-4 control-label"><?php echo ($user['security_question2']); ?></label>
 
                                 <div class="col-md-6">
                                     <input id="security_answer2" type="password" class="form-control" name="security_answer2" value="{{ old('security_answer2') }}">

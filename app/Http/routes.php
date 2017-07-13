@@ -28,11 +28,24 @@ Route::resource('schedule', 'ScheduleController');
 Route::get('schedule/generate', 'ScheduleController@generate');
 Route::post('schedule/generate', 'ScheduleController@generate');
 
+Route::get('/buttons', 'ProfileController@index');
+Route::get('/securityques', 'SecurityquestionsresetController@index');
+Route::post('/securityques', 'SecurityquestionsresetController@store');
+
 Route::get('/changepassword', 'SettingsController@showChangePasswordForm');
 Route::post('/changepassword', 'SettingsController@updatePassword');
 // Route::resource('password/reset', 'SettingsController');
 
+
 Route::get('downloadReport/xls', 'ScheduleController@downloadReport');
 Route::post('downloadReport/xls', 'ScheduleController@downloadReport');
+
+
+Route::post('/password/answersecurityquestion', 'SecurityAnswersController@getPasswordSecurityQuestions');
+Route::post('/password/passwordreset', 'SecurityAnswersController@resetPassword');
+Route::post('/password/passwordset', 'SecurityAnswersController@resetPasswordSuccess');
+//Route::get('/passwords/passwordreset', 'SecurityAnswersController@resetPasswordSuccess');
+//Route::post('/passwords/passwordreset', 'SecurityAnswersController@resetPasswordSuccess');
+
 
 

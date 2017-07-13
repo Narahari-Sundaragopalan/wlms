@@ -83,7 +83,7 @@
                                                 <?php if ($employee['cleaner']) { echo 'Cleaner';}; ?> <?php if ($employee['gift_box']) {echo 'Gift Box';}; ?></td>
                                         </tr>
                                         <tr>
-                                            <td>Rating- Labeler</td>
+                                            <td>Labeler Rating </td>
                                             <td><?php echo ($employee['labeler_rating']); ?></td>
                                         </tr>
                                         <tr>
