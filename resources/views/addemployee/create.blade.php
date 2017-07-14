@@ -123,10 +123,9 @@ $("#checkall").click(function (){
                                     <input type="checkbox" class='checkboxes' name="cleaner" value="1" {{(old('cleaner') == "1") ? 'checked': ''}}>Cleaner
                                     <input type="hidden"  value="0" name="gift_box">
                                     <input type="checkbox" class='checkboxes' name="gift_box" value="1" {{(old('gift_box') == "1") ? 'checked': ''}}>Gift Box
+                                    <input type="hidden"  value="0" name="select_all">
+                                    <input type="checkbox" class='checkboxes' name="select_all" id="select_all" value="1" {{(old('select_all') == "1") ? 'checked': ''}}>Select All
 
-                            <div class="row">
-                            Select All: <input id="checkall" class='' type="checkbox">
-                            </div>
                             </div>
                             
 
@@ -179,4 +178,18 @@ $("#checkall").click(function (){
     @section('footer')
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
         <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+        <script>
+            $(function() {
+
+                $('#select_all').click(function() {
+                    if ($(this).prop('checked')) {
+                        $('.checkboxes').prop('checked', true);
+                    } else {
+                        $('.checkboxes').prop('checked', false);
+                    }
+                });
+
+            });
+        </script>
     @endsection
