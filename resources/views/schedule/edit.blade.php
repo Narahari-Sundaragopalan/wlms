@@ -36,6 +36,9 @@
                                 <th>Icer</th>
                                 </thead>
                                 <tbody>
+                                @if (Session::has('message'))
+                                    <div class="alert alert-danger">{{ Session::get('message') }}</div>
+                                @endif
                                 @foreach($schedule_array as $i => $value)
                                     <tr class="bg-info">
                                     <tr>
@@ -46,9 +49,18 @@
                                                 @foreach($employees as $employee)
                                                     <option><?php echo ($employee); ?></option>
                                                 @endforeach
+                                                <option><?php echo 'Temp' ?></option>
                                             </select>
                                         </td>
-                                        <td><?php echo ($schedule_array[$i]['icer']); ?></td>
+                                        <td>
+                                            <select class="form-control" name="icer_conveyor[]">
+                                                <option value="" selected><?php echo ($schedule_array[$i]['icer']); ?></option>
+                                                @foreach($employees as $employee)
+                                                    <option><?php echo ($employee); ?></option>
+                                                @endforeach
+                                                <option><?php echo 'Temp' ?></option>
+                                            </select>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -66,9 +78,6 @@
                                 <th>Icer</th>
                                 </thead>
                                 <tbody>
-                                @if (Session::has('message'))
-                                    <div class="alert alert-danger">{{ Session::get('message') }}</div>
-                                @endif
                                 @foreach($schedule_array_2 as $j => $value)
                                     <tr class="bg-info">
                                     <tr>
@@ -79,6 +88,7 @@
                                                 @foreach($employees as $employee)
                                                     <option><?php echo ($employee); ?></option>
                                                 @endforeach
+                                                <option><?php echo 'Temp' ?></option>
                                             </select>
                                         </td>
                                         <td>
@@ -87,9 +97,18 @@
                                                 @foreach($employees as $employee)
                                                     <option><?php echo ($employee); ?></option>
                                                 @endforeach
+                                                <option><?php echo 'Temp' ?></option>
                                             </select>
                                         </td>
-                                        <td><?php echo ($schedule_array_2[$j]['icer']); ?></td>
+                                        <td>
+                                            <select class="form-control" name="icer_master[]">
+                                                <option value="" selected><?php echo ($schedule_array_2[$j]['icer']); ?></option>
+                                                @foreach($employees as $employee)
+                                                    <option><?php echo ($employee); ?></option>
+                                                @endforeach
+                                                <option><?php echo 'Temp' ?></option>
+                                            </select>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -115,6 +134,7 @@
                                                 @foreach($employees as $employee)
                                                     <option><?php echo ($employee); ?></option>
                                                 @endforeach
+                                                <option><?php echo 'Temp' ?></option>
                                             </select>
                                         </td>
                                     </tr>
@@ -142,6 +162,7 @@
                                                 @foreach($employees as $employee)
                                                     <option><?php echo ($employee); ?></option>
                                                 @endforeach
+                                                <option><?php echo 'Temp' ?></option>
                                             </select>
                                         </td>
                                     </tr>

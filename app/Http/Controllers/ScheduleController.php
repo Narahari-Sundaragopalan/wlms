@@ -17,6 +17,7 @@ class ScheduleController extends Controller
 
     public function __construct()
     {
+        //Add middleware auth for refresh
         $this->schedule_array = [];
         $this->schedule_array_2 = [];
         $this->mezzanineArray = [];
@@ -42,23 +43,29 @@ class ScheduleController extends Controller
 
         $count = 0; $i = intval($conveyorLines);
         $line = [];
-        $labeler_array = [];
-        $index = 1;
+        $labeler_array = []; $icerArray = [];
+        $index = 1; $icerIndex = 1;
         $employees = Employee::all();
 
         // Generate Line Setup for Conveyor Lines
         while($i > 0) {
-            $labelerSet = false; $labeler = '';
+            $labelerSet = false; $labeler = ''; $icerSet = false; $icer = '';
             foreach ($employees as $employee) {
                 if($employee->labeler && !($labelerSet)) {
-                    if(!(array_search($employee->empname, $labeler_array, true))) {
+                    if(!(array_search($employee->empname, $labeler_array, true)) && !(array_search($employee->empname, $icerArray, true))) {
                         $labeler = $employee->empname;
                         $labelerSet = true;
-                        $count++;
                         $labeler_array[$index++] = $employee->empname;
                     }
+                } elseif ($employee->icer && !($icerSet)) {
+                    if(!(array_search($employee->empname, $labeler_array, true)) && !(array_search($employee->empname, $icerArray, true))) {
+                        $icer = $employee->icer;
+                        $icerSet = true;
+                        $icerArray[$icerIndex] = $employee->icer;
+                        $count++;
+                    }
                 }
-                if($labelerSet) {
+                if($labelerSet && $icerSet) {
                     break;
                 }
             }
@@ -66,11 +73,16 @@ class ScheduleController extends Controller
                 $labeler = 'Temp';
                 $count++;
             }
-            $line = ['line_number' => $count, 'labeler' => $labeler, 'icer' => 'Temp'];
+            if ($icer == '') {
+                $icer = 'Temp';
+                $count++;
+            }
+            $line = ['line_number' => $count, 'labeler' => $labeler, 'icer' => $icer];
             array_push($this->schedule_array, $line);
             $i--;
         }
 
+        //Add Icer in Mastered Lines
         $j = intval($masteredLines);
         $line = [];
         $stocker_array = []; $stock_index = 1;
@@ -87,7 +99,6 @@ class ScheduleController extends Controller
                         $labeler_array[$index++] = $employee->empname;
                     }
                 } elseif ($employee->stocker && !($stockerSet)) {
-                    /* Check for Labeler array as well ? */
                     if(!(array_search($employee->empname, $stocker_array, true)) && !(array_search($employee->empname, $labeler_array, true))) {
                         $stocker = $employee->empname;
                         $stockerSet = true;
@@ -181,7 +192,7 @@ class ScheduleController extends Controller
         $runnerArray = [];
 
         while($r < $numOfRunners) {
-            $runner = 'T'; $runnerSet = false;
+            $runner = 'Temp'; $runnerSet = false;
             foreach ($employees as $employee) {
                 if($employee->runner && !($runnerSet)) {
                     if (!(array_search($employee->empname, $labeler_array, true)) && !(array_search($employee->empname, $stocker_array, true)) && !(array_search($employee->empname, $mezArray, true))) {
@@ -548,14 +559,28 @@ class ScheduleController extends Controller
     public function edit($id) {
 
         $scheduler = Schedule::find($id);
+
+     /*   $empLabelers = Employee::where('labeler', true)->pluck('empname');
+        $empStockers = Employee::where('stocker', true)->pluck('empname');
+        $empIcers = Employee::where('icer', true)->pluck('empname');
+        $empRunners = Employee::where('runner', true)->pluck('empname');
+        $empMezzanines = Employee::where('mezzanine', true)->pluck('empname');*/
+
         $employees = Employee::all();
         $empList = $employees->pluck('empname');
         $this->viewData = json_decode($scheduler->schedule, true);
         $currentSchedule['schedule_array'] = $this->viewData['schedule_array'];
-
         $currentSchedule['schedule_array_2'] = $this->viewData['schedule_array_2'];
         $currentSchedule['runnerArray'] = $this->viewData['runnerArray'];
         $currentSchedule['mezzanineArray'] = $this->viewData['mezzanineArray'];
+
+      /*  $currentSchedule['empLabelers'] = $empLabelers;
+        $currentSchedule['empStockers'] = $empStockers;
+        $currentSchedule['empIcers'] = $empIcers;
+        $currentSchedule['empRunners'] = $empRunners;
+        $currentSchedule['empMezzanines'] = $empMezzanines;
+     */
+
         $currentSchedule['employees'] = $empList;
         $currentSchedule['id'] = $id;
 
@@ -577,15 +602,27 @@ class ScheduleController extends Controller
         $stocker_MasterLine = $request['stocker_master'];
         $mezzanine = $request['mezzanine'];
         $runner = $request['runner'];
+        $icer_Conveyor = $request['icer_conveyor'];
+        $icer_Master = $request['icer_master'];
 
-        //Validation check
+        //Validation check -- do Validation for Icer, Do Validation across updated Schedule
 
-        /*if(count(array_intersect($labeler_ConveyorLine, $labeler_MasterLine))) {
-            Session::flash('message', 'Labelers are same in 2 lines');
+        if (count(array_unique($labeler_ConveyorLine)) > 1) {
+            Session::flash('message', 'Conveyor Lines cannot have same Labeler in multiple lines');
             return Redirect::back();
-        } elseif (count(array_unique($labeler_ConveyorLine)) > 1) {
-
-        }*/
+        } elseif (count(array_unique($labeler_MasterLine)) > 1) {
+            Session::flash('message', 'Mastered Lines cannot have same Labeler in multiple lines');
+            return Redirect::back();
+        } elseif (count(array_unique($stocker_MasterLine)) > 1) {
+            Session::flash('message', 'Mastered Lines cannot have same Stocker in multiple lines');
+            return Redirect::back();
+        } elseif (count(array_unique($runner)) > 1) {
+            Session::flash('message', 'Runner cannot be same for multiple set of lines');
+            return Redirect::back();
+        } elseif (count(array_unique($mezzanine)) > 1) {
+            Session::flash('message', 'Mezzanine cannot be same for multiple set of lines');
+            return Redirect::back();
+        }
 
         for($i = 0; $i < sizeof($labeler_ConveyorLine); $i++) {
             if(!empty($labeler_ConveyorLine[$i])) {
@@ -593,11 +630,22 @@ class ScheduleController extends Controller
             }
         }
 
+        $msg = '';
+        $fieldToCompare = 'labeler';
+        $duplicate = $this->checkArrayDuplicate($schedule_array, $fieldToCompare);
+        if($duplicate) {
+            $msg = "Conveyor Lines cannot have same Labeler in multiple lines\n";
+        }
 
         for($i = 0; $i < sizeof($labeler_MasterLine); $i++) {
             if(!empty($labeler_MasterLine[$i])) {
                 $schedule_array_2[$i]['labeler'] = $labeler_MasterLine[$i];
             }
+        }
+
+        $duplicate = $this->checkArrayDuplicate($schedule_array_2, $fieldToCompare);
+        if($duplicate) {
+            $msg .= "Master Lines cannot have same Labeler in multiple lines\n";
         }
 
 
@@ -607,6 +655,12 @@ class ScheduleController extends Controller
             }
         }
 
+        $fieldToCompare = 'stocker';
+        $duplicate = $this->checkArrayDuplicate($schedule_array_2, $fieldToCompare);
+        if($duplicate) {
+            $msg .= "Master Lines cannot have same Stocker in multiple lines\n";
+        }
+
 
         for($i = 0; $i < sizeof($mezzanine); $i++) {
             if(!empty($mezzanine[$i])) {
@@ -614,23 +668,71 @@ class ScheduleController extends Controller
             }
         }
 
+        $fieldToCompare = 'name';
+        $duplicate = $this->checkArrayDuplicate($mezzanineArray, $fieldToCompare);
+        if($duplicate) {
+            $msg .= "Mezzanine cannot be same for multiple set of lines\n";
+        }
 
         for($i = 0; $i < sizeof($runner); $i++) {
             if(!empty($runner[$i])) {
                 $runnerArray[$i]['name'] = $runner[$i];
             }
         }
+        $duplicate = $this->checkArrayDuplicate($runnerArray, $fieldToCompare);
+        if($duplicate) {
+            $msg .= "Mezzanine cannot be same for multiple set of lines\n";
+        }
+
+        for($i = 0; $i < sizeof($icer_Conveyor); $i++) {
+            if(!empty($icer_Conveyor[$i])) {
+                $schedule_array[$i]['icer'] = $icer_Conveyor[$i];
+            }
+        }
+
+        for($i = 0; $i < sizeof($icer_Master); $i++) {
+            if(!empty($icer_Master[$i])) {
+                $schedule_array_2[$i]['icer'] = $icer_Master[$i];
+            }
+        }
+
+        //Do - Validation for ICER
+
+        if(!empty($msg)) {
+            Session::flash('message', $msg);
+            return Redirect::back();
+        }
+
+
 
         $this->viewData['schedule_array'] = $schedule_array;
         $this->viewData['schedule_array_2'] = $schedule_array_2;
         $this->viewData['runnerArray'] = $runnerArray;
         $this->viewData['mezzanineArray'] = $mezzanineArray;
         $this->viewData['id'] = $id;
-
         $scheduler->schedule = json_encode($this->viewData);
-
         $scheduler->update();
+
+
         return view ('schedule.generate', $this->viewData);
 
+    }
+
+    public function checkArrayDuplicate ($array, $field) {
+
+        $duplicate = false;
+
+        for($e = 0; $e < count($array); $e++)
+        {
+            for ($ee = $e+1; $ee < count($array); $ee++)
+            {
+                if (strcmp($array[$ee][$field],$array[$e][$field]) === 0)
+                {
+                    $duplicate = true;
+                    break;
+                }
+            }
+        }
+        return $duplicate;
     }
 }
