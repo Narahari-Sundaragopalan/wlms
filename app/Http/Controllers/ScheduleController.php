@@ -607,23 +607,6 @@ class ScheduleController extends Controller
 
         //Validation check -- do Validation for Icer, Do Validation across updated Schedule
 
-        if (count(array_unique($labeler_ConveyorLine)) > 1) {
-            Session::flash('message', 'Conveyor Lines cannot have same Labeler in multiple lines');
-            return Redirect::back();
-        } elseif (count(array_unique($labeler_MasterLine)) > 1) {
-            Session::flash('message', 'Mastered Lines cannot have same Labeler in multiple lines');
-            return Redirect::back();
-        } elseif (count(array_unique($stocker_MasterLine)) > 1) {
-            Session::flash('message', 'Mastered Lines cannot have same Stocker in multiple lines');
-            return Redirect::back();
-        } elseif (count(array_unique($runner)) > 1) {
-            Session::flash('message', 'Runner cannot be same for multiple set of lines');
-            return Redirect::back();
-        } elseif (count(array_unique($mezzanine)) > 1) {
-            Session::flash('message', 'Mezzanine cannot be same for multiple set of lines');
-            return Redirect::back();
-        }
-
         for($i = 0; $i < sizeof($labeler_ConveyorLine); $i++) {
             if(!empty($labeler_ConveyorLine[$i])) {
                 $schedule_array[$i]['labeler'] = $labeler_ConveyorLine[$i];
