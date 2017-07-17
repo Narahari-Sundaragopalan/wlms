@@ -51,7 +51,7 @@
                             </table>
                         </div>
 
-                      <h3 style="text-align: center">Mastered Lines</h3>
+                      <h3 style="text-align: center">Support Lines</h3>
                         <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped cds-datatable">
@@ -75,7 +75,7 @@
                             </table>
                         </div>
 
-                        <h3 style="text-align: center">Mezzanine Responsible</h3>
+                        <h3 style="text-align: center">Mezzanine</h3>
                         <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped cds-datatable">
@@ -95,7 +95,7 @@
                             </table>
                         </div>
 
-                        <h3 style="text-align: center">Runner</h3>
+                        <h3 style="text-align: center">Runners</h3>
                         <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped cds-datatable">

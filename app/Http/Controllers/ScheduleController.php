@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
+use Validator;
 
 class ScheduleController extends Controller
 {
@@ -32,14 +33,26 @@ class ScheduleController extends Controller
 
     public function create() {
         $conveyorLines = range(0,12);
-        $masteredLines = range(0,32);
-        return view('schedule.create', compact('conveyorLines', 'masteredLines'));
+        $supportLines = range(0,24);
+        return view('schedule.create', compact('conveyorLines', 'supportLines'));
     }
 
     public function generate(Request $request) {
 
+
+        $validator = Validator::make($request->all(), [
+            'schedule_date' => 'bail|required',
+            'schedule_time' => 'required',
+            'conveyor_line' => 'required|numeric',
+            'support_line' => 'required|numeric',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/schedule/create')->withErrors($validator)->withInput();
+        }
+
         $conveyorLines = $request['conveyor_line'];
-        $masteredLines = $request['mastered_line'];
+        $supportLines = $request['support_line'];
 
         $count = 0; $i = intval($conveyorLines);
         $line = [];
@@ -59,9 +72,9 @@ class ScheduleController extends Controller
                     }
                 } elseif ($employee->icer && !($icerSet)) {
                     if(!(array_search($employee->empname, $labeler_array, true)) && !(array_search($employee->empname, $icerArray, true))) {
-                        $icer = $employee->icer;
+                        $icer = $employee->empname;
                         $icerSet = true;
-                        $icerArray[$icerIndex] = $employee->icer;
+                        $icerArray[$icerIndex] = $employee->empname;
                         $count++;
                     }
                 }
@@ -71,7 +84,6 @@ class ScheduleController extends Controller
             }
             if($labeler == '') {
                 $labeler = 'Temp';
-                $count++;
             }
             if ($icer == '') {
                 $icer = 'Temp';
@@ -82,12 +94,13 @@ class ScheduleController extends Controller
             $i--;
         }
 
-        //Add Icer in Mastered Lines
-        $j = intval($masteredLines);
+        //Add Icer in Support Lines
+        $j = intval($supportLines);
         $line = [];
+        $count = 12; // Set Count to the end of Conveyor Line Number
         $stocker_array = []; $stock_index = 1;
 
-        // Generate Line Setup for Mastered Lines
+        // Generate Line Setup for Support Lines
         while($j > 0) {
             $labelerSet = false; $stockerSet = false;
             $labeler = ''; $stocker = '';
@@ -123,28 +136,17 @@ class ScheduleController extends Controller
             $j--;
         }
 
-        //Set Mezzanine
-        $total_lines = intval($conveyorLines) + intval($masteredLines);
+        //Create Line Setup for Mezzanine
+        $flag = true;
+        $lineArray = $this->createLineSetup($conveyorLines, $supportLines, $flag);
+
+
+        //Array for Mezzanine
+        $total_lines = intval($conveyorLines) + intval($supportLines);
         $numOfMezzanineWorkers = intval($total_lines / 3);
         if(intval($total_lines) % 3 != 0) {
             $numOfMezzanineWorkers += 1;
         }
-        $arr = array();
-
-        //Function to create Line number setup for mezzanine workers
-        $arr =  $this->createMezzanineArray($total_lines, $numOfMezzanineWorkers);
-        $lineIndexer = 1;
-        $startIndexer = 0; $endIndex = 0;
-        $lineArray= [];
-
-        //Create line number setup
-        for($i = 0; $i < sizeof($arr); $i++) {
-            $endIndex += $arr[$i];
-            $lineArray [$i] = $lineIndexer . '-' . $endIndex;
-            $lineIndexer+= $arr[$i];
-        }
-
-        //Array for Mezzanine
         //Index to maintain in array
         $mezIndex = 1; $k = 0;
         //Array to save assigned workers
@@ -169,24 +171,15 @@ class ScheduleController extends Controller
             $k++;
         }
 
-        //Array for Runners in Schedule
+        //Create Line Setup for Runners
+        $flag = false;
+        $lineArray = $this->createLineSetup($conveyorLines, $supportLines, $flag);
 
+        //Array for Runners in Schedule
         $numOfRunners = intval($total_lines / 6);
         if(intval($total_lines % 6) != 0) {
             $numOfRunners += 1;
         }
-        $arr = $this->createMezzanineArray($total_lines, $numOfRunners);
-        $lineIndexer = 1;
-        $startIndexer = 0; $endIndex = 0;
-        $lineArray= [];
-
-        //Create line number setup
-        for($i = 0; $i < sizeof($arr); $i++) {
-            $endIndex += $arr[$i];
-            $lineArray [$i] = $lineIndexer . '-' . $endIndex;
-            $lineIndexer+= $arr[$i];
-        }
-
         $runnerIndex = 1; $r = 0;
         //Array to save assigned runners
         $runnerArray = [];
@@ -195,7 +188,7 @@ class ScheduleController extends Controller
             $runner = 'Temp'; $runnerSet = false;
             foreach ($employees as $employee) {
                 if($employee->runner && !($runnerSet)) {
-                    if (!(array_search($employee->empname, $labeler_array, true)) && !(array_search($employee->empname, $stocker_array, true)) && !(array_search($employee->empname, $mezArray, true))) {
+                    if (!(array_search($employee->empname, $labeler_array, true)) && !(array_search($employee->empname, $stocker_array, true)) && !(array_search($employee->empname, $mezArray, true)) && !(array_search($employee->empname, $runnerArray, true))) {
                         $runner = $employee->empname;
                         $runnerArray[$runnerIndex] = $runner;
                         $runnerSet = true;
@@ -234,19 +227,66 @@ class ScheduleController extends Controller
         return view ('schedule.generate', $this->viewData);
     }
 
-    public function createMezzanineArray($lines, $workers) {
+
+    public function createLineSetup($cLines, $sLines, $flag) {
+        $divisor = 1;
+        if ($flag) {
+            $divisor = 3;
+        } else {
+            $divisor = 6;
+        }
+
+        $workers = intval($cLines / $divisor);
+        if(intval($cLines) % $divisor != 0) {
+            $workers += 1;
+        }
+
+        $arr = $this->distributeLines($cLines, $workers);
+        $startIndexer = $this->schedule_array[0]['line_number']; $endIndex = ($this->schedule_array[0]['line_number'] - 1); $setupIndex = 0;
+        $lineArray = [];
+
+        //Create line number setup
+        for($i = 0; $i < sizeof($arr); $i++) {
+            $endIndex += $arr[$i];
+            $lineArray [$setupIndex] = $startIndexer . '-' . $endIndex;
+            $startIndexer+= $arr[$i];
+            $setupIndex++;
+        }
+
+        $workers = intval($sLines / $divisor);
+        if(intval($sLines) % $divisor != 0) {
+            $workers += 1;
+        }
+
+        $arr = $this->distributeLines($sLines, $workers);
+        $startIndexer = $this->schedule_array_2[0]['line_number']; $endIndex = ($this->schedule_array_2[0]['line_number'] - 1);
+        //Create line number setup
+        for($i = 0; $i < sizeof($arr); $i++) {
+            $endIndex += $arr[$i];
+            $lineArray [$setupIndex] = $startIndexer . '-' . $endIndex;
+            $startIndexer+= $arr[$i];
+            $setupIndex++;
+        }
+        return $lineArray;
+    }
+
+    public function distributeLines($lines, $numOfWorkers) {
 
         $arr = [];
-        for($i = 0; $i < $workers; $i++) {
-            $arr[$i] = intval($lines / $workers);
+        for($i = 0; $i < $numOfWorkers; $i++) {
+            $arr[$i] = intval($lines / $numOfWorkers);
         }
 
-        for ($i = 0; $i < ($lines % $workers); $i++) {
-            $arr[$i] += 1;
+        $keys = array_keys($arr);
+        $index = end($keys);
+
+        for ($i = ($lines % $numOfWorkers); $i > 0; $i--) {
+            $arr[$index] += 1;
+            $index--;
         }
         return $arr;
-
     }
+
 
     public function downloadReport(Request $request) {
 
@@ -256,12 +296,12 @@ class ScheduleController extends Controller
         $scheduleDate = $scheduler->date;
         $this->viewData = json_decode($scheduler->schedule, true);
         $labelerArray = $this->viewData['schedule_array'];
-        $masterLineArray = $this->viewData['schedule_array_2'];
+        $supportLineArray = $this->viewData['schedule_array_2'];
         $runnerArray = $this->viewData['runnerArray'];
         $mezzanineArray = $this->viewData['mezzanineArray'];
 
-        Excel::create('Schedule', function($excel) use ($timeOfSchedule, $scheduleDate, $labelerArray, $masterLineArray, $mezzanineArray, $runnerArray) {
-            $excel->sheet('Lineup', function($sheet) use ($timeOfSchedule, $scheduleDate, $labelerArray, $masterLineArray, $mezzanineArray, $runnerArray) {
+        Excel::create('Schedule', function($excel) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray) {
+            $excel->sheet('Lineup', function($sheet) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray) {
                 $sheet->cell('I1', function ($cell) {
                     $cell->setValue('Time');
                     $cell->setFontWeight($bold = true);
@@ -374,12 +414,12 @@ class ScheduleController extends Controller
                 }
 
 
-                // Fill Mastered Lines
+                // Fill Support Lines
                 $column = 'A'; $row = 14;
                 $lineNumber = 24;
                 for ($i = 0; $i < 24; $i++) {
-                    //After first row of Master Lines are set, reset for 2nd row
-                    //Setting Line Numbers for Master Line
+                    //After first row of Support Lines are set, reset for 2nd row
+                    //Setting Line Numbers for Support Line
                     if($lineNumber == 12) {
                         $column = 'A'; $row = 26; $lineNumber = 36;
                     }
@@ -400,8 +440,8 @@ class ScheduleController extends Controller
                 $column = 'A'; $row = 15;
                 $lineNumber = 24;
                 for ($i = 0; $i < 24; $i++) {
-                    //After first row of Master Lines are set, reset for 2nd row
-                    //Setting Labeler Heading for Master Line
+                    //After first row of Support Lines are set, reset for 2nd row
+                    //Setting Labeler Heading for Support Line
                     if($lineNumber == 12) {
                         $column = 'A'; $row = 27; $lineNumber = 36;
                     }
@@ -419,8 +459,8 @@ class ScheduleController extends Controller
                 $column = 'A'; $row = 18;
                 $lineNumber = 24;
                 for ($i = 0; $i < 24; $i++) {
-                    //After first row of Master Lines are set, reset for 2nd row
-                    //Setting Stocker Heading for Master Line
+                    //After first row of Support Lines are set, reset for 2nd row
+                    //Setting Stocker Heading for Support Line
                     if($lineNumber == 12) {
                         $column = 'A'; $row = 30; $lineNumber = 36;
                     }
@@ -440,8 +480,8 @@ class ScheduleController extends Controller
                 $column = 'A'; $row = 21;
                 $lineNumber = 24;
                 for ($i = 0; $i < 24; $i++) {
-                    //After first row of Master Lines are set, reset for 2nd row
-                    //Setting Icer Heading for Master Line
+                    //After first row of Support Lines are set, reset for 2nd row
+                    //Setting Icer Heading for Support Line
                     if($lineNumber == 12) {
                         $column = 'A'; $row = 32; $lineNumber = 36;
                     }
@@ -459,14 +499,14 @@ class ScheduleController extends Controller
 
                 //Fill values for Labeler
                 $column = 'W'; $row = 16;
-                for ($index = 0; $index < sizeof($masterLineArray); $index++) {
+                for ($index = 0; $index < sizeof($supportLineArray); $index++) {
                     if($index == 12) {
                         $column = 'W';
                         $row = 28;
                     }
                     $cellNumber = $column . $row;
-                    $sheet->cell($cellNumber, function ($cell) use ($masterLineArray, $index) {
-                        $cellValue = $masterLineArray[$index]['labeler'];
+                    $sheet->cell($cellNumber, function ($cell) use ($supportLineArray, $index) {
+                        $cellValue = $supportLineArray[$index]['labeler'];
                         $cell->setValue($cellValue);
                         $cell->setFontSize(14);
                     });
@@ -477,14 +517,14 @@ class ScheduleController extends Controller
 
                 //Fill values for Stocker
                 $column = 'W'; $row = 19;
-                for ($index = 0; $index < sizeof($masterLineArray); $index++) {
+                for ($index = 0; $index < sizeof($supportLineArray); $index++) {
                     if($index == 12) {
                         $column = 'W';
                         $row = 31;
                     }
                     $cellNumber = $column . $row;
-                    $sheet->cell($cellNumber, function ($cell) use ($masterLineArray, $index) {
-                        $cellValue = $masterLineArray[$index]['stocker'];
+                    $sheet->cell($cellNumber, function ($cell) use ($supportLineArray, $index) {
+                        $cellValue = $supportLineArray[$index]['stocker'];
                         $cell->setValue($cellValue);
                         $cell->setFontSize(14);
                     });
@@ -495,14 +535,14 @@ class ScheduleController extends Controller
 
                 //Fill values for Icer
                 $column = 'W'; $row = 22;
-                for ($index = 0; $index < sizeof($masterLineArray); $index++) {
+                for ($index = 0; $index < sizeof($supportLineArray); $index++) {
                     if($index == 12) {
                         $column = 'W';
                         $row = 33;
                     }
                     $cellNumber = $column . $row;
-                    $sheet->cell($cellNumber, function ($cell) use ($masterLineArray, $index) {
-                        $cellValue = $masterLineArray[$index]['icer'];
+                    $sheet->cell($cellNumber, function ($cell) use ($supportLineArray, $index) {
+                        $cellValue = $supportLineArray[$index]['icer'];
                         $cell->setValue($cellValue);
                         $cell->setFontSize(14);
                     });
@@ -560,28 +600,43 @@ class ScheduleController extends Controller
 
         $scheduler = Schedule::find($id);
 
-     /*   $empLabelers = Employee::where('labeler', true)->pluck('empname');
-        $empStockers = Employee::where('stocker', true)->pluck('empname');
-        $empIcers = Employee::where('icer', true)->pluck('empname');
-        $empRunners = Employee::where('runner', true)->pluck('empname');
-        $empMezzanines = Employee::where('mezzanine', true)->pluck('empname');*/
+        $empLabelers = Employee::where('labeler', true)->pluck('empname')->toArray();
+        $empStockers = Employee::where('stocker', true)->pluck('empname')->toArray();
+        $empIcers = Employee::where('icer', true)->pluck('empname')->toArray();
+        $empRunners = Employee::where('runner', true)->pluck('empname')->toArray();
+        $empMezzanines = Employee::where('mezzanine', true)->pluck('empname')->toArray();
 
         $employees = Employee::all();
-        $empList = $employees->pluck('empname');
+        $empList = $employees->pluck('empname')->toArray();
+
+       // dd($empList);
+
         $this->viewData = json_decode($scheduler->schedule, true);
         $currentSchedule['schedule_array'] = $this->viewData['schedule_array'];
         $currentSchedule['schedule_array_2'] = $this->viewData['schedule_array_2'];
         $currentSchedule['runnerArray'] = $this->viewData['runnerArray'];
         $currentSchedule['mezzanineArray'] = $this->viewData['mezzanineArray'];
 
-      /*  $currentSchedule['empLabelers'] = $empLabelers;
+        $currentSchedule['empLabelers'] = $empLabelers;
         $currentSchedule['empStockers'] = $empStockers;
         $currentSchedule['empIcers'] = $empIcers;
         $currentSchedule['empRunners'] = $empRunners;
         $currentSchedule['empMezzanines'] = $empMezzanines;
-     */
 
         $currentSchedule['employees'] = $empList;
+
+        $empNonLabelers = array_diff($empList, $empLabelers);
+        $empNonStockers = array_diff($empList, $empStockers);
+        $empNonIcers = array_diff($empList, $empIcers);
+        $empNonRunners = array_diff($empList, $empRunners);
+        $empNonMezzanines = array_diff($empList, $empMezzanines);
+
+        $currentSchedule['empNonLabelers'] = $empNonLabelers;
+        $currentSchedule['empNonStockers'] = $empNonStockers;
+        $currentSchedule['empNonIcers'] = $empNonIcers;
+        $currentSchedule['empNonRunners'] = $empNonRunners;
+        $currentSchedule['empNonMezzanines'] = $empNonMezzanines;
+
         $currentSchedule['id'] = $id;
 
         return view ('schedule.edit', $currentSchedule);
@@ -598,12 +653,12 @@ class ScheduleController extends Controller
         $mezzanineArray = $this->viewData['mezzanineArray'];
 
         $labeler_ConveyorLine = $request['labeler_conveyor'];
-        $labeler_MasterLine = $request['labeler_master'];
-        $stocker_MasterLine = $request['stocker_master'];
+        $labeler_SupportLine = $request['labeler_support'];
+        $stocker_SupportLine = $request['stocker_support'];
         $mezzanine = $request['mezzanine'];
         $runner = $request['runner'];
         $icer_Conveyor = $request['icer_conveyor'];
-        $icer_Master = $request['icer_master'];
+        $icer_Support = $request['icer_support'];
 
         //Validation check -- do Validation for Icer, Do Validation across updated Schedule
 
@@ -620,28 +675,28 @@ class ScheduleController extends Controller
             $msg = "Conveyor Lines cannot have same Labeler in multiple lines\n";
         }
 
-        for($i = 0; $i < sizeof($labeler_MasterLine); $i++) {
-            if(!empty($labeler_MasterLine[$i])) {
-                $schedule_array_2[$i]['labeler'] = $labeler_MasterLine[$i];
+        for($i = 0; $i < sizeof($labeler_SupportLine); $i++) {
+            if(!empty($labeler_SupportLine[$i])) {
+                $schedule_array_2[$i]['labeler'] = $labeler_SupportLine[$i];
             }
         }
 
         $duplicate = $this->checkArrayDuplicate($schedule_array_2, $fieldToCompare);
         if($duplicate) {
-            $msg .= "Master Lines cannot have same Labeler in multiple lines\n";
+            $msg .= "Support Lines cannot have same Labeler in multiple lines\n";
         }
 
 
-        for($i = 0; $i < sizeof($stocker_MasterLine); $i++) {
-            if(!empty($stocker_MasterLine[$i])) {
-                $schedule_array_2[$i]['stocker'] = $stocker_MasterLine[$i];
+        for($i = 0; $i < sizeof($stocker_SupportLine); $i++) {
+            if(!empty($stocker_SupportLine[$i])) {
+                $schedule_array_2[$i]['stocker'] = $stocker_SupportLine[$i];
             }
         }
 
         $fieldToCompare = 'stocker';
         $duplicate = $this->checkArrayDuplicate($schedule_array_2, $fieldToCompare);
         if($duplicate) {
-            $msg .= "Master Lines cannot have same Stocker in multiple lines\n";
+            $msg .= "Support Lines cannot have same Stocker in multiple lines\n";
         }
 
 
@@ -664,7 +719,7 @@ class ScheduleController extends Controller
         }
         $duplicate = $this->checkArrayDuplicate($runnerArray, $fieldToCompare);
         if($duplicate) {
-            $msg .= "Mezzanine cannot be same for multiple set of lines\n";
+            $msg .= "Runner cannot be same for multiple set of lines\n";
         }
 
         for($i = 0; $i < sizeof($icer_Conveyor); $i++) {
@@ -673,9 +728,9 @@ class ScheduleController extends Controller
             }
         }
 
-        for($i = 0; $i < sizeof($icer_Master); $i++) {
-            if(!empty($icer_Master[$i])) {
-                $schedule_array_2[$i]['icer'] = $icer_Master[$i];
+        for($i = 0; $i < sizeof($icer_Support); $i++) {
+            if(!empty($icer_Support[$i])) {
+                $schedule_array_2[$i]['icer'] = $icer_Support[$i];
             }
         }
 

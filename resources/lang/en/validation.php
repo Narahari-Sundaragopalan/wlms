@@ -157,6 +157,20 @@ return [
         'security_answer2' => [
             'required' => 'Answer field cannot be blank.',
         ],
+        'conveyor_line' => [
+            'required' => 'Conveyor Lines field cannot be blank',
+            'numeric' => 'Conveyor Lines must be a number',
+        ],
+        'support_line' => [
+            'required' => 'Support Lines field cannot be blank',
+            'numeric' => 'Support Lines must be a number',
+        ],
+        'schedule_date' => [
+            'required' => 'Schedule Date cannot be blank',
+        ],
+        'schedule_time' => [
+            'required' => 'Schedule Time cannot be blank',
+        ],
     ],
 
     /*

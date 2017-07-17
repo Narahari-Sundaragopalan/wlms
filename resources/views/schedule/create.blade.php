@@ -43,8 +43,8 @@
                         <div class="col-md-6">{!! Form::select('conveyor_line',$conveyorLines, null, ['placeholder' => 'Select Conveyer Lines','class'=>'form-control']) !!}</div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-4">{!! Form::label('select', 'Mastered Lines:', ['class' => 'control-label']) !!}</div>
-                        <div class="col-md-6">{!! Form::select('mastered_line',$masteredLines, null, ['placeholder' => 'Select Mastered Lines','class'=>'form-control']) !!}</div>
+                        <div class="col-md-4">{!! Form::label('select', 'Support Lines:', ['class' => 'control-label']) !!}</div>
+                        <div class="col-md-6">{!! Form::select('support_line',$supportLines, null, ['placeholder' => 'Select Support Lines','class'=>'form-control']) !!}</div>
                     </div>
 
                     <div class="form-group">
@@ -69,7 +69,7 @@
         });
 
         $(document).ready(function() {
-            $( "#timepicker" ).timepicker();
+            $( "#timepicker" ).timepicker({defaultTime : '05:30AM'});
         });
 
 
