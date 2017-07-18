@@ -61,8 +61,12 @@
                                             <td><?php echo ($employee['empid']); ?></td>
                                         </tr>
                                         <tr>
-                                            <td>Employee Name</td>
-                                            <td><?php echo ($employee['empname']); ?></td>
+                                            <td>Employee First Name</td>
+                                            <td><?php echo ($employee['empfname']); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Employee Last Name</td>
+                                            <td><?php echo ($employee['emplname']); ?></td>
                                         </tr>
                                         <tr>
                                             <td>Position</td>

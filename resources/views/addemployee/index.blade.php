@@ -50,10 +50,12 @@
                                         <td class="table-text"><div>{{ $employee->empid  }}</div></td>
                                         <td class="table-text">
                                             <div>
-                                                <a href="{{ url('addemployee/'.$employee->id.'/edit') }}">{{ $employee->empname }}</a>
+                                                <a href="{{ url('addemployee/'.$employee->id.'/edit') }}">{{ $employee->empfname.' '.$employee->emplname }}</a>
+                                                
                                             </div>
                                         </td>
-                                        {{-- <td class="table-text"><div>{{ $employee->empname }}</div></td>--}}
+                                        {{-- <td class="table-text"><div>{{ $employee->empfname }}</div></td>--}}
+                                        {{-- <td class="table-text"><div>{{ $employee->emplname }}</div></td>--}}
                                         <td class="table-text"><div>{{ $employee->positiontype }}</div></td>
                                         <td class="table-text"><div>{{ $employee->experience }}</div></td>
                                         <!-- <td class="table-text"><div>{{ $employee->language }}</div></td> -->

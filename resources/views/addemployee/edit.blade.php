@@ -61,8 +61,13 @@
                             </div>
 
                             <div class="form-group">
-                                {!! Form::label('empname', 'Employee Name:') !!}
-                                {!! Form::text('empname',null,['class'=>'form-control']) !!}
+                                {!! Form::label('empfname', 'Employee First Name:') !!}
+                                {!! Form::text('empfname',null,['class'=>'form-control']) !!}
+                            </div>
+
+                            <div class="form-group">
+                                {!! Form::label('emplname', 'Employee Last Name:') !!}
+                                {!! Form::text('emplname',null,['class'=>'form-control']) !!}
                             </div>
 
                             <div class="form-group">

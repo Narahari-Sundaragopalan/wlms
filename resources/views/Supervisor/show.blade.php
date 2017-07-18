@@ -48,8 +48,12 @@
                                                 <td><?php echo ($supervisor['supid']); ?></td>
                                             </tr>
                                             <tr>
-                                                <td>Supervisor Name</td>
-                                                <td><?php echo ($supervisor['supname']); ?></td>
+                                                <td>Supervisor First Name</td>
+                                                <td><?php echo ($supervisor['supfname']); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Supervisor Last Name</td>
+                                                <td><?php echo ($supervisor['suplname']); ?></td>
                                             </tr>
                                             <tr>
                                                 <td>Position</td>

@@ -51,9 +51,13 @@
                                 {!! Form::label('supid', 'Supervisor ID ') !!}
                                 {!! Form::text('supid',null,['class'=>'form-control']) !!}
                             </div>
-                            <div class="form-group{{ $errors->has('supname') ? ' has-error' : '' }}">
-                                {!! Form::label('supname', 'Supervisor Name') !!}
-                                {!! Form::text('supname',null,['class'=>'form-control']) !!}
+                            <div class="form-group{{ $errors->has('supfname') ? ' has-error' : '' }}">
+                                {!! Form::label('supfname', 'Supervisor First Name') !!}
+                                {!! Form::text('supfname',null,['class'=>'form-control']) !!}
+                            </div>
+                            <div class="form-group{{ $errors->has('suplname') ? ' has-error' : '' }}">
+                                {!! Form::label('suplname', 'Supervisor Last Name') !!}
+                                {!! Form::text('suplname',null,['class'=>'form-control']) !!}
                             </div>
                             <div class="form-group{{ $errors->has('position') ? ' has-error' : '' }}">
                                 {!! Form::label('position', 'Position') !!}

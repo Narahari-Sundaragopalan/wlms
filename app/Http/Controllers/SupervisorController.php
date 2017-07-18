@@ -38,7 +38,8 @@ class SupervisorController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'supid' => 'bail|required|numeric|unique:supervisors',
-            'supname' => 'required|max:255',
+            'supfname' => 'required|max:255',
+            'suplname' => 'required|max:255',
             'position' => 'required',
 
 
@@ -74,4 +75,16 @@ public function destroy($id)
         Supervisor::find($id)->delete();
         return redirect('Supervisor');
     }
+public function scopeSearchByKeyword($query, $keyword)
+{
+    if ($keyword!='') {
+        $query->where(function ($query) use ($keyword) {
+            $query->where("supid", "LIKE","%$keyword%")
+                ->orWhere("supfname", "LIKE", "%$keyword%")
+                ->orWhere("suplname", "LIKE", "%$keyword%")
+                ->orWhere("position", "LIKE", "%$keyword%");
+        });
+    }
+    return $query;
+}
 }

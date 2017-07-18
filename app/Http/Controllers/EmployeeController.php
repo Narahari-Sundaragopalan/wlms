@@ -22,13 +22,14 @@ class EmployeeController extends Controller
     {
 
         $employees = Employee::all();
-        return view('addemployee.index', compact('employees'));
+       return view('addemployee.index', compact('employees'));
     }
 
     public function show($id)
     {
         $employee = Employee::findOrFail($id);
         return view('addemployee.show', compact('employee'));
+
     }
 
     public function create()
@@ -41,7 +42,8 @@ class EmployeeController extends Controller
 
      $validator = Validator::make($request->all(), [
          'empid' => 'bail|required|numeric|unique:employees',
-         'empname' => 'required|max:255',
+         'empfname' => 'required|max:255',
+         'emplname' => 'required|max:255',
          'positiontype' => 'required',
          'experience' => 'required',
          'english'=>'required_without_all: spanish, other',
@@ -64,6 +66,7 @@ class EmployeeController extends Controller
         public
         function edit($id)
         {
+            
             $employee = Employee::find($id);
             return view('addemployee.edit', compact('employee'));
         }
@@ -92,7 +95,8 @@ public function scopeSearchByKeyword($query, $keyword)
     if ($keyword!='') {
         $query->where(function ($query) use ($keyword) {
             $query->where("empid", "LIKE","%$keyword%")
-                ->orWhere("empname", "LIKE", "%$keyword%")
+                ->orWhere("empfname", "LIKE", "%$keyword%")
+                ->orWhere("emplname", "LIKE", "%$keyword%")
                 ->orWhere("email", "LIKE", "%$keyword%")
                 ->orWhere("phone", "LIKE", "%$keyword%");
         });

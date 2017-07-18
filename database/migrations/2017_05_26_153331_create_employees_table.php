@@ -15,7 +15,8 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
         $table->increments('id');
         $table->integer('empid')-> unique();
-        $table->string('empname');
+        $table->string('empfname');
+        $table->string('emplname');
         $table->string('positiontype');
         $table->string('experience');
         $table->string('labeler_rating',5);

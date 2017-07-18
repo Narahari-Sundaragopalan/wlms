@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 use App\User;
 
 
@@ -71,12 +73,20 @@ class SecurityAnswersController extends Controller
     }
      protected function resetPasswordSuccess(Request $request)
     {
+        $rules = array(
+                'password' => 'required|confirmed|min:6',
+//                'password' => 'required|alphaNum|between:6,16|confirmed'
+            );
+         $validator = Validator::make(Input::all(), $rules);
+         if ($validator->fails()) {
+                return view('auth.passwords.passwordresetmismatch');
+            } else{
          try {
 
              $email = $request->email;
             $password = Hash::make($request->password);
              $user = User::where('email', $email)->first();
-            $user->password = $password;
+            $user->password = bcrypt(Input::get('password'));
             $user->save();
              return view ('auth/passwords/passwordset');
         }
@@ -85,4 +95,6 @@ class SecurityAnswersController extends Controller
              return view ('errors/503');
         }
      }
+     }
+
 }

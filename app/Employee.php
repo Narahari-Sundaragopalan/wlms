@@ -13,7 +13,8 @@ class Employee extends Model
     protected $dates = ['deleted_at'];
     protected $fillable=[
     'empid',
-    'empname',
+    'empfname',
+    'emplname',
     'positiontype',
     'experience',
     'labeler_rating',

@@ -68,9 +68,14 @@ $("#checkall").click(function (){
                                 {!! Form::text('empid',null,['class'=>'form-control']) !!}
                             </div>
 
-                            <div class="form-group{{ $errors->has('empname') ? ' has-error' : '' }}">
-                                {!! Form::label('empname', 'Employee Name:') !!}
-                                {!! Form::text('empname',null,['class'=>'form-control']) !!}
+                            <div class="form-group{{ $errors->has('empfname') ? ' has-error' : '' }}">
+                                {!! Form::label('empfname', 'Employee First Name:') !!}
+                                {!! Form::text('empfname',null,['class'=>'form-control']) !!}
+                            </div>
+
+                            <div class="form-group{{ $errors->has('emplname') ? ' has-error' : '' }}">
+                                {!! Form::label('emplname', 'Employee Last Name:') !!}
+                                {!! Form::text('emplname',null,['class'=>'form-control']) !!}
                             </div>
 
                             <div class="form-group{{ $errors->has('positiontype') ? ' has-error' : '' }}">
@@ -125,7 +130,6 @@ $("#checkall").click(function (){
                                     <input type="checkbox" class='checkboxes' name="gift_box" value="1" {{(old('gift_box') == "1") ? 'checked': ''}}>Gift Box
                                     <input type="hidden"  value="0" name="select_all">
                                     <input type="checkbox" class='checkboxes' name="select_all" id="select_all" value="1" {{(old('select_all') == "1") ? 'checked': ''}}>Select All
-
                             </div>
                             
 

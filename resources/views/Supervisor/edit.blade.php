@@ -50,8 +50,12 @@
                         {!! Form::text('supid',null,['class'=>'form-control']) !!}
                         </div>
                         <div class="form-group">
-                        {!! Form::label('supname', 'Supervisor Name') !!}
-                        {!! Form::text('supname',null,['class'=>'form-control']) !!}
+                        {!! Form::label('supfname', 'Supervisor First Name') !!}
+                        {!! Form::text('supfname',null,['class'=>'form-control']) !!}
+                        </div>
+                        <div class="form-group">
+                        {!! Form::label('suplname', 'Supervisor Last Name') !!}
+                        {!! Form::text('suplname',null,['class'=>'form-control']) !!}
                         </div>
                         <div class="form-group">
                         {!! Form::label('position', 'Position') !!}

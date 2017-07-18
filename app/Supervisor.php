@@ -8,7 +8,8 @@ class Supervisor extends Model
 {
      protected $fillable=[
      'supid',
-     'supname',
+     'supfname',
+     'suplname',
      'position'
     ]; 
 }

@@ -106,8 +106,11 @@ return [
             'numeric' => 'Employee ID must be number',
             'unique' => 'Employee ID has already been taken'
         ],
-        'empname' => [
-            'required' => 'Employee Name is mandatory',
+        'empfname' => [
+            'required' => 'Employee First Name is mandatory',
+        ],
+        'emplname' => [
+            'required' => 'Employee Last Name is mandatory',
         ],
         'positiontype' => [
             'required' => 'Position is mandatory',
@@ -139,8 +142,11 @@ return [
             'numeric' => 'The Supervisor ID must be a Number.',
             'unique' => 'Supervisor ID has already been taken'
         ],
-        'supname' => [
-            'required' => 'The Supervisor Name is mandatory.',
+        'supfname' => [
+            'required' => 'The Supervisor First Name is mandatory.',
+        ],
+        'suplname' => [
+            'required' => 'The Supervisor Last Name is mandatory.',
         ],
         'position' => [
             'required' => 'The Position field is mandatory.',
