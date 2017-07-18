@@ -313,42 +313,105 @@ class ScheduleController extends Controller
         $runnerArray = $this->viewData['runnerArray'];
         $mezzanineArray = $this->viewData['mezzanineArray'];
 
-        Excel::create('Schedule', function($excel) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped) {
+        Excel::create('Schedule@'.$scheduleDate.'@'.$timeOfSchedule, function($excel) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped) {
             $excel->sheet('Lineup', function($sheet) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped) {
                 $sheet->cell('I1', function ($cell) {
                     $cell->setValue('Time');
                     $cell->setFontWeight($bold = true);
-                    $cell->setFontSize(16);
                 });
 
-                $sheet->getRowDimension(1)->setRowHeight(10);
-                $sheet->getColumnDimension('A')->setWidth(100);
+                $sheet->getRowDimension(1)->setRowHeight(50);
+
+                $sheet->setWidth(array(
+                    'A'     =>  12, 'B'     =>  12, 'C'     =>  12, 'D'     =>  12,
+                    'E'     =>  12, 'F'     =>  12, 'G'     =>  12, 'H'     =>  12,
+                    'I'     =>  12, 'J'     =>  12, 'K'     =>  12, 'L'     =>  12,
+                    'M'     =>  12, 'N'     =>  12, 'O'     =>  12, 'P'     =>  12,
+                    'Q'     =>  12, 'R'     =>  12, 'S'     =>  12, 'T'     =>  12,
+                    'U'     =>  12, 'V'     =>  12, 'W'     =>  12, 'X'     =>  12,
+
+                ));
+
+
+                $sheet->setFontFamily('Calibri');
+                $sheet->setFontSize(10);
+
+                $range = "W1:W59";
+                $sheet->cells($range, function($cells) {
+                    $cells->setBorder('none', 'thick', 'none', 'none');
+                });
+
+                $range = "A59:X59";
+                $sheet->cells($range, function($cells) {
+                    $cells->setBorder('none', 'none', 'thick', 'none');
+                });
+
+                $range = "A34:X34";
+                $sheet->cells($range, function($cells) {
+                    $cells->setBorder('none', 'none', 'thick', 'none');
+                });
+
+                $range = "A1:W60";
+                $sheet->cells($range, function($cells) {
+                    $cells->setAlignment('center');
+                    $cells->setValignment('center');
+                });
 
                 $sheet->cell('J1', function ($cell) use ($timeOfSchedule) {
                     $cell->setValue($timeOfSchedule);
                     $cell->setFontWeight($bold = true);
-                    $cell->setFontSize(16);
+                    $cell->setFontSize(14);
                 });
+
                 $sheet->mergeCells('K1:L1');
                 $sheet->cell('K1', function($cell) {
                     $cell->setValue('Coolers Shipped');
                     $cell->setFontWeight($bold = true);
-                    $cell->setFontSize(16);
+                    $cell->setAlignment('center');
+                    $cell->setValignment('center');
+
                 });
                 $sheet->cell('M1', function($cell) use ($coolersShipped) {
                     $cell->setValue($coolersShipped);
                     $cell->setFontWeight($bold = true);
-                    $cell->setFontSize(16);
+                    $cell->setFontSize(14);
                 });
+
                 $sheet->cell('N1', function ($cell) {
                     $cell->setValue('Date');
                     $cell->setFontWeight($bold = true);
-                    $cell->setFontSize(16);
                 });
+
+                $sheet->setSize('O1', 15, 50);
                 $sheet->cell('O1', function ($cell) use ($scheduleDate) {
                     $cell->setValue($scheduleDate);
                     $cell->setFontWeight($bold = true);
-                    $cell->setFontSize(16);
+                    $cell->setFontSize(14);
+                });
+
+                $sheet->cell('A37', function ($cell) {
+                    $cell->setValue('Tim');
+                    $cell->setFontWeight($bold = true);
+                });
+
+                $sheet->cell('A1', function ($cell) {
+                    $cell->setValue('Coordinator');
+                    $cell->setFontWeight($bold = true);
+                });
+
+                $sheet->cell('A2', function ($cell) {
+                    $cell->setValue('Team Lead');
+                    $cell->setFontWeight($bold = true);
+                });
+
+                $sheet->cell('B1', function ($cell) {
+                    $cell->setValue('Hugo');
+                    $cell->setFontWeight($bold = true);
+                });
+
+                $sheet->cell('C1', function ($cell) {
+                    $cell->setValue('Isaiah');
+                    $cell->setFontWeight($bold = true);
                 });
 
                 // Fill Conveyor Lines in Excel Sheet Format
@@ -363,7 +426,6 @@ class ScheduleController extends Controller
                         $cellValue = 'LINE #' . $lineNumber;
                         $cell->setValue($cellValue);
                         $cell->setFontWeight($bold = true);
-                        $cell->setFontSize(14);
 
                     });
                     $column++;
@@ -378,7 +440,6 @@ class ScheduleController extends Controller
                     $sheet->cell($cellNumber, function ($cell) {
                         $cellValue = 'Labeler';
                         $cell->setValue($cellValue);
-                        $cell->setFontSize(14);
                     });
                     $column++;
                     $column++;
@@ -391,7 +452,6 @@ class ScheduleController extends Controller
                     $sheet->cell($cellNumber, function ($cell) {
                         $cellValue = 'Icer';
                         $cell->setValue($cellValue);
-                        $cell->setFontSize(14);
                     });
                     $column++;
                     $column++;
@@ -403,11 +463,8 @@ class ScheduleController extends Controller
                 for ($index = 0; $index < sizeof($labelerArray); $index++) {
                     $cellNumber = $column . $row;
                     $sheet->cell($cellNumber, function ($cell) use ($labelerArray, $index) {
-                        //global $labelerArray;
-                        //global $index;
                         $cellValue = $labelerArray[$index]['labeler'];
                         $cell->setValue($cellValue);
-                        $cell->setFontSize(14);
                     });
                     $column = chr(ord($column) -  1);
                     $column = chr(ord($column) -  1);
@@ -420,7 +477,6 @@ class ScheduleController extends Controller
                     $sheet->cell($cellNumber, function ($cell) {
                         $cellValue = 'Temp';
                         $cell->setValue($cellValue);
-                        $cell->setFontSize(14);
                     });
                     $column = chr(ord($column) -  1);
                     $column = chr(ord($column) -  1);
@@ -441,7 +497,6 @@ class ScheduleController extends Controller
                         $cellValue = 'LINE #' . $lineNumber;
                         $cell->setValue($cellValue);
                         $cell->setFontWeight($bold = true);
-                        $cell->setFontSize(14);
 
                     });
                     $column++;
@@ -462,7 +517,6 @@ class ScheduleController extends Controller
                     $sheet->cell($cellNumber, function ($cell) {
                         $cellValue = 'Labeler';
                         $cell->setValue($cellValue);
-                        $cell->setFontSize(14);
                     });
                     $column++;
                     $column++;
@@ -481,7 +535,6 @@ class ScheduleController extends Controller
                     $sheet->cell($cellNumber, function ($cell) {
                         $cellValue = 'Stocker';
                         $cell->setValue($cellValue);
-                        $cell->setFontSize(14);
 
                     });
                     $column++;
@@ -503,7 +556,6 @@ class ScheduleController extends Controller
                     $sheet->cell($cellNumber, function ($cell) {
                         $cellValue = 'Icer';
                         $cell->setValue($cellValue);
-                        $cell->setFontSize(14);
                     });
                     $column++;
                     $column++;
@@ -521,7 +573,6 @@ class ScheduleController extends Controller
                     $sheet->cell($cellNumber, function ($cell) use ($supportLineArray, $index) {
                         $cellValue = $supportLineArray[$index]['labeler'];
                         $cell->setValue($cellValue);
-                        $cell->setFontSize(14);
                     });
                     $column = chr(ord($column) -  1);
                     $column = chr(ord($column) -  1);
@@ -539,7 +590,6 @@ class ScheduleController extends Controller
                     $sheet->cell($cellNumber, function ($cell) use ($supportLineArray, $index) {
                         $cellValue = $supportLineArray[$index]['stocker'];
                         $cell->setValue($cellValue);
-                        $cell->setFontSize(14);
                     });
                     $column = chr(ord($column) -  1);
                     $column = chr(ord($column) -  1);
@@ -557,7 +607,6 @@ class ScheduleController extends Controller
                     $sheet->cell($cellNumber, function ($cell) use ($supportLineArray, $index) {
                         $cellValue = $supportLineArray[$index]['icer'];
                         $cell->setValue($cellValue);
-                        $cell->setFontSize(14);
                     });
                     $column = chr(ord($column) -  1);
                     $column = chr(ord($column) -  1);
@@ -567,13 +616,11 @@ class ScheduleController extends Controller
                 $sheet->cell('A35', function ($cell) {
                     $cell->setValue('Mezzanine');
                     $cell->setFontWeight($bold = true);
-                    $cell->setFontSize(16);
                 });
 
                 $sheet->cell('A36', function ($cell) {
                     $cell->setValue('Lines');
                     $cell->setFontWeight($bold = true);
-                    $cell->setFontSize(14);
                 });
 
                 $column = 'B'; $row = 35;
@@ -582,7 +629,6 @@ class ScheduleController extends Controller
                     $sheet->cell($cellNumber, function ($cell) use ($mezzanineArray, $index) {
                         $cellValue = $mezzanineArray[$index]['name'];
                         $cell->setValue($cellValue);
-                        $cell->setFontSize(14);
                     });
                     $column++;
                 }
@@ -593,7 +639,6 @@ class ScheduleController extends Controller
                     $sheet->cell($cellNumber, function ($cell) use ($mezzanineArray, $index) {
                         $cellValue = $mezzanineArray[$index]['lines'];
                         $cell->setValue($cellValue);
-                        $cell->setFontSize(14);
                     });
                     $column++;
                 }
