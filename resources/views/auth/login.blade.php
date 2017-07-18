@@ -13,7 +13,7 @@
 
 
     </style>
-    <body background="images/ribeye.jpg">
+    <body background="images/boxes.jpg">
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">

@@ -69,7 +69,7 @@
             }
         </style>
     </head>
-    <body body background="images/ribeye.jpg">
+    <body body background="images/boxes.jpg">
     <div class="col-md-10 col-md-offset-1">
         <div class="flex-center position-ref full-height">
 
