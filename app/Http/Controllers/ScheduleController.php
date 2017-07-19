@@ -672,13 +672,21 @@ class ScheduleController extends Controller
         foreach ($employees as $employee) {
             if($employee->labeler) {
                 array_push($empLabelers, $employee->getEmpNameAttribute());
-            } elseif ($employee->stocker) {
+            }
+
+            if ($employee->stocker) {
                 array_push($empStockers, $employee->getEmpNameAttribute());
-            } elseif ($employee->icer) {
+            }
+
+            if ($employee->icer) {
                 array_push($empIcers, $employee->getEmpNameAttribute());
-            } elseif ($employee->runner) {
+            }
+
+            if ($employee->runner) {
                 array_push($empRunners, $employee->getEmpNameAttribute());
-            } elseif ($employee->mezzanine) {
+            }
+
+            if ($employee->mezzanine) {
                 array_push($empMezzanines, $employee->getEmpNameAttribute());
             }
             array_push($empList, $employee->getEmpNameAttribute());
