@@ -32,8 +32,15 @@ class ScheduleController extends Controller
     }
 
     public function create() {
-        $conveyorLines = range(0,12);
-        $supportLines = range(0,24);
+        
+        $conveyorLines = range(1,12);
+        array_unshift($conveyorLines, "");
+        unset($conveyorLines[0]);
+
+        $supportLines = range(1,24);
+        array_unshift($supportLines, "");
+        unset($supportLines[0]);
+
         return view('schedule.create', compact('conveyorLines', 'supportLines'));
     }
 
@@ -43,8 +50,8 @@ class ScheduleController extends Controller
         $validator = Validator::make($request->all(), [
             'schedule_date' => 'bail|required',
             'schedule_time' => 'required',
-            'conveyor_line' => 'required|numeric',
-            'support_line' => 'required|numeric',
+            'conveyor_line' => 'required|numeric|not_in:0',
+            'support_line' => 'required|numeric|not_in:0',
         ]);
 
         if ($validator->fails()) {
@@ -65,16 +72,16 @@ class ScheduleController extends Controller
             $labelerSet = false; $labeler = ''; $icerSet = false; $icer = '';
             foreach ($employees as $employee) {
                 if($employee->labeler && !($labelerSet)) {
-                    if(!(array_search($employee->empname, $labeler_array, true)) && !(array_search($employee->empname, $icerArray, true))) {
-                        $labeler = $employee->empname;
+                    if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
+                        $labeler = $employee->empfname . ' ' . $employee->emplname[0];
                         $labelerSet = true;
-                        $labeler_array[$index++] = $employee->empname;
+                        $labeler_array[$index++] = $employee->id;
                     }
                 } elseif ($employee->icer && !($icerSet)) {
-                    if(!(array_search($employee->empname, $labeler_array, true)) && !(array_search($employee->empname, $icerArray, true))) {
-                        $icer = $employee->empname;
+                    if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
+                        $icer = $employee->empfname . ' ' . $employee->emplname[0];
                         $icerSet = true;
-                        $icerArray[$icerIndex] = $employee->empname;
+                        $icerArray[$icerIndex] = $employee->id;
                         $count++;
                     }
                 }
@@ -105,22 +112,22 @@ class ScheduleController extends Controller
             $labeler = ''; $stocker = ''; $icer = '';
             foreach ($employees as $employee) {
                 if ($employee->labeler && !($labelerSet)) {
-                    if(!(array_search($employee->empname, $labeler_array, true)) && !(array_search($employee->empname, $stocker_array, true)) && !(array_search($employee->empname, $icerArray, true))) {
-                        $labeler = $employee->empname;
+                    if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $icerArray, true))) {
+                        $labeler = $employee->empfname . ' ' . $employee->emplname[0];
                         $labelerSet = true;
-                        $labeler_array[$index++] = $employee->empname;
+                        $labeler_array[$index++] = $employee->id;
                     }
                 } elseif ($employee->stocker && !($stockerSet)) {
-                    if(!(array_search($employee->empname, $stocker_array, true)) && !(array_search($employee->empname, $labeler_array, true)) && !(array_search($employee->empname, $icerArray, true))) {
-                        $stocker = $employee->empname;
+                    if(!(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
+                        $stocker = $employee->empfname . ' ' . $employee->emplname[0];
                         $stockerSet = true;
-                        $stocker_array[$stock_index++] = $employee->empname;
+                        $stocker_array[$stock_index++] = $employee->id;
                     }
                 } elseif ($employee->icer && !($icerSet)) {
-                    if(!(array_search($employee->empname, $stocker_array, true)) && !(array_search($employee->empname, $labeler_array, true)) && !(array_search($employee->empname, $icerArray, true))) {
-                        $icer = $employee->empname;
+                    if(!(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
+                        $icer = $employee->empfname . ' ' . $employee->emplname[0];
                         $icerSet = true;
-                        $icerArray[$icerIndex++] = $employee->empname;
+                        $icerArray[$icerIndex++] = $employee->id;
                         $count++;
                     }
                 }
@@ -165,9 +172,10 @@ class ScheduleController extends Controller
             $mezzanine = 'Temp';$mezzanineSet = false;
             foreach ($employees as $employee) {
                 if ($employee->mezzanine && !($mezzanineSet)) {
-                    if (!(array_search($employee->empname, $labeler_array, true)) && !(array_search($employee->empname, $stocker_array, true)) && !(array_search($employee->empname, $mezArray, true)) && !(array_search($employee->empname, $icerArray, true))) {
-                        $mezzanine = $employee->empname;
-                        $mezArray[$mezIndex++] = $mezzanine;
+                    if (!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true))
+                        && !(array_search($employee->id, $mezArray, true)) && !(array_search($employee->id, $icerArray, true))) {
+                        $mezzanine = $employee->empfname . ' ' . $employee->emplname[0];
+                        $mezArray[$mezIndex++] = $employee->id;
                         $mezzanineSet = true;
                     }
                 }
@@ -197,12 +205,12 @@ class ScheduleController extends Controller
             $runner = 'Temp'; $runnerSet = false;
             foreach ($employees as $employee) {
                 if($employee->runner && !($runnerSet)) {
-                    if (!(array_search($employee->empname, $labeler_array, true)) && !(array_search($employee->empname, $stocker_array, true))
-                        && !(array_search($employee->empname, $mezArray, true)) && !(array_search($employee->empname, $runnerArray, true))
-                        && !(array_search($employee->empname, $icerArray, true))) {
+                    if (!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true))
+                        && !(array_search($employee->id, $mezArray, true)) && !(array_search($employee->id, $runnerArray, true))
+                        && !(array_search($employee->id, $icerArray, true))) {
 
-                        $runner = $employee->empname;
-                        $runnerArray[$runnerIndex] = $runner;
+                        $runner = $employee->empfname . ' ' . $employee->emplname[0];
+                        $runnerArray[$runnerIndex] = $employee->id;
                         $runnerSet = true;
                     }
                 }
@@ -657,17 +665,25 @@ class ScheduleController extends Controller
     public function edit($id) {
 
         $scheduler = Schedule::find($id);
-
-        $empLabelers = Employee::where('labeler', true)->pluck('empname')->toArray();
-        $empStockers = Employee::where('stocker', true)->pluck('empname')->toArray();
-        $empIcers = Employee::where('icer', true)->pluck('empname')->toArray();
-        $empRunners = Employee::where('runner', true)->pluck('empname')->toArray();
-        $empMezzanines = Employee::where('mezzanine', true)->pluck('empname')->toArray();
-
         $employees = Employee::all();
-        $empList = $employees->pluck('empname')->toArray();
+        $empLabelers = []; $empStockers = []; $empIcers = []; $empRunners = [];
+        $empMezzanines = []; $empList = [];
 
-       // dd($empList);
+        foreach ($employees as $employee) {
+            if($employee->labeler) {
+                array_push($empLabelers, $employee->getEmpNameAttribute());
+            } elseif ($employee->stocker) {
+                array_push($empStockers, $employee->getEmpNameAttribute());
+            } elseif ($employee->icer) {
+                array_push($empIcers, $employee->getEmpNameAttribute());
+            } elseif ($employee->runner) {
+                array_push($empRunners, $employee->getEmpNameAttribute());
+            } elseif ($employee->mezzanine) {
+                array_push($empMezzanines, $employee->getEmpNameAttribute());
+            }
+            array_push($empList, $employee->getEmpNameAttribute());
+        }
+
 
         $this->viewData = json_decode($scheduler->schedule, true);
         $currentSchedule['schedule_array'] = $this->viewData['schedule_array'];

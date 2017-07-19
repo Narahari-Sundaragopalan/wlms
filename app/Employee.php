@@ -32,4 +32,9 @@ class Employee extends Model
     'gift_box',
     'comment'
     ];
+
+    //Function to return Employee names with First name and Initial of Last Name
+    public function getEmpNameAttribute() {
+        return $this->empfname . " " . $this->emplname[0];
+    }
 }
