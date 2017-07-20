@@ -11,7 +11,7 @@
 
             background-size: cover;
             text-align: center;
-
+            
 
         }
 

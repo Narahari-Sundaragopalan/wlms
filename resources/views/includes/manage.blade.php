@@ -1,7 +1,7 @@
 
-<div class="container" style="float: left;width: 20%; border-right: 2px solid black">
+<div class=".container-fluid" style="float: left;  width: 15%; border-right: 2px solid black; margin:0px; padding:0px;">
     <div style="height: 70%">
-        <img class="img-responsive" src="{{URL::asset('/images/man.jpg')}}" alt="Chania" height="150" width="150">
+        <img class="img-responsive center-block"  src="{{URL::asset('/images/man.jpg')}}" alt="Chania" height="150" width="150">
     </div>
     <div>
         <h4 style="text-align: center; color: black"> Manager </h4>
@@ -9,8 +9,8 @@
     <hr style="border-top: 1px solid #151515;">
 
     <div>
-        <li style="list-style: none;">
-            <ul ><a href="" class="btn btn-danger" style="width: 150px; height: 30px;" >View Schedule</a></ul>
+        <li type ="button" style="list-style: none; margin-right:0px; padding:5px; ">
+            <a href="" class="btn btn-danger" style="width: 150px; height: 30px; text-align: center;" >View Schedule</a>
 
         </li>
     </div>

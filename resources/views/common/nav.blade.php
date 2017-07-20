@@ -59,11 +59,12 @@
 
 <style>
     body {
-        font-family: 'Lato';
+        font-family: 'Raleway';
     }
 
     .fa-btn {
         margin-right: 6px;
+        border-color: transparent;
     }
 
     .navbar-static-top {
@@ -73,9 +74,9 @@
 
     .navbar-default {
         text-align: center;
-
-
+    
     }
+    
     
     .header {
         color: whitesmoke;
@@ -93,7 +94,5 @@
         font-size: medium;
         margin-left: 10px;
     }
-.caret{
-    background-color: transparent;
-}
+
 </style>
