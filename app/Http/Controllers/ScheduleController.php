@@ -321,7 +321,7 @@ class ScheduleController extends Controller
         $runnerArray = $this->viewData['runnerArray'];
         $mezzanineArray = $this->viewData['mezzanineArray'];
 
-        Excel::create('Schedule@'.$scheduleDate.'@'.$timeOfSchedule, function($excel) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped) {
+        Excel::create('DC WEST LINE UP@'.$scheduleDate.'@'.$timeOfSchedule, function($excel) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped) {
             $excel->sheet('Lineup', function($sheet) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped) {
                 $sheet->cell('I1', function ($cell) {
                     $cell->setValue('Time');
@@ -651,7 +651,90 @@ class ScheduleController extends Controller
                     $column++;
                 }
 
+                //Fill Runner Label in Scheduler Dynamically based on the number of Assigned Runners
+                 $row = 3;
+                for($index = 0; $index < sizeof($runnerArray); $index++) {
+                    $lines = $runnerArray[$index]['lines'];
+                    $column = 'W';
 
+                    $startLine = 0; $endLine = 0;
+                    $offsetIndex = 1;
+                    // Get the start and the end Line for each set
+                    if(strlen($lines) == 3) {
+                        $startLine = intval($lines[0]);
+                        $endLine = intval(substr($lines, -1));
+                    } else {
+                        $startLine = intval($lines[0] . $lines[1]);
+                        $endLine = intval(substr($lines, -2));
+                    }
+
+                    // Check which set of Lines are being processed (1-12 or 13-24 or 25-36)
+                    if($startLine < 12) {
+                        $offsetIndex = $startLine;
+                    } elseif($startLine > 12 && $startLine < 24) {
+                        $row = 12;
+                        $offsetIndex = $startLine - 12;
+                    } elseif($startLine > 24) {
+                        $row = 24;
+                        $offsetIndex = $startLine - 24;
+                    }
+
+                    $offset_1 = ($offsetIndex - 1) * 2;
+
+                    $startPos = chr(ord($column) -  $offset_1);
+
+                    $offset_3 = ($endLine - $startLine);
+                    $runnerPos = chr(ord($startPos) - $offset_3);
+                    $cellNumber = $runnerPos . $row;
+                    $sheet->cell($cellNumber, function ($cell) {
+                        $cellValue = 'RUNNER';
+                        $cell->setValue($cellValue);
+                        $cell->setFontWeight($bold = true);
+                    });
+
+                }
+
+                //Fill Runners in Scheduler Dynamically based on the number of Assigned Runners
+                $row = 4;
+                for($index = 0; $index < sizeof($runnerArray); $index++) {
+                    $lines = $runnerArray[$index]['lines'];
+                    $column = 'W';
+
+                    $startLine = 0; $endLine = 0;
+                    $offsetIndex = 1;
+                    // Get the start and the end Line for each set
+                    if(strlen($lines) == 3) {
+                        $startLine = intval($lines[0]);
+                        $endLine = intval(substr($lines, -1));
+                    } else {
+                        $startLine = intval($lines[0] . $lines[1]);
+                        $endLine = intval(substr($lines, -2));
+                    }
+
+                    // Check which set of Lines are being processed (1-12 or 13-24 or 25-36)
+                    if($startLine < 12) {
+                        $offsetIndex = $startLine;
+                    } elseif($startLine > 12 && $startLine < 24) {
+                        $row = 13;
+                        $offsetIndex = $startLine - 12;
+                    } elseif($startLine > 24) {
+                        $row = 25;
+                        $offsetIndex = $startLine - 24;
+                    }
+
+                    $offset_1 = ($offsetIndex - 1) * 2;
+
+                    $startPos = chr(ord($column) -  $offset_1);
+
+                    $offset_3 = ($endLine - $startLine);
+                    $runnerPos = chr(ord($startPos) - $offset_3);
+                    $cellNumber = $runnerPos . $row;
+                    $sheet->cell($cellNumber, function ($cell) use ($runnerArray, $index) {
+                        $cellValue = $runnerArray[$index]['name'];
+                        $cell->setValue($cellValue);
+                    });
+
+                }
 
             });
         })->download('xls');
