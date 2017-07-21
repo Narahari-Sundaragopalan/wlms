@@ -3,7 +3,7 @@
 @section('content')
     <style>
         th {
-            background: green;
+            background: forestgreen;
             color: white;
             text-align: center;
         }
@@ -26,7 +26,7 @@
                             <a href="{{ url('/schedule/create') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
                         </div>
                         <br>
-                        <div style="text-align: center"><h2>{{ 'Schedule Details' }}</h2></div>
+                        <div style="text-align: center"><h3>{{ $heading }}</h3></div>
                     </div>
                     <div class="panel-body">
                         <h3 style="text-align: center">Conveyor Lines</h3>
@@ -81,7 +81,7 @@
                             <table class="table table-bordered table-striped cds-datatable">
                                 <thead> <!-- Table Headings -->
                                 <th>Lines</th>
-                                <th>Incharge</th>
+                                <th>Assigned</th>
                                 </thead>
                                 <tbody>
                                 @foreach($mezzanineArray as $i => $value)
@@ -101,7 +101,7 @@
                             <table class="table table-bordered table-striped cds-datatable">
                                 <thead> <!-- Table Headings -->
                                 <th>Lines</th>
-                                <th>Incharge</th>
+                                <th>Assigned</th>
                                 </thead>
                                 <tbody>
                                 @foreach($runnerArray as $i => $value)

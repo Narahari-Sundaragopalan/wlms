@@ -4,8 +4,8 @@
 
     <style>
         th {
-            background: green;
-            color: white;
+            background: forestgreen;
+            color: whitesmoke;
             text-align: center;
         }
         tr {
@@ -14,7 +14,10 @@
         }
         .bld {
             font-weight: bold;
+            color: whitesmoke;
+            background-color: grey;
         }
+
     </style>
     <div class="container">
         <div class="row">
@@ -25,7 +28,7 @@
                             <a href="{{ url('/schedule/create') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
                         </div>
                         <br>
-                        <div style="text-align: center"><h2>{{ 'Schedule Details' }}</h2></div>
+                        <div style="text-align: center"><h3>{{ $heading }}</h3></div>
                     </div>
                     <div class="panel-body">
                         {!! Form::model($id ,['method' => 'PATCH','route'=>['schedule.update', $id]]) !!}
@@ -45,7 +48,19 @@
                                 @foreach($schedule_array as $i => $value)
                                     <tr class="bg-info">
                                     <tr>
-                                        <td><?php echo ($schedule_array[$i]['line_number']); ?></td>
+                                        <td>
+                                            <select class="form-control" name="conveyor_lines[]">
+
+                                                <option value="" selected class="bld">
+                                                    <?php echo ($schedule_array[$i]['line_number']); ?>
+                                                </option>
+                                                <optgroup label="Line #">
+                                                    @foreach($conveyorLines as $conveyorLine)
+                                                        <option><?php echo ($conveyorLine); ?></option>
+                                                    @endforeach
+                                                </optgroup>
+                                            </select>
+                                        </td>
                                         <td>
                                             <select class="form-control" name="labeler_conveyor[]">
 
@@ -103,7 +118,19 @@
                                 @foreach($schedule_array_2 as $j => $value)
                                     <tr class="bg-info">
                                     <tr>
-                                        <td><?php echo ($schedule_array_2[$j]['line_number']); ?></td>
+                                        <td>
+                                            <select class="form-control" name="support_lines[]">
+
+                                                <option value="" selected class="bld">
+                                                    <?php echo ($schedule_array_2[$j]['line_number']); ?>
+                                                </option>
+                                                <optgroup label="Line #">
+                                                    @foreach($supportLines as $supportLine)
+                                                        <option><?php echo ($supportLine); ?></option>
+                                                    @endforeach
+                                                </optgroup>
+                                            </select>
+                                        </td>
                                         <td>
                                             <select class="form-control" name="labeler_support[]">
                                                 <option value="" selected class="bld">
@@ -170,7 +197,7 @@
                             <table class="table table-bordered table-striped cds-datatable">
                                 <thead> <!-- Table Headings -->
                                 <th>Lines</th>
-                                <th>Incharge</th>
+                                <th>Assigned</th>
                                 </thead>
                                 <tbody>
                                 @foreach($mezzanineArray as $i => $value)
@@ -207,7 +234,7 @@
                             <table class="table table-bordered table-striped cds-datatable">
                                 <thead> <!-- Table Headings -->
                                 <th>Lines</th>
-                                <th>Incharge</th>
+                                <th>Assigned</th>
                                 </thead>
                                 <tbody>
                                 @foreach($runnerArray as $i => $value)
@@ -250,3 +277,16 @@
     </div>
 
 @endsection
+
+@section('scripts')
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $('#mySelect').change(function(){
+            var optionval = $('#mySelect').val();
+            $('#mySelect  ' +
+                'option:contains("'+optionval+'")').hide().siblings().show();
+
+        });
+    </script>
+    @endsection
