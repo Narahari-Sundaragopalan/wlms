@@ -346,27 +346,6 @@ class ScheduleController extends Controller
                 $sheet->setFontFamily('Calibri');
                 $sheet->setFontSize(10);
 
-                $range = "W1:W59";
-                $sheet->cells($range, function($cells) {
-                    $cells->setBorder('none', 'thick', 'none', 'none');
-                });
-
-                $range = "A59:X59";
-                $sheet->cells($range, function($cells) {
-                    $cells->setBorder('none', 'none', 'thick', 'none');
-                });
-
-                $range = "A34:X34";
-                $sheet->cells($range, function($cells) {
-                    $cells->setBorder('none', 'none', 'thick', 'none');
-                });
-
-                $range = "A1:W60";
-                $sheet->cells($range, function($cells) {
-                    $cells->setAlignment('center');
-                    $cells->setValignment('center');
-                });
-
                 $sheet->cell('J1', function ($cell) use ($timeOfSchedule) {
                     $cell->setValue($timeOfSchedule);
                     $cell->setFontWeight($bold = true);
@@ -727,7 +706,7 @@ class ScheduleController extends Controller
                     $column = 'W';
 
                     $startLine = 0; $endLine = 0;
-                    $offsetIndex = 1;
+                    $offsetIndex = 1; // Variable to specify Line Number Index
                     // Get the start and the end Line for each set
                     if(strlen($lines) == 3) {
                         $startLine = intval($lines[0]);
@@ -738,6 +717,7 @@ class ScheduleController extends Controller
                     }
 
                     // Check which set of Lines are being processed (1-12 or 13-24 or 25-36)
+                    //Set the offset Index based on the Line Number
                     if($startLine < 12) {
                         $offsetIndex = $startLine;
                     } elseif($startLine > 12 && $startLine < 24) {
@@ -748,10 +728,11 @@ class ScheduleController extends Controller
                         $offsetIndex = $startLine - 24;
                     }
 
+                    // Index to indicate the starting Line for current Runner
                     $offset_1 = ($offsetIndex - 1) * 2;
-
+                    // Index Position to indicate Column Number for current Runner
                     $startPos = chr(ord($column) -  $offset_1);
-
+                    //Index to indicate position of current Runner
                     $offset_3 = ($endLine - $startLine);
                     $runnerPos = chr(ord($startPos) - $offset_3);
                     $cellNumber = $runnerPos . $row;
@@ -760,7 +741,39 @@ class ScheduleController extends Controller
                         $cell->setValue($cellValue);
                     });
 
+                    $borderOffset = ($endLine - $startLine);
+                    $startBorder = chr(ord($runnerPos) +  $borderOffset);
+                    $endBorder = chr(ord($runnerPos) -  $borderOffset);
+                    $startBorder .= $row;
+                    $endBorder .= $row;
+                    $range = $endBorder . ":" . $startBorder;
+                    $sheet->cells($range, function($cells) {
+                        $cells->setBorder('none', 'none', 'thick', 'none');
+                    });
+
+
                 }
+
+                $range = "A34:W34";
+                $sheet->cells($range, function($cells) {
+                    $cells->setBorder('none', 'none', 'thick', 'none');
+                });
+
+                $range = "A59:W59";
+                $sheet->cells($range, function($cells) {
+                    $cells->setBorder('none', 'none', 'thick', 'none');
+                });
+
+                $range = "W1:W59";
+                $sheet->cells($range, function($cells) {
+                    $cells->setBorder('none', 'thick', 'none', 'none');
+                });
+
+                $range = "A1:X59";
+                $sheet->cells($range, function($cells) {
+                    $cells->setAlignment('center');
+                    $cells->setValignment('center');
+                });
 
             });
         })->download('xls');
