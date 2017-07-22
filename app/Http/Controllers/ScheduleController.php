@@ -759,17 +759,17 @@ class ScheduleController extends Controller
                     $cells->setBorder('none', 'none', 'thick', 'none');
                 });
 
-                $range = "A59:W59";
-                $sheet->cells($range, function($cells) {
-                    $cells->setBorder('none', 'none', 'thick', 'none');
-                });
-
                 $range = "W1:W59";
                 $sheet->cells($range, function($cells) {
                     $cells->setBorder('none', 'thick', 'none', 'none');
                 });
 
-                $range = "A1:X59";
+                $range = "A59:W59";
+                $sheet->cells($range, function($cells) {
+                    $cells->setBorder('none', 'none', 'thick', 'none');
+                });
+
+                $range = "A1:W59";
                 $sheet->cells($range, function($cells) {
                     $cells->setAlignment('center');
                     $cells->setValignment('center');
