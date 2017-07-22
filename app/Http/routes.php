@@ -27,6 +27,8 @@ Route::resource('Supervisor', 'SupervisorController');
 Route::resource('schedule', 'ScheduleController');
 Route::get('schedule/generate', 'ScheduleController@generate');
 Route::post('schedule/generate', 'ScheduleController@generate');
+Route::post('schedule/history', 'ScheduleController@getScheduleDetails');
+
 
 Route::get('/buttons', 'ProfileController@index');
 Route::get('/securityques', 'SecurityquestionsresetController@index');

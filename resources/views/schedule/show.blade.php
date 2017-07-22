@@ -21,12 +21,7 @@
             <div class="col-md-8 col-md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div class="pull-right">
-                            <form action="{{ url('/addemployee/create') }}" method="GET">{{ csrf_field() }}
-                                <button type="submit" id="create-patient" class="btn btn-success"><i class="fa fa-btn fa-file-o"></i>Add Employee</button>
-                            </form>
-                        </div>
-                        <div style="text-align: center"><h3>{{ 'Employees' }}</h3></div>
+                        <div style="text-align: center"><h3>{{ 'Schedule History' }}</h3></div>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
@@ -34,28 +29,20 @@
                                 <thead> <!-- Table Headings -->
                                 <tr class="bg-info">
                                     {{--<th>User</th><th>Email</th><th>Status</th><th class="no-sort">Actions</th>--}}
-                                    <th>Employee ID</th>
-                                    <th>Employee Name</th>
-                                    <th>Position</th>
-                                    <th>Experience</th>
+                                    <th>Schedule Date</th>
+                                    <th>Schedule Time</th>
+                                    <th>Created At</th>
                                     <th style="text-align: center">Actions</th>
                                 </tr>
                                 </thead>
 
                                 <tbody> <!-- Table Body -->
-                                @foreach($employees as $employee)
-
+                                @foreach($schedules as $schedule)
                                     <tr>
-                                        <td class="table-text"><div>{{ $employee->empid  }}</div></td>
-                                        <td class="table-text">
-                                            <div>
-                                                <a href="{{ url('addemployee/'.$employee->id.'/edit') }}">{{ $employee->empfname.' '.$employee->emplname }}</a>
-                                                
-                                            </div>
-                                        </td>
-                                        <td class="table-text"><div>{{ $employee->positiontype }}</div></td>
-                                        <td class="table-text"><div>{{ $employee->experience }}</div></td>
-                                        <td><a href="{{url('addemployee',$employee->id)}}" class="btn btn-primary">Details</a></td>
+                                        <td class="table-text"><div>{{ $schedule->date  }}</div></td>
+                                        <td class="table-text"><div>{{ $schedule->time }}</div></td>
+                                        <td class="table-text"><div>{{ Carbon\Carbon::parse($schedule->created_at)->toDayDateTimeString() }}</div></td>
+                                        <td><a href="{{url('schedule/show/',$schedule->id)}}" class="btn btn-primary">View</a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -82,4 +69,5 @@
             $('tr').tooltip({html: true, placement: 'auto' });
         } );
     </script>
+
 @endsection

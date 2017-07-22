@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
 use Validator;
+use DateTime;
 
 class ScheduleController extends Controller
 {
@@ -780,10 +781,6 @@ class ScheduleController extends Controller
 
     }
 
-    public function show() {
-        echo "Show Function to be implemented with View Old Schedules";
-    }
-
     public function edit($id) {
 
         $scheduler = Schedule::find($id);
@@ -1029,5 +1026,27 @@ class ScheduleController extends Controller
             }
         }
         return $duplicate;
+    }
+
+
+    public function getScheduleDetails(Request $request) {
+
+        $scheduleDate = $request['schedule_date'];
+        $scheduleTime = $request['schedule_time'];
+
+        $schedules = Schedule::where([
+            ['date', '=',  $scheduleDate],
+            ['time', '=', $scheduleTime],
+        ])->get();
+
+        return view ('schedule.show', compact('schedules'));
+
+    }
+
+    public function show () {
+
+        $this->viewData['heading'] = 'Request Schedule';
+        return view ('schedule.requestschedule', $this->viewData);
+
     }
 }
