@@ -13,7 +13,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
 use Validator;
 use DateTime;
-
+use Auth;
 class ScheduleController extends Controller
 {
 
@@ -1046,8 +1046,9 @@ class ScheduleController extends Controller
 
     public function show () {
 
+         $user = Auth::user();
         $this->viewData['heading'] = 'Request Schedule';
-        return view ('schedule.requestschedule', $this->viewData);
+        return view ('schedule.requestschedule', compact('user'), $this->viewData);
 
     }
 }
