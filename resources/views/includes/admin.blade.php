@@ -1,7 +1,7 @@
 
 <div class=".container-fluid" style="float: left;  width: 15%; border-right: 2px solid black; margin:0px; padding:0px;">
     <div style="height: 70%">
-        <img class="img-responsive center-block"  src="{{URL::asset('/images/man.jpg')}}" alt="Chania" height="150" width="150">
+        <img class="img-responsive center-block"  src="/wlms/public/uploads/images/{{ $user->avatar}}" alt="Chania" height="150" width="150">
     </div>
     <div>
         <h4  style="text-align: center; color: black"> Administrator </h4>

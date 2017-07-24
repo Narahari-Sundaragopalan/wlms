@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use App\Employee;
 use App\Http\Requests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -22,19 +23,22 @@ class EmployeeController extends Controller
     {
 
         $employees = Employee::all();
-       return view('addemployee.index', compact('employees'));
+        $user = Auth::user();
+       return view('addemployee.index', compact('employees', 'user'));
     }
 
     public function show($id)
     {
         $employee = Employee::findOrFail($id);
-        return view('addemployee.show', compact('employee'));
+        $user = Auth::user();
+        return view('addemployee.show', compact('employee','user'));
 
     }
 
     public function create()
     {
-        return view('addemployee.create');
+        $user = Auth::user();
+        return view('addemployee.create', compact('user'));
     }
 
     public function store(Request $request)
@@ -68,7 +72,8 @@ class EmployeeController extends Controller
         {
             
             $employee = Employee::find($id);
-            return view('addemployee.edit', compact('employee'));
+             $user = Auth::user();
+            return view('addemployee.edit', compact('employee', 'user'));
         }
 
         public

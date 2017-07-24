@@ -7,6 +7,7 @@ use App\Supervisor;
 use App\Http\Requests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Validator;
+use Auth;
 
 class SupervisorController extends Controller
 {
@@ -19,18 +20,21 @@ class SupervisorController extends Controller
     {
         
         $supervisor=Supervisor::all();
-        return view('Supervisor.index',compact('supervisor'));
+        $user = Auth::user();
+        return view('Supervisor.index',compact('supervisor','user'));
     }  
   
   public function show($id)
     {
         $supervisor = Supervisor::findOrFail($id);
-        return view('Supervisor.show',compact('supervisor'));
+        $user = Auth::user();
+        return view('Supervisor.show',compact('supervisor','user'));
     }
 
    public function create()
     {
-        return view('Supervisor.create');
+        $user = Auth::user();
+        return view('Supervisor.create',compact('user'));
     }
 
    public function store(Request $request)
@@ -58,7 +62,8 @@ class SupervisorController extends Controller
   public function edit($id)
     {
         $supervisor=Supervisor::find($id);
-        return view('Supervisor.edit',compact('supervisor'));
+        $user = Auth::user();
+        return view('Supervisor.edit',compact('supervisor','user'));
     }
 
   public function update($id,Request $request)

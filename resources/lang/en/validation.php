@@ -177,6 +177,9 @@ return [
         'schedule_time' => [
             'required' => 'Schedule Time cannot be blank',
         ],
+        'avatar' => [
+        'required' => 'No picture is selected',
+        ],
     ],
 
     /*
