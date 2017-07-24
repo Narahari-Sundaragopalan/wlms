@@ -30,7 +30,8 @@ class ScheduleController extends Controller
     }
 
     public function index() {
-        return view ('schedule.index');
+         $user = Auth::user();
+        return view ('schedule.index', compact('user'));
     }
 
     public function create() {
