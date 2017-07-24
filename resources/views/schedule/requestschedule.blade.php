@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="panel-body">
-                    {!! Form::open(['url' => 'schedule/history', 'class' => 'form-horizontal']) !!}
+                    {!! Form::open(['url' => 'schedule/requestSchedule', 'class' => 'form-horizontal']) !!}
                     @include('includes.error')
                     @include('includes.flash')
 

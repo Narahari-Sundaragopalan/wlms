@@ -58,7 +58,7 @@ class ScheduleController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('/schedule/create')->withErrors($validator)->withInput();
+            return redirect('/schedule/createSchedule')->withErrors($validator)->withInput();
         }
 
         $conveyorLines = $request['conveyor_line'];
@@ -313,9 +313,9 @@ class ScheduleController extends Controller
     }
 
 
-    public function downloadReport(Request $request) {
+    public function downloadReport($id) {
 
-        $scheduler = Schedule::all()->last();
+        $scheduler = Schedule::where('id', $id)->first();
         $timeOfSchedule = $scheduler->time;
         $coolersShipped = $scheduler->coolers_shipped;
         $scheduleDate = $scheduler->date;
@@ -1040,11 +1040,22 @@ class ScheduleController extends Controller
             ['time', '=', $scheduleTime],
         ])->get();
 
-        return view ('schedule.show', compact('schedules'));
+        return view ('schedule.showschedule', compact('schedules'));
 
     }
 
-    public function show () {
+    public function showSchedule ($id) {
+        $currentSchedule = Schedule::findorfail($id);
+
+        $this->viewData = json_decode($currentSchedule->schedule, true);
+        $this->viewData['heading'] = 'DC WEST LINE UP - '. $currentSchedule->date . ' - ' . $currentSchedule->time;
+        $this->viewData['id'] = $id;
+
+        return view ('schedule.showCurrentSchedule', $this->viewData);
+
+    }
+
+    public function requestSchedule() {
 
          $user = Auth::user();
         $this->viewData['heading'] = 'Request Schedule';

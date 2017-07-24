@@ -21,6 +21,9 @@
             <div class="col-md-8 col-md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">
+                        <div class="pull-left">
+                            <a href="{{ url('/schedule/requestSchedule') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
+                        </div>
                         <div style="text-align: center"><h3>{{ 'Schedule History' }}</h3></div>
                     </div>
                     <div class="panel-body">
@@ -42,7 +45,7 @@
                                         <td class="table-text"><div>{{ $schedule->date  }}</div></td>
                                         <td class="table-text"><div>{{ $schedule->time }}</div></td>
                                         <td class="table-text"><div>{{ Carbon\Carbon::parse($schedule->created_at)->toDayDateTimeString() }}</div></td>
-                                        <td><a href="{{url('schedule/show/',$schedule->id)}}" class="btn btn-primary">View</a></td>
+                                        <td><a href="{{url('schedule/show',$schedule->id)}}" class="btn btn-primary">View</a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

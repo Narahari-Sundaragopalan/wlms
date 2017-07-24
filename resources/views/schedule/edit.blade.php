@@ -25,7 +25,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="pull-left">
-                            <a href="{{ url('/schedule/create') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
+                            <a href="{{ url('/schedule/createSchedule') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
                         </div>
                         <br>
                         <div style="text-align: center"><h3>{{ $heading }}</h3></div>

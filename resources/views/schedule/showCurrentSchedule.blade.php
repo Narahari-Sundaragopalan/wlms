@@ -23,7 +23,7 @@
                             </form>
                         </div>
                         <div class="pull-left">
-                            <a href="{{ url('/schedule/createSchedule') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
+                            <a href="{{ url('/schedule/requestSchedule') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
                         </div>
                         <br>
                         <div style="text-align: center"><h3>{{ $heading }}</h3></div>
@@ -40,18 +40,18 @@
                                 </thead>
                                 <tbody>
                                 @foreach($schedule_array as $i => $value)
-                                <tr class="bg-info">
-                                <tr>
-                                    <td><?php echo ($schedule_array[$i]['line_number']); ?></td>
-                                    <td><?php echo ($schedule_array[$i]['labeler']); ?></td>
-                                    <td><?php echo ($schedule_array[$i]['icer']); ?></td>
-                                </tr>
+                                    <tr class="bg-info">
+                                    <tr>
+                                        <td><?php echo ($schedule_array[$i]['line_number']); ?></td>
+                                        <td><?php echo ($schedule_array[$i]['labeler']); ?></td>
+                                        <td><?php echo ($schedule_array[$i]['icer']); ?></td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
                             </table>
                         </div>
 
-                      <h3 style="text-align: center">Support Lines</h3>
+                        <h3 style="text-align: center">Support Lines</h3>
                         <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped cds-datatable">
@@ -113,9 +113,6 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                        </div>
-                        <div class="col-md-6 col-md-offset-5">
-                        <a href="{{url('schedule/editSchedule', $id)}}" class="btn btn-primary">Update</a>
                         </div>
                     </div>
                 </div>
