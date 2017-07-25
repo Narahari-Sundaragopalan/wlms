@@ -50,7 +50,7 @@
                                             <td>{{ $user->getRoleName() }}</td>
                                             <td>
                                                 <form action="{{ url('user/'.$user->id) }}" method="POST" onsubmit="return ConfirmDelete();">{{ csrf_field() }}{{ method_field('DELETE') }}
-                                                    @if($user->getRoleName() == 'Administrator')
+                                                    @if($user->id == 1)
                                                         <button type="submit" id="delete-user-{{ $user->id }}" class="btn btn-danger" disabled><i class="fa fa-btn fa-trash"></i>Delete</button>
                                                     @else
                                                         <button type="submit" id="delete-user-{{ $user->id }}" class="btn btn-danger"><i class="fa fa-btn fa-trash"></i>Delete</button>

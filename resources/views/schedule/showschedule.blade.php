@@ -13,8 +13,11 @@
         }
 
     </style>
-
+@if($user->getRoleName() == 'Administrator')
     @include('includes.admin')
+    @else 
+    @include('includes.manage')
+    @endif
 
     <div class="container">
         <div class="row">
