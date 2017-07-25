@@ -65,7 +65,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script>
         $(document).ready(function() {
-            $( "#datepicker1" ).datepicker();
+            $( "#datepicker1" ).datepicker({minDate:0});
         });
 
         $(document).ready(function() {
