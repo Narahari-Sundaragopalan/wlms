@@ -156,16 +156,19 @@ class ScheduleController extends Controller
         }
 
         //Create Line Setup for Mezzanine
-        $flag = true;
-        $lineArray = $this->createLineSetup($conveyorLines, $supportLines, $flag);
-
+        $mezzanineFlag = true;
+        $lineArray = $this->createLineSetup($conveyorLines, $supportLines, $mezzanineFlag);
 
         //Array for Mezzanine
-        $total_lines = intval($conveyorLines) + intval($supportLines);
-        $numOfMezzanineWorkers = intval($total_lines / 3);
-        if(intval($total_lines) % 3 != 0) {
+        $numOfMezzanineWorkers = (intval($conveyorLines / 3) + intval($supportLines / 3));
+        if(intval($conveyorLines) % 3 != 0) {
             $numOfMezzanineWorkers += 1;
         }
+        if(intval($supportLines) % 3 != 0) {
+            $numOfMezzanineWorkers += 1;
+        }
+
+
         //Index to maintain in array
         $mezIndex = 1; $k = 0;
         //Array to save assigned workers
@@ -192,14 +195,18 @@ class ScheduleController extends Controller
         }
 
         //Create Line Setup for Runners
-        $flag = false;
-        $lineArray = $this->createLineSetup($conveyorLines, $supportLines, $flag);
+        $mezzanineFlag = false;
+        $lineArray = $this->createLineSetup($conveyorLines, $supportLines, $mezzanineFlag);
 
         //Array for Runners in Schedule
-        $numOfRunners = intval($total_lines / 6);
-        if(intval($total_lines % 6) != 0) {
+        $numOfRunners = (intval($conveyorLines / 6) + intval($supportLines / 6));
+        if(intval($conveyorLines % 6) != 0) {
             $numOfRunners += 1;
         }
+        if(intval($supportLines % 6) != 0) {
+            $numOfRunners += 1;
+        }
+
         $runnerIndex = 1; $r = 0;
         //Array to save assigned runners
         $runnerArray = [];
@@ -253,9 +260,9 @@ class ScheduleController extends Controller
     }
 
 
-    public function createLineSetup($cLines, $sLines, $flag) {
+    public function createLineSetup($cLines, $sLines, $mezzanineFlag) {
         $divisor = 1;
-        if ($flag) {
+        if ($mezzanineFlag) {
             $divisor = 3;
         } else {
             $divisor = 6;
@@ -1074,7 +1081,7 @@ class ScheduleController extends Controller
 
     public function requestSchedule() {
 
-         $user = Auth::user();
+        $user = Auth::user();
         $this->viewData['heading'] = 'Request Schedule';
         return view ('schedule.requestschedule', compact('user'), $this->viewData);
 
