@@ -943,13 +943,23 @@ class ScheduleController extends Controller
             }
         }
 
+        $fieldToCompare = 'icer';
+        $duplicate = $this->checkArrayDuplicate($schedule_array, $fieldToCompare);
+        if($duplicate) {
+            $msg .= "Conveyor Lines cannot have same Icer in multiple lines\n";
+        }
+
         for($i = 0; $i < sizeof($icer_Support); $i++) {
             if(!empty($icer_Support[$i])) {
                 $schedule_array_2[$i]['icer'] = $icer_Support[$i];
             }
         }
 
-        //Do - Validation for ICER
+        $duplicate = $this->checkArrayDuplicate($schedule_array_2, $fieldToCompare);
+        if($duplicate) {
+            $msg .= "Support Lines cannot have same Icer in multiple lines\n";
+        }
+
 
 
         $fieldToCompare = 'line_number';
