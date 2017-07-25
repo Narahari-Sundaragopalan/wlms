@@ -1019,10 +1019,15 @@ class ScheduleController extends Controller
         {
             for ($ee = $e+1; $ee < count($array); $ee++)
             {
+                if($array[$ee][$field] == 'Temp' && $array[$e][$field] == 'Temp') {
+                    // If the employee is a Temp, skip name validation
+                    continue;
+                }
+
                 if (strcmp($array[$ee][$field],$array[$e][$field]) === 0)
                 {
                     $duplicate = true;
-                    break;
+                    break 2;
                 }
             }
         }
@@ -1040,7 +1045,9 @@ class ScheduleController extends Controller
             ['time', '=', $scheduleTime],
         ])->get();
 
-        return view ('schedule.showschedule', compact('schedules'));
+        $user = Auth::user();
+
+        return view ('schedule.showschedule', compact('schedules', 'user'));
 
     }
 
