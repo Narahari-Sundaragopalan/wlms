@@ -12,9 +12,9 @@
             text-align: center;
         }
     </style>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="pull-right">
@@ -25,12 +25,11 @@
                         <div class="pull-left">
                             <a href="{{ url('/schedule/createSchedule') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
                         </div>
-                        <br>
-                        <div style="text-align: center"><h3>{{ $heading }}</h3></div>
+                        <div style="text-align: center;"><h4>{{ $heading }}</h4></div>
                     </div>
-                    <div class="panel-body">
+                   <div class="panel-body">
+                     <div class="col-xs-6">
                         <h3 style="text-align: center">Conveyor Lines</h3>
-                        <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped cds-datatable">
                                 <thead> <!-- Table Headings -->
@@ -50,9 +49,9 @@
                                 </tbody>
                             </table>
                         </div>
-
+                        </div>
+                         <div class="col-xs-6">
                       <h3 style="text-align: center">Support Lines</h3>
-                        <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped cds-datatable">
                                 <thead> <!-- Table Headings -->
@@ -74,9 +73,9 @@
                                 </tbody>
                             </table>
                         </div>
-
+                        </div>
+                         <div class="col-xs-3">
                         <h3 style="text-align: center">Mezzanine</h3>
-                        <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped cds-datatable">
                                 <thead> <!-- Table Headings -->
@@ -94,9 +93,10 @@
                                 </tbody>
                             </table>
                         </div>
+                        </div>
 
+                        <div class="col-xs-3">
                         <h3 style="text-align: center">Runners</h3>
-                        <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped cds-datatable">
                                 <thead> <!-- Table Headings -->
@@ -113,6 +113,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                        </div>
                         </div>
                         <div class="col-md-6 col-md-offset-5">
                         <a href="{{url('schedule/editSchedule', $id)}}" class="btn btn-primary">Update</a>
