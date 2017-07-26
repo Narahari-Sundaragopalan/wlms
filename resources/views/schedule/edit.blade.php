@@ -56,7 +56,9 @@
                                                 </option>
                                                 <optgroup label="Line #">
                                                     @foreach($conveyorLines as $conveyorLine)
-                                                        <option><?php echo ($conveyorLine); ?></option>
+                                                        <option>
+                                                            <?php echo ($conveyorLine); ?>
+                                                        </option>
                                                     @endforeach
                                                 </optgroup>
                                             </select>
@@ -64,17 +66,21 @@
                                         <td>
                                             <select class="form-control" name="labeler_conveyor[]" id="employees[]">
 
-                                                    <option value="" selected class="bld">
+                                                    <option value="<?php echo ($schedule_array[$i]['labeler']); ?>" selected class="bld">
                                                         <?php echo ($schedule_array[$i]['labeler']); ?>
                                                     </option>
                                                 <optgroup label="Labelers">
                                                     @foreach($empLabelers as $empLabeler)
-                                                        <option value="<?php echo ($empLabeler) ?>"><?php echo ($empLabeler); ?></option>
+                                                        <option value="<?php echo ($empLabeler) ?>">
+                                                            <?php echo ($empLabeler); ?>
+                                                        </option>
                                                     @endforeach
                                                 </optgroup>
                                                 <optgroup label="Non-Labelers">
                                                     @foreach($empNonLabelers as $empNonLabeler)
-                                                        <option value="<?php echo ($empNonLabeler) ?>"><?php echo ($empNonLabeler); ?></option>
+                                                        <option value="<?php echo ($empNonLabeler) ?>">
+                                                            <?php echo ($empNonLabeler); ?>
+                                                        </option>
                                                     @endforeach
                                                 </optgroup>
                                                 <option><?php echo 'Temp' ?></option>
@@ -82,17 +88,21 @@
                                         </td>
                                         <td>
                                             <select class="form-control" name="icer_conveyor[]" id="employees[]">
-                                                <option value="" selected class="bld">
+                                                <option value="<?php echo ($schedule_array[$i]['icer']); ?>" selected class="bld">
                                                     <?php echo ($schedule_array[$i]['icer']); ?>
                                                 </option>
                                                 <optgroup label="Icers">
                                                     @foreach($empIcers as $empIcer)
-                                                        <option value="<?php echo ($empIcer) ?>"><?php echo ($empIcer); ?></option>
+                                                        <option value="<?php echo ($empIcer) ?>">
+                                                            <?php echo ($empIcer); ?>
+                                                        </option>
                                                     @endforeach
                                                 </optgroup>
                                                 <optgroup label="Non-Icers">
                                                     @foreach($empNonIcers as $empNonIcer)
-                                                        <option value="<?php echo ($empNonIcer) ?>"><?php echo ($empNonIcer); ?></option>
+                                                        <option value="<?php echo ($empNonIcer) ?>">
+                                                            <?php echo ($empNonIcer); ?>
+                                                        </option>
                                                     @endforeach
                                                 </optgroup>
                                                 <option><?php echo 'Temp' ?></option>
@@ -126,24 +136,30 @@
                                                 </option>
                                                 <optgroup label="Line #">
                                                     @foreach($supportLines as $supportLine)
-                                                        <option><?php echo ($supportLine); ?></option>
+                                                        <option>
+                                                            <?php echo ($supportLine); ?>
+                                                        </option>
                                                     @endforeach
                                                 </optgroup>
                                             </select>
                                         </td>
                                         <td>
                                             <select class="form-control" name="labeler_support[]" id="employees[]">
-                                                <option value="" selected class="bld">
+                                                <option value="<?php echo ($schedule_array_2[$j]['labeler']); ?>" selected class="bld">
                                                     <?php echo ($schedule_array_2[$j]['labeler']); ?>
                                                 </option>
                                                 <optgroup label="Labelers">
                                                     @foreach($empLabelers as $empLabeler)
-                                                        <option value="<?php echo ($empLabeler) ?>"><?php echo ($empLabeler); ?></option>
+                                                        <option value="<?php echo ($empLabeler) ?>">
+                                                            <?php echo ($empLabeler); ?>
+                                                        </option>
                                                     @endforeach
                                                 </optgroup>
                                                 <optgroup label="Non-Labelers">
                                                     @foreach($empNonLabelers as $empNonLabeler)
-                                                        <option value="<?php echo ($empNonLabeler) ?>"><?php echo ($empNonLabeler); ?></option>
+                                                        <option value="<?php echo ($empNonLabeler) ?>">
+                                                            <?php echo ($empNonLabeler); ?>
+                                                        </option>
                                                     @endforeach
                                                 </optgroup>
                                                 <option><?php echo 'Temp' ?></option>
@@ -151,17 +167,21 @@
                                         </td>
                                         <td>
                                             <select class="form-control" name="stocker_support[]" id="employees[]">
-                                                <option value="" selected class="bld">
+                                                <option value="<?php echo ($schedule_array_2[$j]['stocker']); ?>" selected class="bld">
                                                     <?php echo ($schedule_array_2[$j]['stocker']); ?>
                                                 </option>
                                                 <optgroup label="Stockers">
                                                     @foreach($empStockers as $empStocker)
-                                                        <option value="<?php echo ($empStocker) ?>"><?php echo ($empStocker); ?></option>
+                                                        <option value="<?php echo ($empStocker) ?>">
+                                                            <?php echo ($empStocker); ?>
+                                                        </option>
                                                     @endforeach
                                                 </optgroup>
                                                 <optgroup label="Non-Stockers">
                                                     @foreach($empNonStockers as $empNonStocker)
-                                                        <option value="<?php echo ($empNonStocker) ?>"><?php echo ($empNonStocker); ?></option>
+                                                        <option value="<?php echo ($empNonStocker) ?>">
+                                                            <?php echo ($empNonStocker); ?>
+                                                        </option>
                                                     @endforeach
                                                 </optgroup>
                                                 <option><?php echo 'Temp' ?></option>
@@ -169,17 +189,21 @@
                                         </td>
                                         <td>
                                             <select class="form-control" name="icer_support[]" id="employees[]">
-                                                <option value="" selected class="bld">
+                                                <option value="<?php echo ($schedule_array_2[$j]['icer']); ?>" selected class="bld">
                                                     <?php echo ($schedule_array_2[$j]['icer']); ?>
                                                 </option>
                                                 <optgroup label="Icers">
                                                     @foreach($empIcers as $empIcer)
-                                                        <option value="<?php echo ($empIcer) ?>"><?php echo ($empIcer); ?></option>
+                                                        <option value="<?php echo ($empIcer) ?>">
+                                                            <?php echo ($empIcer); ?>
+                                                        </option>
                                                     @endforeach
                                                 </optgroup>
                                                 <optgroup label="Non-Icers">
                                                     @foreach($empNonIcers as $empNonIcer)
-                                                        <option value="<?php echo ($empNonIcer) ?>"><?php echo ($empNonIcer); ?></option>
+                                                        <option value="<?php echo ($empNonIcer) ?>">
+                                                            <?php echo ($empNonIcer); ?>
+                                                        </option>
                                                     @endforeach
                                                 </optgroup>
                                                 <option><?php echo 'Temp' ?></option>
@@ -206,17 +230,21 @@
                                         <td><?php echo ($mezzanineArray[$i]['lines']); ?></td>
                                         <td>
                                             <select class="form-control" name="mezzanine[]" id="employees[]">
-                                                <option value="" selected class="bld">
+                                                <option value="<?php echo ($mezzanineArray[$i]['name']); ?>" selected class="bld">
                                                     <?php echo ($mezzanineArray[$i]['name']); ?>
                                                 </option>
                                                 <optgroup label="Mezzanines">
                                                     @foreach($empMezzanines as $empMezzanine)
-                                                        <option value="<?php echo ($empMezzanine) ?>"><?php echo ($empMezzanine); ?></option>
+                                                        <option value="<?php echo ($empMezzanine) ?>">
+                                                            <?php echo ($empMezzanine); ?>
+                                                        </option>
                                                     @endforeach
                                                 </optgroup>
                                                 <optgroup label="Non-Mezzanines">
                                                     @foreach($empNonMezzanines as $empNonMezzanine)
-                                                        <option value="<?php echo ($empNonMezzanine) ?>"><?php echo ($empNonMezzanine); ?></option>
+                                                        <option value="<?php echo ($empNonMezzanine) ?>">
+                                                            <?php echo ($empNonMezzanine); ?>
+                                                        </option>
                                                     @endforeach
                                                 </optgroup>
                                                 <option><?php echo 'Temp' ?></option>
@@ -243,17 +271,21 @@
                                         <td><?php echo ($runnerArray[$i]['lines']); ?></td>
                                         <td>
                                             <select class="form-control" name="runner[]" id="employees[]">
-                                                <option value="" selected class="bld">
+                                                <option value="<?php echo ($runnerArray[$i]['name']); ?>" selected class="bld">
                                                     <?php echo ($runnerArray[$i]['name']); ?>
                                                 </option>
                                                 <optgroup label="Runners">
                                                     @foreach($empRunners as $empRunner)
-                                                        <option value="<?php echo ($empRunner) ?>"><?php echo ($empRunner); ?></option>
+                                                        <option value="<?php echo ($empRunner) ?>">
+                                                            <?php echo ($empRunner); ?>
+                                                        </option>
                                                     @endforeach
                                                 </optgroup>
                                                 <optgroup label="Non-Runners">
                                                     @foreach($empNonRunners as $empNonRunner)
-                                                        <option value="<?php echo ($empNonRunner) ?>"><?php echo ($empNonRunner); ?></option>
+                                                        <option value="<?php echo ($empNonRunner) ?>">
+                                                            <?php echo ($empNonRunner); ?>
+                                                        </option>
                                                     @endforeach
                                                 </optgroup>
                                                 <option><?php echo 'Temp' ?></option>
@@ -296,7 +328,6 @@
 
         employees.change(function() {
             var selectedDropDown = $(this).attr("name");
-            //document.write($labeler_conveyor);
             if (selectedDropDown !== 'labeler_conveyor[]') {
                 labeler_conveyor.find('option').prop("disabled", false);
             }
@@ -345,6 +376,7 @@
                 }
             }
         });
+
     </script>
 
 @endsection
