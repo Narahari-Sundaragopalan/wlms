@@ -346,4 +346,26 @@
             }
         });
     </script>
-    @endsection
+
+@endsection
+
+@section('footer')
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+    <script>
+            $(document).ready(function($) {
+                $("select[name='conveyor_lines[]']").select2({width: 100});
+                $("select[name='support_lines[]']").select2({width: 100});
+                $("select[name='labeler_conveyor[]']").select2({width: 275});
+                $("select[name='icer_conveyor[]']").select2({width: 275});
+                $("select[name='labeler_support[]']").select2({width: 180});
+                $("select[name='stocker_support[]']").select2({width: 180});
+                $("select[name='icer_support[]']").select2({width: 180});
+                $("select[name='mezzanine[]']").select2({width: 600});
+                $("select[name='runner[]']").select2({width: 600});
+
+        });
+
+    </script>
+
+@endsection
