@@ -17,7 +17,7 @@
                         <a href="{{ url('/schedule') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
                     </div>
 
-                    <h4> {{ 'Create Schedule' }}</h4>
+                    <h3> {{ 'Create Schedule' }}</h3>
 
                 </div>
 

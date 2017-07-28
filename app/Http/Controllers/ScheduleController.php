@@ -356,9 +356,12 @@ class ScheduleController extends Controller
         $supportLineArray = $this->viewData['schedule_array_2'];
         $runnerArray = $this->viewData['runnerArray'];
         $mezzanineArray = $this->viewData['mezzanineArray'];
+        $qcArray = $this->viewData['qc'];
+        $kpmgArray = $this->viewData['kpmg'];
+        $cleanerArray = $this->viewData['cleaner'];
 
-        Excel::create('DC WEST LINE UP@'.$scheduleDate.'@'.$timeOfSchedule, function($excel) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped) {
-            $excel->sheet('Lineup', function($sheet) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped) {
+        Excel::create('DC WEST LINE UP@'.$scheduleDate.'@'.$timeOfSchedule, function($excel) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped, $cleanerArray, $qcArray, $kpmgArray) {
+            $excel->sheet('Lineup', function($sheet) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped, $cleanerArray, $qcArray, $kpmgArray) {
                 $sheet->cell('I1', function ($cell) {
                     $cell->setValue('Time');
                     $cell->setFontWeight($bold = true);
@@ -659,7 +662,7 @@ class ScheduleController extends Controller
                     $column = 'W';
                 }
 
-                //$column = 'A'; $row = 35;
+
                 $sheet->cell('A35', function ($cell) {
                     $cell->setValue('Mezzanine');
                     $cell->setFontWeight($bold = true);
@@ -669,6 +672,52 @@ class ScheduleController extends Controller
                     $cell->setValue('Lines');
                     $cell->setFontWeight($bold = true);
                 });
+
+                $sheet->cell('U35', function ($cell) {
+                    $cell->setValue('Clean');
+                    $cell->setFontWeight($bold = true);
+                });
+
+                $column = 'U'; $row = 36;
+                for ($index = 0; $index < sizeof($cleanerArray); $index++) {
+                    $cellNumber = $column . $row;
+                    $sheet->cell($cellNumber, function ($cell) use ($cleanerArray, $index) {
+                        $cellValue = $cleanerArray[$index];
+                        $cell->setValue($cellValue);
+                    });
+                    $row++;
+                }
+
+                $sheet->cell('V35', function ($cell) {
+                    $cell->setValue('KPMG');
+                    $cell->setFontWeight($bold = true);
+                });
+
+                $column = 'V'; $row = 36;
+                for ($index = 0; $index < sizeof($kpmgArray); $index++) {
+                    $cellNumber = $column . $row;
+                    $sheet->cell($cellNumber, function ($cell) use ($kpmgArray, $index) {
+                        $cellValue = $kpmgArray[$index];
+                        $cell->setValue($cellValue);
+                    });
+                    $row++;
+                }
+
+
+                $sheet->cell('W35', function ($cell) {
+                    $cell->setValue('QC');
+                    $cell->setFontWeight($bold = true);
+                });
+
+                $column = 'W'; $row = 36;
+                for ($index = 0; $index < sizeof($qcArray); $index++) {
+                    $cellNumber = $column . $row;
+                    $sheet->cell($cellNumber, function ($cell) use ($qcArray, $index) {
+                        $cellValue = $qcArray[$index];
+                        $cell->setValue($cellValue);
+                    });
+                    $row++;
+                }
 
                 $column = 'B'; $row = 35;
                 for ($index = 0; $index < sizeof($mezzanineArray); $index++) {
@@ -934,7 +983,6 @@ class ScheduleController extends Controller
         $conveyorLine = $request['conveyor_lines'];
         $supportLine = $request['support_lines'];
         $qc = $request['qc'];
-        //dd($request['qc']);
         $cleaner = $request['cleaner'];
         $kpmg = $request['kpmg'];
 
@@ -1086,6 +1134,7 @@ class ScheduleController extends Controller
         $this->viewData['kpmg'] = $kpmgArray;
         $this->viewData['cleaner'] = $cleanerArray;
         $this->viewData['id'] = $id;
+        $this->viewData['heading'] = 'DC WEST LINE UP - '. $scheduler->date . ' - ' . $scheduler->time;
         $scheduler->schedule = json_encode($this->viewData);
         $scheduler->update();
 
