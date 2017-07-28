@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
     </head>
 
-
+     <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -44,6 +44,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection
 

@@ -6,12 +6,15 @@
             background: forestgreen;
             color: white;
             text-align: center;
+
         }
         tr {
             font-size: medium;
             text-align: center;
+
         }
     </style>
+    
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -74,11 +77,12 @@
                             </table>
                         </div>
                         </div>
+                         
                          <div class="col-xs-3">
                         <h3 style="text-align: center">Mezzanine</h3>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped cds-datatable">
-                                <thead> <!-- Table Headings -->
+                                <thead> 
                                 <th>Lines</th>
                                 <th>Assigned</th>
                                 </thead>

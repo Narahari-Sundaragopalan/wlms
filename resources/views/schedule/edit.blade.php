@@ -19,21 +19,21 @@
         }
 
     </style>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="pull-left">
                             <a href="{{ url('/schedule/createSchedule') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
                         </div>
                         <br>
-                        <div style="text-align: center"><h3>{{ $heading }}</h3></div>
+                        <div style="text-align: center"><h4>{{ $heading }}</h4></div>
                     </div>
                     <div class="panel-body">
+                    <div class="col-xs-6">
                         {!! Form::model($id ,['method' => 'PATCH','route'=>['schedule.update', $id]]) !!}
                         <h3 style="text-align: center">Conveyor Lines</h3>
-                        <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped cds-datatable">
                                 <thead> <!-- Table Headings -->
@@ -113,9 +113,10 @@
                                 </tbody>
                             </table>
                         </div>
-
+                        </div>
+                        
+                        <div class="col-xs-6">
                         <h3 style="text-align: center">Support Lines</h3>
-                        <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped cds-datatable">
                                 <thead> <!-- Table Headings -->
@@ -214,9 +215,10 @@
                                 </tbody>
                             </table>
                         </div>
-
+                        </div>
+                        
+                        <div class="col-xs-3">
                         <h3 style="text-align: center">Mezzanines</h3>
-                        <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped cds-datatable">
                                 <thead> <!-- Table Headings -->
@@ -255,9 +257,10 @@
                                 </tbody>
                             </table>
                         </div>
+                        </div>
 
+                        <div class="col-xs-3">
                         <h3 style="text-align: center">Runners</h3>
-                        <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped cds-datatable">
                                 <thead> <!-- Table Headings -->
@@ -295,6 +298,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                        </div>
                         </div>
                         <div class="form-group" style="text-align: left">
                             <div class="col-md-6 col-md-offset-5">
@@ -386,15 +390,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
     <script>
             $(document).ready(function($) {
-                $("select[name='conveyor_lines[]']").select2({width: 100});
-                $("select[name='support_lines[]']").select2({width: 100});
-                $("select[name='labeler_conveyor[]']").select2({width: 275});
-                $("select[name='icer_conveyor[]']").select2({width: 275});
-                $("select[name='labeler_support[]']").select2({width: 180});
-                $("select[name='stocker_support[]']").select2({width: 180});
-                $("select[name='icer_support[]']").select2({width: 180});
-                $("select[name='mezzanine[]']").select2({width: 600});
-                $("select[name='runner[]']").select2({width: 600});
+                $("select[name='conveyor_lines[]']").select2({width: 60});
+                $("select[name='support_lines[]']").select2({width: 60});
+                $("select[name='labeler_conveyor[]']").select2({width: 230});
+                $("select[name='icer_conveyor[]']").select2({width: 230});
+                $("select[name='labeler_support[]']").select2({width: 160});
+                $("select[name='stocker_support[]']").select2({width: 160});
+                $("select[name='icer_support[]']").select2({width: 160});
+                $("select[name='mezzanine[]']").select2({width:200});
+                $("select[name='runner[]']").select2({width: 200});
 
         });
 
