@@ -299,6 +299,107 @@
                                 </tbody>
                             </table>
                         </div>
+                        <h3 style="text-align: center">Others</h3>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped cds-datatable">
+                                <thead> <!-- Table Headings -->
+                                <th>Position</th>
+                                <th colspan="2">Assigned</th>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>QC</td>
+                                    <td>
+                                        <select class="form-control" name="qc[]" id="employees[]" multiple>
+                                            @if(sizeof($qcArray))
+                                                @foreach($qcArray as $index => $qcCurrent)
+                                            <option value="<?php echo $qcCurrent; ?>" selected>
+                                                        <?php echo $qcCurrent; ?>
+                                            </option>
+                                                @endforeach
+                                            @else
+                                                <?php echo ""; ?>
+                                            @endif
+                                            <optgroup label="QC">
+                                                @foreach($empQCs as $empQC)
+                                                    <option value="<?php echo ($empQC); ?>">
+                                                        <?php echo ($empQC); ?>
+                                                    </option>
+                                                @endforeach
+                                            </optgroup>
+                                            <optgroup label="Non-QC">
+                                                @foreach($empNonQCs as $empNonQC)
+                                                    <option value="<?php echo ($empNonQC); ?>">
+                                                        <?php echo ($empNonQC); ?>
+                                                    </option>
+                                                @endforeach
+                                            </optgroup>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>KPMG</td>
+                                    <td>
+                                        <select class="form-control" name="kpmg[]" id="employees[]" multiple>
+                                            @if(sizeof($kpmgArray))
+                                                @foreach($kpmgArray as $index => $kpmgCurrent)
+                                                    <option value="<?php echo $kpmgCurrent;?>" selected>
+                                                        <?php echo $kpmgCurrent;?>
+                                                    </option>
+                                                @endforeach
+                                            @else
+                                                <?php echo ""; ?>
+                                            @endif
+                                            <optgroup label="KPMG">
+                                                @foreach($empKPMGs as $empKPMG)
+                                                    <option value="<?php echo ($empKPMG); ?>">
+                                                        <?php echo ($empKPMG); ?>
+                                                    </option>
+                                                @endforeach
+                                            </optgroup>
+                                            <optgroup label="Non-KPMG">
+                                                @foreach($empNonKPMGs as $empNonKPMG)
+                                                    <option value="<?php echo ($empNonKPMG); ?>">
+                                                        <?php echo ($empNonKPMG); ?>
+                                                    </option>
+                                                @endforeach
+                                            </optgroup>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Clean</td>
+                                    <td>
+                                        <select class="form-control" name="cleaner[]" id="employees[]" multiple>
+                                            @if(sizeof($cleanerArray))
+                                                @foreach($cleanerArray as $index => $cleanerCurrent)
+                                                    <option value="<?php echo $cleanerCurrent;?>" selected>
+                                                        <?php echo $cleanerCurrent;?>
+                                                    </option>
+                                                @endforeach
+                                            @else
+                                                <?php echo ""; ?>
+                                            @endif
+                                            <optgroup label="Cleaners">
+                                                @foreach($empCleaners as $empCleaner)
+                                                    <option value="<?php echo ($empCleaner); ?>">
+                                                        <?php echo ($empCleaner); ?>
+                                                    </option>
+                                                @endforeach
+                                            </optgroup>
+                                            <optgroup label="Non-Cleaners">
+                                                @foreach($empNonCleaners as $empNonCleaner)
+                                                    <option value="<?php echo ($empNonCleaner); ?>">
+                                                        <?php echo ($empNonCleaner); ?>
+                                                    </option>
+                                                @endforeach
+                                            </optgroup>
+                                        </select>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="form-group" style="text-align: left">
                             <div class="col-md-6 col-md-offset-5">
@@ -326,6 +427,10 @@
         var icer_support = $("select[name='icer_support[]']");
         var mezzanine = $("select[name='mezzanine[]']");
         var runner = $("select[name='runner[]']");
+        var cleaner = $("select[name='cleaner[]']");
+        var qc = $("select[name='qc[]']");
+        var kpmg = $("select[name='kpmg[]']");
+
 
         var employees = $("select[id='employees[]']");
 
@@ -353,6 +458,16 @@
             if (selectedDropDown !== 'runner[]') {
                 runner.find('option').prop("disabled", false);
             }
+            if (selectedDropDown !== 'cleaner[]') {
+                cleaner.find('option').prop("disabled", false);
+            }
+            if (selectedDropDown !== 'qc[]') {
+                qc.find('option').prop("disabled", false);
+            }
+            if (selectedDropDown !== 'kpmg[]') {
+                kpmg.find('option').prop("disabled", false);
+            }
+
 
             var selectedItem = $(this).val();
             if (selectedItem) {
@@ -378,6 +493,16 @@
                 if (selectedDropDown !== 'runner[]') {
                     runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
                 }
+                if (selectedDropDown !== 'cleaner[]') {
+                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                }
+                if (selectedDropDown !== 'qc[]') {
+                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                }
+                if (selectedDropDown !== 'kpmg[]') {
+                    kpmg.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                }
+
             }
         });
 
@@ -399,6 +524,10 @@
                 $("select[name='icer_support[]']").select2({width: 160});
                 $("select[name='mezzanine[]']").select2({width:200});
                 $("select[name='runner[]']").select2({width: 200});
+                $("select[name='qc[]']").select2({width: 200});
+                $("select[name='cleaner[]']").select2({width: 200});
+                $("select[name='kpmg[]']").select2({width: 200});
+
 
         });
 

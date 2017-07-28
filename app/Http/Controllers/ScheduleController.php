@@ -19,14 +19,19 @@ class ScheduleController extends Controller
 
     public function __construct()
     {
-        //Add middleware auth for refresh
+        $this->middleware('auth');
         $this->schedule_array = [];
         $this->schedule_array_2 = [];
         $this->mezzanineArray = [];
         $this->runnerArray = [];
+        $this->qc = [];
+        $this->kpmg = [];
+        $this->cleaner = [];
         $this->heading = 'Schedule';
 
-        $this->viewData = ['schedule_array' => $this->schedule_array, 'schedule_array_2' => $this->schedule_array_2, 'mezzanineArray' => $this->mezzanineArray, 'runnerArray' => $this->runnerArray, 'heading' => $this->heading];
+        $this->viewData = ['schedule_array' => $this->schedule_array, 'schedule_array_2' => $this->schedule_array_2,
+            'mezzanineArray' => $this->mezzanineArray, 'runnerArray' => $this->runnerArray, 'qc' => $this->qc,
+            'cleaner' => $this->cleaner, 'kpmg' => $this->kpmg, 'heading' => $this->heading];
     }
 
     public function index() {
@@ -69,6 +74,8 @@ class ScheduleController extends Controller
         $labeler_array = []; $icerArray = [];
         $index = 1; $icerIndex = 1;
         $employees = Employee::all();
+        $isLangEnglish = false;
+        $isLangSpanish = false;
 
         // Generate Line Setup for Conveyor Lines
         while($i > 0) {
@@ -78,14 +85,21 @@ class ScheduleController extends Controller
                     if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
                         $labeler = $employee->empfname . ' ' . $employee->emplname[0];
                         $labelerSet = true;
+                        $isLangEnglish = $employee->english;
+                        $isLangSpanish = $employee->spanish;
                         $labeler_array[$index++] = $employee->id;
                     }
                 } elseif ($employee->icer && !($icerSet)) {
                     if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
-                        $icer = $employee->empfname . ' ' . $employee->emplname[0];
-                        $icerSet = true;
-                        $icerArray[$icerIndex] = $employee->id;
-                        $count++;
+                        if(($employee->english && $isLangEnglish) || ($employee->spanish && $isLangSpanish)) {
+                            $icer = $employee->empfname . ' ' . $employee->emplname[0];
+                            $icerSet = true;
+                            $icerArray[$icerIndex] = $employee->id;
+                            $count++;
+                        } else {
+                            continue;
+                        }
+
                     }
                 }
                 if($labelerSet && $icerSet) {
@@ -118,20 +132,28 @@ class ScheduleController extends Controller
                     if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $icerArray, true))) {
                         $labeler = $employee->empfname . ' ' . $employee->emplname[0];
                         $labelerSet = true;
+                        $isLangEnglish = $employee->english;
+                        $isLangSpanish = $employee->spanish;
                         $labeler_array[$index++] = $employee->id;
                     }
                 } elseif ($employee->stocker && !($stockerSet)) {
                     if(!(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
-                        $stocker = $employee->empfname . ' ' . $employee->emplname[0];
-                        $stockerSet = true;
-                        $stocker_array[$stock_index++] = $employee->id;
+                        if(($employee->english && $isLangEnglish) || ($employee->spanish && $isLangSpanish)) {
+                            $stocker = $employee->empfname . ' ' . $employee->emplname[0];
+                            $stockerSet = true;
+                            $stocker_array[$stock_index++] = $employee->id;
+                        }
                     }
                 } elseif ($employee->icer && !($icerSet)) {
                     if(!(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
-                        $icer = $employee->empfname . ' ' . $employee->emplname[0];
-                        $icerSet = true;
-                        $icerArray[$icerIndex++] = $employee->id;
-                        $count++;
+                        if(($employee->english && $isLangEnglish) || ($employee->spanish && $isLangSpanish)) {
+                            $icer = $employee->empfname . ' ' . $employee->emplname[0];
+                            $icerSet = true;
+                            $icerArray[$icerIndex++] = $employee->id;
+                            $count++;
+                        } else {
+                            continue;
+                        }
                     }
                 }
                 if($labelerSet && $stockerSet && $icerSet) {
@@ -239,6 +261,9 @@ class ScheduleController extends Controller
         $this->viewData['schedule_array_2'] = $this->schedule_array_2;
         $this->viewData['mezzanineArray'] = $this->mezzanineArray;
         $this->viewData['runnerArray'] = $this->runnerArray;
+        $this->viewData['qc'] = $this->qc;
+        $this->viewData['cleaner'] = $this->cleaner;
+        $this->viewData['kpmg'] = $this->kpmg;
 
 
         $timeOfSchedule = $request['schedule_time'];
@@ -794,7 +819,7 @@ class ScheduleController extends Controller
         $scheduler = Schedule::find($id);
         $employees = Employee::all();
         $empLabelers = []; $empStockers = []; $empIcers = []; $empRunners = [];
-        $empMezzanines = []; $empList = [];
+        $empMezzanines = []; $empList = []; $empCleaners =[]; $empKPMGs = []; $empQCs = [];
 
         foreach ($employees as $employee) {
             if($employee->labeler) {
@@ -816,6 +841,16 @@ class ScheduleController extends Controller
             if ($employee->mezzanine) {
                 array_push($empMezzanines, $employee->getEmpNameAttribute());
             }
+            if ($employee->qc) {
+                array_push($empQCs, $employee->getEmpNameAttribute());
+            }
+            if ($employee->gift_box) {
+                array_push($empKPMGs, $employee->getEmpNameAttribute());
+            }
+            if ($employee->cleaner) {
+                array_push($empCleaners, $employee->getEmpNameAttribute());
+            }
+
             array_push($empList, $employee->getEmpNameAttribute());
         }
 
@@ -833,12 +868,19 @@ class ScheduleController extends Controller
         $currentSchedule['schedule_array_2'] = $this->viewData['schedule_array_2'];
         $currentSchedule['runnerArray'] = $this->viewData['runnerArray'];
         $currentSchedule['mezzanineArray'] = $this->viewData['mezzanineArray'];
+        $currentSchedule['qcArray'] = $this->viewData['qc'];
+        $currentSchedule['kpmgArray'] = $this->viewData['kpmg'];
+        $currentSchedule['cleanerArray'] = $this->viewData['cleaner'];
+
 
         $currentSchedule['empLabelers'] = $empLabelers;
         $currentSchedule['empStockers'] = $empStockers;
         $currentSchedule['empIcers'] = $empIcers;
         $currentSchedule['empRunners'] = $empRunners;
         $currentSchedule['empMezzanines'] = $empMezzanines;
+        $currentSchedule['empQCs'] = $empQCs;
+        $currentSchedule['empCleaners'] = $empCleaners;
+        $currentSchedule['empKPMGs'] = $empKPMGs;
 
         $currentSchedule['employees'] = $empList;
 
@@ -847,12 +889,18 @@ class ScheduleController extends Controller
         $empNonIcers = array_diff($empList, $empIcers);
         $empNonRunners = array_diff($empList, $empRunners);
         $empNonMezzanines = array_diff($empList, $empMezzanines);
+        $empNonCleaners = array_diff($empList, $empCleaners);
+        $empNonKPMGs = array_diff($empList, $empKPMGs);
+        $empNonQCs = array_diff($empList, $empQCs);
 
         $currentSchedule['empNonLabelers'] = $empNonLabelers;
         $currentSchedule['empNonStockers'] = $empNonStockers;
         $currentSchedule['empNonIcers'] = $empNonIcers;
         $currentSchedule['empNonRunners'] = $empNonRunners;
         $currentSchedule['empNonMezzanines'] = $empNonMezzanines;
+        $currentSchedule['empNonQCs'] = $empNonQCs;
+        $currentSchedule['empNonCleaners'] = $empNonCleaners;
+        $currentSchedule['empNonKPMGs'] = $empNonKPMGs;
 
         $currentSchedule['id'] = $id;
         $currentSchedule['conveyorLines'] = $conveyorLines;
@@ -864,7 +912,7 @@ class ScheduleController extends Controller
 
     public function update($id, Request $request) {
 
-        
+
         //Get the current schedule from the database
         $scheduler = Schedule::find($id);
         $this->viewData = json_decode($scheduler->schedule, true);
@@ -872,6 +920,9 @@ class ScheduleController extends Controller
         $schedule_array_2 = $this->viewData['schedule_array_2'];
         $runnerArray = $this->viewData['runnerArray'];
         $mezzanineArray = $this->viewData['mezzanineArray'];
+        $qcArray = $this->viewData['qc'];
+        $kpmgArray = $this->viewData['kpmg'];
+        $cleanerArray = $this->viewData['cleaner'];
 
         $labeler_ConveyorLine = $request['labeler_conveyor'];
         $labeler_SupportLine = $request['labeler_support'];
@@ -882,8 +933,12 @@ class ScheduleController extends Controller
         $icer_Support = $request['icer_support'];
         $conveyorLine = $request['conveyor_lines'];
         $supportLine = $request['support_lines'];
+        $qc = $request['qc'];
+        //dd($request['qc']);
+        $cleaner = $request['cleaner'];
+        $kpmg = $request['kpmg'];
 
-        //Validation check -- do Validation for Icer, Do Validation across updated Schedule
+        //Validation check -- Do Validation across updated Schedule
 
         for($i = 0; $i < sizeof($labeler_ConveyorLine); $i++) {
             if(!empty($labeler_ConveyorLine[$i])) {
@@ -994,6 +1049,10 @@ class ScheduleController extends Controller
             $msg .= "Support Line # cannot be same in multiple lines\n";
         }
 
+        $qcArray = $qc;
+        $kpmgArray = $kpmg;
+        $cleanerArray = $cleaner;
+
         if(!empty($msg)) {
             Session::flash('message', $msg);
             return Redirect::back();
@@ -1005,6 +1064,9 @@ class ScheduleController extends Controller
         $this->schedule_array_2 = $schedule_array_2;
         $this->mezzanineArray = $runnerArray;
         $this->runnerArray = $mezzanineArray;
+        $this->qc = $qcArray;
+        $this->cleaner = $cleanerArray;
+        $this->kpmg = $kpmgArray;
 
         $cLines = sizeof($schedule_array);
         $sLines = sizeof($schedule_array_2);
@@ -1020,6 +1082,9 @@ class ScheduleController extends Controller
         $this->viewData['schedule_array_2'] = $schedule_array_2;
         $this->viewData['runnerArray'] = $runnerArray;
         $this->viewData['mezzanineArray'] = $mezzanineArray;
+        $this->viewData['qc'] = $qcArray;
+        $this->viewData['kpmg'] = $kpmgArray;
+        $this->viewData['cleaner'] = $cleanerArray;
         $this->viewData['id'] = $id;
         $scheduler->schedule = json_encode($this->viewData);
         $scheduler->update();
