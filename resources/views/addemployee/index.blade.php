@@ -30,7 +30,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped cds-datatable">
+                            <table class="table table-bordered table-striped cds-datatable" id="example" data-page-length='100'>
                                 <thead> <!-- Table Headings -->
                                 <tr class="bg-info">
                                     {{--<th>User</th><th>Email</th><th>Status</th><th class="no-sort">Actions</th>--}}
@@ -80,6 +80,16 @@
                 $('tr').tooltip({html: true, placement: 'auto' });
             } );
             $('tr').tooltip({html: true, placement: 'auto' });
+
         } );
+
+      /*  $(document).ready(function() {
+            var oTable = $('#example').dataTable( {
+                'iDisplayLength':10
+            } );
+        });*/
+
+
+
     </script>
 @endsection
