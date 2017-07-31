@@ -280,6 +280,7 @@ class ScheduleController extends Controller
         $currentSchedule = Schedule::all()->last()->id;
         $this->viewData['id'] = $currentSchedule;
         $this->viewData['heading'] = 'DC WEST LINE UP - '. $scheduleDate . ' - ' . $timeOfSchedule;
+        $this->viewData['coolersShipped'] = $coolersShipped;
 
         return view ('schedule.generate', $this->viewData);
     }
@@ -1187,6 +1188,7 @@ class ScheduleController extends Controller
         $this->viewData = json_decode($currentSchedule->schedule, true);
         $this->viewData['heading'] = 'DC WEST LINE UP - '. $currentSchedule->date . ' - ' . $currentSchedule->time;
         $this->viewData['id'] = $id;
+        $this->viewData['coolersShipped'] = $currentSchedule->coolers_shipped;
 
         return view ('schedule.showCurrentSchedule', $this->viewData);
 

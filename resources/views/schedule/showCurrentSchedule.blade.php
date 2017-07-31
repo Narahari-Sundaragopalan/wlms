@@ -3,8 +3,8 @@
 @section('content')
     <style>
         th {
-            background: forestgreen;
-            color: white;
+            background: lightgrey;
+            color: black;
             text-align: center;
         }
         tr {
@@ -26,55 +26,58 @@
                         <div class="pull-left">
                             <a href="{{ url('/schedule/requestSchedule') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
                         </div>
-                        <div style="text-align: center"><h4>{{ $heading }}</h4></div>
+                        <div style="text-align: center"><h4>{{ $heading }}</h4>
+                            <h4 style="text-align: center;">{{"Coolers Shipped - " . $coolersShipped }}</h4>
+                        </div>
                     </div>
                     <div class="panel-body">
-                    <div class="col-xs-6">
-                        <h3 style="text-align: center">Conveyor Lines</h3>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped cds-datatable">
-                                <thead> <!-- Table Headings -->
-                                <th>Line Number</th>
-                                <th>Labeler</th>
-                                <th>Icer</th>
-                                </thead>
-                                <tbody>
-                                @foreach($schedule_array as $i => $value)
-                                    <tr class="bg-info">
-                                    <tr>
-                                        <td><?php echo ($schedule_array[$i]['line_number']); ?></td>
-                                        <td><?php echo ($schedule_array[$i]['labeler']); ?></td>
-                                        <td><?php echo ($schedule_array[$i]['icer']); ?></td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        </div>
-                        
                         <div class="col-xs-6">
-                        <h3 style="text-align: center">Support Lines</h3>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped cds-datatable">
-                                <thead> <!-- Table Headings -->
-                                <th>Line Number</th>
-                                <th>Labeler</th>
-                                <th>Stocker</th>
-                                <th>Icer</th>
-                                </thead>
-                                <tbody>
-                                @foreach($schedule_array_2 as $j => $value)
-                                    <tr class="bg-info">
-                                    <tr>
-                                        <td><?php echo ($schedule_array_2[$j]['line_number']); ?></td>
-                                        <td><?php echo ($schedule_array_2[$j]['labeler']); ?></td>
-                                        <td><?php echo ($schedule_array_2[$j]['stocker']); ?></td>
-                                        <td><?php echo ($schedule_array_2[$j]['icer']); ?></td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
+                            <h3 style="text-align: center;">Conveyor Lines</h3>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped cds-datatable">
+                                    <thead> <!-- Table Headings -->
+                                    <th>Line Number</th>
+                                    <th>Labeler</th>
+                                    <th>Icer</th>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($schedule_array as $i => $value)
+                                        <tr class="bg-info">
+                                        <tr>
+                                            <td><?php echo ($schedule_array[$i]['line_number']); ?></td>
+                                            <td><?php echo ($schedule_array[$i]['labeler']); ?></td>
+                                            <td><?php echo ($schedule_array[$i]['icer']); ?></td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
+
+
+                        <div class="col-xs-6">
+                            <h3 style="text-align: center">Support Lines</h3>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped cds-datatable dataTable no-footer">
+                                    <thead> <!-- Table Headings -->
+                                    <th>Line Number</th>
+                                    <th>Labeler</th>
+                                    <th>Stocker</th>
+                                    <th>Icer</th>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($schedule_array_2 as $j => $value)
+                                        <tr class="bg-info">
+                                        <tr>
+                                            <td><?php echo($schedule_array_2[$j]['line_number']); ?></td>
+                                            <td><?php echo($schedule_array_2[$j]['labeler']); ?></td>
+                                            <td><?php echo($schedule_array_2[$j]['stocker']); ?></td>
+                                            <td><?php echo($schedule_array_2[$j]['icer']); ?></td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         
                         <div class="col-xs-3">

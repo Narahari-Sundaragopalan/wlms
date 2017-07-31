@@ -28,7 +28,9 @@
                         <div class="pull-left">
                             <a href="{{ url('/schedule/createSchedule') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
                         </div>
-                        <div style="text-align: center;"><h3>{{ $heading }}</h3></div>
+                        <div style="text-align: center;"><h3>{{ $heading }}</h3>
+                            <h4 style="text-align: center;">{{"Coolers Shipped - " . $coolersShipped }}</h4>
+                        </div>
                     </div>
                     <div class="panel-body">
                         <div class="col-xs-6">
@@ -177,4 +179,5 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection
