@@ -70,7 +70,7 @@ class ScheduleController extends Controller
         $supportLines = $request['support_line'];
 
         $count = 0; $i = intval($conveyorLines);
-        $line = [];
+        $line = []; $numberOfTemps = 0;
         $labeler_array = []; $icerArray = [];
         $index = 1; $icerIndex = 1;
         $employees = Employee::all();
@@ -108,10 +108,12 @@ class ScheduleController extends Controller
             }
             if($labeler == '') {
                 $labeler = 'Temp';
+                $numberOfTemps++;
             }
             if ($icer == '') {
                 $icer = 'Temp';
                 $count++;
+                $numberOfTemps++;
             }
             $line = ['line_number' => $count, 'labeler' => $labeler, 'icer' => $icer];
             array_push($this->schedule_array, $line);
@@ -164,13 +166,16 @@ class ScheduleController extends Controller
             // If Labeler and Stocker are not set, set them as Default Temps
             if($labeler == '') {
                 $labeler = 'Temp';
+                $numberOfTemps++;
             }
             if ($stocker == '') {
                 $stocker = 'Temp';
+                $numberOfTemps++;
             }
             if($icer == '') {
                 $icer = 'Temp';
                 $count++;
+                $numberOfTemps++;
             }
             $line = ['line_number' => $count, 'labeler' => $labeler, 'stocker' => $stocker, 'icer' => $icer];
             array_push($this->schedule_array_2, $line);
@@ -197,7 +202,7 @@ class ScheduleController extends Controller
         $mezArray = [];
 
         while ($k < $numOfMezzanineWorkers) {
-            $mezzanine = 'Temp';$mezzanineSet = false;
+            $mezzanine = '';$mezzanineSet = false;
             foreach ($employees as $employee) {
                 if ($employee->mezzanine && !($mezzanineSet)) {
                     if (!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true))
@@ -210,6 +215,10 @@ class ScheduleController extends Controller
                 if($mezzanineSet) {
                     break;
                 }
+            }
+            if($mezzanine == '') {
+                $mezzanine = 'Temp';
+                $numberOfTemps++;
             }
             $line = ['lines' => $lineArray[$k], 'name' => $mezzanine];
             array_push($this->mezzanineArray, $line);
@@ -234,7 +243,7 @@ class ScheduleController extends Controller
         $runnerArray = [];
 
         while($r < $numOfRunners) {
-            $runner = 'Temp'; $runnerSet = false;
+            $runner = ''; $runnerSet = false;
             foreach ($employees as $employee) {
                 if($employee->runner && !($runnerSet)) {
                     if (!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true))
@@ -249,6 +258,10 @@ class ScheduleController extends Controller
                 if($runnerSet) {
                     break;
                 }
+            }
+            if($runner == '') {
+                $runner = 'Temp';
+                $numberOfTemps++;
             }
             $line = ['lines' => $lineArray[$r], 'name' => $runner];
             array_push($this->runnerArray, $line);
@@ -281,6 +294,7 @@ class ScheduleController extends Controller
         $this->viewData['id'] = $currentSchedule;
         $this->viewData['heading'] = 'DC WEST LINE UP - '. $scheduleDate . ' - ' . $timeOfSchedule;
         $this->viewData['coolersShipped'] = $coolersShipped;
+        $this->viewData['Temps'] = $numberOfTemps;
 
         return view ('schedule.generate', $this->viewData);
     }
@@ -357,9 +371,21 @@ class ScheduleController extends Controller
         $supportLineArray = $this->viewData['schedule_array_2'];
         $runnerArray = $this->viewData['runnerArray'];
         $mezzanineArray = $this->viewData['mezzanineArray'];
-        $qcArray = $this->viewData['qc'];
-        $kpmgArray = $this->viewData['kpmg'];
-        $cleanerArray = $this->viewData['cleaner'];
+        if(isset($this->viewData['qc'])) {
+            $qcArray = $this->viewData['qc'];
+        } else {
+            $qcArray = $this->qc;
+        }
+        if(isset($this->viewData['kpmg'])) {
+            $kpmgArray = $this->viewData['kpmg'];
+        } else {
+            $kpmgArray = $this->kpmg;
+        }
+        if(isset($this->viewData['cleaner'])) {
+            $cleanerArray = $this->viewData['cleaner'];
+        } else {
+            $cleanerArray = $this->cleaner;
+        }
 
         Excel::create('DC WEST LINE UP@'.$scheduleDate.'@'.$timeOfSchedule, function($excel) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped, $cleanerArray, $qcArray, $kpmgArray) {
             $excel->sheet('Lineup', function($sheet) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped, $cleanerArray, $qcArray, $kpmgArray) {

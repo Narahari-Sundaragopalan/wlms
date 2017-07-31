@@ -84,6 +84,7 @@
                                                         @endforeach
                                                     </optgroup>
                                                     <option><?php echo 'Temp' ?></option>
+                                                    <option><?php echo 'NA' ?></option>
                                                 </select>
                                             </td>
                                             <td>
@@ -106,6 +107,7 @@
                                                         @endforeach
                                                     </optgroup>
                                                     <option><?php echo 'Temp' ?></option>
+                                                    <option><?php echo 'NA' ?></option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -164,6 +166,7 @@
                                                         @endforeach
                                                     </optgroup>
                                                     <option><?php echo 'Temp' ?></option>
+                                                    <option><?php echo 'NA' ?></option>
                                                 </select>
                                             </td>
                                             <td>
@@ -186,6 +189,7 @@
                                                         @endforeach
                                                     </optgroup>
                                                     <option><?php echo 'Temp' ?></option>
+                                                    <option><?php echo 'NA' ?></option>
                                                 </select>
                                             </td>
                                             <td>
@@ -208,6 +212,7 @@
                                                         @endforeach
                                                     </optgroup>
                                                     <option><?php echo 'Temp' ?></option>
+                                                    <option><?php echo 'NA' ?></option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -250,6 +255,7 @@
                                                         @endforeach
                                                     </optgroup>
                                                     <option><?php echo 'Temp' ?></option>
+                                                    <option><?php echo 'NA' ?></option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -292,6 +298,7 @@
                                                         @endforeach
                                                     </optgroup>
                                                     <option><?php echo 'Temp' ?></option>
+                                                    <option><?php echo 'NA' ?></option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -512,6 +519,7 @@
                 $(document).ready(function($) {
 
                     //Do Same check for Icer Arrays, but skip Employee if its a Temp
+                    //document.write(labeler_conveyor.eq(1).val());
 
                     for(var i = 0; i<labeler_conveyor.length; i++) {
 

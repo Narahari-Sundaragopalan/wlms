@@ -31,6 +31,7 @@
                         <div style="text-align: center;"><h3>{{ $heading }}</h3>
                             <h4 style="text-align: center;">{{"Coolers Shipped - " . $coolersShipped }}</h4>
                         </div>
+                        <p style="font-weight: bold">{{"Total Temps Needed : " . $Temps }}</p>
                     </div>
                     <div class="panel-body">
                         <div class="col-xs-6">
@@ -58,7 +59,7 @@
                         <div class="col-xs-6">
                             <h3 style="text-align: center">Support Lines</h3>
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped cds-datatable">
+                                <table class="table table-bordered table-striped cds-datatable dataTable">
                                     <thead> <!-- Table Headings -->
                                     <th>Line Number</th>
                                     <th>Labeler</th>
@@ -172,6 +173,7 @@
                                 </table>
                             </div>
                         </div>
+                        <br>
                         <div class="col-md-6 col-md-offset-5">
                             <a href="{{url('schedule/editSchedule', $id)}}" class="btn btn-primary">Update</a>
                         </div>
