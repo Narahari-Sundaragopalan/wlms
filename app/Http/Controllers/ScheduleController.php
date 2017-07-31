@@ -961,7 +961,6 @@ class ScheduleController extends Controller
 
     public function update($id, Request $request) {
 
-
         //Get the current schedule from the database
         $scheduler = Schedule::find($id);
         $this->viewData = json_decode($scheduler->schedule, true);
@@ -1105,7 +1104,6 @@ class ScheduleController extends Controller
             Session::flash('message', $msg);
             return Redirect::back();
         }
-
 
 
         $this->schedule_array = $schedule_array;
