@@ -28,10 +28,12 @@
                         <div class="pull-left">
                             <a href="{{ url('/schedule/createSchedule') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
                         </div>
-                        <div style="text-align: center;"><h3>{{ $heading }}</h3>
-                            <h4 style="text-align: center;">{{"Coolers Shipped - " . $coolersShipped }}</h4>
+                        <div style="text-align: center;"><h3>{{ $heading }}</h3></div>
+                        <div>
+                            <span id="first" style="font-weight: bold; text-align: left;">{{"Coolers Shipped - " . $coolersShipped }}</span>
+                            <span id="second" style="font-weight: bold; float: right;">{{"Total Temps Needed : " . $Temps }}</span>
                         </div>
-                        <p style="font-weight: bold">{{"Total Temps Needed : " . $Temps }}</p>
+                       <!--  <p style="font-weight: bold">{{"Total Temps Needed : " . $Temps }}</p> -->
                     </div>
                     <div class="panel-body">
                         <div class="col-xs-6">
