@@ -82,9 +82,9 @@
                                         </tr>
                                         <tr>
                                             <td>Skills</td>
-                                            <td><?php if ($employee['icer']) { echo 'Icer';}; ?> <?php if ($employee['icer']) { echo ', ';}; if ($employee['labeler']) {echo 'Labeler';}; ?> <?php if ($employee['labeler']) {echo ', ';}; if ($employee['mezzanine']) {echo 'Mezzanine';}; ?>
-                                                <?php if ($employee['mezzanine']) {echo ', ';}; if ($employee['stocker']) {echo 'Stocker';}; ?> <?php if ($employee['stocker']) {echo ',';}; if ($employee['runner']) { echo 'Runner';}; ?> <?php if ($employee['runner']) { echo ', ';}; if ($employee['qc']) {echo 'QC';}; ?>
-                                                <?php if ($employee['qc']) {echo ', ';}; if ($employee['cleaner']) { echo 'Cleaner';}; ?> <?php if ($employee['cleaner']) { echo ', ';}; if ($employee['gift_box']) {echo 'Gift Box';}; ?></td>
+                                            <td><?php if ($employee['icer']) { echo 'Icer';}; ?> <?php if ($employee['labeler']) {echo 'Labeler';}; ?> <?php if ($employee['mezzanine']) {echo 'Mezzanine';}; ?>
+                                                <?php if ($employee['stocker']) {echo 'Stocker';}; ?> <?php if ($employee['runner']) { echo 'Runner';}; ?> <?php if ($employee['qc']) {echo 'QC';}; ?>
+                                                <?php if ($employee['cleaner']) { echo 'Cleaner';}; ?> <?php if ($employee['gift_box']) {echo 'Gift Box';}; ?></td>
                                         </tr>
                                         <tr>
                                             <td>Labeler Rating </td>

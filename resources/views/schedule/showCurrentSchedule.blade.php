@@ -5,7 +5,6 @@
         th {
             background: lightgrey;
             color: black;
-            color: white;
             text-align: center;
         }
         tr {
@@ -32,30 +31,6 @@
                         </div>
                     </div>
                     <div class="panel-body">
-
-                    
-                    <div class="col-xs-6">
-                        <h3 style="text-align: center">Conveyor Lines</h3>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped cds-datatable">
-                                <thead> <!-- Table Headings -->
-                                <th>Line Number</th>
-                                <th>Labeler</th>
-                                <th>Icer</th>
-                                </thead>
-                                <tbody>
-                                @foreach($schedule_array as $i => $value)
-                                    <tr class="bg-info">
-                                    <tr>
-                                        <td><?php echo ($schedule_array[$i]['line_number']); ?></td>
-                                        <td><?php echo ($schedule_array[$i]['labeler']); ?></td>
-                                        <td><?php echo ($schedule_array[$i]['icer']); ?></td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        </div>
                         <div class="col-xs-6">
                             <h3 style="text-align: center;">Conveyor Lines</h3>
                             <div class="table-responsive">
