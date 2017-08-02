@@ -33,7 +33,6 @@
                             <span id="first" style="font-weight: bold; text-align: left;">{{"Coolers Shipped - " . $coolersShipped }}</span>
                             <span id="second" style="font-weight: bold; float: right;">{{"Total Temps Needed : " . $Temps }}</span>
                         </div>
-                       <!--  <p style="font-weight: bold">{{"Total Temps Needed : " . $Temps }}</p> -->
                     </div>
                     <div class="panel-body">
                         <div class="col-xs-6">

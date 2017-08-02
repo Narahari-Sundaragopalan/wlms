@@ -1012,7 +1012,6 @@ class ScheduleController extends Controller
         $cleaner = $request['cleaner'];
         $kpmg = $request['kpmg'];
 
-        //Validation check -- Do Validation across updated Schedule
 
         for($i = 0; $i < sizeof($labeler_ConveyorLine); $i++) {
             if(!empty($labeler_ConveyorLine[$i])) {

@@ -428,6 +428,7 @@
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script>
+
                 // Disable selected name in other dropdown based on user selection
                 var labeler_conveyor = $("select[name='labeler_conveyor[]']");
                 var icer_conveyor = $("select[name='icer_conveyor[]']");
@@ -440,10 +441,12 @@
                 var qc = $("select[name='qc[]']");
                 var kpmg = $("select[name='kpmg[]']");
 
-
-
                 var employees = $("select[id='employees[]']");
 
+                var oldSelectedItem = '';
+                    employees.on('select2:selecting', function (evt) {
+                        oldSelectedItem = $(this).val();
+                 });
 
                 employees.change(function() {
                     var selectedDropDown = $(this).attr("name");
@@ -484,42 +487,184 @@
 
                         if (selectedDropDown !== 'labeler_conveyor[]') {
                             labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                            labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+
                         }
+                        window.setTimeout(0);
                         if (selectedDropDown !== 'icer_conveyor[]') {
                             icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                            icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
                         }
                         if (selectedDropDown !== 'labeler_support[]') {
                             labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                            labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
                         }
                         if (selectedDropDown !== 'stocker_support[]') {
                             stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                            stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
                         }
                         if (selectedDropDown !== 'icer_support[]') {
                             icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                            icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
                         }
                         if (selectedDropDown !== 'mezzanine[]') {
                             mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                            mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
                         }
                         if (selectedDropDown !== 'runner[]') {
                             runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                            runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
                         }
                         if (selectedDropDown !== 'cleaner[]') {
                             cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                            cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
                         }
                         if (selectedDropDown !== 'qc[]') {
                             qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                            qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
                         }
                         if (selectedDropDown !== 'kpmg[]') {
                             kpmg.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                            kpmg.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
                         }
 
                     }
+
+                    for(var i = 0; i<labeler_conveyor.length; i++) {
+
+                        icer_conveyor.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                        labeler_support.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                        stocker_support.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                        icer_support.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                        mezzanine.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                        runner.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                        cleaner.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                        qc.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                        kpmg.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
+
+                    }
+
+                    for(i = 0; i<labeler_support.length; i++) {
+
+                        //Disable values for Labeler Support Line
+                        icer_conveyor.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
+                        labeler_conveyor.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
+                        stocker_support.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
+                        icer_support.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
+                        mezzanine.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
+                        runner.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
+                        cleaner.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
+                        qc.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
+                        kpmg.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
+
+                    }
+
+                    for(i = 0; i<icer_conveyor.length; i++) {
+
+                        //Disable values for Labeler Support Line
+                        labeler_support.find('option[value="' + icer_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                        labeler_conveyor.find('option[value="' + icer_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                        stocker_support.find('option[value="' + icer_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                        icer_support.find('option[value="' + icer_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                        mezzanine.find('option[value="' + icer_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                        runner.find('option[value="' + icer_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                        cleaner.find('option[value="' + icer_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                        qc.find('option[value="' + icer_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                        kpmg.find('option[value="' + icer_conveyor.eq(i).val() + '"]').prop("disabled", true);
+
+                    }
+
+                    for(i = 0; i<icer_support.length; i++) {
+
+                        //Disable values for Labeler Support Line
+                        labeler_support.find('option[value="' + icer_support.eq(i).val() + '"]').prop("disabled", true);
+                        labeler_conveyor.find('option[value="' + icer_support.eq(i).val() + '"]').prop("disabled", true);
+                        stocker_support.find('option[value="' + icer_support.eq(i).val() + '"]').prop("disabled", true);
+                        icer_conveyor.find('option[value="' + icer_support.eq(i).val() + '"]').prop("disabled", true);
+                        mezzanine.find('option[value="' + icer_support.eq(i).val() + '"]').prop("disabled", true);
+                        runner.find('option[value="' + icer_support.eq(i).val() + '"]').prop("disabled", true);
+                        cleaner.find('option[value="' + icer_support.eq(i).val() + '"]').prop("disabled", true);
+                        qc.find('option[value="' + icer_support.eq(i).val() + '"]').prop("disabled", true);
+                        kpmg.find('option[value="' + icer_support.eq(i).val() + '"]').prop("disabled", true);
+
+                    }
+
+                    for(i = 0; i<stocker_support.length; i++) {
+                        icer_conveyor.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+                        labeler_conveyor.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+                        labeler_support.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+                        icer_support.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+                        mezzanine.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+                        runner.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+                        cleaner.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+                        qc.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+                        kpmg.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+                    }
+
+                    for(i = 0; i<mezzanine.length; i++) {
+                        icer_conveyor.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+                        labeler_conveyor.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+                        labeler_support.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+                        icer_support.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+                        stocker_support.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+                        runner.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+                        cleaner.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+                        qc.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+                        kpmg.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+                    }
+
+                    for(i = 0; i<runner.length; i++) {
+                        icer_conveyor.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+                        labeler_conveyor.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+                        labeler_support.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+                        icer_support.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+                        stocker_support.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+                        mezzanine.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+                        cleaner.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+                        qc.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+                        kpmg.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+                    }
+
+                    for(i = 0; i<cleaner.length; i++) {
+                        icer_conveyor.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+                        labeler_conveyor.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+                        labeler_support.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+                        icer_support.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+                        stocker_support.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+                        mezzanine.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+                        runner.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+                        qc.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+                        kpmg.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+                    }
+
+                    for(i = 0; i<qc.length; i++) {
+                        icer_conveyor.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+                        labeler_conveyor.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+                        labeler_support.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+                        icer_support.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+                        stocker_support.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+                        mezzanine.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+                        runner.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+                        cleaner.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+                        kpmg.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+                    }
+
+                    for(i = 0; i<kpmg.length; i++) {
+                        icer_conveyor.find('option[value="' + kpmg.eq(i).val() + '"]').prop("disabled", true);
+                        labeler_conveyor.find('option[value="' + kpmg.eq(i).val() + '"]').prop("disabled", true);
+                        labeler_support.find('option[value="' + kpmg.eq(i).val() + '"]').prop("disabled", true);
+                        icer_support.find('option[value="' + kpmg.eq(i).val() + '"]').prop("disabled", true);
+                        stocker_support.find('option[value="' + kpmg.eq(i).val() + '"]').prop("disabled", true);
+                        mezzanine.find('option[value="' + kpmg.eq(i).val() + '"]').prop("disabled", true);
+                        runner.find('option[value="' + kpmg.eq(i).val() + '"]').prop("disabled", true);
+                        cleaner.find('option[value="' + kpmg.eq(i).val() + '"]').prop("disabled", true);
+                        qc.find('option[value="' + kpmg.eq(i).val() + '"]').prop("disabled", true);
+                    }
+
                 });
 
-                $(document).ready(function($) {
 
-                    //Do Same check for Icer Arrays, but skip Employee if its a Temp
-                    //document.write(labeler_conveyor.eq(1).val());
+                $(document).ready(function($) {
 
                     for(var i = 0; i<labeler_conveyor.length; i++) {
 
@@ -622,7 +767,6 @@
                         cleaner.find('option[value="' + kpmg.eq(i).val() + '"]').prop("disabled", true);
                         qc.find('option[value="' + kpmg.eq(i).val() + '"]').prop("disabled", true);
                     }
-
 
                 });
 
