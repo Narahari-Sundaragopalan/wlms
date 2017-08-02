@@ -277,6 +277,7 @@ class ScheduleController extends Controller
         $this->viewData['qc'] = $this->qc;
         $this->viewData['cleaner'] = $this->cleaner;
         $this->viewData['kpmg'] = $this->kpmg;
+        $this->viewData['Temps'] = $numberOfTemps;
 
 
         $timeOfSchedule = $request['schedule_time'];
@@ -294,7 +295,7 @@ class ScheduleController extends Controller
         $this->viewData['id'] = $currentSchedule;
         $this->viewData['heading'] = 'DC WEST LINE UP - '. $scheduleDate . ' - ' . $timeOfSchedule;
         $this->viewData['coolersShipped'] = $coolersShipped;
-        $this->viewData['Temps'] = $numberOfTemps;
+        // $this->viewData['Temps'] = $numberOfTemps;
 
         return view ('schedule.generate', $this->viewData);
     }
@@ -371,6 +372,7 @@ class ScheduleController extends Controller
         $supportLineArray = $this->viewData['schedule_array_2'];
         $runnerArray = $this->viewData['runnerArray'];
         $mezzanineArray = $this->viewData['mezzanineArray'];
+        $numberOfTemps = $this->viewData['Temps'];
         if(isset($this->viewData['qc'])) {
             $qcArray = $this->viewData['qc'];
         } else {
@@ -387,8 +389,8 @@ class ScheduleController extends Controller
             $cleanerArray = $this->cleaner;
         }
 
-        Excel::create('DC WEST LINE UP@'.$scheduleDate.'@'.$timeOfSchedule, function($excel) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped, $cleanerArray, $qcArray, $kpmgArray) {
-            $excel->sheet('Lineup', function($sheet) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped, $cleanerArray, $qcArray, $kpmgArray) {
+        Excel::create('DC WEST LINE UP@'.$scheduleDate.'@'.$timeOfSchedule, function($excel) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped, $cleanerArray, $qcArray, $kpmgArray,$numberOfTemps) {
+            $excel->sheet('Lineup', function($sheet) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped, $cleanerArray, $qcArray, $kpmgArray, $numberOfTemps) {
                 $sheet->cell('I1', function ($cell) {
                     $cell->setValue('Time');
                     $cell->setFontWeight($bold = true);
@@ -947,6 +949,8 @@ class ScheduleController extends Controller
         $currentSchedule['qcArray'] = $this->viewData['qc'];
         $currentSchedule['kpmgArray'] = $this->viewData['kpmg'];
         $currentSchedule['cleanerArray'] = $this->viewData['cleaner'];
+        $currentSchedule['coolersShipped'] = $scheduler->coolers_shipped;
+        $currentSchedule['Temps'] = $this->viewData['Temps'];
 
 
         $currentSchedule['empLabelers'] = $empLabelers;
@@ -1159,6 +1163,7 @@ class ScheduleController extends Controller
         $this->viewData['cleaner'] = $cleanerArray;
         $this->viewData['id'] = $id;
         $this->viewData['heading'] = 'DC WEST LINE UP - '. $scheduler->date . ' - ' . $scheduler->time;
+        $this->viewData['coolersShipped'] = $scheduler->coolers_shipped;
         $scheduler->schedule = json_encode($this->viewData);
         $scheduler->update();
 

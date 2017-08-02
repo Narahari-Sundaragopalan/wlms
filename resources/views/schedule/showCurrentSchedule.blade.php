@@ -26,8 +26,10 @@
                         <div class="pull-left">
                             <a href="{{ url('/schedule/requestSchedule') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
                         </div>
-                        <div style="text-align: center"><h4>{{ $heading }}</h4>
-                            <h4 style="text-align: center;">{{"Coolers Shipped - " . number_format($coolersShipped) }}</h4>
+                        <div ><h4 style="text-align: center;">{{ $heading }}</h4>
+                           <!--  <h4 style="text-align: center;">{{"Coolers Shipped - " . number_format($coolersShipped) }}</h4> -->
+                           <span id="first" style="font-weight: bold; text-align:left;">{{"Coolers Shipped - " . number_format($coolersShipped) }}</span>
+                            <span id="second" style="font-weight: bold; float: right; ">{{"Total Temps Needed : " . $Temps }}</span>
                         </div>
                     </div>
                     <div class="panel-body">
