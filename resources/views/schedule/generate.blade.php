@@ -30,12 +30,12 @@
                         </div>
                         <div style="text-align: center;"><h3>{{ $heading }}</h3></div>
                         <div>
-                            <span id="first" style="font-weight: bold; text-align: left;">{{"Coolers Shipped - " . $coolersShipped }}</span>
+                            <span id="first" style="font-weight: bold; text-align: left;">{{"Coolers Shipped - " . number_format($coolersShipped) }}</span>
                             <span id="second" style="font-weight: bold; float: right;">{{"Total Temps Needed : " . $Temps }}</span>
                         </div>
                     </div>
                     <div class="panel-body">
-                        <div class="col-xs-6">
+                        <div class="col-xs-6" >
                             <h3 style="text-align: center">Conveyor Lines</h3>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped cds-datatable">
@@ -69,7 +69,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($schedule_array_2 as $j => $value)
-                                        <tr class="bg-info">
+                                        <tr class="bg-info" >
                                         <tr>
                                             <td><?php echo ($schedule_array_2[$j]['line_number']); ?></td>
                                             <td><?php echo ($schedule_array_2[$j]['labeler']); ?></td>
@@ -82,9 +82,9 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-3">
+                        <div class="col-xs-3" >
                             <h3 style="text-align: center">Mezzanine</h3>
-                            <div class="table-responsive">
+                            <div class="table-responsive    ">
                                 <table class="table table-bordered table-striped cds-datatable">
                                     <thead>
                                     <th>Lines</th>
@@ -103,7 +103,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-3">
+                        <div class="col-xs-3" valign="table-responsive">
                             <h3 style="text-align: center">Runners</h3>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped cds-datatable">
@@ -124,7 +124,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-6">
+                        <div class="col-xs-6" valign="table-responsive">
                             <h3 style="text-align: center">Others</h3>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped cds-datatable">

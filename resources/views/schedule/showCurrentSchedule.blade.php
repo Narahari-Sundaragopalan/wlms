@@ -27,12 +27,12 @@
                             <a href="{{ url('/schedule/requestSchedule') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
                         </div>
                         <div style="text-align: center"><h4>{{ $heading }}</h4>
-                            <h4 style="text-align: center;">{{"Coolers Shipped - " . $coolersShipped }}</h4>
+                            <h4 style="text-align: center;">{{"Coolers Shipped - " . number_format($coolersShipped) }}</h4>
                         </div>
                     </div>
                     <div class="panel-body">
-                        <div class="col-xs-6">
-                            <h3 style="text-align: center;">Conveyor Lines</h3>
+                       <div class="col-xs-6">
+                            <h3 style="text-align: center">Conveyor Lines</h3>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped cds-datatable">
                                     <thead> <!-- Table Headings -->
@@ -55,10 +55,10 @@
                         </div>
 
 
-                        <div class="col-xs-6">
+                       <div class="col-xs-6">
                             <h3 style="text-align: center">Support Lines</h3>
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped cds-datatable dataTable no-footer">
+                                <table class="table table-bordered table-striped cds-datatable dataTable">
                                     <thead> <!-- Table Headings -->
                                     <th>Line Number</th>
                                     <th>Labeler</th>
@@ -69,10 +69,10 @@
                                     @foreach($schedule_array_2 as $j => $value)
                                         <tr class="bg-info">
                                         <tr>
-                                            <td><?php echo($schedule_array_2[$j]['line_number']); ?></td>
-                                            <td><?php echo($schedule_array_2[$j]['labeler']); ?></td>
-                                            <td><?php echo($schedule_array_2[$j]['stocker']); ?></td>
-                                            <td><?php echo($schedule_array_2[$j]['icer']); ?></td>
+                                            <td><?php echo ($schedule_array_2[$j]['line_number']); ?></td>
+                                            <td><?php echo ($schedule_array_2[$j]['labeler']); ?></td>
+                                            <td><?php echo ($schedule_array_2[$j]['stocker']); ?></td>
+                                            <td><?php echo ($schedule_array_2[$j]['icer']); ?></td>
                                         </tr>
                                     @endforeach
                                     </tbody>
