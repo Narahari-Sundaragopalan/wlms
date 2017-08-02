@@ -220,7 +220,7 @@ class ScheduleController extends Controller
                 $mezzanine = 'Temp';
                 $numberOfTemps++;
             }
-            $line = ['lines' => $lineArray[$k], 'name' => $mezzanine];
+            $line = ['startLine' => $lineArray[$k]['startLine'], 'endLine' => $lineArray[$k]['endLine'], 'name' => $mezzanine];
             array_push($this->mezzanineArray, $line);
             $k++;
         }
@@ -263,7 +263,7 @@ class ScheduleController extends Controller
                 $runner = 'Temp';
                 $numberOfTemps++;
             }
-            $line = ['lines' => $lineArray[$r], 'name' => $runner];
+            $line = ['startLine' => $lineArray[$r]['startLine'], 'endLine' => $lineArray[$r]['endLine'], 'name' => $runner];
             array_push($this->runnerArray, $line);
             $r++;
         }
@@ -278,7 +278,6 @@ class ScheduleController extends Controller
         $this->viewData['cleaner'] = $this->cleaner;
         $this->viewData['kpmg'] = $this->kpmg;
         $this->viewData['Temps'] = $numberOfTemps;
-
 
         $timeOfSchedule = $request['schedule_time'];
         $coolersShipped = $request['coolers_shipped'];
@@ -318,7 +317,7 @@ class ScheduleController extends Controller
         $lineArray = []; $startIndexer = 0; $i = 0; $setupIndex = 0;
         while($i < sizeof($arr)) {
             $endIndexer = ($startIndexer + $arr[$i] - 1);
-            $lineArray [$setupIndex] = $this->schedule_array[$startIndexer]['line_number'] . '-' . $this->schedule_array[$endIndexer]['line_number'];
+            $lineArray [$setupIndex] = ['startLine' => $this->schedule_array[$startIndexer]['line_number'], 'endLine' => $this->schedule_array[$endIndexer]['line_number']];
             $startIndexer = $endIndexer + 1;
             $i++;
             $setupIndex++;
@@ -334,7 +333,7 @@ class ScheduleController extends Controller
         $startIndexer = 0; $i = 0;
         while($i < sizeof($arr)) {
             $endIndexer = ($startIndexer + $arr[$i] - 1);
-            $lineArray [$setupIndex] = $this->schedule_array_2[$startIndexer]['line_number'] . '-' . $this->schedule_array_2[$endIndexer]['line_number'];
+            $lineArray [$setupIndex] = ['startLine' => $this->schedule_array_2[$startIndexer]['line_number'], 'endLine' => $this->schedule_array_2[$endIndexer]['line_number']];
             $startIndexer = $endIndexer + 1;
             $i++;
             $setupIndex++;
@@ -762,28 +761,20 @@ class ScheduleController extends Controller
                 for ($index = 0; $index < sizeof($mezzanineArray); $index++) {
                     $cellNumber = $column . $row;
                     $sheet->cell($cellNumber, function ($cell) use ($mezzanineArray, $index) {
-                        $cellValue = $mezzanineArray[$index]['lines'];
+                        $cellValue = $mezzanineArray[$index]['startLine'] . '-' . $mezzanineArray[$index]['endLine'];
                         $cell->setValue($cellValue);
                     });
                     $column++;
                 }
 
-                //Fill Runner Label in Scheduler Dynamically based on the number of Assigned Runners
-                 $row = 3;
+                $row = 3;
                 for($index = 0; $index < sizeof($runnerArray); $index++) {
-                    $lines = $runnerArray[$index]['lines'];
+                    $startLine = $runnerArray[$index]['startLine'];
+                    $endLine = $runnerArray[$index]['endLine'];
                     $column = 'W';
 
-                    $startLine = 0; $endLine = 0;
                     $offsetIndex = 1;
-                    // Get the start and the end Line for each set
-                    if(strlen($lines) == 3) {
-                        $startLine = intval($lines[0]);
-                        $endLine = intval(substr($lines, -1));
-                    } else {
-                        $startLine = intval($lines[0] . $lines[1]);
-                        $endLine = intval(substr($lines, -2));
-                    }
+
 
                     // Check which set of Lines are being processed (1-12 or 13-24 or 25-36)
                     if($startLine < 12) {
@@ -814,19 +805,13 @@ class ScheduleController extends Controller
                 //Fill Runners in Scheduler Dynamically based on the number of Assigned Runners
                 $row = 4;
                 for($index = 0; $index < sizeof($runnerArray); $index++) {
-                    $lines = $runnerArray[$index]['lines'];
+                    $startLine = $runnerArray[$index]['startLine'];
+                    $endLine = $runnerArray[$index]['endLine'];
                     $column = 'W';
 
-                    $startLine = 0; $endLine = 0;
+
                     $offsetIndex = 1; // Variable to specify Line Number Index
-                    // Get the start and the end Line for each set
-                    if(strlen($lines) == 3) {
-                        $startLine = intval($lines[0]);
-                        $endLine = intval(substr($lines, -1));
-                    } else {
-                        $startLine = intval($lines[0] . $lines[1]);
-                        $endLine = intval(substr($lines, -2));
-                    }
+
 
                     // Check which set of Lines are being processed (1-12 or 13-24 or 25-36)
                     //Set the offset Index based on the Line Number
@@ -940,6 +925,10 @@ class ScheduleController extends Controller
         array_unshift($supportLines, "");
         unset($supportLines[0]);
 
+        $totalLines = range(1,36);
+        array_unshift($totalLines, "");
+        unset($totalLines[0]);
+
 
         $this->viewData = json_decode($scheduler->schedule, true);
         $currentSchedule['schedule_array'] = $this->viewData['schedule_array'];
@@ -985,6 +974,7 @@ class ScheduleController extends Controller
         $currentSchedule['id'] = $id;
         $currentSchedule['conveyorLines'] = $conveyorLines;
         $currentSchedule['supportLines'] = $supportLines;
+        $currentSchedule['totalLines'] = $totalLines;
         $currentSchedule['heading'] = 'Edit LINE UP - ' . $scheduler->date . ' - ' . $scheduler->time;
 
         return view ('schedule.edit', $currentSchedule);
@@ -1012,6 +1002,10 @@ class ScheduleController extends Controller
         $icer_Support = $request['icer_support'];
         $conveyorLine = $request['conveyor_lines'];
         $supportLine = $request['support_lines'];
+        $mezzanineStartLines = $request['mezzanine_Startlines'];
+        $mezzanineEndLines = $request['mezzanine_Endlines'];
+        $runnerStartLines = $request['runner_Startlines'];
+        $runnerEndLines = $request['runner_Startlines'];
         $qc = $request['qc'];
         $cleaner = $request['cleaner'];
         $kpmg = $request['kpmg'];
@@ -1126,6 +1120,22 @@ class ScheduleController extends Controller
             $msg .= "Support Line # cannot be same in multiple lines\n";
         }
 
+        for($i = 0; $i < sizeof($mezzanineStartLines) && $i < sizeof($mezzanineEndLines); $i++ ) {
+            if(!empty($mezzanineStartLines[$i]) && !empty($mezzanineEndLines[$i])) {
+                $mezzanineArray[$i]['startLine'] = $mezzanineStartLines[$i];
+                $mezzanineArray[$i]['endLine'] = $mezzanineEndLines[$i];
+            }
+        }
+
+        for($i = 0; $i < sizeof($runnerStartLines) && $i < sizeof($runnerEndLines); $i++ ) {
+            if(!empty($runnerStartLines[$i]) && !empty($runnerEndLines[$i])) {
+                $runnerArray[$i]['startLine'] = $runnerStartLines[$i];
+                $runnerArray[$i]['endLine'] = $runnerEndLines[$i];
+            }
+        }
+
+
+
         $qcArray = $qc;
         $kpmgArray = $kpmg;
         $cleanerArray = $cleaner;
@@ -1148,10 +1158,10 @@ class ScheduleController extends Controller
         $sLines = sizeof($schedule_array_2);
 
         //Update Line setup for Mezzanine
-        $lineArray = $this->createLineSetup($cLines, $sLines, true);
+     /*   $lineArray = $this->createLineSetup($cLines, $sLines, true);
         for($i = 0; $i < sizeof($mezzanineArray); $i++) {
             $mezzanineArray[$i]['lines'] = $lineArray[$i];
-        }
+        }*/
 
 
         $this->viewData['schedule_array'] = $schedule_array;

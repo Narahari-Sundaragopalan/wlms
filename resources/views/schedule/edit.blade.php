@@ -18,6 +18,7 @@
             background-color: grey;
         }
 
+
     </style>
     <div class="container-fluid">
         <div class="row">
@@ -237,7 +238,33 @@
                                     @foreach($mezzanineArray as $i => $value)
                                         <tr class="bg-info">
                                         <tr>
-                                            <td><?php echo ($mezzanineArray[$i]['lines']); ?></td>
+                                            <td>
+                                                <select class="form-control" name="mezzanine_Startlines[]">
+                                                    <option value="" selected class="bld">
+                                                        <?php echo ($mezzanineArray[$i]['startLine']);?>
+                                                    </option>
+                                                    <optgroup label="Line #">
+                                                        @foreach($totalLines as $totalLine)
+                                                            <option>
+                                                                <?php echo ($totalLine); ?>
+                                                            </option>
+                                                        @endforeach
+                                                    </optgroup>
+                                                </select>
+                                                -
+                                                <select class="form-control" name="mezzanine_Endlines[]">
+                                                    <option value="" selected class="bld">
+                                                        <?php echo ($mezzanineArray[$i]['endLine']);?>
+                                                    </option>
+                                                    <optgroup label="Line #">
+                                                        @foreach($totalLines as $totalLine)
+                                                            <option>
+                                                                <?php echo ($totalLine); ?>
+                                                            </option>
+                                                        @endforeach
+                                                    </optgroup>
+                                                </select>
+                                            </td>
                                             <td>
                                                 <select class="form-control" name="mezzanine[]" id="employees[]">
                                                     <option value="<?php echo ($mezzanineArray[$i]['name']); ?>" selected class="bld">
@@ -280,7 +307,33 @@
                                     @foreach($runnerArray as $i => $value)
                                         <tr class="bg-info">
                                         <tr>
-                                            <td><?php echo ($runnerArray[$i]['lines']); ?></td>
+                                            <td>
+                                                <select class="form-control" name="runner_Startlines[]">
+                                                    <option value="" selected class="bld">
+                                                        <?php echo ($runnerArray[$i]['startLine']); ?>
+                                                    </option>
+                                                    <optgroup label="Line #">
+                                                        @foreach($totalLines as $totalLine)
+                                                            <option>
+                                                                <?php echo ($totalLine); ?>
+                                                            </option>
+                                                        @endforeach
+                                                    </optgroup>
+                                                </select>
+                                                -
+                                                <select class="form-control" name="runner_Endlines[]">
+                                                    <option value="" selected class="bld">
+                                                        <?php echo ($runnerArray[$i]['endLine']); ?>
+                                                    </option>
+                                                    <optgroup label="Line #">
+                                                        @foreach($totalLines as $totalLine)
+                                                            <option>
+                                                                <?php echo ($totalLine); ?>
+                                                            </option>
+                                                        @endforeach
+                                                    </optgroup>
+                                                </select>
+                                            </td>
                                             <td>
                                                 <select class="form-control" name="runner[]" id="employees[]">
                                                     <option value="<?php echo ($runnerArray[$i]['name']); ?>" selected class="bld">
@@ -794,6 +847,11 @@
                     $("select[name='qc[]']").select2({width: 200});
                     $("select[name='cleaner[]']").select2({width: 200});
                     $("select[name='kpmg[]']").select2({width: 200});
+                    $("select[name='mezzanine_Startlines[]']").select2({width: 75});
+                    $("select[name='mezzanine_Endlines[]']").select2({width: 75});
+                    $("select[name='runner_Startlines[]']").select2({width: 75});
+                    $("select[name='runner_Endlines[]']").select2({width: 75});
+
 
                 });
 
