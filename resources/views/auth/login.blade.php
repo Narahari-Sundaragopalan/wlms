@@ -7,13 +7,14 @@
 
             background-size: cover;
             text-align: center;
+            height: 100vh;
 
 
         }
 
 
     </style>
-    <body background="images/boxes.jpg">
+    <body body background="images/boxes.jpg">
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
