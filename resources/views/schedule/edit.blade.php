@@ -925,6 +925,11 @@
                     $("select[name='mezzanine_Endlines[]']").select2({width: 75});
                     $("select[name='runner_Startlines[]']").select2({width: 75});
                     $("select[name='runner_Endlines[]']").select2({width: 75});
+                    $("select[name='kpmg[]']").select2({width: 200});
+                    $("select[name='mezzanine_Startlines[]']").select2({width: 50});
+                    $("select[name='mezzanine_Endlines[]']").select2({width: 50});
+                    $("select[name='runner_Startlines[]']").select2({width: 50});
+                    $("select[name='runner_Endlines[]']").select2({width: 50});
 
                 });
 
