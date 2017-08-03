@@ -1154,15 +1154,6 @@ class ScheduleController extends Controller
         $this->cleaner = $cleanerArray;
         $this->kpmg = $kpmgArray;
 
-        $cLines = sizeof($schedule_array);
-        $sLines = sizeof($schedule_array_2);
-
-        //Update Line setup for Mezzanine
-     /*   $lineArray = $this->createLineSetup($cLines, $sLines, true);
-        for($i = 0; $i < sizeof($mezzanineArray); $i++) {
-            $mezzanineArray[$i]['lines'] = $lineArray[$i];
-        }*/
-
 
         $this->viewData['schedule_array'] = $schedule_array;
         $this->viewData['schedule_array_2'] = $schedule_array_2;
