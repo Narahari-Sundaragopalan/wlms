@@ -147,11 +147,11 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>KPMG</td>
+                                        <td>Gift Box</td>
                                         <td>
-                                            @if(sizeof($kpmg))
-                                                @foreach($kpmg as $index => $kpmgEmp)
-                                                    <?php echo ($kpmgEmp); if($index < (count($kpmg) - 1)) { echo ", "; } ?>
+                                            @if(sizeof($giftBox))
+                                                @foreach($giftBox as $index => $giftBoxEmp)
+                                                    <?php echo ($giftBoxEmp); if($index < (count($giftBox) - 1)) { echo ", "; } ?>
                                                 @endforeach
                                             @else
                                                 <?php echo ""; ?>
@@ -164,6 +164,18 @@
                                             @if(sizeof($cleaner))
                                                 @foreach($cleaner as $index => $cleanerEmp)
                                                     <?php echo ($cleanerEmp); if($index < (count($cleaner) - 1)) { echo ", "; } ?>
+                                                @endforeach
+                                            @else
+                                                <?php echo ""; ?>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Freezer</td>
+                                        <td>
+                                            @if(sizeof($freezer))
+                                                @foreach($freezer as $index => $freezerEmp)
+                                                    <?php echo ($freezerEmp); if($index < (count($freezer) - 1)) { echo ", "; } ?>
                                                 @endforeach
                                             @else
                                                 <?php echo ""; ?>

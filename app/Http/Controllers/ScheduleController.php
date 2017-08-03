@@ -25,13 +25,14 @@ class ScheduleController extends Controller
         $this->mezzanineArray = [];
         $this->runnerArray = [];
         $this->qc = [];
-        $this->kpmg = [];
+        $this->giftBox = [];
         $this->cleaner = [];
+        $this->freezer = [];
         $this->heading = 'Schedule';
 
         $this->viewData = ['schedule_array' => $this->schedule_array, 'schedule_array_2' => $this->schedule_array_2,
             'mezzanineArray' => $this->mezzanineArray, 'runnerArray' => $this->runnerArray, 'qc' => $this->qc,
-            'cleaner' => $this->cleaner, 'kpmg' => $this->kpmg, 'heading' => $this->heading];
+            'cleaner' => $this->cleaner, 'giftBox' => $this->giftBox, 'freezer' => $this->freezer, 'heading' => $this->heading];
     }
 
     public function index() {
@@ -276,7 +277,8 @@ class ScheduleController extends Controller
         $this->viewData['runnerArray'] = $this->runnerArray;
         $this->viewData['qc'] = $this->qc;
         $this->viewData['cleaner'] = $this->cleaner;
-        $this->viewData['kpmg'] = $this->kpmg;
+        $this->viewData['giftBox'] = $this->giftBox;
+        $this->viewData['freezer'] = $this->freezer;
         $this->viewData['Temps'] = $numberOfTemps;
 
         $timeOfSchedule = $request['schedule_time'];
@@ -377,10 +379,15 @@ class ScheduleController extends Controller
         } else {
             $qcArray = $this->qc;
         }
-        if(isset($this->viewData['kpmg'])) {
-            $kpmgArray = $this->viewData['kpmg'];
+        if(isset($this->viewData['giftBox'])) {
+            $giftBoxArray = $this->viewData['giftBox'];
         } else {
-            $kpmgArray = $this->kpmg;
+            $giftBoxArray = $this->giftBox;
+        }
+        if(isset($this->viewData['freezer'])) {
+            $freezerArray = $this->viewData['freezer'];
+        } else {
+            $freezerArray = $this->freezer;
         }
         if(isset($this->viewData['cleaner'])) {
             $cleanerArray = $this->viewData['cleaner'];
@@ -388,8 +395,8 @@ class ScheduleController extends Controller
             $cleanerArray = $this->cleaner;
         }
 
-        Excel::create('DC WEST LINE UP@'.$scheduleDate.'@'.$timeOfSchedule, function($excel) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped, $cleanerArray, $qcArray, $kpmgArray,$numberOfTemps) {
-            $excel->sheet('Lineup', function($sheet) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped, $cleanerArray, $qcArray, $kpmgArray, $numberOfTemps) {
+        Excel::create('DC WEST LINE UP@'.$scheduleDate.'@'.$timeOfSchedule, function($excel) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped, $cleanerArray, $qcArray, $giftBoxArray, $freezerArray, $numberOfTemps) {
+            $excel->sheet('Lineup', function($sheet) use ($timeOfSchedule, $scheduleDate, $labelerArray, $supportLineArray, $mezzanineArray, $runnerArray, $coolersShipped, $cleanerArray, $qcArray, $giftBoxArray, $freezerArray, $numberOfTemps) {
                 $sheet->cell('I1', function ($cell) {
                     $cell->setValue('Time');
                     $cell->setFontWeight($bold = true);
@@ -701,6 +708,22 @@ class ScheduleController extends Controller
                     $cell->setFontWeight($bold = true);
                 });
 
+
+                $sheet->cell('S35', function ($cell) {
+                    $cell->setValue('Freezer');
+                    $cell->setFontWeight($bold = true);
+                });
+
+                $column = 'S'; $row = 36;
+                for ($index = 0; $index < sizeof($freezerArray); $index++) {
+                    $cellNumber = $column . $row;
+                    $sheet->cell($cellNumber, function ($cell) use ($freezerArray, $index) {
+                        $cellValue = $freezerArray[$index];
+                        $cell->setValue($cellValue);
+                    });
+                    $row++;
+                }
+
                 $sheet->cell('U35', function ($cell) {
                     $cell->setValue('Clean');
                     $cell->setFontWeight($bold = true);
@@ -717,15 +740,15 @@ class ScheduleController extends Controller
                 }
 
                 $sheet->cell('V35', function ($cell) {
-                    $cell->setValue('KPMG');
+                    $cell->setValue('Gift Box');
                     $cell->setFontWeight($bold = true);
                 });
 
                 $column = 'V'; $row = 36;
-                for ($index = 0; $index < sizeof($kpmgArray); $index++) {
+                for ($index = 0; $index < sizeof($giftBoxArray); $index++) {
                     $cellNumber = $column . $row;
-                    $sheet->cell($cellNumber, function ($cell) use ($kpmgArray, $index) {
-                        $cellValue = $kpmgArray[$index];
+                    $sheet->cell($cellNumber, function ($cell) use ($giftBoxArray, $index) {
+                        $cellValue = $giftBoxArray[$index];
                         $cell->setValue($cellValue);
                     });
                     $row++;
@@ -882,7 +905,7 @@ class ScheduleController extends Controller
         $scheduler = Schedule::find($id);
         $employees = Employee::all();
         $empLabelers = []; $empStockers = []; $empIcers = []; $empRunners = [];
-        $empMezzanines = []; $empList = []; $empCleaners =[]; $empKPMGs = []; $empQCs = [];
+        $empMezzanines = []; $empList = []; $empCleaners =[]; $empgiftBoxs = []; $empQCs = []; $empFreezers = [];
 
         foreach ($employees as $employee) {
             if($employee->labeler) {
@@ -908,7 +931,7 @@ class ScheduleController extends Controller
                 array_push($empQCs, $employee->getEmpNameAttribute());
             }
             if ($employee->gift_box) {
-                array_push($empKPMGs, $employee->getEmpNameAttribute());
+                array_push($empgiftBoxs, $employee->getEmpNameAttribute());
             }
             if ($employee->cleaner) {
                 array_push($empCleaners, $employee->getEmpNameAttribute());
@@ -916,6 +939,7 @@ class ScheduleController extends Controller
 
             array_push($empList, $employee->getEmpNameAttribute());
         }
+        $empFreezers = $empList;
 
         $conveyorLines = range(1,12);
         array_unshift($conveyorLines, "");
@@ -936,8 +960,9 @@ class ScheduleController extends Controller
         $currentSchedule['runnerArray'] = $this->viewData['runnerArray'];
         $currentSchedule['mezzanineArray'] = $this->viewData['mezzanineArray'];
         $currentSchedule['qcArray'] = $this->viewData['qc'];
-        $currentSchedule['kpmgArray'] = $this->viewData['kpmg'];
+        $currentSchedule['giftBoxArray'] = $this->viewData['giftBox'];
         $currentSchedule['cleanerArray'] = $this->viewData['cleaner'];
+        $currentSchedule['freezerArray'] = $this->viewData['freezer'];
         $currentSchedule['coolersShipped'] = $scheduler->coolers_shipped;
         $currentSchedule['Temps'] = $this->viewData['Temps'];
 
@@ -949,8 +974,8 @@ class ScheduleController extends Controller
         $currentSchedule['empMezzanines'] = $empMezzanines;
         $currentSchedule['empQCs'] = $empQCs;
         $currentSchedule['empCleaners'] = $empCleaners;
-        $currentSchedule['empKPMGs'] = $empKPMGs;
-
+        $currentSchedule['empgiftBoxs'] = $empgiftBoxs;
+        $currentSchedule['empFreezers'] = $empFreezers;
         $currentSchedule['employees'] = $empList;
 
         $empNonLabelers = array_diff($empList, $empLabelers);
@@ -959,7 +984,7 @@ class ScheduleController extends Controller
         $empNonRunners = array_diff($empList, $empRunners);
         $empNonMezzanines = array_diff($empList, $empMezzanines);
         $empNonCleaners = array_diff($empList, $empCleaners);
-        $empNonKPMGs = array_diff($empList, $empKPMGs);
+        $empNongiftBoxs = array_diff($empList, $empgiftBoxs);
         $empNonQCs = array_diff($empList, $empQCs);
 
         $currentSchedule['empNonLabelers'] = $empNonLabelers;
@@ -969,7 +994,7 @@ class ScheduleController extends Controller
         $currentSchedule['empNonMezzanines'] = $empNonMezzanines;
         $currentSchedule['empNonQCs'] = $empNonQCs;
         $currentSchedule['empNonCleaners'] = $empNonCleaners;
-        $currentSchedule['empNonKPMGs'] = $empNonKPMGs;
+        $currentSchedule['empNongiftBoxs'] = $empNongiftBoxs;
 
         $currentSchedule['id'] = $id;
         $currentSchedule['conveyorLines'] = $conveyorLines;
@@ -990,7 +1015,8 @@ class ScheduleController extends Controller
         $runnerArray = $this->viewData['runnerArray'];
         $mezzanineArray = $this->viewData['mezzanineArray'];
         $qcArray = $this->viewData['qc'];
-        $kpmgArray = $this->viewData['kpmg'];
+        $giftBoxArray = $this->viewData['giftBox'];
+        $freezerArray = $this->viewData['freezer'];
         $cleanerArray = $this->viewData['cleaner'];
 
         $labeler_ConveyorLine = $request['labeler_conveyor'];
@@ -1008,7 +1034,8 @@ class ScheduleController extends Controller
         $runnerEndLines = $request['runner_Startlines'];
         $qc = $request['qc'];
         $cleaner = $request['cleaner'];
-        $kpmg = $request['kpmg'];
+        $giftBox = $request['giftBox'];
+        $freezer = $request['freezer'];
 
 
         for($i = 0; $i < sizeof($labeler_ConveyorLine); $i++) {
@@ -1137,7 +1164,8 @@ class ScheduleController extends Controller
 
 
         $qcArray = $qc;
-        $kpmgArray = $kpmg;
+        $giftBoxArray = $giftBox;
+        $freezerArray = $freezer;
         $cleanerArray = $cleaner;
 
         if(!empty($msg)) {
@@ -1152,7 +1180,8 @@ class ScheduleController extends Controller
         $this->runnerArray = $mezzanineArray;
         $this->qc = $qcArray;
         $this->cleaner = $cleanerArray;
-        $this->kpmg = $kpmgArray;
+        $this->giftBox = $giftBoxArray;
+        $this->freezer = $freezerArray;
 
 
         $this->viewData['schedule_array'] = $schedule_array;
@@ -1160,7 +1189,8 @@ class ScheduleController extends Controller
         $this->viewData['runnerArray'] = $runnerArray;
         $this->viewData['mezzanineArray'] = $mezzanineArray;
         $this->viewData['qc'] = $qcArray;
-        $this->viewData['kpmg'] = $kpmgArray;
+        $this->viewData['giftBox'] = $giftBoxArray;
+        $this->viewData['freezer'] = $freezerArray;
         $this->viewData['cleaner'] = $cleanerArray;
         $this->viewData['id'] = $id;
         $this->viewData['heading'] = 'DC WEST LINE UP - '. $scheduler->date . ' - ' . $scheduler->time;
