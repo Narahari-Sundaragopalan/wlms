@@ -94,7 +94,7 @@
                                 @foreach($mezzanineArray as $i => $value)
                                     <tr class="bg-info">
                                     <tr>
-                                        <td><?php echo ($mezzanineArray[$i]['lines']); ?></td>
+                                        <td><?php echo ($mezzanineArray[$i]['startLine']);?> - <?php  echo ($mezzanineArray[$i]['endLine']); ?></td>
                                         <td><?php echo ($mezzanineArray[$i]['name']); ?></td>
                                     </tr>
                                 @endforeach
@@ -115,7 +115,7 @@
                                 @foreach($runnerArray as $i => $value)
                                     <tr class="bg-info">
                                     <tr>
-                                        <td><?php echo ($runnerArray[$i]['lines']); ?></td>
+                                        <td><?php echo ($runnerArray[$i]['startLine']); ?> - <?php echo ($runnerArray[$i]['endLine']); ?></td>
                                         <td><?php echo ($runnerArray[$i]['name']); ?></td>
                                     </tr>
                                 @endforeach
