@@ -13,9 +13,16 @@
             text-align: center;
 
         }
+        #scroller {
+  overflow-y: hidden;
+  padding: 0;
+  margin: 0 ;
+  width: 100%;
+  height: 100%;
+}
     </style>
 
-    <div class="container-fluid">
+    <div id ="scroller" class="container">
         <div class="row">
             <div class="col-xs-12">
                 <div class="panel panel-default">
@@ -34,7 +41,7 @@
                             <span id="second" style="font-weight: bold; float: right;">{{"Total Temps Needed : " . $Temps }}</span>
                         </div>
                     </div>
-                    <div class="panel-body">
+                    <div  class="panel-body">
                         <div class="col-xs-6" >
                             <h3 style="text-align: center">Conveyor Lines</h3>
                             <div class="table-responsive">
@@ -57,7 +64,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="col-xs-6">
+                        <div  class="col-xs-6">
                             <h3 style="text-align: center">Support Lines</h3>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped cds-datatable dataTable">
@@ -196,3 +203,29 @@
         </div>
     </div>
 @endsection
+
+@section('footer')
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <script>
+
+window.setInterval(scrollit, 3000);
+
+function scrollit() {
+    console.log(($("#scroller").scrollTop() + $("#scroller").innerHeight()))
+    console.log($("#scroller")[0].scrollHeight)
+        
+    if(($("#scroller").scrollTop() + $("#scroller").innerHeight()) >= $("#scroller")[0].scrollHeight)   
+        $('#scroller').animate({ scrollTop: 0 }, 100).delay(900);  
+    else   
+        $('#scroller').animate({ scrollTop: $("#scroller").scrollTop() + 150 }, 'slow',function(){
+          
+    });
+}
+
+</script>
