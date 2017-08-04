@@ -11,6 +11,13 @@
             font-size: medium;
             text-align: center;
         }
+        #scroller {
+  overflow-y: hidden;
+  padding: 0;
+  margin: 0 ;
+  width: 100%;
+  height: 100%;
+}
     </style>
     
     <div class="container-fluid">
@@ -32,7 +39,7 @@
                             <span id="second" style="font-weight: bold; float: right; ">{{"Total Temps Needed : " . $Temps }}</span>
                         </div>
                     </div>
-                    <div class="panel-body">
+                    <div id="scroller" class="panel-body">
                        <div class="col-xs-6">
                             <h3 style="text-align: center">Conveyor Lines</h3>
                             <div class="table-responsive">
@@ -129,3 +136,45 @@
         </div>
     </div>
 @endsection
+
+@section('footer')
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <script>
+
+var scrollingUp = 0;
+var dontScroll = 0;
+
+window.setInterval(scrollit, 3000);
+
+function scrollit() {
+    if(scrollingUp == 0 && dontScroll == 0) {
+        $('#scroller').animate({ scrollTop: $("#scroller").scrollTop() + 50 }, 'slow');
+    }
+}
+
+$('#scroller').bind('scroll', function () {
+    if (dontScroll == 0) {
+        if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+            scrollingUp = 1;      
+            $('#scroller').delay(2000).animate({ scrollTop: 0 }, 1000, function() {
+                scrollingUp = 0;    
+            });
+        }
+    }
+});
+
+
+$('#scroller').bind('mouseenter', function() {
+    dontScroll = 1;
+});
+
+$('#scroller').bind('mouseleave', function() {
+    dontScroll = 0;
+});
+</script>

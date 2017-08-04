@@ -17,10 +17,10 @@
                             <!-- <img src="public/images/Changepassword.png" width="90" height="50" alt="submit" />-->
                         </a>
                         &nbsp;&nbsp;
-                        <a class="submit" href ="{{ url('/updatepicture') }}">
+                        <!-- <a class="submit" href ="{{ url('/updatepicture') }}">
                             <div style="text-align: center"><img src="{{URL::asset('/images/profile.png')}}" width="90" height="90" />Update Profile Picture </div>
                             <!-- <img src="public/images/Changepassword.png" width="90" height="50" alt="submit" />-->
-                        </a>
+                        </a> -->
                     </div>
 
                 </div>

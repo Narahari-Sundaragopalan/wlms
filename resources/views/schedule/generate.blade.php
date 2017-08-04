@@ -22,7 +22,7 @@
 }
     </style>
 
-    <div id ="scroller" class="container">
+    <div  class="container">
         <div class="row">
             <div class="col-xs-12">
                 <div class="panel panel-default">
@@ -214,18 +214,34 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script>
 
+var scrollingUp = 0;
+var dontScroll = 0;
+
 window.setInterval(scrollit, 3000);
 
 function scrollit() {
-    console.log(($("#scroller").scrollTop() + $("#scroller").innerHeight()))
-    console.log($("#scroller")[0].scrollHeight)
-        
-    if(($("#scroller").scrollTop() + $("#scroller").innerHeight()) >= $("#scroller")[0].scrollHeight)   
-        $('#scroller').animate({ scrollTop: 0 }, 100).delay(900);  
-    else   
-        $('#scroller').animate({ scrollTop: $("#scroller").scrollTop() + 150 }, 'slow',function(){
-          
-    });
+    if(scrollingUp == 0 && dontScroll == 0) {
+        $('#scroller').animate({ scrollTop: $("#scroller").scrollTop() + 50 }, 'slow');
+    }
 }
 
+$('#scroller').bind('scroll', function () {
+    if (dontScroll == 0) {
+        if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+            scrollingUp = 1;      
+            $('#scroller').delay(2000).animate({ scrollTop: 0 }, 1000, function() {
+                scrollingUp = 0;    
+            });
+        }
+    }
+});
+
+
+$('#scroller').bind('mouseenter', function() {
+    dontScroll = 1;
+});
+
+$('#scroller').bind('mouseleave', function() {
+    dontScroll = 0;
+});
 </script>
