@@ -3,7 +3,7 @@
 
     <div class="container">
         <div class="panel panel-primary">
-            <div class="panel-heading" style="background-color: #a1a1a1">
+            <div class="panel-heading">
                 <h3 class="panel-title" style="padding:12px 0px;font-size:25px;text-align: center;"><strong>Import
                         Excel File</strong></h3>
             </div>
@@ -30,7 +30,7 @@
                     {{ csrf_field() }}
                     <br/>
 
-                    <button class="btn btn-primary" style="background-color: #2ca02c;">Import CSV or Excel File</button>
+                    <button class="btn btn-primary" style="background-color: #2ca02c;">Import</button>
 
                 </form>
             </div>

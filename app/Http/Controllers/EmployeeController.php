@@ -11,6 +11,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Validator;
+use \RecursiveIteratorIterator;
+use \RecursiveArrayIterator;
 
 class EmployeeController extends Controller
 {
@@ -118,7 +120,7 @@ class EmployeeController extends Controller
             })->get();
             if (!empty($data) && $data->count()) {
                 foreach ($data as $key => $value) {
-                    $insert[] = ['empid' => $value->empid, 'empfname' => $value->empfname, 'emplname' =>
+                    $seedData[] = ['empid' => $value->empid, 'empfname' => $value->empfname, 'emplname' =>
                         $value->emplname, 'positiontype' => $value->positiontype, 'experience' =>
                         $value->experience, 'labeler_rating' => $value->labeler_rating, 'stocker_rating' => $value->stocker_rating,
                         'english' => $value->english, 'spanish' => $value->spanish, 'other' => $value->other, 'icer' => $value->icer,
@@ -126,15 +128,57 @@ class EmployeeController extends Controller
                         'qc' => $value->qc, 'cleaner' => $value->cleaner, 'gift_box' => $value->gift_box, 'comment' => $value->commnent,
                         'active' => $value->active];
                 }
-                if (!empty($insert)) {
-                    DB::table('employees')->insert($insert);
-                    return view('fileImportSuccess');
+                if (!empty($seedData)) {
+                    $importStatus = $this->insert($seedData);
+                    if ($importStatus) {
+                        return view('fileImportSuccess');
+                    }
                 }
             }
         }
         return back();
     }
 
+    public function insert($seedData)
+    {
+        try {
+            $TableData = array();
+            $CsvData = array();
+            $TableData = DB::table('employees')->pluck('empid');
+            if (sizeof($TableData) > 0) {
+                $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($seedData));
+                foreach ($iterator as $key => $value) {
+                    if ($key == 'empid') {
+                        $CsvData[] = $value;
+                    }
+                }
+
+                $valueOfSeedData = 0;
+                for ($i = 0; $i < count($CsvData); $i++) {
+                    $check = false;
+                    for ($j = 0; $j < count($TableData); $j++) {
+                        if ($TableData[$j] == $CsvData[$i]) {
+                            DB::table('employees')->where('empid', $TableData[$j])->update($seedData[$valueOfSeedData]);
+                            $valueOfSeedData++;
+                            $check = true;
+                            break;
+                        }
+                    }
+                    if (!$check) {
+                        DB::table('employees')->insert($seedData[$valueOfSeedData]);
+                        $valueOfSeedData++;
+                    }
+                }
+            } else {
+                DB::table('employees')->insert($seedData);
+            }
+
+        } catch (\Exception $e) {
+            Log::error("File insert failed: " . $e->getMessage());
+            return FALSE;
+        }
+        return TRUE;
+    }
 
 }
 
