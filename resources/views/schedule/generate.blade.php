@@ -206,42 +206,47 @@
 <!-- This scroller code is not implemented in this page--> 
 @section('footer')
 
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script>
 
-var scrollingUp = 0;
-var dontScroll = 0;
 
-window.setInterval(scrollit, 3000);
+        var scrollingUp = 0;
+        var dontScroll = 0;
 
-function scrollit() {
-    if(scrollingUp == 0 && dontScroll == 0) {
-        $('#scroller').animate({ scrollTop: $("#scroller").scrollTop() + 50 }, 'slow');
-    }
-}
+        window.setInterval(scrollit, 3000);
 
-$('#scroller').bind('scroll', function () {
-    if (dontScroll == 0) {
-        if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-            scrollingUp = 1;      
-            $('#scroller').delay(2000).animate({ scrollTop: 0 }, 1000, function() {
-                scrollingUp = 0;    
-            });
+        function scrollit() {
+            if (scrollingUp == 0 && dontScroll == 0) {
+                $('#scroller').animate({scrollTop: $("#scroller").scrollTop() + 50}, 'slow');
+            }
         }
-    }
-});
+
+        $('#scroller').bind('scroll', function () {
+            if (dontScroll == 0) {
+                if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+                    scrollingUp = 1;
+                    $('#scroller').delay(2000).animate({scrollTop: 0}, 1000, function () {
+                        scrollingUp = 0;
+                    });
+                }
+            }
+        });
 
 
-$('#scroller').bind('mouseenter', function() {
-    dontScroll = 1;
-});
+        $('#scroller').bind('mouseenter', function () {
+            dontScroll = 1;
+        });
 
-$('#scroller').bind('mouseleave', function() {
-    dontScroll = 0;
-});
-</script>
+        $('#scroller').bind('mouseleave', function () {
+            dontScroll = 0;
+        });
+    </script>
+
+
+@endsection
+

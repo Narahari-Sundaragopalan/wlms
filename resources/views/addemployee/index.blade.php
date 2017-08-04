@@ -23,7 +23,12 @@
                     <div class="panel-heading">
                         <div class="pull-right">
                             <form action="{{ url('/addemployee/create') }}" method="GET">{{ csrf_field() }}
-                                <button type="submit" id="create-patient" class="btn btn-success"><i class="fa fa-btn fa-file-o"></i>Add Employee</button>
+                                <button type="submit" id="create-employee" class="btn btn-success"><i class="fa fa-btn fa-file"></i>Add Employee</button>
+                            </form>
+                        </div>
+                        <div class="pull-left">
+                            <form action="{{ URL::to('importfile') }}" method="GET">{{ csrf_field() }}
+                                <button type="submit" id="import-employee" class="btn btn-success"><i class="fa fa-btn fa-upload"></i>Import File</button>
                             </form>
                         </div>
                         <div style="text-align: center"><h3>{{ 'Employees' }}</h3></div>

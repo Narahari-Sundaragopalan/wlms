@@ -58,3 +58,7 @@ Route::post('/password/passwordreset', 'SecurityAnswersController@resetPassword'
 Route::post('/password/passwordset', 'SecurityAnswersController@resetPasswordSuccess');
 //Route::get('/passwords/passwordreset', 'SecurityAnswersController@resetPasswordSuccess');
 //Route::post('/passwords/passwordreset', 'SecurityAnswersController@resetPasswordSuccess');
+
+Route::get('importfile', 'EmployeeController@importfile');
+Route::post('importExcel', 'EmployeeController@importExcel');
+
