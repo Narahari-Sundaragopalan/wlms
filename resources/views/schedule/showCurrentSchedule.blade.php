@@ -12,7 +12,7 @@
             text-align: center;
         }
         #scroller {
-  overflow-y: hidden;
+  overflow-y: scroll;
   padding: 0;
   margin: 0 ;
   width: 100%;
@@ -39,7 +39,7 @@
                             <span id="second" style="font-weight: bold; float: right; ">{{"Total Temps Needed : " . $Temps }}</span>
                         </div>
                     </div>
-                    <div id="scroller" class="panel-body">
+                    <div   id="scroller" class="panel-body">
                        <div class="col-xs-6">
                             <h3 style="text-align: center">Conveyor Lines</h3>
                             <div class="table-responsive">
@@ -108,6 +108,15 @@
                                 </tbody>
                             </table>
                         </div>
+                         <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        
                         </div>
 
                         <div class="col-xs-3">
@@ -128,8 +137,11 @@
                                 @endforeach
                                 </tbody>
                             </table>
+
                         </div>
+
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -147,34 +159,17 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script>
 
-var scrollingUp = 0;
-var dontScroll = 0;
-
-window.setInterval(scrollit, 3000);
+window.setInterval(scrollit, 2000);
 
 function scrollit() {
-    if(scrollingUp == 0 && dontScroll == 0) {
-        $('#scroller').animate({ scrollTop: $("#scroller").scrollTop() + 50 }, 'slow');
-    }
+    console.log(($("#scroller").scrollTop() + $("#scroller").innerHeight()))
+    console.log($("#scroller")[0].scrollHeight)
+
+    if(($("#scroller").scrollTop() + $("#scroller").innerHeight()) >= $("#scroller")[0].scrollHeight)   
+        $('#scroller').animate({ scrollTop: 0 }, 2000).delay(20);  
+    else   
+        $('#scroller').animate({ scrollTop: $("#scroller").scrollTop() + 60 }, 'slow',function(){
+
+    });
 }
-
-$('#scroller').bind('scroll', function () {
-    if (dontScroll == 0) {
-        if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-            scrollingUp = 1;      
-            $('#scroller').delay(2000).animate({ scrollTop: 0 }, 1000, function() {
-                scrollingUp = 0;    
-            });
-        }
-    }
-});
-
-
-$('#scroller').bind('mouseenter', function() {
-    dontScroll = 1;
-});
-
-$('#scroller').bind('mouseleave', function() {
-    dontScroll = 0;
-});
 </script>

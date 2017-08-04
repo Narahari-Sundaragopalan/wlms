@@ -203,7 +203,7 @@
         </div>
     </div>
 @endsection
-
+<!-- This scroller code is not implemented in this page--> 
 @section('footer')
 
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
