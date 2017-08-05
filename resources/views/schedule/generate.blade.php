@@ -67,7 +67,7 @@
                         <div  class="col-xs-6">
                             <h3 style="text-align: center">Support Lines</h3>
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped cds-datatable dataTable">
+                                <table class="table table-bordered table-striped cds-datatable">
                                     <thead> <!-- Table Headings -->
                                     <th>Line Number</th>
                                     <th>Labeler</th>
@@ -138,7 +138,6 @@
                                     <thead> <!-- Table Headings -->
                                     <th>Position</th>
                                     <th colspan="2">Assigned</th>
-                                    <!-- <th>QC</th> -->
                                     </thead>
                                     <tbody>
                                     <tr>
