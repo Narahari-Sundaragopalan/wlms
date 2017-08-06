@@ -14,7 +14,7 @@ class CreateSupervisorsTable extends Migration
     {
         Schema::create('supervisors', function (Blueprint $table) {
         $table->increments('id');
-        $table->integer('supid') -> unique();
+        $table->integer('supid')->unique();
         $table->string('supfname');
         $table->string('suplname');
         $table->string('position');
