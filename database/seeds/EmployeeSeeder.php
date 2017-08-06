@@ -12,7 +12,9 @@ class EmployeeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('employees')->delete();
+
+        //Not used
+ /*       DB::table('employees')->delete();
         Employee::create([  'empid' => 54118, 'empfname' => 'Amelia', 'emplname' =>  'Gaytan', 'positiontype' => 'Full-time',
             'experience' => 'Trained', 'labeler_rating' => '4', 'stocker_rating' => '3', 'english' => true, 'icer' => false, 'labeler' => true, 'mezzanine' => true,
             'stocker' => true, 'runner' => false, 'qc' => false, 'cleaner' => false, 'gift_box' => false, 'comment' => '',
@@ -58,7 +60,7 @@ class EmployeeSeeder extends Seeder
             'stocker' => true, 'runner' => false, 'qc' => false, 'cleaner' => false, 'gift_box' => false, 'comment' => '',
             'created_at' => date_create(), 'updated_at' => date_create()]);
 
-    /*Start Here*/    Employee::create([  'empid' => 25578, 'empfname' => 'Delia', 'emplname' => 'Nolasco', 'positiontype' => 'Full-time',
+       Employee::create([  'empid' => 25578, 'empfname' => 'Delia', 'emplname' => 'Nolasco', 'positiontype' => 'Full-time',
             'experience' => 'Trained', 'labeler_rating' => '5', 'stocker_rating' => '1', 'english' => true, 'icer' => false, 'labeler' => true, 'mezzanine' => true,
             'stocker' => true, 'runner' => false, 'qc' => false, 'cleaner' => false, 'gift_box' => false, 'comment' => '',
             'created_at' => date_create(), 'updated_at' => date_create()]);
@@ -222,5 +224,5 @@ class EmployeeSeeder extends Seeder
             'experience' => 'Trained', 'labeler_rating' => '4', 'stocker_rating' => '3', 'english' => true, 'icer' => false, 'labeler' => true, 'mezzanine' => true,
             'stocker' => true, 'runner' => false, 'qc' => false, 'cleaner' => false, 'gift_box' => false, 'comment' => '',
             'created_at' => date_create(), 'updated_at' => date_create()]);
-    }
+    */}
 }

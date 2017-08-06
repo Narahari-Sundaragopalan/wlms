@@ -82,7 +82,7 @@ class ScheduleController extends Controller
         while($i > 0) {
             $labelerSet = false; $labeler = ''; $icerSet = false; $icer = '';
             foreach ($employees as $employee) {
-                if($employee->labeler && !($labelerSet)) {
+                if($employee->labeler && !($labelerSet) && $employee->labeler_rating >= 2) {
                     if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
                         $labeler = $employee->empfname . ' ' . $employee->emplname[0];
                         $labelerSet = true;
@@ -90,12 +90,12 @@ class ScheduleController extends Controller
                         $isLangSpanish = $employee->spanish;
                         $labeler_array[$index++] = $employee->id;
                     }
-                } elseif ($employee->icer && !($icerSet)) {
+                } elseif (($employee->icer || ($employee->labeler && $employee->labeler_rating < 2) ) && !($icerSet)) {
                     if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
                         if(($employee->english && $isLangEnglish) || ($employee->spanish && $isLangSpanish)) {
                             $icer = $employee->empfname . ' ' . $employee->emplname[0];
                             $icerSet = true;
-                            $icerArray[$icerIndex] = $employee->id;
+                            $icerArray[$icerIndex++] = $employee->id;
                             $count++;
                         } else {
                             continue;
@@ -131,7 +131,7 @@ class ScheduleController extends Controller
             $labelerSet = false; $stockerSet = false; $icerSet = false;
             $labeler = ''; $stocker = ''; $icer = '';
             foreach ($employees as $employee) {
-                if ($employee->labeler && !($labelerSet)) {
+                if ($employee->labeler && !($labelerSet) && $employee->labeler_rating >= 2) {
                     if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $icerArray, true))) {
                         $labeler = $employee->empfname . ' ' . $employee->emplname[0];
                         $labelerSet = true;
@@ -139,7 +139,7 @@ class ScheduleController extends Controller
                         $isLangSpanish = $employee->spanish;
                         $labeler_array[$index++] = $employee->id;
                     }
-                } elseif ($employee->stocker && !($stockerSet)) {
+                } elseif ($employee->stocker && !($stockerSet) && $employee->stocker_rating >=2 ) {
                     if(!(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
                         if(($employee->english && $isLangEnglish) || ($employee->spanish && $isLangSpanish)) {
                             $stocker = $employee->empfname . ' ' . $employee->emplname[0];
@@ -147,7 +147,7 @@ class ScheduleController extends Controller
                             $stocker_array[$stock_index++] = $employee->id;
                         }
                     }
-                } elseif ($employee->icer && !($icerSet)) {
+                } elseif (( $employee->icer || ($employee->labeler && $employee->labeler_rating < 2) ) && !($icerSet)) {
                     if(!(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
                         if(($employee->english && $isLangEnglish) || ($employee->spanish && $isLangSpanish)) {
                             $icer = $employee->empfname . ' ' . $employee->emplname[0];
@@ -709,12 +709,12 @@ class ScheduleController extends Controller
                 });
 
 
-                $sheet->cell('S35', function ($cell) {
+                $sheet->cell('T35', function ($cell) {
                     $cell->setValue('Freezer');
                     $cell->setFontWeight($bold = true);
                 });
 
-                $column = 'S'; $row = 36;
+                $column = 'T'; $row = 36;
                 for ($index = 0; $index < sizeof($freezerArray); $index++) {
                     $cellNumber = $column . $row;
                     $sheet->cell($cellNumber, function ($cell) use ($freezerArray, $index) {
