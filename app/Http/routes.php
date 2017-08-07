@@ -22,7 +22,6 @@ Route::resource('addemployee', 'EmployeeController');
 Route::resource('user', 'CreateuserController');
 Route::resource('Supervisor', 'SupervisorController');
 
-
 //Route::resource('schedule', 'ScheduleController');
 Route::get('schedule', 'ScheduleController@index');
 Route::get('schedule/createSchedule', 'ScheduleController@create');
@@ -61,4 +60,6 @@ Route::post('/password/passwordset', 'SecurityAnswersController@resetPasswordSuc
 
 Route::get('importfile', 'EmployeeController@importfile');
 Route::post('importExcel', 'EmployeeController@importExcel');
+Route::get('manage', 'EmployeeController@manage');
+Route::post('manage', 'EmployeeController@modifyStatus');
 

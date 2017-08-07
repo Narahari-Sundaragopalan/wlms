@@ -11,6 +11,11 @@
         tr {
             font-size: medium;
         }
+        .divider {
+            width:60px;
+            height:auto;
+            display:inline-block;
+        }
 
     </style>
 
@@ -90,8 +95,10 @@
                                         </tbody>
                                     </table>
                                     <div>
-                                        <div class="col-md-6 col-md-offset-5">
+                                        <div class="col-md-6 col-md-offset-3">
                                             <a href="{{route('addemployee.edit',$employee->id)}}" class="btn btn-warning" style=" width: 100px; height: 30px;">Update</a>
+                                            <div class="divider"></div>
+                                            <a href="{{URL::to('manage')}}" class="btn btn-primary" style=" width: 100px; height: 30px;">Manage</a>
                                         </div>
                                     </div>
                                 </div>

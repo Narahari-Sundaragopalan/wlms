@@ -29,7 +29,8 @@ class Employee extends Model
     'qc',
     'cleaner',
     'gift_box',
-    'comment'
+    'comment',
+    'active'
     ];
 
     //Function to return Employee names with First name and Initial of Last Name

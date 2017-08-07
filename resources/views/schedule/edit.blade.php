@@ -87,6 +87,13 @@
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
+                                                    <optgroup label="Supervisors">
+                                                        @foreach($supervisors as $supervisor)
+                                                            <option value="<?php echo ($supervisor) ?>">
+                                                                <?php echo ($supervisor); ?>
+                                                            </option>
+                                                        @endforeach
+                                                    </optgroup>
                                                     <option value="Temp"><?php echo 'Temp' ?></option>
                                                     <option value="NA"><?php echo 'NA' ?></option>
                                                 </select>
@@ -107,6 +114,13 @@
                                                         @foreach($empNonIcers as $empNonIcer)
                                                             <option value="<?php echo ($empNonIcer) ?>">
                                                                 <?php echo ($empNonIcer); ?>
+                                                            </option>
+                                                        @endforeach
+                                                    </optgroup>
+                                                    <optgroup label="Supervisors">
+                                                        @foreach($supervisors as $supervisor)
+                                                            <option value="<?php echo ($supervisor) ?>">
+                                                                <?php echo ($supervisor); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
@@ -169,6 +183,13 @@
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
+                                                    <optgroup label="Supervisors">
+                                                        @foreach($supervisors as $supervisor)
+                                                            <option value="<?php echo ($supervisor) ?>">
+                                                                <?php echo ($supervisor); ?>
+                                                            </option>
+                                                        @endforeach
+                                                    </optgroup>
                                                     <option><?php echo 'Temp' ?></option>
                                                     <option><?php echo 'NA' ?></option>
                                                 </select>
@@ -192,6 +213,13 @@
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
+                                                    <optgroup label="Supervisors">
+                                                        @foreach($supervisors as $supervisor)
+                                                            <option value="<?php echo ($supervisor) ?>">
+                                                                <?php echo ($supervisor); ?>
+                                                            </option>
+                                                        @endforeach
+                                                    </optgroup>
                                                     <option><?php echo 'Temp' ?></option>
                                                     <option><?php echo 'NA' ?></option>
                                                 </select>
@@ -212,6 +240,13 @@
                                                         @foreach($empNonIcers as $empNonIcer)
                                                             <option value="<?php echo ($empNonIcer) ?>">
                                                                 <?php echo ($empNonIcer); ?>
+                                                            </option>
+                                                        @endforeach
+                                                    </optgroup>
+                                                    <optgroup label="Supervisors">
+                                                        @foreach($supervisors as $supervisor)
+                                                            <option value="<?php echo ($supervisor) ?>">
+                                                                <?php echo ($supervisor); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
@@ -284,6 +319,13 @@
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
+                                                    <optgroup label="Supervisors">
+                                                        @foreach($supervisors as $supervisor)
+                                                            <option value="<?php echo ($supervisor) ?>">
+                                                                <?php echo ($supervisor); ?>
+                                                            </option>
+                                                        @endforeach
+                                                    </optgroup>
                                                     <option><?php echo 'Temp' ?></option>
                                                     <option><?php echo 'NA' ?></option>
                                                 </select>
@@ -350,6 +392,13 @@
                                                         @foreach($empNonRunners as $empNonRunner)
                                                             <option value="<?php echo ($empNonRunner) ?>">
                                                                 <?php echo ($empNonRunner); ?>
+                                                            </option>
+                                                        @endforeach
+                                                    </optgroup>
+                                                    <optgroup label="Supervisors">
+                                                        @foreach($supervisors as $supervisor)
+                                                            <option value="<?php echo ($supervisor) ?>">
+                                                                <?php echo ($supervisor); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>

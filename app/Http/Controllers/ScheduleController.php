@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Employee;
 use App\Schedule;
+use App\Supervisor;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Maatwebsite\Excel\Facades\Excel;
@@ -74,7 +75,7 @@ class ScheduleController extends Controller
         $line = []; $numberOfTemps = 0;
         $labeler_array = []; $icerArray = [];
         $index = 1; $icerIndex = 1;
-        $employees = Employee::all();
+        $employees = Employee::where('active', '=', 'true')->get();
         $isLangEnglish = false;
         $isLangSpanish = false;
 
@@ -903,8 +904,8 @@ class ScheduleController extends Controller
     public function edit($id) {
 
         $scheduler = Schedule::find($id);
-        $employees = Employee::all();
-        $empLabelers = []; $empStockers = []; $empIcers = []; $empRunners = [];
+        $employees = Employee::where('active', '=', 'true')->get();
+        $empLabelers = []; $empStockers = []; $empIcers = []; $empRunners = []; $supervisorsList = [];
         $empMezzanines = []; $empList = []; $empCleaners =[]; $empgiftBoxs = []; $empQCs = []; $empFreezers = [];
 
         foreach ($employees as $employee) {
@@ -940,6 +941,11 @@ class ScheduleController extends Controller
             array_push($empList, $employee->getEmpNameAttribute());
         }
         $empFreezers = $empList;
+
+        $supervisors = Supervisor::all();
+        foreach ($supervisors as $supervisor) {
+            array_push($supervisorsList, $supervisor->getSupervisorNameFormat());
+        }
 
         $conveyorLines = range(1,12);
         array_unshift($conveyorLines, "");
@@ -977,6 +983,7 @@ class ScheduleController extends Controller
         $currentSchedule['empgiftBoxs'] = $empgiftBoxs;
         $currentSchedule['empFreezers'] = $empFreezers;
         $currentSchedule['employees'] = $empList;
+        $currentSchedule['supervisors'] = $supervisorsList;
 
         $empNonLabelers = array_diff($empList, $empLabelers);
         $empNonStockers = array_diff($empList, $empStockers);

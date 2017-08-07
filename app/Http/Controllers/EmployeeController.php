@@ -25,7 +25,7 @@ class EmployeeController extends Controller
     public function index()
     {
 
-        $employees = Employee::all();
+        $employees = Employee::where('active', '=', 'true')->get();
         $user = Auth::user();
         return view('addemployee.index', compact('employees', 'user'));
     }
@@ -180,5 +180,32 @@ class EmployeeController extends Controller
         return TRUE;
     }
 
+
+    public function manage () {
+        $employees = Employee::all();
+        $empList = [];
+        foreach ($employees as $employee) {
+            $empList[$employee->id] = $employee->getEmpNameAttribute();
+        }
+        $manageEmployees['empList'] = $empList;
+        return view ('addemployee.manage', $manageEmployees);
+    }
+
+    public function modifyStatus(Request $request) {
+        $modifyEmpList = $request['manageEmpList'];
+        $status = $request['status'];
+        $active = true;
+
+        if($status === 'Inactive') {
+            $active = false;
+        }
+
+        foreach($modifyEmpList as $empId) {
+            Employee::where('id', '=', $empId)->update(['active' => $active]);
+        }
+
+        return redirect('addemployee');
+
+    }
 }
 

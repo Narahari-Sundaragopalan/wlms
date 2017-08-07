@@ -11,5 +11,10 @@ class Supervisor extends Model
      'supfname',
      'suplname',
      'position'
-    ]; 
+    ];
+
+    //Function to return Employee names with First name and Initial of Last Name
+    public function getSupervisorNameFormat() {
+        return $this->supfname . " " . $this->suplname[0];
+    }
 }
