@@ -40,7 +40,7 @@
                         </div>
                         <div><h4 style="text-align: center; color: black">{{ $heading }}</h4>
                             <span id="first"
-                                  style="font-weight: bold; text-align:left; color: black">{{"Coolers Shipped - " . number_format($coolersShipped) }}</span>
+                                  style="font-weight: bold; text-align:left; color: black">{{"Coolers Shipped : " . number_format($coolersShipped) }}</span>
                             <span id="second"
                                   style="font-weight: bold; float: right; color: black">{{"Total Temps Needed : " . $Temps }}</span>
                         </div>

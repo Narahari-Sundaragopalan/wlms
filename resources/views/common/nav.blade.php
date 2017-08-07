@@ -11,21 +11,13 @@
             </button>
 
 
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand" href="{{ url('/home') }}">
                 <div class= "brand"><b>Omaha Steaks</b></div>
             </a>
 
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
-
-                @if (Auth::check())
-                    <li><a href="{{ url('/home') }}" style="color: whitesmoke"><b style="font-size: medium">Home</b></a></li>
-                @endif
-
-            </ul>
 
             <ul class="header">
 

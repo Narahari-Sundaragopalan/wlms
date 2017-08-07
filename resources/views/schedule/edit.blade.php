@@ -30,7 +30,7 @@
                         </div>
                         <div style="text-align: center; color: black"><h3>{{ $heading }}</h3></div>
                         <div>
-                            <span id="first" style="font-weight: bold; text-align: left; color: black">{{"Coolers Shipped - " . number_format($coolersShipped) }}</span>
+                            <span id="first" style="font-weight: bold; text-align: left; color: black">{{"Coolers Shipped : " . number_format($coolersShipped) }}</span>
                             <span id="second" style="font-weight: bold; float: right; color: black">{{"Total Temps Needed : " . $Temps }}</span>
                         </div>
                     </div>
