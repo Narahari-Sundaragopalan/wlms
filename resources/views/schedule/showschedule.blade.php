@@ -22,12 +22,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
-                <div class="panel panel-default">
+                <div class="panel panel-info">
                     <div class="panel-heading">
                         <div class="pull-left">
                             <a href="{{ url('/schedule/requestSchedule') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
                         </div>
-                        <div style="text-align: center"><h3>{{ 'Schedule History' }}</h3></div>
+                        <div style="text-align: center; color: black"><h3>{{ 'Schedule History' }}</h3></div>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">

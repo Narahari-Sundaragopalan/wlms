@@ -5,8 +5,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><h3 style="text-align: center">Schedule</h3></div>
+                <div class="panel panel-info">
+                    <div class="panel-heading"><h3 style="text-align: center; color: black">Schedule</h3></div>
                     <div class="panel-body text-center">
                    
                         <form action="{{ url('/schedule/createSchedule') }}" method="GET">{{ csrf_field() }}

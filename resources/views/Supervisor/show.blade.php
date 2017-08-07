@@ -21,8 +21,8 @@
 
             <div class="row">
                 <div class="col-md-8 col-md-offset-1">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" style="text-align: center">
+                    <div class="panel panel-info">
+                        <div class="panel-heading" style="text-align: center; color: black">
                             <div class="pull-left">
                                 <a href="{{ url('/Supervisor/') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
                             </div>

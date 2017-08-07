@@ -4,8 +4,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Update Profile</div>
+                <div class="panel panel-info">
+                    <div class="panel-heading" style="text-align: center; color: black">Update Profile</div>
                     <div style="text-align: right;">
                         <a class="submit" href ="{{ url('/changepassword') }}">
                             <div style="text-align: center"><img src="{{URL::asset('/images/icon.png')}}" width="90" height="90" />Change Password </div>

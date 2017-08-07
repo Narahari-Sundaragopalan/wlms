@@ -2,9 +2,9 @@
 @section('content')
 
     <div class="container">
-        <div class="panel panel-primary">
+        <div class="panel panel-info">
             <div class="panel-heading">
-                <h3 class="panel-title" style="padding:12px 0px;font-size:25px;text-align: center;"><strong>Import
+                <h3 class="panel-title" style="padding:12px 0px;font-size:25px;text-align: center; color: black"><strong>Import
                         Excel File</strong></h3>
             </div>
             <div class="panel-body">

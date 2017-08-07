@@ -5,9 +5,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
+                <div class="panel panel-info">
                     @if(empty($user))
-                        <div class="panel-heading">Incorrect email ID. Please try again!!</div>
+                        <div class="panel-heading" style="color: black">Incorrect email ID. Please try again!!</div>
                     @else
                         <div class="panel-heading">Reset Password - Please answer the security questions below</div>
                     <div class="panel-body">`

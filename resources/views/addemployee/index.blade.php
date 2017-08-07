@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
-                <div class="panel panel-default">
+                <div class="panel panel-info">
                     <div class="panel-heading">
                         <div class="pull-right">
                             <form action="{{ url('/addemployee/create') }}" method="GET">{{ csrf_field() }}
@@ -31,7 +31,7 @@
                                 <button type="submit" id="import-employee" class="btn btn-success"><i class="fa fa-btn fa-upload"></i>Import File</button>
                             </form>
                         </div>
-                        <div style="text-align: center"><h3>{{ 'Employees' }}</h3></div>
+                        <div style="text-align: center; color: black"><h3>{{ 'Employees' }}</h3></div>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">

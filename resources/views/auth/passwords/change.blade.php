@@ -4,8 +4,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Change Password</div>
+                <div class="panel panel-info">
+                    <div class="panel-heading" style="text-align: center; color: black">Change Password</div>
                     <div class="panel-body">
                         {{--@include('common.errors')--}}
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/changepassword') }}">

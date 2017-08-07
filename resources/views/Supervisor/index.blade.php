@@ -24,14 +24,14 @@
         <div class="container" style="float: right; width: 85%; ">
             <div class="row">
                 <div class="col-md-8 col-md-offset-1">
-                    <div class="panel panel-default">
+                    <div class="panel panel-info">
                         <div class="panel-heading">
                             <div class="pull-right">
                                 <a href="{{url('/Supervisor/create')}}" class="btn btn-success">Add Supervisor</a>
                                 <hr>
                             </div>
 
-                            <h3 style="text-align: center">Supervisors</h3>
+                            <h3 style="text-align: center; color: black">Supervisors</h3>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">

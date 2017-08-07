@@ -25,7 +25,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
-                <div class="panel panel-default">
+                <div class="panel panel-info">
                     <div class="panel-heading">
                         <div class="pull-right">
                             <form action="{{ url('/downloadReport/xls', $id) }}" method="GET">{{ csrf_field() }}
@@ -38,12 +38,11 @@
                             <a href="{{ url('/schedule/requestSchedule') }}" class="btn btn-info"><i
                                         class="fa fa-btn fa-backward"></i> Back </a>
                         </div>
-                        <div><h4 style="text-align: center;">{{ $heading }}</h4>
-                        <!--  <h4 style="text-align: center;">{{"Coolers Shipped - " . number_format($coolersShipped) }}</h4> -->
+                        <div><h4 style="text-align: center; color: black">{{ $heading }}</h4>
                             <span id="first"
-                                  style="font-weight: bold; text-align:left;">{{"Coolers Shipped - " . number_format($coolersShipped) }}</span>
+                                  style="font-weight: bold; text-align:left; color: black">{{"Coolers Shipped - " . number_format($coolersShipped) }}</span>
                             <span id="second"
-                                  style="font-weight: bold; float: right; ">{{"Total Temps Needed : " . $Temps }}</span>
+                                  style="font-weight: bold; float: right; color: black">{{"Total Temps Needed : " . $Temps }}</span>
                         </div>
                     </div>
                     <div id="scroller" class="panel-body">
