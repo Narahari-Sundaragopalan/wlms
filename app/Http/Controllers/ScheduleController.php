@@ -1014,8 +1014,6 @@ class ScheduleController extends Controller
 
     public function update($id, Request $request) {
 
-        dd($request->all());
-
         //Get the current schedule from the database
         $scheduler = Schedule::find($id);
         $this->viewData = json_decode($scheduler->schedule, true);
@@ -1295,7 +1293,14 @@ class ScheduleController extends Controller
     }
 
     public function getLatestSchedule() {
-        $currentSchedule = Schedule::all()->last();
+
+        $schedule = Schedule::all();
+        if(sizeof($schedule)) {
+            $currentSchedule = $schedule->last();
+        }
+        else {
+           return view('errors.noSchedulesFound');
+        }
         $this->viewData = json_decode($currentSchedule->schedule, true);
         $this->viewData['heading'] = 'DC WEST LINE UP - '. $currentSchedule->date . ' - ' . $currentSchedule->time;
         $this->viewData['id'] = $currentSchedule->id;
