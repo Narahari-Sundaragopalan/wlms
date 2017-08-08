@@ -184,6 +184,49 @@ class ScheduleController extends Controller
             $j--;
         }
 
+
+        //Create Line Setup for Runners
+        $mezzanineFlag = false;
+        $lineArray = $this->createLineSetup($conveyorLines, $supportLines, $mezzanineFlag);
+
+        //Array for Runners in Schedule
+        $numOfRunners = (intval($conveyorLines / 6) + intval($supportLines / 6));
+        if(intval($conveyorLines % 6) != 0) {
+            $numOfRunners += 1;
+        }
+        if(intval($supportLines % 6) != 0) {
+            $numOfRunners += 1;
+        }
+
+        $runnerIndex = 1; $r = 0;
+        //Array to save assigned runners
+        $runnerArray = [];
+
+        while($r < $numOfRunners) {
+            $runner = ''; $runnerSet = false;
+            foreach ($employees as $employee) {
+                if($employee->runner && !($runnerSet)) {
+                    if (!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true))
+                        && !(array_search($employee->id, $runnerArray, true)) && !(array_search($employee->id, $icerArray, true))) {
+
+                        $runner = $employee->empfname . ' ' . $employee->emplname[0];
+                        $runnerArray[$runnerIndex++] = $employee->id;
+                        $runnerSet = true;
+                    }
+                }
+                if($runnerSet) {
+                    break;
+                }
+            }
+            if($runner == '') {
+                $runner = 'Temp';
+                $numberOfTemps++;
+            }
+            $line = ['startLine' => $lineArray[$r]['startLine'], 'endLine' => $lineArray[$r]['endLine'], 'name' => $runner];
+            array_push($this->runnerArray, $line);
+            $r++;
+        }
+
         //Create Line Setup for Mezzanine
         $mezzanineFlag = true;
         $lineArray = $this->createLineSetup($conveyorLines, $supportLines, $mezzanineFlag);
@@ -208,7 +251,8 @@ class ScheduleController extends Controller
             foreach ($employees as $employee) {
                 if ($employee->mezzanine && !($mezzanineSet)) {
                     if (!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true))
-                        && !(array_search($employee->id, $mezArray, true)) && !(array_search($employee->id, $icerArray, true))) {
+                        && !(array_search($employee->id, $mezArray, true)) && !(array_search($employee->id, $runnerArray, true))
+                        && !(array_search($employee->id, $icerArray, true))) {
                         $mezzanine = $employee->empfname . ' ' . $employee->emplname[0];
                         $mezArray[$mezIndex++] = $employee->id;
                         $mezzanineSet = true;
@@ -226,50 +270,6 @@ class ScheduleController extends Controller
             array_push($this->mezzanineArray, $line);
             $k++;
         }
-
-        //Create Line Setup for Runners
-        $mezzanineFlag = false;
-        $lineArray = $this->createLineSetup($conveyorLines, $supportLines, $mezzanineFlag);
-
-        //Array for Runners in Schedule
-        $numOfRunners = (intval($conveyorLines / 6) + intval($supportLines / 6));
-        if(intval($conveyorLines % 6) != 0) {
-            $numOfRunners += 1;
-        }
-        if(intval($supportLines % 6) != 0) {
-            $numOfRunners += 1;
-        }
-
-        $runnerIndex = 1; $r = 0;
-        //Array to save assigned runners
-        $runnerArray = [];
-
-        while($r < $numOfRunners) {
-            $runner = ''; $runnerSet = false;
-            foreach ($employees as $employee) {
-                if($employee->runner && !($runnerSet)) {
-                    if (!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true))
-                        && !(array_search($employee->id, $mezArray, true)) && !(array_search($employee->id, $runnerArray, true))
-                        && !(array_search($employee->id, $icerArray, true))) {
-
-                        $runner = $employee->empfname . ' ' . $employee->emplname[0];
-                        $runnerArray[$runnerIndex] = $employee->id;
-                        $runnerSet = true;
-                    }
-                }
-                if($runnerSet) {
-                    break;
-                }
-            }
-            if($runner == '') {
-                $runner = 'Temp';
-                $numberOfTemps++;
-            }
-            $line = ['startLine' => $lineArray[$r]['startLine'], 'endLine' => $lineArray[$r]['endLine'], 'name' => $runner];
-            array_push($this->runnerArray, $line);
-            $r++;
-        }
-
 
 
         $this->viewData['schedule_array'] = $this->schedule_array;
