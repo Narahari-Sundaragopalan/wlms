@@ -13,10 +13,10 @@
         }
 
     </style>
-@if($user->getRoleName() == 'Administrator')
-    @include('includes.admin')
-    @else 
-    @include('includes.manage')
+    @if($user->getRoleName() == 'Administrator')
+        @include('includes.admin')
+    @else
+        @include('includes.manage')
     @endif
 
     <div class="container">
@@ -25,7 +25,8 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <div class="pull-left">
-                            <a href="{{ url('/schedule/requestSchedule') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
+                            <a href="{{ url('/schedule/requestSchedule') }}" class="btn btn-info"><i
+                                        class="fa fa-btn fa-backward"></i> Back </a>
                         </div>
                         <div style="text-align: center; color: black"><h3>{{ 'Schedule History' }}</h3></div>
                     </div>
@@ -37,7 +38,7 @@
                                     {{--<th>User</th><th>Email</th><th>Status</th><th class="no-sort">Actions</th>--}}
                                     <th>Schedule Date</th>
                                     <th>Schedule Time</th>
-                                    <th>Created At</th>
+                                    <th>Created</th>
                                     <th style="text-align: center">Actions</th>
                                 </tr>
                                 </thead>
@@ -45,10 +46,17 @@
                                 <tbody> <!-- Table Body -->
                                 @foreach($schedules as $schedule)
                                     <tr>
-                                        <td class="table-text"><div>{{ $schedule->date  }}</div></td>
-                                        <td class="table-text"><div>{{ $schedule->time }}</div></td>
-                                        <td class="table-text"><div>{{ Carbon\Carbon::parse($schedule->created_at)->toDayDateTimeString() }}</div></td>
-                                        <td><a href="{{url('schedule/show',$schedule->id)}}" class="btn btn-primary">View</a></td>
+                                        <td class="table-text">
+                                            <div>{{ $schedule->date  }}</div>
+                                        </td>
+                                        <td class="table-text">
+                                            <div>{{ $schedule->time }}</div>
+                                        </td>
+                                        <td class="table-text">
+                                            <div>{{ $schedule->created_at->diffForHumans() }}</div>
+                                        </td>
+                                        <td><a href="{{url('schedule/show',$schedule->id)}}" class="btn btn-primary">View</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -63,17 +71,23 @@
 
 @section('footer')
     <style>
-        .table td { border: 0px !important; }
-        .tooltip-inner { white-space:pre-wrap; max-width: 400px; }
+        .table td {
+            border: 0px !important;
+        }
+
+        .tooltip-inner {
+            white-space: pre-wrap;
+            max-width: 400px;
+        }
     </style>
 
     <script>
-        $(document).ready(function() {
-            $('table.cds-datatable').on( 'draw.dt', function () {
-                $('tr').tooltip({html: true, placement: 'auto' });
-            } );
-            $('tr').tooltip({html: true, placement: 'auto' });
-        } );
+        $(document).ready(function () {
+            $('table.cds-datatable').on('draw.dt', function () {
+                $('tr').tooltip({html: true, placement: 'auto'});
+            });
+            $('tr').tooltip({html: true, placement: 'auto'});
+        });
     </script>
 
 @endsection

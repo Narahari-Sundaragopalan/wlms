@@ -8,20 +8,26 @@
                 <div class="panel panel-info">
                     <div class="panel-heading"><h3 style="text-align: center; color: black">Schedule</h3></div>
                     <div class="panel-body text-center">
-                   
+
                         <form action="{{ url('/schedule/createSchedule') }}" method="GET">{{ csrf_field() }}
-                            <button  type="submit" class="btn btn-primary "><i class="fa fa-btn fa fa-plus"></i>Create Schedule</button>
+                            <button type="submit" class="btn btn-primary "><i class="fa fa-btn fa fa-plus"></i>Create
+                                Schedule
+                            </button>
                         </form>
                         <br>
                         <form action="{{ url('/schedule/requestSchedule') }}" method="GET">{{ csrf_field() }}
-                            <button type="submit" class="btn btn-warning "><i class="fa fa-btn fa fa-search-plus"></i>View Old Schedule</button>
+                            <button type="submit" class="btn btn-warning "><i class="fa fa-btn fa fa-search-plus"></i>View
+                                Old Schedule
+                            </button>
                         </form>
                         <br>
                         <form action="{{ url('/schedule/latestSchedule') }}" method="GET">{{ csrf_field() }}
-                            <button type="submit" class="btn btn-success "><i class="fa fa-btn fa fa-eye"></i>View Current Schedule</button>
+                            <button type="submit" class="btn btn-success "><i class="fa fa-btn fa fa-eye"></i>View
+                                Current Schedule
+                            </button>
                         </form>
 
-                        
+
                     </div>
                 </div>
             </div>

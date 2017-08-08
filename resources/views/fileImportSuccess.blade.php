@@ -8,7 +8,8 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">Your file has been imported</div>
                     <div class="panel-body">
-                        <a href="{{ url('/addemployee/') }}"class="btn btn-success"><i class="fa fa-btn fa-list"></i> Employees </a>
+                        <a href="{{ url('/addemployee/') }}" class="btn btn-success"><i class="fa fa-btn fa-list"></i>
+                            Employees </a>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,8 @@
     <div class="container">
         <div class="panel panel-info">
             <div class="panel-heading">
-                <h3 class="panel-title" style="padding:12px 0px;font-size:25px;text-align: center; color: black"><strong>Import
+                <h3 class="panel-title" style="padding:12px 0px;font-size:25px;text-align: center; color: black">
+                    <strong>Import
                         Excel File</strong></h3>
             </div>
             <div class="panel-body">
@@ -30,7 +31,9 @@
                     {{ csrf_field() }}
                     <br/>
 
-                    <button class="btn btn-primary" style="background-color: #2ca02c;"><i class="fa fa-btn fa-file-excel-o"></i>Import</button>
+                    <button class="btn btn-primary" style="background-color: #2ca02c;"><i
+                                class="fa fa-btn fa-file-excel-o"></i>Import
+                    </button>
 
                 </form>
             </div>

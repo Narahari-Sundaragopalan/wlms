@@ -8,10 +8,12 @@
             color: whitesmoke;
             text-align: center;
         }
+
         tr {
             font-size: medium;
             text-align: center;
         }
+
         .bld {
             font-weight: bold;
             color: whitesmoke;
@@ -27,8 +29,10 @@
                     <div class="panel-heading">
                         <div style="text-align: center; color: black"><h3>{{ $heading }}</h3></div>
                         <div>
-                            <span id="first" style="font-weight: bold; text-align: left; color: black">{{"Coolers Shipped : " . number_format($coolersShipped) }}</span>
-                            <span id="second" style="font-weight: bold; float: right; color: black">{{"Total Temps Needed : " . $Temps }}</span>
+                            <span id="first"
+                                  style="font-weight: bold; text-align: left; color: black">{{"Coolers Shipped : " . number_format($coolersShipped) }}</span>
+                            <span id="second"
+                                  style="font-weight: bold; float: right; color: black">{{"Total Temps Needed : " . $Temps }}</span>
                         </div>
                     </div>
                     <div class="panel-body">
@@ -53,12 +57,12 @@
                                                 <select class="form-control" name="conveyor_lines[]">
 
                                                     <option value="" selected class="bld">
-                                                        <?php echo ($schedule_array[$i]['line_number']); ?>
+                                                        <?php echo($schedule_array[$i]['line_number']); ?>
                                                     </option>
                                                     <optgroup label="Line #">
                                                         @foreach($conveyorLines as $conveyorLine)
                                                             <option>
-                                                                <?php echo ($conveyorLine); ?>
+                                                                <?php echo($conveyorLine); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
@@ -67,27 +71,28 @@
                                             <td>
                                                 <select class="form-control" name="labeler_conveyor[]" id="employees">
 
-                                                    <option value="<?php echo ($schedule_array[$i]['labeler']); ?>" selected class="bld">
-                                                        <?php echo ($schedule_array[$i]['labeler']); ?>
+                                                    <option value="<?php echo($schedule_array[$i]['labeler']); ?>"
+                                                            selected class="bld">
+                                                        <?php echo($schedule_array[$i]['labeler']); ?>
                                                     </option>
                                                     <optgroup label="Labelers">
                                                         @foreach($empLabelers as $empLabeler)
-                                                            <option value="<?php echo ($empLabeler); ?>">
-                                                                <?php echo ($empLabeler); ?>
+                                                            <option value="<?php echo($empLabeler); ?>">
+                                                                <?php echo($empLabeler); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
                                                     <optgroup label="Non-Labelers">
                                                         @foreach($empNonLabelers as $empNonLabeler)
-                                                            <option value="<?php echo ($empNonLabeler) ?>">
-                                                                <?php echo ($empNonLabeler); ?>
+                                                            <option value="<?php echo($empNonLabeler) ?>">
+                                                                <?php echo($empNonLabeler); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
                                                     <optgroup label="Supervisors">
                                                         @foreach($supervisors as $supervisor)
-                                                            <option value="<?php echo ($supervisor) ?>">
-                                                                <?php echo ($supervisor); ?>
+                                                            <option value="<?php echo($supervisor) ?>">
+                                                                <?php echo($supervisor); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
@@ -97,27 +102,28 @@
                                             </td>
                                             <td>
                                                 <select class="form-control" name="icer_conveyor[]" id="employees[]">
-                                                    <option value="<?php echo ($schedule_array[$i]['icer']); ?>" selected class="bld">
-                                                        <?php echo ($schedule_array[$i]['icer']); ?>
+                                                    <option value="<?php echo($schedule_array[$i]['icer']); ?>" selected
+                                                            class="bld">
+                                                        <?php echo($schedule_array[$i]['icer']); ?>
                                                     </option>
                                                     <optgroup label="Icers">
                                                         @foreach($empIcers as $empIcer)
-                                                            <option value="<?php echo ($empIcer) ?>">
-                                                                <?php echo ($empIcer); ?>
+                                                            <option value="<?php echo($empIcer) ?>">
+                                                                <?php echo($empIcer); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
                                                     <optgroup label="Non-Icers">
                                                         @foreach($empNonIcers as $empNonIcer)
-                                                            <option value="<?php echo ($empNonIcer) ?>">
-                                                                <?php echo ($empNonIcer); ?>
+                                                            <option value="<?php echo($empNonIcer) ?>">
+                                                                <?php echo($empNonIcer); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
                                                     <optgroup label="Supervisors">
                                                         @foreach($supervisors as $supervisor)
-                                                            <option value="<?php echo ($supervisor) ?>">
-                                                                <?php echo ($supervisor); ?>
+                                                            <option value="<?php echo($supervisor) ?>">
+                                                                <?php echo($supervisor); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
@@ -150,12 +156,12 @@
                                                 <select class="form-control" name="support_lines[]">
 
                                                     <option value="" selected class="bld">
-                                                        <?php echo ($schedule_array_2[$j]['line_number']); ?>
+                                                        <?php echo($schedule_array_2[$j]['line_number']); ?>
                                                     </option>
                                                     <optgroup label="Line #">
                                                         @foreach($supportLines as $supportLine)
                                                             <option>
-                                                                <?php echo ($supportLine); ?>
+                                                                <?php echo($supportLine); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
@@ -163,27 +169,28 @@
                                             </td>
                                             <td>
                                                 <select class="form-control" name="labeler_support[]" id="employees[]">
-                                                    <option value="<?php echo ($schedule_array_2[$j]['labeler']); ?>" selected class="bld">
-                                                        <?php echo ($schedule_array_2[$j]['labeler']); ?>
+                                                    <option value="<?php echo($schedule_array_2[$j]['labeler']); ?>"
+                                                            selected class="bld">
+                                                        <?php echo($schedule_array_2[$j]['labeler']); ?>
                                                     </option>
                                                     <optgroup label="Labelers">
                                                         @foreach($empLabelers as $empLabeler)
-                                                            <option value="<?php echo ($empLabeler) ?>">
-                                                                <?php echo ($empLabeler); ?>
+                                                            <option value="<?php echo($empLabeler) ?>">
+                                                                <?php echo($empLabeler); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
                                                     <optgroup label="Non-Labelers">
                                                         @foreach($empNonLabelers as $empNonLabeler)
-                                                            <option value="<?php echo ($empNonLabeler) ?>">
-                                                                <?php echo ($empNonLabeler); ?>
+                                                            <option value="<?php echo($empNonLabeler) ?>">
+                                                                <?php echo($empNonLabeler); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
                                                     <optgroup label="Supervisors">
                                                         @foreach($supervisors as $supervisor)
-                                                            <option value="<?php echo ($supervisor) ?>">
-                                                                <?php echo ($supervisor); ?>
+                                                            <option value="<?php echo($supervisor) ?>">
+                                                                <?php echo($supervisor); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
@@ -193,27 +200,28 @@
                                             </td>
                                             <td>
                                                 <select class="form-control" name="stocker_support[]" id="employees[]">
-                                                    <option value="<?php echo ($schedule_array_2[$j]['stocker']); ?>" selected class="bld">
-                                                        <?php echo ($schedule_array_2[$j]['stocker']); ?>
+                                                    <option value="<?php echo($schedule_array_2[$j]['stocker']); ?>"
+                                                            selected class="bld">
+                                                        <?php echo($schedule_array_2[$j]['stocker']); ?>
                                                     </option>
                                                     <optgroup label="Stockers">
                                                         @foreach($empStockers as $empStocker)
-                                                            <option value="<?php echo ($empStocker) ?>">
-                                                                <?php echo ($empStocker); ?>
+                                                            <option value="<?php echo($empStocker) ?>">
+                                                                <?php echo($empStocker); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
                                                     <optgroup label="Non-Stockers">
                                                         @foreach($empNonStockers as $empNonStocker)
-                                                            <option value="<?php echo ($empNonStocker) ?>">
-                                                                <?php echo ($empNonStocker); ?>
+                                                            <option value="<?php echo($empNonStocker) ?>">
+                                                                <?php echo($empNonStocker); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
                                                     <optgroup label="Supervisors">
                                                         @foreach($supervisors as $supervisor)
-                                                            <option value="<?php echo ($supervisor) ?>">
-                                                                <?php echo ($supervisor); ?>
+                                                            <option value="<?php echo($supervisor) ?>">
+                                                                <?php echo($supervisor); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
@@ -223,27 +231,28 @@
                                             </td>
                                             <td>
                                                 <select class="form-control" name="icer_support[]" id="employees[]">
-                                                    <option value="<?php echo ($schedule_array_2[$j]['icer']); ?>" selected class="bld">
-                                                        <?php echo ($schedule_array_2[$j]['icer']); ?>
+                                                    <option value="<?php echo($schedule_array_2[$j]['icer']); ?>"
+                                                            selected class="bld">
+                                                        <?php echo($schedule_array_2[$j]['icer']); ?>
                                                     </option>
                                                     <optgroup label="Icers">
                                                         @foreach($empIcers as $empIcer)
-                                                            <option value="<?php echo ($empIcer) ?>">
-                                                                <?php echo ($empIcer); ?>
+                                                            <option value="<?php echo($empIcer) ?>">
+                                                                <?php echo($empIcer); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
                                                     <optgroup label="Non-Icers">
                                                         @foreach($empNonIcers as $empNonIcer)
-                                                            <option value="<?php echo ($empNonIcer) ?>">
-                                                                <?php echo ($empNonIcer); ?>
+                                                            <option value="<?php echo($empNonIcer) ?>">
+                                                                <?php echo($empNonIcer); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
                                                     <optgroup label="Supervisors">
                                                         @foreach($supervisors as $supervisor)
-                                                            <option value="<?php echo ($supervisor) ?>">
-                                                                <?php echo ($supervisor); ?>
+                                                            <option value="<?php echo($supervisor) ?>">
+                                                                <?php echo($supervisor); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
@@ -273,12 +282,12 @@
                                             <td>
                                                 <select class="form-control" name="mezzanine_Startlines[]">
                                                     <option value="" selected class="bld">
-                                                        <?php echo ($mezzanineArray[$i]['startLine']);?>
+                                                        <?php echo($mezzanineArray[$i]['startLine']);?>
                                                     </option>
                                                     <optgroup label="Line #">
                                                         @foreach($totalLines as $totalLine)
                                                             <option>
-                                                                <?php echo ($totalLine); ?>
+                                                                <?php echo($totalLine); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
@@ -286,12 +295,12 @@
                                                 -
                                                 <select class="form-control" name="mezzanine_Endlines[]">
                                                     <option value="" selected class="bld">
-                                                        <?php echo ($mezzanineArray[$i]['endLine']);?>
+                                                        <?php echo($mezzanineArray[$i]['endLine']);?>
                                                     </option>
                                                     <optgroup label="Line #">
                                                         @foreach($totalLines as $totalLine)
                                                             <option>
-                                                                <?php echo ($totalLine); ?>
+                                                                <?php echo($totalLine); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
@@ -299,27 +308,28 @@
                                             </td>
                                             <td>
                                                 <select class="form-control" name="mezzanine[]" id="employees[]">
-                                                    <option value="<?php echo ($mezzanineArray[$i]['name']); ?>" selected class="bld">
-                                                        <?php echo ($mezzanineArray[$i]['name']); ?>
+                                                    <option value="<?php echo($mezzanineArray[$i]['name']); ?>" selected
+                                                            class="bld">
+                                                        <?php echo($mezzanineArray[$i]['name']); ?>
                                                     </option>
                                                     <optgroup label="Mezzanines">
                                                         @foreach($empMezzanines as $empMezzanine)
-                                                            <option value="<?php echo ($empMezzanine) ?>">
-                                                                <?php echo ($empMezzanine); ?>
+                                                            <option value="<?php echo($empMezzanine) ?>">
+                                                                <?php echo($empMezzanine); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
                                                     <optgroup label="Non-Mezzanines">
                                                         @foreach($empNonMezzanines as $empNonMezzanine)
-                                                            <option value="<?php echo ($empNonMezzanine) ?>">
-                                                                <?php echo ($empNonMezzanine); ?>
+                                                            <option value="<?php echo($empNonMezzanine) ?>">
+                                                                <?php echo($empNonMezzanine); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
                                                     <optgroup label="Supervisors">
                                                         @foreach($supervisors as $supervisor)
-                                                            <option value="<?php echo ($supervisor) ?>">
-                                                                <?php echo ($supervisor); ?>
+                                                            <option value="<?php echo($supervisor) ?>">
+                                                                <?php echo($supervisor); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
@@ -349,12 +359,12 @@
                                             <td>
                                                 <select class="form-control" name="runner_Startlines[]">
                                                     <option value="" selected class="bld">
-                                                        <?php echo ($runnerArray[$i]['startLine']); ?>
+                                                        <?php echo($runnerArray[$i]['startLine']); ?>
                                                     </option>
                                                     <optgroup label="Line #">
                                                         @foreach($totalLines as $totalLine)
                                                             <option>
-                                                                <?php echo ($totalLine); ?>
+                                                                <?php echo($totalLine); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
@@ -362,12 +372,12 @@
                                                 -
                                                 <select class="form-control" name="runner_Endlines[]">
                                                     <option value="" selected class="bld">
-                                                        <?php echo ($runnerArray[$i]['endLine']); ?>
+                                                        <?php echo($runnerArray[$i]['endLine']); ?>
                                                     </option>
                                                     <optgroup label="Line #">
                                                         @foreach($totalLines as $totalLine)
                                                             <option>
-                                                                <?php echo ($totalLine); ?>
+                                                                <?php echo($totalLine); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
@@ -375,27 +385,28 @@
                                             </td>
                                             <td>
                                                 <select class="form-control" name="runner[]" id="employees[]">
-                                                    <option value="<?php echo ($runnerArray[$i]['name']); ?>" selected class="bld">
-                                                        <?php echo ($runnerArray[$i]['name']); ?>
+                                                    <option value="<?php echo($runnerArray[$i]['name']); ?>" selected
+                                                            class="bld">
+                                                        <?php echo($runnerArray[$i]['name']); ?>
                                                     </option>
                                                     <optgroup label="Runners">
                                                         @foreach($empRunners as $empRunner)
-                                                            <option value="<?php echo ($empRunner) ?>">
-                                                                <?php echo ($empRunner); ?>
+                                                            <option value="<?php echo($empRunner) ?>">
+                                                                <?php echo($empRunner); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
                                                     <optgroup label="Non-Runners">
                                                         @foreach($empNonRunners as $empNonRunner)
-                                                            <option value="<?php echo ($empNonRunner) ?>">
-                                                                <?php echo ($empNonRunner); ?>
+                                                            <option value="<?php echo($empNonRunner) ?>">
+                                                                <?php echo($empNonRunner); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
                                                     <optgroup label="Supervisors">
                                                         @foreach($supervisors as $supervisor)
-                                                            <option value="<?php echo ($supervisor) ?>">
-                                                                <?php echo ($supervisor); ?>
+                                                            <option value="<?php echo($supervisor) ?>">
+                                                                <?php echo($supervisor); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
@@ -433,15 +444,15 @@
                                                 @endif
                                                 <optgroup label="QC">
                                                     @foreach($empQCs as $empQC)
-                                                        <option value="<?php echo ($empQC); ?>">
-                                                            <?php echo ($empQC); ?>
+                                                        <option value="<?php echo($empQC); ?>">
+                                                            <?php echo($empQC); ?>
                                                         </option>
                                                     @endforeach
                                                 </optgroup>
                                                 <optgroup label="Non-QC">
                                                     @foreach($empNonQCs as $empNonQC)
-                                                        <option value="<?php echo ($empNonQC); ?>">
-                                                            <?php echo ($empNonQC); ?>
+                                                        <option value="<?php echo($empNonQC); ?>">
+                                                            <?php echo($empNonQC); ?>
                                                         </option>
                                                     @endforeach
                                                 </optgroup>
@@ -463,15 +474,15 @@
                                                 @endif
                                                 <optgroup label="giftBox">
                                                     @foreach($empgiftBoxs as $empgiftBox)
-                                                        <option value="<?php echo ($empgiftBox); ?>">
-                                                            <?php echo ($empgiftBox); ?>
+                                                        <option value="<?php echo($empgiftBox); ?>">
+                                                            <?php echo($empgiftBox); ?>
                                                         </option>
                                                     @endforeach
                                                 </optgroup>
                                                 <optgroup label="Non-giftBox">
                                                     @foreach($empNongiftBoxs as $empNongiftBox)
-                                                        <option value="<?php echo ($empNongiftBox); ?>">
-                                                            <?php echo ($empNongiftBox); ?>
+                                                        <option value="<?php echo($empNongiftBox); ?>">
+                                                            <?php echo($empNongiftBox); ?>
                                                         </option>
                                                     @endforeach
                                                 </optgroup>
@@ -493,15 +504,15 @@
                                                 @endif
                                                 <optgroup label="Cleaners">
                                                     @foreach($empCleaners as $empCleaner)
-                                                        <option value="<?php echo ($empCleaner); ?>">
-                                                            <?php echo ($empCleaner); ?>
+                                                        <option value="<?php echo($empCleaner); ?>">
+                                                            <?php echo($empCleaner); ?>
                                                         </option>
                                                     @endforeach
                                                 </optgroup>
                                                 <optgroup label="Non-Cleaners">
                                                     @foreach($empNonCleaners as $empNonCleaner)
-                                                        <option value="<?php echo ($empNonCleaner); ?>">
-                                                            <?php echo ($empNonCleaner); ?>
+                                                        <option value="<?php echo($empNonCleaner); ?>">
+                                                            <?php echo($empNonCleaner); ?>
                                                         </option>
                                                     @endforeach
                                                 </optgroup>
@@ -523,8 +534,8 @@
                                                 @endif
                                                 <optgroup label="Freezers">
                                                     @foreach($empFreezers as $empFreezer)
-                                                        <option value="<?php echo ($empFreezer); ?>">
-                                                            <?php echo ($empFreezer); ?>
+                                                        <option value="<?php echo($empFreezer); ?>">
+                                                            <?php echo($empFreezer); ?>
                                                         </option>
                                                     @endforeach
                                                 </optgroup>
@@ -547,435 +558,435 @@
         </div>
     </div>
 
-        @endsection
+@endsection
 
-        @section('scripts')
+@section('scripts')
 
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-            <script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
 
-                // Disable selected name in other dropdown based on user selection
-                var labeler_conveyor = $("select[name='labeler_conveyor[]']");
-                var icer_conveyor = $("select[name='icer_conveyor[]']");
-                var labeler_support = $("select[name='labeler_support[]']");
-                var stocker_support = $("select[name='stocker_support[]']");
-                var icer_support = $("select[name='icer_support[]']");
-                var mezzanine = $("select[name='mezzanine[]']");
-                var runner = $("select[name='runner[]']");
-                var cleaner = $("select[name='cleaner[]']");
-                var qc = $("select[name='qc[]']");
-                var giftBox = $("select[name='giftBox[]']");
-                var freezer = $("select[name='freezer[]']");
+        // Disable selected name in other dropdown based on user selection
+        var labeler_conveyor = $("select[name='labeler_conveyor[]']");
+        var icer_conveyor = $("select[name='icer_conveyor[]']");
+        var labeler_support = $("select[name='labeler_support[]']");
+        var stocker_support = $("select[name='stocker_support[]']");
+        var icer_support = $("select[name='icer_support[]']");
+        var mezzanine = $("select[name='mezzanine[]']");
+        var runner = $("select[name='runner[]']");
+        var cleaner = $("select[name='cleaner[]']");
+        var qc = $("select[name='qc[]']");
+        var giftBox = $("select[name='giftBox[]']");
+        var freezer = $("select[name='freezer[]']");
 
-                var employees = $("select[id='employees']");
+        var employees = $("select[id='employees']");
 
-                var oldSelectedItem = '';
-                    employees.on('select2:selecting', function (evt) {
-                        oldSelectedItem = $(this).val();
-                 });
+        var oldSelectedItem = '';
+        employees.on('select2:selecting', function (evt) {
+            oldSelectedItem = $(this).val();
+        });
 
-                    employees.change(function () {
+        employees.change(function () {
 
-                        var selectedDropDown = $(this).attr("name");
-                        var selectedItem = $(this).val();
-                        if (selectedItem) {
+            var selectedDropDown = $(this).attr("name");
+            var selectedItem = $(this).val();
+            if (selectedItem) {
 
-                            if (selectedDropDown === 'labeler_conveyor[]') {
-                                icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                if (selectedDropDown === 'labeler_conveyor[]') {
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
 
-                            } else if (selectedDropDown === 'icer_conveyor[]') {
-                                labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                            } else if (selectedDropDown === 'labeler_support[]') {
-                                labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                            } else if (selectedDropDown === 'stocker_support[]') {
-                                labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                            } else if (selectedDropDown === 'icer_support[]') {
-                                labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                            } else if (selectedDropDown === 'mezzanine[]') {
-                                labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                            } else if (selectedDropDown === 'runner[]') {
-                                labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                            } else if (selectedDropDown === 'cleaner[]') {
-                                labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                            } else if (selectedDropDown === 'qc[]') {
-                                labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                            } else if (selectedDropDown === 'giftBox[]') {
-                                labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                            } else if (selectedDropDown === 'freezer[]') {
-                                labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                                giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                                giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                            }
-                        }
+                } else if (selectedDropDown === 'icer_conveyor[]') {
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                } else if (selectedDropDown === 'labeler_support[]') {
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                } else if (selectedDropDown === 'stocker_support[]') {
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                } else if (selectedDropDown === 'icer_support[]') {
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                } else if (selectedDropDown === 'mezzanine[]') {
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                } else if (selectedDropDown === 'runner[]') {
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                } else if (selectedDropDown === 'cleaner[]') {
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                } else if (selectedDropDown === 'qc[]') {
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                } else if (selectedDropDown === 'giftBox[]') {
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                } else if (selectedDropDown === 'freezer[]') {
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
+                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                }
+            }
 
-                    });
-
-
-                $(document).ready(function($) {
-
-                    for(var i = 0; i<labeler_conveyor.length; i++) {
-
-                        icer_conveyor.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
-                        labeler_support.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
-                        stocker_support.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
-                        icer_support.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
-                        mezzanine.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
-                        runner.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
-                        cleaner.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
-                        qc.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
-                        giftBox.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
-                        freezer.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
-
-                    }
-
-                    for(i = 0; i<labeler_support.length; i++) {
-
-                        //Disable values for Labeler Support Line
-                        icer_conveyor.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
-                        labeler_conveyor.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
-                        stocker_support.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
-                        icer_support.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
-                        mezzanine.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
-                        runner.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
-                        cleaner.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
-                        qc.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
-                        giftBox.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
-                        freezer.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
-
-                    }
+        });
 
 
-                    for(i = 0; i<stocker_support.length; i++) {
-                        icer_conveyor.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
-                        labeler_conveyor.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
-                        labeler_support.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
-                        icer_support.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
-                        mezzanine.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
-                        runner.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
-                        cleaner.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
-                        qc.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
-                        giftBox.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
-                        freezer.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
-                    }
+        $(document).ready(function ($) {
 
-                    for(i = 0; i<mezzanine.length; i++) {
-                        icer_conveyor.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
-                        labeler_conveyor.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
-                        labeler_support.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
-                        icer_support.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
-                        stocker_support.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
-                        runner.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
-                        cleaner.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
-                        qc.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
-                        giftBox.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
-                        freezer.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
-                    }
+            for (var i = 0; i < labeler_conveyor.length; i++) {
 
-                    for(i = 0; i<runner.length; i++) {
-                        icer_conveyor.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
-                        labeler_conveyor.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
-                        labeler_support.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
-                        icer_support.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
-                        stocker_support.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
-                        mezzanine.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
-                        cleaner.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
-                        qc.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
-                        giftBox.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
-                        freezer.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
-                    }
+                icer_conveyor.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                labeler_support.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                stocker_support.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                icer_support.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                mezzanine.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                runner.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                cleaner.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                qc.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                giftBox.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                freezer.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
 
-                    for(i = 0; i<cleaner.length; i++) {
-                        icer_conveyor.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
-                        labeler_conveyor.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
-                        labeler_support.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
-                        icer_support.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
-                        stocker_support.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
-                        mezzanine.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
-                        runner.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
-                        qc.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
-                        giftBox.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
-                        freezer.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
-                    }
+            }
 
-                    for(i = 0; i<qc.length; i++) {
-                        icer_conveyor.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
-                        labeler_conveyor.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
-                        labeler_support.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
-                        icer_support.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
-                        stocker_support.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
-                        mezzanine.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
-                        runner.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
-                        cleaner.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
-                        giftBox.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
-                        freezer.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
-                    }
+            for (i = 0; i < labeler_support.length; i++) {
 
-                    for(i = 0; i<giftBox.length; i++) {
-                        icer_conveyor.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
-                        labeler_conveyor.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
-                        labeler_support.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
-                        icer_support.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
-                        stocker_support.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
-                        mezzanine.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
-                        runner.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
-                        cleaner.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
-                        qc.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
-                        freezer.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
-                    }
+                //Disable values for Labeler Support Line
+                icer_conveyor.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
+                labeler_conveyor.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
+                stocker_support.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
+                icer_support.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
+                mezzanine.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
+                runner.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
+                cleaner.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
+                qc.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
+                giftBox.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
+                freezer.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
 
-                    for(i = 0; i<freezer.length; i++) {
-                        icer_conveyor.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
-                        labeler_conveyor.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
-                        labeler_support.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
-                        icer_support.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
-                        stocker_support.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
-                        mezzanine.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
-                        runner.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
-                        cleaner.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
-                        qc.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
-                        giftBox.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
-                    }
+            }
 
-                });
 
-            </script>
+            for (i = 0; i < stocker_support.length; i++) {
+                icer_conveyor.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+                labeler_conveyor.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+                labeler_support.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+                icer_support.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+                mezzanine.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+                runner.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+                cleaner.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+                qc.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+                giftBox.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+                freezer.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+            }
 
-        @endsection
+            for (i = 0; i < mezzanine.length; i++) {
+                icer_conveyor.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+                labeler_conveyor.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+                labeler_support.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+                icer_support.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+                stocker_support.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+                runner.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+                cleaner.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+                qc.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+                giftBox.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+                freezer.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+            }
 
-        @section('footer')
+            for (i = 0; i < runner.length; i++) {
+                icer_conveyor.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+                labeler_conveyor.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+                labeler_support.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+                icer_support.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+                stocker_support.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+                mezzanine.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+                cleaner.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+                qc.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+                giftBox.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+                freezer.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+            }
 
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
-            <script>
-                $(document).ready(function($) {
-                    $("select[name='conveyor_lines[]']").select2({width: 60});
-                    $("select[name='support_lines[]']").select2({width: 60});
-                    $("select[name='labeler_conveyor[]']").select2({width: 230});
-                    $("select[name='icer_conveyor[]']").select2({width: 230});
-                    $("select[name='labeler_support[]']").select2({width: 160});
-                    $("select[name='stocker_support[]']").select2({width: 160});
-                    $("select[name='icer_support[]']").select2({width: 160});
-                    $("select[name='mezzanine[]']").select2({width:200});
-                    $("select[name='runner[]']").select2({width: 200});
-                    $("select[name='qc[]']").select2({width: 200});
-                    $("select[name='cleaner[]']").select2({width: 200});
-                    $("select[name='giftBox[]']").select2({width: 200});
-                    $("select[name='freezer[]']").select2({width: 200});
-                    $("select[name='mezzanine_Startlines[]']").select2({width: 75});
-                    $("select[name='mezzanine_Endlines[]']").select2({width: 75});
-                    $("select[name='runner_Startlines[]']").select2({width: 75});
-                    $("select[name='runner_Endlines[]']").select2({width: 75});
-                    $("select[name='kpmg[]']").select2({width: 200});
+            for (i = 0; i < cleaner.length; i++) {
+                icer_conveyor.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+                labeler_conveyor.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+                labeler_support.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+                icer_support.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+                stocker_support.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+                mezzanine.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+                runner.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+                qc.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+                giftBox.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+                freezer.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+            }
 
-                });
+            for (i = 0; i < qc.length; i++) {
+                icer_conveyor.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+                labeler_conveyor.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+                labeler_support.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+                icer_support.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+                stocker_support.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+                mezzanine.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+                runner.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+                cleaner.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+                giftBox.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+                freezer.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+            }
 
-            </script>
+            for (i = 0; i < giftBox.length; i++) {
+                icer_conveyor.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
+                labeler_conveyor.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
+                labeler_support.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
+                icer_support.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
+                stocker_support.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
+                mezzanine.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
+                runner.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
+                cleaner.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
+                qc.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
+                freezer.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
+            }
+
+            for (i = 0; i < freezer.length; i++) {
+                icer_conveyor.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
+                labeler_conveyor.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
+                labeler_support.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
+                icer_support.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
+                stocker_support.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
+                mezzanine.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
+                runner.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
+                cleaner.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
+                qc.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
+                giftBox.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
+            }
+
+        });
+
+    </script>
+
+@endsection
+
+@section('footer')
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function ($) {
+            $("select[name='conveyor_lines[]']").select2({width: 60});
+            $("select[name='support_lines[]']").select2({width: 60});
+            $("select[name='labeler_conveyor[]']").select2({width: 230});
+            $("select[name='icer_conveyor[]']").select2({width: 230});
+            $("select[name='labeler_support[]']").select2({width: 160});
+            $("select[name='stocker_support[]']").select2({width: 160});
+            $("select[name='icer_support[]']").select2({width: 160});
+            $("select[name='mezzanine[]']").select2({width: 200});
+            $("select[name='runner[]']").select2({width: 200});
+            $("select[name='qc[]']").select2({width: 200});
+            $("select[name='cleaner[]']").select2({width: 200});
+            $("select[name='giftBox[]']").select2({width: 200});
+            $("select[name='freezer[]']").select2({width: 200});
+            $("select[name='mezzanine_Startlines[]']").select2({width: 75});
+            $("select[name='mezzanine_Endlines[]']").select2({width: 75});
+            $("select[name='runner_Startlines[]']").select2({width: 75});
+            $("select[name='runner_Endlines[]']").select2({width: 75});
+            $("select[name='kpmg[]']").select2({width: 200});
+
+        });
+
+    </script>
 
 @endsection
 

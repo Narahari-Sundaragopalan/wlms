@@ -12,7 +12,6 @@
             background-size: cover;
             text-align: center;
             height: 100vh;
-            
 
         }
 

@@ -53,12 +53,13 @@
                                             <td class="table-text">
                                                 <div>
                                                     <a href="{{ url('Supervisor/'.$supervisor->id.'/edit') }}">{{ wordwrap($supervisor->supfname.' '. $supervisor->suplname, 10, "\n", false) }}</a>
-                                                    
+
                                                 </div>
                                             </td>
 
                                             <td>{{ $supervisor->position }}</td>
-                                            <td><a href="{{url('Supervisor',$supervisor->id)}}" class="btn btn-primary">Details</a></td>
+                                            <td><a href="{{url('Supervisor',$supervisor->id)}}" class="btn btn-primary">Details</a>
+                                            </td>
                                         </tr>
                                     @endforeach
 
