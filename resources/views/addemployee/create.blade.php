@@ -81,22 +81,14 @@
 
                             <div class="form-group{{ $errors->has('positiontype') ? ' has-error' : '' }}">
                                 {!! Form::label('positiontype', 'Position:') !!}
-                                {{-- <div>
-                                     {!! Form::radio ('positiontype', 'Full-time')!!}Full-time
-                                     {!! Form::radio ('positiontype', 'Part-time') !!}Part-time
-                                 </div> --}}
-
                                 <input type="radio" name="positiontype"
                                        value="Full-time" {{(old('positiontype') == "Full-time") ? 'checked': ''}}>Full-time
                                 <input type="radio" name="positiontype"
                                        value="Part-time" {{(old('positiontype') == "Part-time") ? 'checked': ''}}>Part-time
-
                             </div>
 
                             <div class="form-group{{ $errors->has('experience') ? ' has-error' : '' }}">
                                 {!! Form::label('experience', 'Experience:') !!}
-                                {{--   {!! Form::radio ('experience', 'Trained')!!}Trained
-                                   {!! Form::radio ('experience', 'Untrained') !!}Untrained --}}
                                 <input type="radio" name="experience"
                                        value="Trained" {{(old('experience') == "Trained") ? 'checked': ''}}>Trained
                                 <input type="radio" name="experience"
@@ -192,7 +184,7 @@
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-5">
-                                    {!! Form::button('<i class = "fa fa-btn fa-save"></i>Save', ['type' => 'submit','class' => 'btn btn-primary', 'style'=> "width: 100px; height: 30px;"]) !!}
+                                    {!! Form::button('<i class = "fa fa-btn fa-floppy-o"></i>Save', ['type' => 'submit','class' => 'btn btn-primary', 'style'=> "width: 100px; height: 30px;"]) !!}
                                 </div>
                             </div>
                             {!! Form::close() !!}

@@ -26,7 +26,8 @@
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <div class="pull-right">
-                                <a href="{{url('/user/create')}}" class="btn btn-success">Create new User</a>
+                                <a href="{{url('/user/create')}}" class="btn btn-success"><i
+                                            class="fa fa-btn fa-file"></i>Add User</a>
                                 <hr>
                             </div>
                             <h3 style="text-align: center; color: black">Users</h3>

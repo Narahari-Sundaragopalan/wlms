@@ -67,7 +67,7 @@
 
                             <div class="form-group" style="text-align: left">
                                 <div class="col-md-6 col-md-offset-5">
-                                    {!! Form::submit('Save', ['class' => 'btn btn-primary', 'style'=> "width: 100px; height: 30px;"]) !!}
+                                    {!! Form::button('<i class = "fa fa-btn fa-floppy-o"></i>Save', ['type' => 'submit','class' => 'btn btn-primary', 'style'=> "width: 100px; height: 30px;"]) !!}
                                 </div>
                             </div>
                             {!! Form::close() !!}

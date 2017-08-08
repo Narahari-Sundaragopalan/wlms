@@ -27,7 +27,8 @@
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <div class="pull-right">
-                                <a href="{{url('/Supervisor/create')}}" class="btn btn-success">Add Supervisor</a>
+                                <a href="{{url('/Supervisor/create')}}" class="btn btn-success"><i
+                                            class="fa fa-btn fa-file"></i>Add Supervisor</a>
                                 <hr>
                             </div>
 
