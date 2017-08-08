@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Validator;
 use \RecursiveIteratorIterator;
 use \RecursiveArrayIterator;
+use Illuminate\Support\Facades\Log;
 
 class EmployeeController extends Controller
 {
