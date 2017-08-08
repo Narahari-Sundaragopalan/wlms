@@ -83,7 +83,7 @@ class ScheduleController extends Controller
         while($i > 0) {
             $labelerSet = false; $labeler = ''; $icerSet = false; $icer = '';
             foreach ($employees as $employee) {
-                if($employee->labeler && !($labelerSet) && $employee->labeler_rating >= 2) {
+                if($employee->labeler && !($labelerSet) && $employee->labeler_rating > 2) {
                     if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
                         $labeler = $employee->empfname . ' ' . $employee->emplname[0];
                         $labelerSet = true;
@@ -91,7 +91,7 @@ class ScheduleController extends Controller
                         $isLangSpanish = $employee->spanish;
                         $labeler_array[$index++] = $employee->id;
                     }
-                } elseif (($employee->icer || ($employee->labeler && $employee->labeler_rating < 2) ) && !($icerSet)) {
+                } elseif (($employee->icer || ($employee->labeler && $employee->labeler_rating <= 2) ) && !($icerSet)) {
                     if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
                         if(($employee->english && $isLangEnglish) || ($employee->spanish && $isLangSpanish)) {
                             $icer = $employee->empfname . ' ' . $employee->emplname[0];
@@ -132,7 +132,7 @@ class ScheduleController extends Controller
             $labelerSet = false; $stockerSet = false; $icerSet = false;
             $labeler = ''; $stocker = ''; $icer = '';
             foreach ($employees as $employee) {
-                if ($employee->labeler && !($labelerSet) && $employee->labeler_rating >= 2) {
+                if ($employee->labeler && !($labelerSet) && $employee->labeler_rating > 2) {
                     if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $icerArray, true))) {
                         $labeler = $employee->empfname . ' ' . $employee->emplname[0];
                         $labelerSet = true;
@@ -140,7 +140,7 @@ class ScheduleController extends Controller
                         $isLangSpanish = $employee->spanish;
                         $labeler_array[$index++] = $employee->id;
                     }
-                } elseif ($employee->stocker && !($stockerSet) && $employee->stocker_rating >=2 ) {
+                } elseif ($employee->stocker && !($stockerSet) && $employee->stocker_rating > 2 ) {
                     if(!(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
                         if(($employee->english && $isLangEnglish) || ($employee->spanish && $isLangSpanish)) {
                             $stocker = $employee->empfname . ' ' . $employee->emplname[0];
@@ -148,7 +148,7 @@ class ScheduleController extends Controller
                             $stocker_array[$stock_index++] = $employee->id;
                         }
                     }
-                } elseif (( $employee->icer || ($employee->labeler && $employee->labeler_rating < 2) ) && !($icerSet)) {
+                } elseif (( $employee->icer || ($employee->labeler && $employee->labeler_rating <= 2) ) && !($icerSet)) {
                     if(!(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
                         if(($employee->english && $isLangEnglish) || ($employee->spanish && $isLangSpanish)) {
                             $icer = $employee->empfname . ' ' . $employee->emplname[0];
