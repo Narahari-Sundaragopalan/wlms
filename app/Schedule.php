@@ -10,7 +10,8 @@ class Schedule extends Model
     protected $fillable=[
         'date',
         'time',
-        'schedule'
+        'schedule',
+        'coolers_shipped'
     ];
 
     protected $casts = [

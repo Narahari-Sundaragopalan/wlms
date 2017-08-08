@@ -13,9 +13,15 @@
             <div class="panel panel-info">
                 <div class="panel-heading" style="text-align: center; color: black">
 
-                    <div class="pull-left">
-                        <a href="{{ url('/schedule') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
-                    </div>
+                    @if (Auth::check() && Auth::user()->hasRole('admin'))
+                        <div class="pull-left">
+                            <a href="{{ url('/schedule') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
+                        </div>
+                    @else
+                        <div class="pull-left">
+                            <a href="{{ url('/home') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
+                        </div>
+                    @endif
 
                     <h4> {{ $heading }}</h4>
 
