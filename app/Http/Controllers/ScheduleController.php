@@ -1269,4 +1269,19 @@ class ScheduleController extends Controller
         return view ('schedule.requestschedule', compact('user'), $this->viewData);
 
     }
+
+    public function getLatestSchedule() {
+        $currentSchedule = Schedule::all()->last();
+        $this->viewData = json_decode($currentSchedule->schedule, true);
+        $this->viewData['heading'] = 'DC WEST LINE UP - '. $currentSchedule->date . ' - ' . $currentSchedule->time;
+        $this->viewData['id'] = $currentSchedule->id;
+        $this->viewData['coolersShipped'] = $currentSchedule->coolers_shipped;
+
+        return view ('schedule.showCurrentSchedule', $this->viewData);
+
+
+
+    }
 }
+
+

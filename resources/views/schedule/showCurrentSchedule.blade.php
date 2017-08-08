@@ -34,10 +34,6 @@
                                 </button>
                             </form>
                         </div>
-                        <div class="pull-left">
-                            <a href="{{ url('/schedule/requestSchedule') }}" class="btn btn-info"><i
-                                        class="fa fa-btn fa-backward"></i> Back </a>
-                        </div>
                         <div><h4 style="text-align: center; color: black">{{ $heading }}</h4>
                             <span id="first"
                                   style="font-weight: bold; text-align:left; color: black">{{"Coolers Shipped : " . number_format($coolersShipped) }}</span>

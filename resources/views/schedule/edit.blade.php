@@ -25,9 +25,6 @@
             <div class="col-md-12">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <div class="pull-left">
-                            <a href="{{ url('/schedule/createSchedule') }}"class="btn btn-info"><i class="fa fa-btn fa-backward"></i> Back </a>
-                        </div>
                         <div style="text-align: center; color: black"><h3>{{ $heading }}</h3></div>
                         <div>
                             <span id="first" style="font-weight: bold; text-align: left; color: black">{{"Coolers Shipped : " . number_format($coolersShipped) }}</span>

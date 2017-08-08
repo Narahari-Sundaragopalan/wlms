@@ -38,6 +38,7 @@ Route::post('schedule/generate', 'ScheduleController@generate');
 Route::get('schedule/requestSchedule', 'ScheduleController@requestSchedule');
 Route::post('schedule/requestSchedule', 'ScheduleController@getScheduleDetails');
 Route::get('schedule/show/{id}', 'ScheduleController@showSchedule');
+Route::get('schedule/latestSchedule', 'ScheduleController@getLatestSchedule');
 
 
 Route::get('/buttons', 'ProfileController@index');

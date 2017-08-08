@@ -30,7 +30,7 @@
                     {{ csrf_field() }}
                     <br/>
 
-                    <button class="btn btn-primary" style="background-color: #2ca02c;">Import</button>
+                    <button class="btn btn-primary" style="background-color: #2ca02c;"><i class="fa fa-btn fa-file-excel-o"></i>Import</button>
 
                 </form>
             </div>
