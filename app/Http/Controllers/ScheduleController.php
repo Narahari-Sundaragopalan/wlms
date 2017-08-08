@@ -292,6 +292,7 @@ class ScheduleController extends Controller
         $schedule->coolers_shipped = $coolersShipped;
         $schedule->date = $scheduleDate;
         $schedule->time = $timeOfSchedule;
+        $schedule->temps = $numberOfTemps;
         $schedule->save();
 
         $currentSchedule = Schedule::all()->last()->id;
@@ -1015,6 +1016,8 @@ class ScheduleController extends Controller
 
     public function update($id, Request $request) {
 
+        dd($request->all());
+
         //Get the current schedule from the database
         $scheduler = Schedule::find($id);
         $this->viewData = json_decode($scheduler->schedule, true);
@@ -1026,6 +1029,7 @@ class ScheduleController extends Controller
         $giftBoxArray = $this->viewData['giftBox'];
         $freezerArray = $this->viewData['freezer'];
         $cleanerArray = $this->viewData['cleaner'];
+        $numberOfTemps = 0;
 
         $labeler_ConveyorLine = $request['labeler_conveyor'];
         $labeler_SupportLine = $request['labeler_support'];
@@ -1049,6 +1053,9 @@ class ScheduleController extends Controller
         for($i = 0; $i < sizeof($labeler_ConveyorLine); $i++) {
             if(!empty($labeler_ConveyorLine[$i])) {
                 $schedule_array[$i]['labeler'] = $labeler_ConveyorLine[$i];
+                if($labeler_ConveyorLine[$i] === 'Temp') {
+                    $numberOfTemps++;
+                }
             }
         }
 
@@ -1062,6 +1069,9 @@ class ScheduleController extends Controller
         for($i = 0; $i < sizeof($labeler_SupportLine); $i++) {
             if(!empty($labeler_SupportLine[$i])) {
                 $schedule_array_2[$i]['labeler'] = $labeler_SupportLine[$i];
+                if($labeler_SupportLine[$i] === 'Temp') {
+                    $numberOfTemps++;
+                }
             }
         }
 
@@ -1074,6 +1084,9 @@ class ScheduleController extends Controller
         for($i = 0; $i < sizeof($stocker_SupportLine); $i++) {
             if(!empty($stocker_SupportLine[$i])) {
                 $schedule_array_2[$i]['stocker'] = $stocker_SupportLine[$i];
+                if($stocker_SupportLine[$i] === 'Temp') {
+                    $numberOfTemps++;
+                }
             }
         }
 
@@ -1087,6 +1100,9 @@ class ScheduleController extends Controller
         for($i = 0; $i < sizeof($mezzanine); $i++) {
             if(!empty($mezzanine[$i])) {
                 $mezzanineArray[$i]['name'] = $mezzanine[$i];
+                if($mezzanine[$i] === 'Temp') {
+                    $numberOfTemps++;
+                }
             }
         }
 
@@ -1099,6 +1115,9 @@ class ScheduleController extends Controller
         for($i = 0; $i < sizeof($runner); $i++) {
             if(!empty($runner[$i])) {
                 $runnerArray[$i]['name'] = $runner[$i];
+                if($runner[$i] === 'Temp') {
+                    $numberOfTemps++;
+                }
             }
         }
         $duplicate = $this->checkArrayDuplicate($runnerArray, $fieldToCompare);
@@ -1109,6 +1128,9 @@ class ScheduleController extends Controller
         for($i = 0; $i < sizeof($icer_Conveyor); $i++) {
             if(!empty($icer_Conveyor[$i])) {
                 $schedule_array[$i]['icer'] = $icer_Conveyor[$i];
+                if($icer_Conveyor[$i] === 'Temp') {
+                    $numberOfTemps++;
+                }
             }
         }
 
@@ -1121,6 +1143,9 @@ class ScheduleController extends Controller
         for($i = 0; $i < sizeof($icer_Support); $i++) {
             if(!empty($icer_Support[$i])) {
                 $schedule_array_2[$i]['icer'] = $icer_Support[$i];
+                if($icer_Support[$i] === 'Temp') {
+                    $numberOfTemps++;
+                }
             }
         }
 
@@ -1203,9 +1228,9 @@ class ScheduleController extends Controller
         $this->viewData['id'] = $id;
         $this->viewData['heading'] = 'DC WEST LINE UP - '. $scheduler->date . ' - ' . $scheduler->time;
         $this->viewData['coolersShipped'] = $scheduler->coolers_shipped;
+        $this->viewData['Temps'] = $numberOfTemps;
         $scheduler->schedule = json_encode($this->viewData);
         $scheduler->update();
-
 
         return view ('schedule.generate', $this->viewData);
 
