@@ -292,14 +292,12 @@ class ScheduleController extends Controller
         $schedule->coolers_shipped = $coolersShipped;
         $schedule->date = $scheduleDate;
         $schedule->time = $timeOfSchedule;
-        $schedule->temps = $numberOfTemps;
         $schedule->save();
 
         $currentSchedule = Schedule::all()->last()->id;
         $this->viewData['id'] = $currentSchedule;
         $this->viewData['heading'] = 'DC WEST LINE UP - '. $scheduleDate . ' - ' . $timeOfSchedule;
         $this->viewData['coolersShipped'] = $coolersShipped;
-        // $this->viewData['Temps'] = $numberOfTemps;
 
         return view ('schedule.generate', $this->viewData);
     }
