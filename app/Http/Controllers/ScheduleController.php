@@ -1046,6 +1046,16 @@ class ScheduleController extends Controller
         $freezer = $request['freezer'];
 
 
+        if(sizeof($mezzanine) < sizeof($mezzanineStartLines)) {
+            // This code assumes the elements removed are from the end of array
+            $removedElementCount = sizeof($mezzanineStartLines) - sizeof($mezzanine);
+            for($i = 0; $i < $removedElementCount; $i++) {
+                array_pop($mezzanineStartLines);
+                array_pop($mezzanineEndLines);
+                array_pop($mezzanineArray);
+            }
+        }
+
         for($i = 0; $i < sizeof($labeler_ConveyorLine); $i++) {
             if(!empty($labeler_ConveyorLine[$i])) {
                 $schedule_array[$i]['labeler'] = $labeler_ConveyorLine[$i];
@@ -1101,6 +1111,7 @@ class ScheduleController extends Controller
                 }
             }
         }
+
 
         $fieldToCompare = 'name';
         $duplicate = $this->checkArrayDuplicate($mezzanineArray, $fieldToCompare);

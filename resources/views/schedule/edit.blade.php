@@ -56,7 +56,7 @@
                                             <td>
                                                 <select class="form-control" name="conveyor_lines[]">
 
-                                                    <option value="" selected class="bld">
+                                                    <option value="<?php echo($schedule_array[$i]['line_number']); ?>" selected class="bld">
                                                         <?php echo($schedule_array[$i]['line_number']); ?>
                                                     </option>
                                                     <optgroup label="Line #">
@@ -155,13 +155,13 @@
                                             <td>
                                                 <select class="form-control" name="support_lines[]">
 
-                                                    <option value="" selected class="bld">
+                                                    <option value="<?php echo($schedule_array_2[$j]['line_number']); ?>" selected class="bld">
                                                         <?php echo($schedule_array_2[$j]['line_number']); ?>
                                                     </option>
                                                     <optgroup label="Line #">
-                                                        @foreach($supportLines as $supportLine)
+                                                        @foreach($totalLines as $totalLine)
                                                             <option>
-                                                                <?php echo($supportLine); ?>
+                                                                <?php echo($totalLine); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
@@ -281,7 +281,7 @@
                                         <tr>
                                             <td>
                                                 <select class="form-control" name="mezzanine_Startlines[]">
-                                                    <option value="" selected class="bld">
+                                                    <option value="<?php echo($mezzanineArray[$i]['startLine']);?>" selected class="bld">
                                                         <?php echo($mezzanineArray[$i]['startLine']);?>
                                                     </option>
                                                     <optgroup label="Line #">
@@ -294,7 +294,7 @@
                                                 </select>
                                                 -
                                                 <select class="form-control" name="mezzanine_Endlines[]">
-                                                    <option value="" selected class="bld">
+                                                    <option value="<?php echo($mezzanineArray[$i]['endLine']);?>" selected class="bld">
                                                         <?php echo($mezzanineArray[$i]['endLine']);?>
                                                     </option>
                                                     <optgroup label="Line #">
@@ -336,6 +336,9 @@
                                                     <option><?php echo 'Temp' ?></option>
                                                     <option><?php echo 'NA' ?></option>
                                                 </select>
+                                                
+                                                 <input type="button" value="Remove" id="removeMez" onclick="removeMezLine(this);">
+
                                             </td>
                                         </tr>
                                     @endforeach
@@ -564,6 +567,13 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
+
+
+        function removeMezLine(removeLink){
+            var inputElement = removeLink.parentNode;
+            inputElement.remove();
+        }
+
 
         // Disable selected name in other dropdown based on user selection
         var labeler_conveyor = $("select[name='labeler_conveyor[]']");
