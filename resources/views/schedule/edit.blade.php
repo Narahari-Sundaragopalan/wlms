@@ -589,240 +589,570 @@
 
             var selectedDropDown = $(this).attr("name");
             var selectedItem = $(this).val();
-            if (selectedItem) {
+            if (selectedItem && selectedItem !== 'Temp' && selectedItem !== 'NA') {
 
-                if (selectedDropDown === 'labeler_conveyor[]') {
-                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+               if (selectedDropDown === 'labeler_conveyor[]') {
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    icer_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    labeler_support.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    stocker_support.find('option[value="' + selectedItem + '"]').remove();
+                    stocker_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    icer_support.find('option[value="' + selectedItem + '"]').remove();
+                    icer_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    mezzanine.find('option[value="' + selectedItem + '"]').remove();
+                    mezzanine.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    runner.find('option[value="' + selectedItem + '"]').remove();
+                    runner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    cleaner.find('option[value="' + selectedItem + '"]').remove();
+                    cleaner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    qc.find('option[value="' + selectedItem + '"]').remove();
+                    qc.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    giftBox.find('option[value="' + selectedItem + '"]').remove();
+                    giftBox.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    freezer.find('option[value="' + selectedItem + '"]').remove();
+                    freezer.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
 
                 } else if (selectedDropDown === 'icer_conveyor[]') {
-                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                   labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                   labeler_conveyor.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   labeler_support.find('option[value="' + selectedItem + '"]').remove();
+                   labeler_support.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   stocker_support.find('option[value="' + selectedItem + '"]').remove();
+                   stocker_support.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   icer_support.find('option[value="' + selectedItem + '"]').remove();
+                   icer_support.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   mezzanine.find('option[value="' + selectedItem + '"]').remove();
+                   mezzanine.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   runner.find('option[value="' + selectedItem + '"]').remove();
+                   runner.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   cleaner.find('option[value="' + selectedItem + '"]').remove();
+                   cleaner.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   qc.find('option[value="' + selectedItem + '"]').remove();
+                   qc.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   giftBox.find('option[value="' + selectedItem + '"]').remove();
+                   giftBox.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   freezer.find('option[value="' + selectedItem + '"]').remove();
+                   freezer.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
                 } else if (selectedDropDown === 'labeler_support[]') {
-                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                   labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                   labeler_conveyor.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                   icer_conveyor.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   stocker_support.find('option[value="' + selectedItem + '"]').remove();
+                   stocker_support.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   icer_support.find('option[value="' + selectedItem + '"]').remove();
+                   icer_support.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   mezzanine.find('option[value="' + selectedItem + '"]').remove();
+                   mezzanine.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   runner.find('option[value="' + selectedItem + '"]').remove();
+                   runner.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   cleaner.find('option[value="' + selectedItem + '"]').remove();
+                   cleaner.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   qc.find('option[value="' + selectedItem + '"]').remove();
+                   qc.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   giftBox.find('option[value="' + selectedItem + '"]').remove();
+                   giftBox.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   freezer.find('option[value="' + selectedItem + '"]').remove();
+                   freezer.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
                 } else if (selectedDropDown === 'stocker_support[]') {
-                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                   labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                   labeler_conveyor.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                   icer_conveyor.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   labeler_support.find('option[value="' + selectedItem + '"]').remove();
+                   labeler_support.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   icer_support.find('option[value="' + selectedItem + '"]').remove();
+                   icer_support.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   mezzanine.find('option[value="' + selectedItem + '"]').remove();
+                   mezzanine.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   runner.find('option[value="' + selectedItem + '"]').remove();
+                   runner.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   cleaner.find('option[value="' + selectedItem + '"]').remove();
+                   cleaner.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   qc.find('option[value="' + selectedItem + '"]').remove();
+                   qc.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   giftBox.find('option[value="' + selectedItem + '"]').remove();
+                   giftBox.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   freezer.find('option[value="' + selectedItem + '"]').remove();
+                   freezer.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
                 } else if (selectedDropDown === 'icer_support[]') {
-                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                   labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                   labeler_conveyor.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                   icer_conveyor.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   stocker_support.find('option[value="' + selectedItem + '"]').remove();
+                   stocker_support.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   labeler_support.find('option[value="' + selectedItem + '"]').remove();
+                   labeler_support.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   mezzanine.find('option[value="' + selectedItem + '"]').remove();
+                   mezzanine.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   runner.find('option[value="' + selectedItem + '"]').remove();
+                   runner.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   cleaner.find('option[value="' + selectedItem + '"]').remove();
+                   cleaner.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   qc.find('option[value="' + selectedItem + '"]').remove();
+                   qc.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   giftBox.find('option[value="' + selectedItem + '"]').remove();
+                   giftBox.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   freezer.find('option[value="' + selectedItem + '"]').remove();
+                   freezer.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
                 } else if (selectedDropDown === 'mezzanine[]') {
-                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                   labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                   labeler_conveyor.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                   icer_conveyor.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   stocker_support.find('option[value="' + selectedItem + '"]').remove();
+                   stocker_support.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   icer_support.find('option[value="' + selectedItem + '"]').remove();
+                   icer_support.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   labeler_support.find('option[value="' + selectedItem + '"]').remove();
+                   labeler_support.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   runner.find('option[value="' + selectedItem + '"]').remove();
+                   runner.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   cleaner.find('option[value="' + selectedItem + '"]').remove();
+                   cleaner.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   qc.find('option[value="' + selectedItem + '"]').remove();
+                   qc.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   giftBox.find('option[value="' + selectedItem + '"]').remove();
+                   giftBox.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   freezer.find('option[value="' + selectedItem + '"]').remove();
+                   freezer.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
                 } else if (selectedDropDown === 'runner[]') {
-                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                   labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                   labeler_conveyor.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                   icer_conveyor.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   stocker_support.find('option[value="' + selectedItem + '"]').remove();
+                   stocker_support.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   icer_support.find('option[value="' + selectedItem + '"]').remove();
+                   icer_support.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   mezzanine.find('option[value="' + selectedItem + '"]').remove();
+                   mezzanine.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   labeler_support.find('option[value="' + selectedItem + '"]').remove();
+                   labeler_support.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   cleaner.find('option[value="' + selectedItem + '"]').remove();
+                   cleaner.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   qc.find('option[value="' + selectedItem + '"]').remove();
+                   qc.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   giftBox.find('option[value="' + selectedItem + '"]').remove();
+                   giftBox.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   freezer.find('option[value="' + selectedItem + '"]').remove();
+                   freezer.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
                 } else if (selectedDropDown === 'cleaner[]') {
-                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                   labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                   labeler_conveyor.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                   icer_conveyor.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   stocker_support.find('option[value="' + selectedItem + '"]').remove();
+                   stocker_support.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   icer_support.find('option[value="' + selectedItem + '"]').remove();
+                   icer_support.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   mezzanine.find('option[value="' + selectedItem + '"]').remove();
+                   mezzanine.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   runner.find('option[value="' + selectedItem + '"]').remove();
+                   runner.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   labeler_support.find('option[value="' + selectedItem + '"]').remove();
+                   labeler_support.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   qc.find('option[value="' + selectedItem + '"]').remove();
+                   qc.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   giftBox.find('option[value="' + selectedItem + '"]').remove();
+                   giftBox.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
+                   freezer.find('option[value="' + selectedItem + '"]').remove();
+                   freezer.append($('<option>', {
+                       value: oldSelectedItem,
+                       text: oldSelectedItem
+                   }));
                 } else if (selectedDropDown === 'qc[]') {
-                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    icer_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    labeler_support.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    stocker_support.find('option[value="' + selectedItem + '"]').remove();
+                    stocker_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    icer_support.find('option[value="' + selectedItem + '"]').remove();
+                    icer_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    mezzanine.find('option[value="' + selectedItem + '"]').remove();
+                    mezzanine.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    runner.find('option[value="' + selectedItem + '"]').remove();
+                    runner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    cleaner.find('option[value="' + selectedItem + '"]').remove();
+                    cleaner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    giftBox.find('option[value="' + selectedItem + '"]').remove();
+                    giftBox.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    freezer.find('option[value="' + selectedItem + '"]').remove();
+                    freezer.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
                 } else if (selectedDropDown === 'giftBox[]') {
-                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    freezer.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    freezer.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    icer_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    labeler_support.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    stocker_support.find('option[value="' + selectedItem + '"]').remove();
+                    stocker_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    icer_support.find('option[value="' + selectedItem + '"]').remove();
+                    icer_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    mezzanine.find('option[value="' + selectedItem + '"]').remove();
+                    mezzanine.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    runner.find('option[value="' + selectedItem + '"]').remove();
+                    runner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    qc.find('option[value="' + selectedItem + '"]').remove();
+                    qc.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    cleaner.find('option[value="' + selectedItem + '"]').remove();
+                    cleaner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    freezer.find('option[value="' + selectedItem + '"]').remove();
+                    freezer.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
                 } else if (selectedDropDown === 'freezer[]') {
-                    labeler_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    icer_conveyor.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_conveyor.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    labeler_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    labeler_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    stocker_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    stocker_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    icer_support.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    icer_support.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    mezzanine.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    mezzanine.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    runner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    runner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    qc.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    qc.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    cleaner.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    cleaner.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
-                    giftBox.find('option[value="' + selectedItem + '"]').prop("disabled", true);
-                    giftBox.find('option[value="' + oldSelectedItem + '"]').prop("disabled", false);
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    icer_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    labeler_support.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    stocker_support.find('option[value="' + selectedItem + '"]').remove();
+                    stocker_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    icer_support.find('option[value="' + selectedItem + '"]').remove();
+                    icer_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    mezzanine.find('option[value="' + selectedItem + '"]').remove();
+                    mezzanine.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    runner.find('option[value="' + selectedItem + '"]').remove();
+                    runner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    qc.find('option[value="' + selectedItem + '"]').remove();
+                    qc.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    cleaner.find('option[value="' + selectedItem + '"]').remove();
+                    cleaner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    giftBox.find('option[value="' + selectedItem + '"]').remove();
+                    giftBox.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
                 }
             }
 
@@ -832,126 +1162,173 @@
         $(document).ready(function ($) {
 
             for (var i = 0; i < labeler_conveyor.length; i++) {
+                if(labeler_conveyor.eq(i).val() === 'Temp') {
+                    continue;
+                }
 
-                icer_conveyor.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
-                labeler_support.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
-                stocker_support.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
-                icer_support.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
-                mezzanine.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
-                runner.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
-                cleaner.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
-                qc.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
-                giftBox.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
-                freezer.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').prop("disabled", true);
+                icer_conveyor.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').remove();
+                labeler_support.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').remove();
+                stocker_support.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').remove();
+                icer_support.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').remove();
+                mezzanine.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').remove();
+                runner.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').remove();
+                cleaner.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').remove();
+                qc.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').remove();
+                giftBox.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').remove();
+                freezer.find('option[value="' + labeler_conveyor.eq(i).val() + '"]').remove();
 
             }
 
             for (i = 0; i < labeler_support.length; i++) {
+                if(labeler_support.eq(i).val() === 'Temp') {
+                    continue;
+                }
 
                 //Disable values for Labeler Support Line
-                icer_conveyor.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
-                labeler_conveyor.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
-                stocker_support.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
-                icer_support.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
-                mezzanine.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
-                runner.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
-                cleaner.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
-                qc.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
-                giftBox.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
-                freezer.find('option[value="' + labeler_support.eq(i).val() + '"]').prop("disabled", true);
+                icer_conveyor.find('option[value="' + labeler_support.eq(i).val() + '"]').remove();
+                labeler_conveyor.find('option[value="' + labeler_support.eq(i).val() + '"]').remove();
+                stocker_support.find('option[value="' + labeler_support.eq(i).val() + '"]').remove();
+                icer_support.find('option[value="' + labeler_support.eq(i).val() + '"]').remove();
+                mezzanine.find('option[value="' + labeler_support.eq(i).val() + '"]').remove();
+                runner.find('option[value="' + labeler_support.eq(i).val() + '"]').remove();
+                cleaner.find('option[value="' + labeler_support.eq(i).val() + '"]').remove();
+                qc.find('option[value="' + labeler_support.eq(i).val() + '"]').remove();
+                giftBox.find('option[value="' + labeler_support.eq(i).val() + '"]').remove();
+                freezer.find('option[value="' + labeler_support.eq(i).val() + '"]').remove();
 
             }
 
 
             for (i = 0; i < stocker_support.length; i++) {
-                icer_conveyor.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
-                labeler_conveyor.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
-                labeler_support.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
-                icer_support.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
-                mezzanine.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
-                runner.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
-                cleaner.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
-                qc.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
-                giftBox.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
-                freezer.find('option[value="' + stocker_support.eq(i).val() + '"]').prop("disabled", true);
+                if(stocker_support.eq(i).val() === 'Temp') {
+                    continue;
+                }
+                icer_conveyor.find('option[value="' + stocker_support.eq(i).val() + '"]').remove();
+                labeler_conveyor.find('option[value="' + stocker_support.eq(i).val() + '"]').remove();
+                labeler_support.find('option[value="' + stocker_support.eq(i).val() + '"]').remove();
+                icer_support.find('option[value="' + stocker_support.eq(i).val() + '"]').remove();
+                mezzanine.find('option[value="' + stocker_support.eq(i).val() + '"]').remove();
+                runner.find('option[value="' + stocker_support.eq(i).val() + '"]').remove();
+                cleaner.find('option[value="' + stocker_support.eq(i).val() + '"]').remove();
+                qc.find('option[value="' + stocker_support.eq(i).val() + '"]').remove();
+                giftBox.find('option[value="' + stocker_support.eq(i).val() + '"]').remove();
+                freezer.find('option[value="' + stocker_support.eq(i).val() + '"]').remove();
             }
 
             for (i = 0; i < mezzanine.length; i++) {
-                icer_conveyor.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
-                labeler_conveyor.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
-                labeler_support.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
-                icer_support.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
-                stocker_support.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
-                runner.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
-                cleaner.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
-                qc.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
-                giftBox.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
-                freezer.find('option[value="' + mezzanine.eq(i).val() + '"]').prop("disabled", true);
+                if(mezzanine.eq(i).val() === 'Temp') {
+                    continue;
+                }
+                icer_conveyor.find('option[value="' + mezzanine.eq(i).val() + '"]').remove();
+                labeler_conveyor.find('option[value="' + mezzanine.eq(i).val() + '"]').remove();
+                labeler_support.find('option[value="' + mezzanine.eq(i).val() + '"]').remove();
+                icer_support.find('option[value="' + mezzanine.eq(i).val() + '"]').remove();
+                stocker_support.find('option[value="' + mezzanine.eq(i).val() + '"]').remove();
+                runner.find('option[value="' + mezzanine.eq(i).val() + '"]').remove();
+                cleaner.find('option[value="' + mezzanine.eq(i).val() + '"]').remove();
+                qc.find('option[value="' + mezzanine.eq(i).val() + '"]').remove();
+                giftBox.find('option[value="' + mezzanine.eq(i).val() + '"]').remove();
+                freezer.find('option[value="' + mezzanine.eq(i).val() + '"]').remove();
             }
 
             for (i = 0; i < runner.length; i++) {
-                icer_conveyor.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
-                labeler_conveyor.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
-                labeler_support.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
-                icer_support.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
-                stocker_support.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
-                mezzanine.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
-                cleaner.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
-                qc.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
-                giftBox.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
-                freezer.find('option[value="' + runner.eq(i).val() + '"]').prop("disabled", true);
+                if(runner.eq(i).val() === 'Temp') {
+                    continue;
+                }
+                icer_conveyor.find('option[value="' + runner.eq(i).val() + '"]').remove();
+                labeler_conveyor.find('option[value="' + runner.eq(i).val() + '"]').remove();
+                labeler_support.find('option[value="' + runner.eq(i).val() + '"]').remove();
+                icer_support.find('option[value="' + runner.eq(i).val() + '"]').remove();
+                stocker_support.find('option[value="' + runner.eq(i).val() + '"]').remove();
+                mezzanine.find('option[value="' + runner.eq(i).val() + '"]').remove();
+                cleaner.find('option[value="' + runner.eq(i).val() + '"]').remove();
+                qc.find('option[value="' + runner.eq(i).val() + '"]').remove();
+                giftBox.find('option[value="' + runner.eq(i).val() + '"]').remove();
+                freezer.find('option[value="' + runner.eq(i).val() + '"]').remove();
             }
 
             for (i = 0; i < cleaner.length; i++) {
-                icer_conveyor.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
-                labeler_conveyor.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
-                labeler_support.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
-                icer_support.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
-                stocker_support.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
-                mezzanine.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
-                runner.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
-                qc.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
-                giftBox.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
-                freezer.find('option[value="' + cleaner.eq(i).val() + '"]').prop("disabled", true);
+                icer_conveyor.find('option[value="' + cleaner.eq(i).val() + '"]').remove();
+                labeler_conveyor.find('option[value="' + cleaner.eq(i).val() + '"]').remove();
+                labeler_support.find('option[value="' + cleaner.eq(i).val() + '"]').remove();
+                icer_support.find('option[value="' + cleaner.eq(i).val() + '"]').remove();
+                stocker_support.find('option[value="' + cleaner.eq(i).val() + '"]').remove();
+                mezzanine.find('option[value="' + cleaner.eq(i).val() + '"]').remove();
+                runner.find('option[value="' + cleaner.eq(i).val() + '"]').remove();
+                qc.find('option[value="' + cleaner.eq(i).val() + '"]').remove();
+                giftBox.find('option[value="' + cleaner.eq(i).val() + '"]').remove();
+                freezer.find('option[value="' + cleaner.eq(i).val() + '"]').remove();
             }
 
             for (i = 0; i < qc.length; i++) {
-                icer_conveyor.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
-                labeler_conveyor.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
-                labeler_support.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
-                icer_support.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
-                stocker_support.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
-                mezzanine.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
-                runner.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
-                cleaner.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
-                giftBox.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
-                freezer.find('option[value="' + qc.eq(i).val() + '"]').prop("disabled", true);
+                icer_conveyor.find('option[value="' + qc.eq(i).val() + '"]').remove();
+                labeler_conveyor.find('option[value="' + qc.eq(i).val() + '"]').remove();
+                labeler_support.find('option[value="' + qc.eq(i).val() + '"]').remove();
+                icer_support.find('option[value="' + qc.eq(i).val() + '"]').remove();
+                stocker_support.find('option[value="' + qc.eq(i).val() + '"]').remove();
+                mezzanine.find('option[value="' + qc.eq(i).val() + '"]').remove();
+                runner.find('option[value="' + qc.eq(i).val() + '"]').remove();
+                cleaner.find('option[value="' + qc.eq(i).val() + '"]').remove();
+                giftBox.find('option[value="' + qc.eq(i).val() + '"]').remove();
+                freezer.find('option[value="' + qc.eq(i).val() + '"]').remove();
             }
 
             for (i = 0; i < giftBox.length; i++) {
-                icer_conveyor.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
-                labeler_conveyor.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
-                labeler_support.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
-                icer_support.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
-                stocker_support.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
-                mezzanine.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
-                runner.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
-                cleaner.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
-                qc.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
-                freezer.find('option[value="' + giftBox.eq(i).val() + '"]').prop("disabled", true);
+                icer_conveyor.find('option[value="' + giftBox.eq(i).val() + '"]').remove();
+                labeler_conveyor.find('option[value="' + giftBox.eq(i).val() + '"]').remove();
+                labeler_support.find('option[value="' + giftBox.eq(i).val() + '"]').remove();
+                icer_support.find('option[value="' + giftBox.eq(i).val() + '"]').remove();
+                stocker_support.find('option[value="' + giftBox.eq(i).val() + '"]').remove();
+                mezzanine.find('option[value="' + giftBox.eq(i).val() + '"]').remove();
+                runner.find('option[value="' + giftBox.eq(i).val() + '"]').remove();
+                cleaner.find('option[value="' + giftBox.eq(i).val() + '"]').remove();
+                qc.find('option[value="' + giftBox.eq(i).val() + '"]').remove();
+                freezer.find('option[value="' + giftBox.eq(i).val() + '"]').remove();
             }
 
             for (i = 0; i < freezer.length; i++) {
-                icer_conveyor.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
-                labeler_conveyor.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
-                labeler_support.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
-                icer_support.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
-                stocker_support.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
-                mezzanine.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
-                runner.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
-                cleaner.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
-                qc.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
-                giftBox.find('option[value="' + freezer.eq(i).val() + '"]').prop("disabled", true);
+                icer_conveyor.find('option[value="' + freezer.eq(i).val() + '"]').remove();
+                labeler_conveyor.find('option[value="' + freezer.eq(i).val() + '"]').remove();
+                labeler_support.find('option[value="' + freezer.eq(i).val() + '"]').remove();
+                icer_support.find('option[value="' + freezer.eq(i).val() + '"]').remove();
+                stocker_support.find('option[value="' + freezer.eq(i).val() + '"]').remove();
+                mezzanine.find('option[value="' + freezer.eq(i).val() + '"]').remove();
+                runner.find('option[value="' + freezer.eq(i).val() + '"]').remove();
+                cleaner.find('option[value="' + freezer.eq(i).val() + '"]').remove();
+                qc.find('option[value="' + freezer.eq(i).val() + '"]').remove();
+                giftBox.find('option[value="' + freezer.eq(i).val() + '"]').remove();
+            }
+
+            for (i = 0; i < icer_conveyor.length; i++) {
+                if(icer_conveyor.eq(i).val() === 'Temp') {
+                    continue;
+                }
+                freezer.find('option[value="' + icer_conveyor.eq(i).val() + '"]').remove();
+                labeler_conveyor.find('option[value="' + icer_conveyor.eq(i).val() + '"]').remove();
+                labeler_support.find('option[value="' + icer_conveyor.eq(i).val() + '"]').remove();
+                icer_support.find('option[value="' + icer_conveyor.eq(i).val() + '"]').remove();
+                stocker_support.find('option[value="' + icer_conveyor.eq(i).val() + '"]').remove();
+                mezzanine.find('option[value="' + icer_conveyor.eq(i).val() + '"]').remove();
+                runner.find('option[value="' + icer_conveyor.eq(i).val() + '"]').remove();
+                cleaner.find('option[value="' + icer_conveyor.eq(i).val() + '"]').remove();
+                qc.find('option[value="' + icer_conveyor.eq(i).val() + '"]').remove();
+                giftBox.find('option[value="' + icer_conveyor.eq(i).val() + '"]').remove();
+            }
+
+            for (i = 0; i < icer_support.length; i++) {
+                if(icer_support.eq(i).val() === 'Temp') {
+                    continue;
+                }
+                freezer.find('option[value="' + icer_support.eq(i).val() + '"]').remove();
+                labeler_conveyor.find('option[value="' + icer_support.eq(i).val() + '"]').remove();
+                labeler_support.find('option[value="' + icer_support.eq(i).val() + '"]').remove();
+                icer_conveyor.find('option[value="' + icer_support.eq(i).val() + '"]').remove();
+                stocker_support.find('option[value="' + icer_support.eq(i).val() + '"]').remove();
+                mezzanine.find('option[value="' + icer_support.eq(i).val() + '"]').remove();
+                runner.find('option[value="' + icer_support.eq(i).val() + '"]').remove();
+                cleaner.find('option[value="' + icer_support.eq(i).val() + '"]').remove();
+                qc.find('option[value="' + icer_support.eq(i).val() + '"]').remove();
+                giftBox.find('option[value="' + icer_support.eq(i).val() + '"]').remove();
             }
 
         });
