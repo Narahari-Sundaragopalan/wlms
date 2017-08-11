@@ -75,7 +75,7 @@ class ScheduleController extends Controller
         $line = []; $numberOfTemps = 0;
         $labeler_array = []; $icerArray = [];
         $index = 1; $icerIndex = 1;
-        $employees = Employee::where('active', '=', 'true')->get();
+        $employees = Employee::where('active', '=', '1')->get();
         $employees = $employees->shuffle();
         $isLangEnglish = false;
         $isLangSpanish = false;

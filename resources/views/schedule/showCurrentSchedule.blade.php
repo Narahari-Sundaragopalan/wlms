@@ -111,14 +111,14 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
+     <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
 
                         </div>
 
@@ -211,7 +211,16 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
                         </div>
+
 
 
                     </div>
@@ -231,16 +240,16 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script>
 
-        window.setInterval(scrollit, 2000);
+        window.setInterval(scrollit, 3000);
 
         function scrollit() {
             console.log(($("#scroller").scrollTop() + $("#scroller").innerHeight()))
             console.log($("#scroller")[0].scrollHeight)
 
             if (($("#scroller").scrollTop() + $("#scroller").innerHeight()) >= $("#scroller")[0].scrollHeight)
-                $('#scroller').animate({scrollTop: 0}, 2000).delay(20);
+                $('#scroller').animate({scrollTop: 0}, 1000).delay(90);
             else
-                $('#scroller').animate({scrollTop: $("#scroller").scrollTop() + 60}, 'slow', function () {
+                $('#scroller').animate({scrollTop: $("#scroller").scrollTop() + 100}, 'slow', function () {
 
                 });
         }

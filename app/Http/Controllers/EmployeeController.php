@@ -26,7 +26,7 @@ class EmployeeController extends Controller
     public function index()
     {
 
-        $employees = Employee::where('active', '=', 'true')->get();
+        $employees = Employee::where('active', '=', '1')->get();
         $user = Auth::user();
         return view('addemployee.index', compact('employees', 'user'));
     }
