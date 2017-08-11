@@ -1056,6 +1056,15 @@ class ScheduleController extends Controller
             }
         }
 
+        if(sizeof($runner) < sizeof($runnerStartLines)) {
+            $removedElementCount = sizeof($runnerStartLines) - sizeof($runner);
+            for ($i = 0; $i < $removedElementCount; $i++) {
+                array_pop($runnerStartLines);
+                array_pop($runnerEndLines);
+                array_pop($runnerArray);
+            }
+        }
+
         for($i = 0; $i < sizeof($labeler_ConveyorLine); $i++) {
             if(!empty($labeler_ConveyorLine[$i])) {
                 $schedule_array[$i]['labeler'] = $labeler_ConveyorLine[$i];

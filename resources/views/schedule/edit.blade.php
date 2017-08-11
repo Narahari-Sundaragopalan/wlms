@@ -416,6 +416,9 @@
                                                     <option><?php echo 'Temp' ?></option>
                                                     <option><?php echo 'NA' ?></option>
                                                 </select>
+
+                                                <input type="button" value="Remove" id="removeMez" onclick="removeMezLine(this);">
+
                                             </td>
                                         </tr>
                                     @endforeach
