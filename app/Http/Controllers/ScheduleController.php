@@ -73,44 +73,33 @@ class ScheduleController extends Controller
 
         $count = 0; $i = intval($conveyorLines);
         $line = []; $numberOfTemps = 0;
-        $labeler_array = []; $icerArray = [];
-        $index = 1; $icerIndex = 1;
-        $employees = Employee::where('active', '=', '1')->get();
+        $labeler_array = [];
+        $index = 1;
+        $employees = Employee::where('active', '=', 'true')->get();
         $employees = $employees->shuffle();
 
         // Generate Line Setup for Conveyor Lines
         while($i > 0) {
-            $labelerSet = false; $labeler = ''; $icerSet = false; $icer = '';
+            $labelerSet = false; $labeler = '';
             foreach ($employees as $employee) {
                 if($employee->labeler && !($labelerSet) && $employee->labeler_rating > 2) {
-                    if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
+                    if(!(array_search($employee->id, $labeler_array, true))) {
                         $labeler = $employee->empfname . ' ' . $employee->emplname[0];
                         $labelerSet = true;
                         $labeler_array[$index++] = $employee->id;
-                    }
-                } elseif ((($employee->icer && !$employee->runner) || ($employee->labeler && $employee->labeler_rating <= 2) || ($employee->stokcer && $employee->stocker_rating <= 2) ) && !($icerSet)) {
-                    if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
-                            $icer = $employee->empfname . ' ' . $employee->emplname[0];
-                            $icerSet = true;
-                            $icerArray[$icerIndex++] = $employee->id;
-                            $count++;
-
+                        $count++;
                     }
                 }
-                if($labelerSet && $icerSet) {
+                if($labelerSet) {
                     break;
                 }
             }
             if($labeler == '') {
                 $labeler = 'Temp';
                 $numberOfTemps++;
-            }
-            if ($icer == '') {
-                $icer = 'Temp';
                 $count++;
-                $numberOfTemps++;
             }
-            $line = ['line_number' => $count, 'labeler' => $labeler, 'icer' => $icer];
+            $line = ['line_number' => $count, 'labeler' => $labeler, 'icer' => ''];
             array_push($this->schedule_array, $line);
             $i--;
         }
@@ -122,30 +111,23 @@ class ScheduleController extends Controller
 
         // Generate Line Setup for Support Lines
         while($j > 0) {
-            $labelerSet = false; $stockerSet = false; $icerSet = false;
-            $labeler = ''; $stocker = ''; $icer = '';
+            $labelerSet = false; $stockerSet = false;
+            $labeler = ''; $stocker = '';
             foreach ($employees as $employee) {
                 if ($employee->labeler && !($labelerSet) && $employee->labeler_rating > 2) {
-                    if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $icerArray, true))) {
+                    if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true))) {
                         $labeler = $employee->empfname . ' ' . $employee->emplname[0];
                         $labelerSet = true;
                         $labeler_array[$index++] = $employee->id;
                     }
                 } elseif ($employee->stocker && !($stockerSet) && $employee->stocker_rating > 2 ) {
-                    if(!(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
+                    if(!(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $labeler_array, true))) {
                             $stocker = $employee->empfname . ' ' . $employee->emplname[0];
                             $stockerSet = true;
                             $stocker_array[$stock_index++] = $employee->id;
                     }
-                } elseif (( ($employee->icer && !$employee->runner) || ($employee->labeler && $employee->labeler_rating <= 2) || ($employee->stokcer && $employee->stocker_rating <= 2) ) && !($icerSet)) {
-                    if(!(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
-                            $icer = $employee->empfname . ' ' . $employee->emplname[0];
-                            $icerSet = true;
-                            $icerArray[$icerIndex++] = $employee->id;
-                            $count++;
-                    }
                 }
-                if($labelerSet && $stockerSet && $icerSet) {
+                if($labelerSet && $stockerSet) {
                     break;
                 }
             }
@@ -157,14 +139,10 @@ class ScheduleController extends Controller
             }
             if ($stocker == '') {
                 $stocker = 'Temp';
-                $numberOfTemps++;
-            }
-            if($icer == '') {
-                $icer = 'Temp';
                 $count++;
                 $numberOfTemps++;
             }
-            $line = ['line_number' => $count, 'labeler' => $labeler, 'stocker' => $stocker, 'icer' => $icer];
+            $line = ['line_number' => $count, 'labeler' => $labeler, 'stocker' => $stocker, 'icer' => ''];
             array_push($this->schedule_array_2, $line);
             $j--;
         }
@@ -192,7 +170,7 @@ class ScheduleController extends Controller
             foreach ($employees as $employee) {
                 if($employee->runner && !($runnerSet)) {
                     if (!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true))
-                        && !(array_search($employee->id, $runnerArray, true)) && !(array_search($employee->id, $icerArray, true))) {
+                        && !(array_search($employee->id, $runnerArray, true))) {
 
                         $runner = $employee->empfname . ' ' . $employee->emplname[0];
                         $runnerArray[$runnerIndex++] = $employee->id;
@@ -236,8 +214,7 @@ class ScheduleController extends Controller
             foreach ($employees as $employee) {
                 if ($employee->mezzanine && !($mezzanineSet)) {
                     if (!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true))
-                        && !(array_search($employee->id, $mezArray, true)) && !(array_search($employee->id, $runnerArray, true))
-                        && !(array_search($employee->id, $icerArray, true))) {
+                        && !(array_search($employee->id, $mezArray, true)) && !(array_search($employee->id, $runnerArray, true))) {
                         $mezzanine = $employee->empfname . ' ' . $employee->emplname[0];
                         $mezArray[$mezIndex++] = $employee->id;
                         $mezzanineSet = true;
@@ -254,6 +231,51 @@ class ScheduleController extends Controller
             $line = ['startLine' => $lineArray[$k]['startLine'], 'endLine' => $lineArray[$k]['endLine'], 'name' => $mezzanine];
             array_push($this->mezzanineArray, $line);
             $k++;
+        }
+
+        $icerIndex = 1; $icerArray=[];
+        for($i = 0; $i < sizeof($this->schedule_array); $i++) {
+            $icer = 'Temp'; $icerSet = false;
+            foreach($employees as $employee) {
+                if($employee->icer) {
+                    if (!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true))
+                        && !(array_search($employee->id, $mezArray, true)) && !(array_search($employee->id, $runnerArray, true))
+                        && !(array_search($employee->id, $icerArray, true))) {
+                        $icer = $employee->empfname . ' ' . $employee->emplname[0];
+                        $icerArray[$icerIndex++] = $employee->id;
+                        $icerSet = true;
+                    }
+                }
+                if($icerSet) {
+                    break;
+                }
+            }
+            $this->schedule_array[$i]['icer'] = $icer;
+            if($icer === 'Temp') {
+                $numberOfTemps++;
+            }
+        }
+
+        for($i = 0; $i < sizeof($this->schedule_array_2); $i++) {
+            $icer = 'Temp'; $icerSet = false;
+            foreach($employees as $employee) {
+                if($employee->icer) {
+                    if (!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true))
+                        && !(array_search($employee->id, $mezArray, true)) && !(array_search($employee->id, $runnerArray, true))
+                        && !(array_search($employee->id, $icerArray, true))) {
+                        $icer = $employee->empfname . ' ' . $employee->emplname[0];
+                        $icerArray[$icerIndex++] = $employee->id;
+                        $icerSet = true;
+                    }
+                }
+                if($icerSet) {
+                    break;
+                }
+            }
+            $this->schedule_array_2[$i]['icer'] = $icer;
+            if($icer === 'Temp') {
+                $numberOfTemps++;
+            }
         }
 
 
