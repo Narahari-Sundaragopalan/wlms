@@ -77,8 +77,6 @@ class ScheduleController extends Controller
         $index = 1; $icerIndex = 1;
         $employees = Employee::where('active', '=', '1')->get();
         $employees = $employees->shuffle();
-        $isLangEnglish = false;
-        $isLangSpanish = false;
 
         // Generate Line Setup for Conveyor Lines
         while($i > 0) {
@@ -88,20 +86,14 @@ class ScheduleController extends Controller
                     if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
                         $labeler = $employee->empfname . ' ' . $employee->emplname[0];
                         $labelerSet = true;
-                        $isLangEnglish = $employee->english;
-                        $isLangSpanish = $employee->spanish;
                         $labeler_array[$index++] = $employee->id;
                     }
-                } elseif ((($employee->icer && !$employee->stocker && !$employee->labeler && !$employee->runner) || ($employee->labeler && $employee->labeler_rating <= 2) || ($employee->stokcer && $employee->stocker_rating <= 2) ) && !($icerSet)) {
+                } elseif ((($employee->icer && !$employee->runner) || ($employee->labeler && $employee->labeler_rating <= 2) || ($employee->stokcer && $employee->stocker_rating <= 2) ) && !($icerSet)) {
                     if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
-                        if(($employee->english && $isLangEnglish) || ($employee->spanish && $isLangSpanish)) {
                             $icer = $employee->empfname . ' ' . $employee->emplname[0];
                             $icerSet = true;
                             $icerArray[$icerIndex++] = $employee->id;
                             $count++;
-                        } else {
-                            continue;
-                        }
 
                     }
                 }
@@ -137,28 +129,20 @@ class ScheduleController extends Controller
                     if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $icerArray, true))) {
                         $labeler = $employee->empfname . ' ' . $employee->emplname[0];
                         $labelerSet = true;
-                        $isLangEnglish = $employee->english;
-                        $isLangSpanish = $employee->spanish;
                         $labeler_array[$index++] = $employee->id;
                     }
                 } elseif ($employee->stocker && !($stockerSet) && $employee->stocker_rating > 2 ) {
                     if(!(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
-                        if(($employee->english && $isLangEnglish) || ($employee->spanish && $isLangSpanish)) {
                             $stocker = $employee->empfname . ' ' . $employee->emplname[0];
                             $stockerSet = true;
                             $stocker_array[$stock_index++] = $employee->id;
-                        }
                     }
-                } elseif (( ($employee->icer && !$employee->stocker && !$employee->labeler && !$employee->runner) || ($employee->labeler && $employee->labeler_rating <= 2) || ($employee->stokcer && $employee->stocker_rating <= 2) ) && !($icerSet)) {
+                } elseif (( ($employee->icer && !$employee->runner) || ($employee->labeler && $employee->labeler_rating <= 2) || ($employee->stokcer && $employee->stocker_rating <= 2) ) && !($icerSet)) {
                     if(!(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $icerArray, true))) {
-                        if(($employee->english && $isLangEnglish) || ($employee->spanish && $isLangSpanish)) {
                             $icer = $employee->empfname . ' ' . $employee->emplname[0];
                             $icerSet = true;
                             $icerArray[$icerIndex++] = $employee->id;
                             $count++;
-                        } else {
-                            continue;
-                        }
                     }
                 }
                 if($labelerSet && $stockerSet && $icerSet) {
