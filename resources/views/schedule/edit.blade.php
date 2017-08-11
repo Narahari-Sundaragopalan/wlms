@@ -268,7 +268,7 @@
                         </div>
 
                         <div class="col-xs-3">
-                            <h3 style="text-align: center">Mezzanines</h3>
+                            <h3 style="text-align: center">Mezzanine</h3>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped cds-datatable">
                                     <thead> <!-- Table Headings -->
@@ -336,7 +336,7 @@
                                                     <option><?php echo 'Temp' ?></option>
                                                     <option><?php echo 'NA' ?></option>
                                                 </select>
-                                                
+
                                                  <input type="button" value="Remove" id="removeMez" onclick="removeMezLine(this);">
 
                                             </td>
