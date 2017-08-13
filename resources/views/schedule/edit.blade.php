@@ -40,11 +40,11 @@
                             {!! Form::model($id ,['method' => 'PATCH','route'=>['schedule.update', $id]]) !!}
                             <h3 style="text-align: center">Conveyor Lines</h3>
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped cds-datatable">
+                                <table class="table table-bordered table-striped cds-datatable" border=1 width='200' height='100' cellpadding='0' cellspacing='0'>
                                     <thead> <!-- Table Headings -->
                                     <th>Line Number</th>
                                     <th>Labeler</th>
-                                    <th>Icer</th>
+                                    <th colspan="2">Icer</th>
                                     </thead>
                                     <tbody>
                                     @if (Session::has('message'))
@@ -56,7 +56,8 @@
                                             <td>
                                                 <select class="form-control" name="conveyor_lines[]">
 
-                                                    <option value="<?php echo($schedule_array[$i]['line_number']); ?>" selected class="bld">
+                                                    <option value="<?php echo($schedule_array[$i]['line_number']); ?>"
+                                                            selected class="bld">
                                                         <?php echo($schedule_array[$i]['line_number']); ?>
                                                     </option>
                                                     <optgroup label="Line #">
@@ -100,37 +101,48 @@
                                                     <option value="NA"><?php echo 'NA' ?></option>
                                                 </select>
                                             </td>
-                                            <td>
-                                                <select class="form-control" name="icer_conveyor[]" id="employees[]">
-                                                    <option value="<?php echo($schedule_array[$i]['icer']); ?>" selected
-                                                            class="bld">
-                                                        <?php echo($schedule_array[$i]['icer']); ?>
-                                                    </option>
-                                                    <optgroup label="Icers">
-                                                        @foreach($empIcers as $empIcer)
-                                                            <option value="<?php echo($empIcer) ?>">
-                                                                <?php echo($empIcer); ?>
-                                                            </option>
-                                                        @endforeach
-                                                    </optgroup>
-                                                    <optgroup label="Non-Icers">
-                                                        @foreach($empNonIcers as $empNonIcer)
-                                                            <option value="<?php echo($empNonIcer) ?>">
-                                                                <?php echo($empNonIcer); ?>
-                                                            </option>
-                                                        @endforeach
-                                                    </optgroup>
-                                                    <optgroup label="Supervisors">
-                                                        @foreach($supervisors as $supervisor)
-                                                            <option value="<?php echo($supervisor) ?>">
-                                                                <?php echo($supervisor); ?>
-                                                            </option>
-                                                        @endforeach
-                                                    </optgroup>
-                                                    <option value="Temp"><?php echo 'Temp' ?></option>
-                                                    <option value="NA"><?php echo 'NA' ?></option>
-                                                </select>
-                                            </td>
+                                            @if($i < count($schedule_array) - 1)
+                                                <td rowspan="3">
+                                                    <table border='1' width="100" cellpadding='0' cellspacing='0'
+                                                           height='100%'>
+                                                        <tr>
+                                                            <td>
+                                                                <select class="form-control" name="icer_conveyor[]"
+                                                                        id="employees[]">
+                                                                    <option value="<?php echo($schedule_array[$i]['icer']); ?>"
+                                                                            selected
+                                                                            class="bld">
+                                                                        <?php echo($schedule_array[$i]['icer']); ?>
+                                                                    </option>
+                                                                    <optgroup label="Icers">
+                                                                        @foreach($empIcers as $empIcer)
+                                                                            <option value="<?php echo($empIcer) ?>">
+                                                                                <?php echo($empIcer); ?>
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </optgroup>
+                                                                    <optgroup label="Non-Icers">
+                                                                        @foreach($empNonIcers as $empNonIcer)
+                                                                            <option value="<?php echo($empNonIcer) ?>">
+                                                                                <?php echo($empNonIcer); ?>
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </optgroup>
+                                                                    <optgroup label="Supervisors">
+                                                                        @foreach($supervisors as $supervisor)
+                                                                            <option value="<?php echo($supervisor) ?>">
+                                                                                <?php echo($supervisor); ?>
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </optgroup>
+                                                                    <option value="Temp"><?php echo 'Temp' ?></option>
+                                                                    <option value="NA"><?php echo 'NA' ?></option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -141,12 +153,12 @@
                         <div class="col-xs-6">
                             <h3 style="text-align: center">Support Lines</h3>
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped cds-datatable">
+                                <table class="table table-bordered table-striped cds-datatable" border=1 width='200' height='100' cellpadding='0' cellspacing='0'>
                                     <thead> <!-- Table Headings -->
                                     <th>Line Number</th>
                                     <th>Labeler</th>
                                     <th>Stocker</th>
-                                    <th>Icer</th>
+                                    <th colspan="2">Icer</th>
                                     </thead>
                                     <tbody>
                                     @foreach($schedule_array_2 as $j => $value)
@@ -155,7 +167,8 @@
                                             <td>
                                                 <select class="form-control" name="support_lines[]">
 
-                                                    <option value="<?php echo($schedule_array_2[$j]['line_number']); ?>" selected class="bld">
+                                                    <option value="<?php echo($schedule_array_2[$j]['line_number']); ?>"
+                                                            selected class="bld">
                                                         <?php echo($schedule_array_2[$j]['line_number']); ?>
                                                     </option>
                                                     <optgroup label="Line #">
@@ -229,37 +242,47 @@
                                                     <option><?php echo 'NA' ?></option>
                                                 </select>
                                             </td>
-                                            <td>
-                                                <select class="form-control" name="icer_support[]" id="employees[]">
-                                                    <option value="<?php echo($schedule_array_2[$j]['icer']); ?>"
-                                                            selected class="bld">
-                                                        <?php echo($schedule_array_2[$j]['icer']); ?>
-                                                    </option>
-                                                    <optgroup label="Icers">
-                                                        @foreach($empIcers as $empIcer)
-                                                            <option value="<?php echo($empIcer) ?>">
-                                                                <?php echo($empIcer); ?>
-                                                            </option>
-                                                        @endforeach
-                                                    </optgroup>
-                                                    <optgroup label="Non-Icers">
-                                                        @foreach($empNonIcers as $empNonIcer)
-                                                            <option value="<?php echo($empNonIcer) ?>">
-                                                                <?php echo($empNonIcer); ?>
-                                                            </option>
-                                                        @endforeach
-                                                    </optgroup>
-                                                    <optgroup label="Supervisors">
-                                                        @foreach($supervisors as $supervisor)
-                                                            <option value="<?php echo($supervisor) ?>">
-                                                                <?php echo($supervisor); ?>
-                                                            </option>
-                                                        @endforeach
-                                                    </optgroup>
-                                                    <option><?php echo 'Temp' ?></option>
-                                                    <option><?php echo 'NA' ?></option>
-                                                </select>
-                                            </td>
+                                            @if($j < count($schedule_array_2) - 1)
+                                                <td rowspan="3">
+                                                    <table border='1' width="100" cellpadding='0' cellspacing='0'
+                                                           height='100%'>
+                                                        <tr>
+                                                            <td>
+                                                                <select class="form-control" name="icer_support[]"
+                                                                        id="employees[]">
+                                                                    <option value="<?php echo($schedule_array_2[$j]['icer']); ?>"
+                                                                            selected class="bld">
+                                                                        <?php echo($schedule_array_2[$j]['icer']); ?>
+                                                                    </option>
+                                                                    <optgroup label="Icers">
+                                                                        @foreach($empIcers as $empIcer)
+                                                                            <option value="<?php echo($empIcer) ?>">
+                                                                                <?php echo($empIcer); ?>
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </optgroup>
+                                                                    <optgroup label="Non-Icers">
+                                                                        @foreach($empNonIcers as $empNonIcer)
+                                                                            <option value="<?php echo($empNonIcer) ?>">
+                                                                                <?php echo($empNonIcer); ?>
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </optgroup>
+                                                                    <optgroup label="Supervisors">
+                                                                        @foreach($supervisors as $supervisor)
+                                                                            <option value="<?php echo($supervisor) ?>">
+                                                                                <?php echo($supervisor); ?>
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </optgroup>
+                                                                    <option><?php echo 'Temp' ?></option>
+                                                                    <option><?php echo 'NA' ?></option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -281,7 +304,8 @@
                                         <tr>
                                             <td>
                                                 <select class="form-control" name="mezzanine_Startlines[]">
-                                                    <option value="<?php echo($mezzanineArray[$i]['startLine']);?>" selected class="bld">
+                                                    <option value="<?php echo($mezzanineArray[$i]['startLine']);?>"
+                                                            selected class="bld">
                                                         <?php echo($mezzanineArray[$i]['startLine']);?>
                                                     </option>
                                                     <optgroup label="Line #">
@@ -294,7 +318,8 @@
                                                 </select>
                                                 -
                                                 <select class="form-control" name="mezzanine_Endlines[]">
-                                                    <option value="<?php echo($mezzanineArray[$i]['endLine']);?>" selected class="bld">
+                                                    <option value="<?php echo($mezzanineArray[$i]['endLine']);?>"
+                                                            selected class="bld">
                                                         <?php echo($mezzanineArray[$i]['endLine']);?>
                                                     </option>
                                                     <optgroup label="Line #">
@@ -337,7 +362,8 @@
                                                     <option><?php echo 'NA' ?></option>
                                                 </select>
 
-                                                 <input type="button" value="Remove" id="removeMez" onclick="removeMezLine(this);">
+                                                <input type="button" value="Remove" id="removeMez"
+                                                       onclick="removeMezLine(this);">
 
                                             </td>
                                         </tr>
@@ -417,7 +443,8 @@
                                                     <option><?php echo 'NA' ?></option>
                                                 </select>
 
-                                                <input type="button" value="Remove" id="removeMez" onclick="removeMezLine(this);">
+                                                <input type="button" value="Remove" id="removeMez"
+                                                       onclick="removeMezLine(this);">
 
                                             </td>
                                         </tr>
@@ -572,7 +599,7 @@
     <script>
 
 
-        function removeMezLine(removeLink){
+        function removeMezLine(removeLink) {
             var inputElement = removeLink.parentNode;
             inputElement.remove();
         }
@@ -604,7 +631,7 @@
             var selectedItem = $(this).val();
             if (selectedItem && selectedItem !== 'Temp' && selectedItem !== 'NA') {
 
-               if (selectedDropDown === 'labeler_conveyor[]') {
+                if (selectedDropDown === 'labeler_conveyor[]') {
                     icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
                     icer_conveyor.append($('<option>', {
                         value: oldSelectedItem,
@@ -657,362 +684,362 @@
                     }));
 
                 } else if (selectedDropDown === 'icer_conveyor[]') {
-                   labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
-                   labeler_conveyor.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   labeler_support.find('option[value="' + selectedItem + '"]').remove();
-                   labeler_support.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   stocker_support.find('option[value="' + selectedItem + '"]').remove();
-                   stocker_support.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   icer_support.find('option[value="' + selectedItem + '"]').remove();
-                   icer_support.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   mezzanine.find('option[value="' + selectedItem + '"]').remove();
-                   mezzanine.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   runner.find('option[value="' + selectedItem + '"]').remove();
-                   runner.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   cleaner.find('option[value="' + selectedItem + '"]').remove();
-                   cleaner.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   qc.find('option[value="' + selectedItem + '"]').remove();
-                   qc.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   giftBox.find('option[value="' + selectedItem + '"]').remove();
-                   giftBox.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   freezer.find('option[value="' + selectedItem + '"]').remove();
-                   freezer.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    labeler_support.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    stocker_support.find('option[value="' + selectedItem + '"]').remove();
+                    stocker_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    icer_support.find('option[value="' + selectedItem + '"]').remove();
+                    icer_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    mezzanine.find('option[value="' + selectedItem + '"]').remove();
+                    mezzanine.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    runner.find('option[value="' + selectedItem + '"]').remove();
+                    runner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    cleaner.find('option[value="' + selectedItem + '"]').remove();
+                    cleaner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    qc.find('option[value="' + selectedItem + '"]').remove();
+                    qc.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    giftBox.find('option[value="' + selectedItem + '"]').remove();
+                    giftBox.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    freezer.find('option[value="' + selectedItem + '"]').remove();
+                    freezer.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
                 } else if (selectedDropDown === 'labeler_support[]') {
-                   labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
-                   labeler_conveyor.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
-                   icer_conveyor.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   stocker_support.find('option[value="' + selectedItem + '"]').remove();
-                   stocker_support.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   icer_support.find('option[value="' + selectedItem + '"]').remove();
-                   icer_support.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   mezzanine.find('option[value="' + selectedItem + '"]').remove();
-                   mezzanine.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   runner.find('option[value="' + selectedItem + '"]').remove();
-                   runner.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   cleaner.find('option[value="' + selectedItem + '"]').remove();
-                   cleaner.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   qc.find('option[value="' + selectedItem + '"]').remove();
-                   qc.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   giftBox.find('option[value="' + selectedItem + '"]').remove();
-                   giftBox.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   freezer.find('option[value="' + selectedItem + '"]').remove();
-                   freezer.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    icer_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    stocker_support.find('option[value="' + selectedItem + '"]').remove();
+                    stocker_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    icer_support.find('option[value="' + selectedItem + '"]').remove();
+                    icer_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    mezzanine.find('option[value="' + selectedItem + '"]').remove();
+                    mezzanine.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    runner.find('option[value="' + selectedItem + '"]').remove();
+                    runner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    cleaner.find('option[value="' + selectedItem + '"]').remove();
+                    cleaner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    qc.find('option[value="' + selectedItem + '"]').remove();
+                    qc.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    giftBox.find('option[value="' + selectedItem + '"]').remove();
+                    giftBox.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    freezer.find('option[value="' + selectedItem + '"]').remove();
+                    freezer.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
                 } else if (selectedDropDown === 'stocker_support[]') {
-                   labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
-                   labeler_conveyor.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
-                   icer_conveyor.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   labeler_support.find('option[value="' + selectedItem + '"]').remove();
-                   labeler_support.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   icer_support.find('option[value="' + selectedItem + '"]').remove();
-                   icer_support.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   mezzanine.find('option[value="' + selectedItem + '"]').remove();
-                   mezzanine.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   runner.find('option[value="' + selectedItem + '"]').remove();
-                   runner.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   cleaner.find('option[value="' + selectedItem + '"]').remove();
-                   cleaner.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   qc.find('option[value="' + selectedItem + '"]').remove();
-                   qc.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   giftBox.find('option[value="' + selectedItem + '"]').remove();
-                   giftBox.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   freezer.find('option[value="' + selectedItem + '"]').remove();
-                   freezer.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    icer_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    labeler_support.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    icer_support.find('option[value="' + selectedItem + '"]').remove();
+                    icer_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    mezzanine.find('option[value="' + selectedItem + '"]').remove();
+                    mezzanine.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    runner.find('option[value="' + selectedItem + '"]').remove();
+                    runner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    cleaner.find('option[value="' + selectedItem + '"]').remove();
+                    cleaner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    qc.find('option[value="' + selectedItem + '"]').remove();
+                    qc.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    giftBox.find('option[value="' + selectedItem + '"]').remove();
+                    giftBox.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    freezer.find('option[value="' + selectedItem + '"]').remove();
+                    freezer.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
                 } else if (selectedDropDown === 'icer_support[]') {
-                   labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
-                   labeler_conveyor.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
-                   icer_conveyor.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   stocker_support.find('option[value="' + selectedItem + '"]').remove();
-                   stocker_support.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   labeler_support.find('option[value="' + selectedItem + '"]').remove();
-                   labeler_support.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   mezzanine.find('option[value="' + selectedItem + '"]').remove();
-                   mezzanine.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   runner.find('option[value="' + selectedItem + '"]').remove();
-                   runner.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   cleaner.find('option[value="' + selectedItem + '"]').remove();
-                   cleaner.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   qc.find('option[value="' + selectedItem + '"]').remove();
-                   qc.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   giftBox.find('option[value="' + selectedItem + '"]').remove();
-                   giftBox.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   freezer.find('option[value="' + selectedItem + '"]').remove();
-                   freezer.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    icer_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    stocker_support.find('option[value="' + selectedItem + '"]').remove();
+                    stocker_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    labeler_support.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    mezzanine.find('option[value="' + selectedItem + '"]').remove();
+                    mezzanine.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    runner.find('option[value="' + selectedItem + '"]').remove();
+                    runner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    cleaner.find('option[value="' + selectedItem + '"]').remove();
+                    cleaner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    qc.find('option[value="' + selectedItem + '"]').remove();
+                    qc.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    giftBox.find('option[value="' + selectedItem + '"]').remove();
+                    giftBox.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    freezer.find('option[value="' + selectedItem + '"]').remove();
+                    freezer.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
                 } else if (selectedDropDown === 'mezzanine[]') {
-                   labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
-                   labeler_conveyor.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
-                   icer_conveyor.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   stocker_support.find('option[value="' + selectedItem + '"]').remove();
-                   stocker_support.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   icer_support.find('option[value="' + selectedItem + '"]').remove();
-                   icer_support.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   labeler_support.find('option[value="' + selectedItem + '"]').remove();
-                   labeler_support.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   runner.find('option[value="' + selectedItem + '"]').remove();
-                   runner.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   cleaner.find('option[value="' + selectedItem + '"]').remove();
-                   cleaner.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   qc.find('option[value="' + selectedItem + '"]').remove();
-                   qc.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   giftBox.find('option[value="' + selectedItem + '"]').remove();
-                   giftBox.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   freezer.find('option[value="' + selectedItem + '"]').remove();
-                   freezer.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    icer_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    stocker_support.find('option[value="' + selectedItem + '"]').remove();
+                    stocker_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    icer_support.find('option[value="' + selectedItem + '"]').remove();
+                    icer_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    labeler_support.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    runner.find('option[value="' + selectedItem + '"]').remove();
+                    runner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    cleaner.find('option[value="' + selectedItem + '"]').remove();
+                    cleaner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    qc.find('option[value="' + selectedItem + '"]').remove();
+                    qc.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    giftBox.find('option[value="' + selectedItem + '"]').remove();
+                    giftBox.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    freezer.find('option[value="' + selectedItem + '"]').remove();
+                    freezer.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
                 } else if (selectedDropDown === 'runner[]') {
-                   labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
-                   labeler_conveyor.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
-                   icer_conveyor.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   stocker_support.find('option[value="' + selectedItem + '"]').remove();
-                   stocker_support.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   icer_support.find('option[value="' + selectedItem + '"]').remove();
-                   icer_support.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   mezzanine.find('option[value="' + selectedItem + '"]').remove();
-                   mezzanine.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   labeler_support.find('option[value="' + selectedItem + '"]').remove();
-                   labeler_support.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   cleaner.find('option[value="' + selectedItem + '"]').remove();
-                   cleaner.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   qc.find('option[value="' + selectedItem + '"]').remove();
-                   qc.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   giftBox.find('option[value="' + selectedItem + '"]').remove();
-                   giftBox.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   freezer.find('option[value="' + selectedItem + '"]').remove();
-                   freezer.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    icer_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    stocker_support.find('option[value="' + selectedItem + '"]').remove();
+                    stocker_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    icer_support.find('option[value="' + selectedItem + '"]').remove();
+                    icer_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    mezzanine.find('option[value="' + selectedItem + '"]').remove();
+                    mezzanine.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    labeler_support.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    cleaner.find('option[value="' + selectedItem + '"]').remove();
+                    cleaner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    qc.find('option[value="' + selectedItem + '"]').remove();
+                    qc.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    giftBox.find('option[value="' + selectedItem + '"]').remove();
+                    giftBox.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    freezer.find('option[value="' + selectedItem + '"]').remove();
+                    freezer.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
                 } else if (selectedDropDown === 'cleaner[]') {
-                   labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
-                   labeler_conveyor.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
-                   icer_conveyor.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   stocker_support.find('option[value="' + selectedItem + '"]').remove();
-                   stocker_support.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   icer_support.find('option[value="' + selectedItem + '"]').remove();
-                   icer_support.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   mezzanine.find('option[value="' + selectedItem + '"]').remove();
-                   mezzanine.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   runner.find('option[value="' + selectedItem + '"]').remove();
-                   runner.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   labeler_support.find('option[value="' + selectedItem + '"]').remove();
-                   labeler_support.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   qc.find('option[value="' + selectedItem + '"]').remove();
-                   qc.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   giftBox.find('option[value="' + selectedItem + '"]').remove();
-                   giftBox.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
-                   freezer.find('option[value="' + selectedItem + '"]').remove();
-                   freezer.append($('<option>', {
-                       value: oldSelectedItem,
-                       text: oldSelectedItem
-                   }));
+                    labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    icer_conveyor.find('option[value="' + selectedItem + '"]').remove();
+                    icer_conveyor.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    stocker_support.find('option[value="' + selectedItem + '"]').remove();
+                    stocker_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    icer_support.find('option[value="' + selectedItem + '"]').remove();
+                    icer_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    mezzanine.find('option[value="' + selectedItem + '"]').remove();
+                    mezzanine.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    runner.find('option[value="' + selectedItem + '"]').remove();
+                    runner.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    labeler_support.find('option[value="' + selectedItem + '"]').remove();
+                    labeler_support.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    qc.find('option[value="' + selectedItem + '"]').remove();
+                    qc.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    giftBox.find('option[value="' + selectedItem + '"]').remove();
+                    giftBox.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
+                    freezer.find('option[value="' + selectedItem + '"]').remove();
+                    freezer.append($('<option>', {
+                        value: oldSelectedItem,
+                        text: oldSelectedItem
+                    }));
                 } else if (selectedDropDown === 'qc[]') {
                     labeler_conveyor.find('option[value="' + selectedItem + '"]').remove();
                     labeler_conveyor.append($('<option>', {
@@ -1175,7 +1202,7 @@
         $(document).ready(function ($) {
 
             for (var i = 0; i < labeler_conveyor.length; i++) {
-                if(labeler_conveyor.eq(i).val() === 'Temp') {
+                if (labeler_conveyor.eq(i).val() === 'Temp') {
                     continue;
                 }
 
@@ -1193,7 +1220,7 @@
             }
 
             for (i = 0; i < labeler_support.length; i++) {
-                if(labeler_support.eq(i).val() === 'Temp') {
+                if (labeler_support.eq(i).val() === 'Temp') {
                     continue;
                 }
 
@@ -1213,7 +1240,7 @@
 
 
             for (i = 0; i < stocker_support.length; i++) {
-                if(stocker_support.eq(i).val() === 'Temp') {
+                if (stocker_support.eq(i).val() === 'Temp') {
                     continue;
                 }
                 icer_conveyor.find('option[value="' + stocker_support.eq(i).val() + '"]').remove();
@@ -1229,7 +1256,7 @@
             }
 
             for (i = 0; i < mezzanine.length; i++) {
-                if(mezzanine.eq(i).val() === 'Temp') {
+                if (mezzanine.eq(i).val() === 'Temp') {
                     continue;
                 }
                 icer_conveyor.find('option[value="' + mezzanine.eq(i).val() + '"]').remove();
@@ -1245,7 +1272,7 @@
             }
 
             for (i = 0; i < runner.length; i++) {
-                if(runner.eq(i).val() === 'Temp') {
+                if (runner.eq(i).val() === 'Temp') {
                     continue;
                 }
                 icer_conveyor.find('option[value="' + runner.eq(i).val() + '"]').remove();
@@ -1313,7 +1340,7 @@
             }
 
             for (i = 0; i < icer_conveyor.length; i++) {
-                if(icer_conveyor.eq(i).val() === 'Temp') {
+                if (icer_conveyor.eq(i).val() === 'Temp') {
                     continue;
                 }
                 freezer.find('option[value="' + icer_conveyor.eq(i).val() + '"]').remove();
@@ -1329,7 +1356,7 @@
             }
 
             for (i = 0; i < icer_support.length; i++) {
-                if(icer_support.eq(i).val() === 'Temp') {
+                if (icer_support.eq(i).val() === 'Temp') {
                     continue;
                 }
                 freezer.find('option[value="' + icer_support.eq(i).val() + '"]').remove();
@@ -1357,11 +1384,11 @@
         $(document).ready(function ($) {
             $("select[name='conveyor_lines[]']").select2({width: 60});
             $("select[name='support_lines[]']").select2({width: 60});
-            $("select[name='labeler_conveyor[]']").select2({width: 230});
-            $("select[name='icer_conveyor[]']").select2({width: 230});
-            $("select[name='labeler_support[]']").select2({width: 160});
-            $("select[name='stocker_support[]']").select2({width: 160});
-            $("select[name='icer_support[]']").select2({width: 160});
+            $("select[name='labeler_conveyor[]']").select2({width: 160});
+            $("select[name='icer_conveyor[]']").select2({width: 160});
+            $("select[name='labeler_support[]']").select2({width: 120});
+            $("select[name='stocker_support[]']").select2({width: 120});
+            $("select[name='icer_support[]']").select2({width: 120});
             $("select[name='mezzanine[]']").select2({width: 200});
             $("select[name='runner[]']").select2({width: 200});
             $("select[name='qc[]']").select2({width: 200});

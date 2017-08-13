@@ -122,9 +122,10 @@ class ScheduleController extends Controller
                     }
                 } elseif ($employee->stocker && !($stockerSet) && $employee->stocker_rating > 2 ) {
                     if(!(array_search($employee->id, $stocker_array, true)) && !(array_search($employee->id, $labeler_array, true))) {
-                            $stocker = $employee->empfname . ' ' . $employee->emplname[0];
-                            $stockerSet = true;
-                            $stocker_array[$stock_index++] = $employee->id;
+                        $stocker = $employee->empfname . ' ' . $employee->emplname[0];
+                        $stockerSet = true;
+                        $stocker_array[$stock_index++] = $employee->id;
+                        $count++;
                     }
                 }
                 if($labelerSet && $stockerSet) {
@@ -234,7 +235,7 @@ class ScheduleController extends Controller
         }
 
         $icerIndex = 1; $icerArray=[];
-        for($i = 0; $i < sizeof($this->schedule_array); $i++) {
+        for($i = 0; $i < sizeof($this->schedule_array)-1; $i++) {
             $icer = 'Temp'; $icerSet = false;
             foreach($employees as $employee) {
                 if($employee->icer) {
@@ -256,7 +257,7 @@ class ScheduleController extends Controller
             }
         }
 
-        for($i = 0; $i < sizeof($this->schedule_array_2); $i++) {
+        for($i = 0; $i < sizeof($this->schedule_array_2)-1; $i++) {
             $icer = 'Temp'; $icerSet = false;
             foreach($employees as $employee) {
                 if($employee->icer) {
