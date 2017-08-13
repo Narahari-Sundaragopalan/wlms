@@ -133,7 +133,7 @@
                             </div>
 
                             <div class="form-group">
-                                {!! Form::label('labeler_rating', 'Labeler Rating:') !!}
+                                {!! Form::label('labeler_rating', 'Conveyor Rating:') !!}
                                 <input type="radio" name="labeler_rating"
                                        <?php if (isset($labeler_rating) && $labeler_rating == "1") echo "checked";?> value="1"{{$employee->labeler_rating == '1' ? 'checked' : ''}}>1
                                 <input type="radio" name="labeler_rating"
@@ -146,6 +146,22 @@
                                        <?php if (isset($labeler_rating) && $labeler_rating == "5") echo "checked";?> value="5"{{$employee->labeler_rating == '5' ? 'checked' : ''}}>5
                                 <input type="radio" name="labeler_rating"
                                        <?php if (isset($labeler_rating) && $labeler_rating == "NA") echo "checked";?> value="NA"{{$employee->labeler_rating == 'NA' ? 'checked' : ''}}>NA
+                            </div>
+
+                            <div class="form-group">
+                                {!! Form::label('combo_rating', 'Combo Rating:') !!}
+                                <input type="radio" name="combo_rating"
+                                       <?php if (isset($combo_rating) && $combo_rating == "1") echo "checked";?> value="1"{{$employee->combo_rating == '1' ? 'checked' : ''}}>1
+                                <input type="radio" name="combo_rating"
+                                       <?php if (isset($combo_rating) && $combo_rating == "2") echo "checked";?> value="2"{{$employee->combo_rating == '2' ? 'checked' : ''}}>2
+                                <input type="radio" name="combo_rating"
+                                       <?php if (isset($combo_rating) && $combo_rating == "3") echo "checked";?> value="3"{{$employee->combo_rating == '3' ? 'checked' : ''}}>3
+                                <input type="radio" name="combo_rating"
+                                       <?php if (isset($combo_rating) && $combo_rating == "4") echo "checked";?> value="4"{{$employee->combo_rating == '4' ? 'checked' : ''}}>4
+                                <input type="radio" name="combo_rating"
+                                       <?php if (isset($combo_rating) && $combo_rating == "5") echo "checked";?> value="5"{{$employee->combo_rating == '5' ? 'checked' : ''}}>5
+                                <input type="radio" name="combo_rating"
+                                       <?php if (isset($combo_rating) && $combo_rating == "NA") echo "checked";?> value="NA"{{$employee->combo_rating == 'NA' ? 'checked' : ''}}>NA
                             </div>
 
                             <div class="form-group">

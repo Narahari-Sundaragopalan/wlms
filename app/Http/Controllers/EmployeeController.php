@@ -123,11 +123,11 @@ class EmployeeController extends Controller
                 foreach ($data as $key => $value) {
                     $seedData[] = ['empid' => $value->empid, 'empfname' => $value->empfname, 'emplname' =>
                         $value->emplname, 'positiontype' => $value->positiontype, 'experience' =>
-                        $value->experience, 'labeler_rating' => $value->labeler_rating, 'stocker_rating' => $value->stocker_rating,
+                        $value->experience, 'labeler_rating' => $value->labeler_rating, 'combo_rating' => $value->combo_rating, 'stocker_rating' => $value->stocker_rating,
                         'english' => $value->english, 'spanish' => $value->spanish, 'other' => $value->other, 'icer' => $value->icer,
                         'labeler' => $value->labeler, 'mezzanine' => $value->mezzanine, 'stocker' => $value->stocker, 'runner' => $value->runner,
                         'qc' => $value->qc, 'cleaner' => $value->cleaner, 'gift_box' => $value->gift_box, 'comment' => $value->commnent,
-                        'active' => $value->active];
+                        'active' => $value->active, 'restricted' => $value->restricted];
                 }
                 if (!empty($seedData)) {
                     $importStatus = $this->insert($seedData);
@@ -194,16 +194,32 @@ class EmployeeController extends Controller
 
     public function modifyStatus(Request $request) {
         $modifyEmpList = $request['manageEmpList'];
+        $restrictedEmployees = $request['manageRestrictedList'];
         $status = $request['status'];
+        $restrictedStatus = $request['restricted_status'];
+        $restricted = false;
         $active = true;
 
         if($status === 'Inactive') {
             $active = false;
         }
 
-        foreach($modifyEmpList as $empId) {
-            Employee::where('id', '=', $empId)->update(['active' => $active]);
+        if($restrictedStatus == 'Restricted') {
+            $restricted = true;
         }
+
+        if(sizeof($modifyEmpList)) {
+            foreach ($modifyEmpList as $empId) {
+                Employee::where('id', '=', $empId)->update(['active' => $active]);
+            }
+        }
+
+        if(sizeof($restrictedEmployees)) {
+            foreach ($restrictedEmployees as $restrictedEmployee) {
+                Employee::where('id', '=', $restrictedEmployee)->update(['restricted' => $restricted]);
+            }
+        }
+
 
         return redirect('addemployee');
 

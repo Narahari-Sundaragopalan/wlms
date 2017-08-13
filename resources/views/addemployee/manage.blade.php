@@ -30,10 +30,12 @@
                 <div class="col-md-8 col-md-offset-1">
                     <div class="panel panel-info">
                         <div class="panel-heading" style="text-align: center; color: black">
-                            <h4> {{ 'Manage Employees' }}</h4>
+                            <h3> {{ 'Manage Employees' }}</h3>
                         </div>
                         <div class="panel-body">
                             {!! Form::model(['class' => 'form-horizontal', 'method' => 'POST', 'action' => ['EmployeeController@modifyStatus']]) !!}
+
+                            <h4 style="color: #d9534f; text-align: center;">Change Active Status </h4>
 
                             <div class="form-group">
                                 {!! Form::label ('select', 'Select Employees', ['class' => 'control-label']) !!}
@@ -44,6 +46,18 @@
                                 {!! Form::label ('select', 'Select Status', ['class' => 'control-label']) !!}<br>
                                 {{ Form::radio('status','Active') }} Active<br>
                                 {{ Form::radio('status','Inactive') }} Inactive
+                            </div>
+
+                            <h4 style="color: #d9534f; text-align: center;">Change Restricted Status </h4>
+                            <div class="form-group">
+                                {!! Form::label ('select', 'Select Employees', ['class' => 'control-label']) !!}
+                                {!! Form::select('manageRestrictedList[]', $empList, null, ['class' => 'form-control employees cds-select', 'multiple']) !!}
+                            </div>
+
+                            <div class="form-group">
+                                {!! Form::label ('select', 'Select Status', ['class' => 'control-label']) !!}<br>
+                                {{ Form::radio('restricted_status','Restricted') }} Restricted<br>
+                                {{ Form::radio('restricted_status','Unrestricted') }} Unrestricted
                             </div>
 
                             <div class="form-group">

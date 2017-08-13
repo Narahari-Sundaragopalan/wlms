@@ -17,6 +17,7 @@ class Employee extends Model
     'positiontype',
     'experience',
     'labeler_rating',
+    'combo_rating',
     'stocker_rating',
     'english',
     'spanish',
@@ -30,7 +31,8 @@ class Employee extends Model
     'cleaner',
     'gift_box',
     'comment',
-    'active'
+    'active',
+    'restricted'
     ];
 
     //Function to return Employee names with First name and Initial of Last Name

@@ -108,12 +108,23 @@
                                             }; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Labeler Rating</td>
+                                        <td>Conveyor Rating</td>
                                         <td><?php echo($employee['labeler_rating']); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Combo Rating</td>
+                                        <td><?php echo($employee['combo_rating']); ?></td>
                                     </tr>
                                     <tr>
                                         <td>Stocker Rating</td>
                                         <td><?php echo($employee['stocker_rating']); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Status</td>
+                                        <td><?php if($employee['restricted']) {
+                                            echo 'Restricted';
+                                            } else { echo 'Unrestricted';}; ?>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Comments</td>

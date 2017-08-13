@@ -20,6 +20,7 @@ class CreateEmployeesTable extends Migration
         $table->string('positiontype');
         $table->string('experience');
         $table->string('labeler_rating',5);
+        $table->string('combo_rating',5);
         $table->string('stocker_rating',5);
         $table->boolean('english')-> nullable();
         $table->boolean('spanish')-> nullable();
@@ -34,6 +35,8 @@ class CreateEmployeesTable extends Migration
         $table->boolean('gift_box') -> nullable ();
         $table->string('comment') -> nullable ();
         $table->boolean('active') -> nullable ();
+        $table->boolean('restricted') -> nullable ();
+
         $table->softDeletes();
         $table->timestamps();
     });
