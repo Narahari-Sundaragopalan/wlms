@@ -82,7 +82,7 @@ class ScheduleController extends Controller
         while($i > 0) {
             $labelerSet = false; $labeler = '';
             foreach ($employees as $employee) {
-                if($employee->labeler && !($labelerSet) && $employee->labeler_rating > 2) {
+                if($employee->labeler && !($labelerSet) && ($employee->labeler_rating > 2 || $employee->combo_rating > 1)) {
                     if(!(array_search($employee->id, $labeler_array, true))) {
                         $labeler = $employee->empfname . ' ' . $employee->emplname[0];
                         $labelerSet = true;
@@ -114,7 +114,7 @@ class ScheduleController extends Controller
             $labelerSet = false; $stockerSet = false;
             $labeler = ''; $stocker = '';
             foreach ($employees as $employee) {
-                if ($employee->labeler && !($labelerSet) && $employee->labeler_rating > 2) {
+                if ($employee->labeler && !($labelerSet) && ($employee->labeler_rating > 2 || $employee->combo_rating > 1)) {
                     if(!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true))) {
                         $labeler = $employee->empfname . ' ' . $employee->emplname[0];
                         $labelerSet = true;

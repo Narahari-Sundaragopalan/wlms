@@ -346,14 +346,14 @@
                                                             @endforeach
                                                         </optgroup>
                                                     @endif
-                                                    <optgroup label="Mezzanines">
+                                                    <optgroup label="Mezzanine">
                                                         @foreach($empMezzanines as $empMezzanine)
                                                             <option value="<?php echo($empMezzanine) ?>">
                                                                 <?php echo($empMezzanine); ?>
                                                             </option>
                                                         @endforeach
                                                     </optgroup>
-                                                    <optgroup label="Non-Mezzanines">
+                                                    <optgroup label="Non-Mezzanine">
                                                         @foreach($empNonMezzanines as $empNonMezzanine)
                                                             <option value="<?php echo($empNonMezzanine) ?>">
                                                                 <?php echo($empNonMezzanine); ?>

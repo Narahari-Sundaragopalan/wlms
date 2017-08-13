@@ -45,7 +45,8 @@
                         <div class="col-xs-6">
                             <h3 style="text-align: center">Conveyor Lines</h3>
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped cds-datatable" border=1 width='200' height='100' cellpadding='0' cellspacing='0'>
+                                <table class="table table-bordered table-striped cds-datatable" border=1 width='200'
+                                       height='100' cellpadding='0' cellspacing='0'>
                                     <thead> <!-- Table Headings -->
                                     <th>Line Number</th>
                                     <th>Labeler</th>
@@ -59,9 +60,11 @@
                                             <td><?php echo($schedule_array[$i]['labeler']); ?></td>
                                             @if($i < count($schedule_array) - 1)
                                                 <td rowspan="3">
-                                                    <table border='1' width="100" cellpadding='0' cellspacing='0' height='100%'>
+                                                    <table border='1' width="100" cellpadding='0' cellspacing='0'
+                                                           height='100%'>
                                                         <tr>
-                                                            <td>&nbsp;<?php echo($schedule_array[$i]['icer']); echo "<br />\n"; echo ("( " . ($schedule_array[$i]['line_number']) . "-" . ($schedule_array[$i+1]['line_number']) . " )")?></td>
+                                                            <td>
+                                                                &nbsp;<?php echo($schedule_array[$i]['icer']); echo "<br />\n"; echo("( " . ($schedule_array[$i]['line_number']) . "-" . ($schedule_array[$i + 1]['line_number']) . " )")?></td>
                                                         </tr>
                                                     </table>
                                                 </td>
@@ -77,7 +80,8 @@
                         <div class="col-xs-6">
                             <h3 style="text-align: center">Support Lines</h3>
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped cds-datatable dataTable" border=1 width='200' height='100' cellpadding='0' cellspacing='0'>
+                                <table class="table table-bordered table-striped cds-datatable dataTable" border=1
+                                       width='200' height='100' cellpadding='0' cellspacing='0'>
                                     <thead> <!-- Table Headings -->
                                     <th>Line Number</th>
                                     <th>Labeler</th>
@@ -93,9 +97,11 @@
                                             <td><?php echo($schedule_array_2[$j]['stocker']); ?></td>
                                             @if($j < count($schedule_array_2) - 1)
                                                 <td rowspan="3">
-                                                    <table border='1' width="100" cellpadding='0' cellspacing='0' height='100%'>
+                                                    <table border='1' width="100" cellpadding='0' cellspacing='0'
+                                                           height='100%'>
                                                         <tr>
-                                                            <td>&nbsp;<?php echo($schedule_array_2[$j]['icer']); echo "<br />\n"; echo ("( " . ($schedule_array_2[$j]['line_number']) . "-" . ($schedule_array_2[$j+1]['line_number']) . " )")?></td>
+                                                            <td>
+                                                                &nbsp;<?php echo($schedule_array_2[$j]['icer']); echo "<br />\n"; echo("( " . ($schedule_array_2[$j]['line_number']) . "-" . ($schedule_array_2[$j + 1]['line_number']) . " )")?></td>
                                                         </tr>
                                                     </table>
                                                 </td>
@@ -127,14 +133,7 @@
                                     </tbody>
                                 </table>
                             </div>
-     <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
+
 
                         </div>
 
@@ -228,15 +227,14 @@
                                 </table>
                             </div>
                             <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
                         </div>
-
 
 
                     </div>
