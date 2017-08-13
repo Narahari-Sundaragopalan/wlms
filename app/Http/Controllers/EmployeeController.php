@@ -67,6 +67,8 @@ class EmployeeController extends Controller
         }
 
         $employee = new Employee($request->all());
+        $employee->active = true;
+        $employee->restricted = false;
         $employee->save();
         return redirect('/addemployee');
 

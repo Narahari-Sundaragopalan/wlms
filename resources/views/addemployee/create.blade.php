@@ -142,7 +142,7 @@
 
 
                             <div class="form-group{{ $errors->has('labeler_rating') ? ' has-error' : '' }}">
-                                {!! Form::label('labeler_rating', 'Labeler Rating:') !!}
+                                {!! Form::label('labeler_rating', 'Conveyor Rating:') !!}
 
                                 <input type="radio" name="labeler_rating"
                                        value="1" {{(old('labeler_rating') == "1") ? 'checked': ''}}>1
@@ -156,6 +156,24 @@
                                        value="5" {{(old('labeler_rating') == "5") ? 'checked': ''}}>5
                                 <input type="radio" name="labeler_rating"
                                        value="NA" {{(old('labeler_rating') == "NA") ? 'checked': ''}}>NA
+
+                            </div>
+
+                            <div class="form-group{{ $errors->has('combo_rating') ? ' has-error' : '' }}">
+                                {!! Form::label('combo_rating', 'Combo Rating:') !!}
+
+                                <input type="radio" name="combo_rating"
+                                       value="1" {{(old('combo_rating') == "1") ? 'checked': ''}}>1
+                                <input type="radio" name="combo_rating"
+                                       value="2" {{(old('combo_rating') == "2") ? 'checked': ''}}>2
+                                <input type="radio" name="combo_rating"
+                                       value="3" {{(old('combo_rating') == "3") ? 'checked': ''}}>3
+                                <input type="radio" name="combo_rating"
+                                       value="4" {{(old('combo_rating') == "4") ? 'checked': ''}}>4
+                                <input type="radio" name="combo_rating"
+                                       value="5" {{(old('combo_rating') == "5") ? 'checked': ''}}>5
+                                <input type="radio" name="combo_rating"
+                                       value="NA" {{(old('combo_rating') == "NA") ? 'checked': ''}}>NA
 
                             </div>
 
