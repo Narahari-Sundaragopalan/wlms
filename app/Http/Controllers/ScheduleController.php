@@ -912,7 +912,7 @@ class ScheduleController extends Controller
 
         $scheduler = Schedule::find($id);
         $employees = Employee::where('active', '=', 'true')->get();
-        $empLabelers = []; $empStockers = []; $empIcers = []; $empRunners = []; $supervisorsList = [];
+        $empLabelers = []; $empStockers = []; $empIcers = []; $empRunners = []; $supervisorsList = []; $empRestricted = [];
         $empMezzanines = []; $empList = []; $empCleaners =[]; $empgiftBoxs = []; $empQCs = []; $empFreezers = [];
 
         foreach ($employees as $employee) {
@@ -943,6 +943,9 @@ class ScheduleController extends Controller
             }
             if ($employee->cleaner) {
                 array_push($empCleaners, $employee->getEmpNameAttribute());
+            }
+            if($employee->restricted) {
+                array_push($empRestricted, $employee->getEmpNameAttribute());
             }
 
             array_push($empList, $employee->getEmpNameAttribute());
@@ -989,6 +992,7 @@ class ScheduleController extends Controller
         $currentSchedule['empCleaners'] = $empCleaners;
         $currentSchedule['empgiftBoxs'] = $empgiftBoxs;
         $currentSchedule['empFreezers'] = $empFreezers;
+        $currentSchedule['empRestricted'] = $empRestricted;
         $currentSchedule['employees'] = $empList;
         $currentSchedule['supervisors'] = $supervisorsList;
 
@@ -1267,8 +1271,8 @@ class ScheduleController extends Controller
         {
             for ($ee = $e+1; $ee < count($array); $ee++)
             {
-                if($array[$ee][$field] == 'Temp' && $array[$e][$field] == 'Temp') {
-                    // If the employee is a Temp, skip name validation
+                if(strcmp($array[$ee][$field],$array[$e][$field]) === 0 && ($array[$ee][$field] === 'Temp' || $array[$e][$field] === '')) {
+                    // If the employee is a Temp or empty, skip name validation
                     continue;
                 }
 

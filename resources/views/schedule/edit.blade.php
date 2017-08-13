@@ -40,7 +40,7 @@
                             {!! Form::model($id ,['method' => 'PATCH','route'=>['schedule.update', $id]]) !!}
                             <h3 style="text-align: center">Conveyor Lines</h3>
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped cds-datatable" border=1 width='200' height='100' cellpadding='0' cellspacing='0'>
+                                <table class="table table-bordered table-striped cds-datatable">
                                     <thead> <!-- Table Headings -->
                                     <th>Line Number</th>
                                     <th>Labeler</th>
@@ -153,7 +153,7 @@
                         <div class="col-xs-6">
                             <h3 style="text-align: center">Support Lines</h3>
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped cds-datatable" border=1 width='200' height='100' cellpadding='0' cellspacing='0'>
+                                <table class="table table-bordered table-striped cds-datatable">
                                     <thead> <!-- Table Headings -->
                                     <th>Line Number</th>
                                     <th>Labeler</th>
@@ -337,6 +337,15 @@
                                                             class="bld">
                                                         <?php echo($mezzanineArray[$i]['name']); ?>
                                                     </option>
+                                                    @if(sizeof($empRestricted))
+                                                        <optgroup label="Restricted">
+                                                            @foreach($empRestricted as $restricted)
+                                                                <option value="<?php echo($restricted) ?>">
+                                                                    <?php echo($restricted); ?>
+                                                                </option>
+                                                            @endforeach
+                                                        </optgroup>
+                                                    @endif
                                                     <optgroup label="Mezzanines">
                                                         @foreach($empMezzanines as $empMezzanine)
                                                             <option value="<?php echo($empMezzanine) ?>">
@@ -475,6 +484,15 @@
                                                 @else
                                                     <?php echo ""; ?>
                                                 @endif
+                                                @if(sizeof($empRestricted))
+                                                    <optgroup label="Restricted">
+                                                        @foreach($empRestricted as $restricted)
+                                                            <option value="<?php echo($restricted) ?>">
+                                                                <?php echo($restricted); ?>
+                                                            </option>
+                                                        @endforeach
+                                                    </optgroup>
+                                                @endif
                                                 <optgroup label="QC">
                                                     @foreach($empQCs as $empQC)
                                                         <option value="<?php echo($empQC); ?>">
@@ -534,6 +552,15 @@
                                                     @endforeach
                                                 @else
                                                     <?php echo ""; ?>
+                                                @endif
+                                                @if(sizeof($empRestricted))
+                                                    <optgroup label="Restricted">
+                                                        @foreach($empRestricted as $restricted)
+                                                            <option value="<?php echo($restricted) ?>">
+                                                                <?php echo($restricted); ?>
+                                                            </option>
+                                                        @endforeach
+                                                    </optgroup>
                                                 @endif
                                                 <optgroup label="Cleaners">
                                                     @foreach($empCleaners as $empCleaner)
