@@ -542,7 +542,7 @@ class ScheduleController extends Controller
                 }
 
                 //Fill values for Icer
-                $column = 'W'; $row = 10;
+                $column = 'V'; $row = 10;
                 for ($index = 0; $index < sizeof($labelerArray); $index++) {
                     $linePos = $labelerArray[$index]['line_number'];
                     $offsetIndex = ($linePos - 1) * 2;
@@ -552,7 +552,7 @@ class ScheduleController extends Controller
                         $cellValue = $labelerArray[$index]['icer'];
                         $cell->setValue($cellValue);
                     });
-                    $column = 'W';
+                    $column = 'V';
                 }
 
 
@@ -684,7 +684,7 @@ class ScheduleController extends Controller
 
 
                 //Fill values for Icer
-                $column = 'W'; $row = 22;
+                $column = 'V'; $row = 22;
                 for ($index = 0; $index < sizeof($supportLineArray); $index++) {
 
                     $linePos = $supportLineArray[$index]['line_number'];
@@ -702,7 +702,7 @@ class ScheduleController extends Controller
                         $cellValue = $supportLineArray[$index]['icer'];
                         $cell->setValue($cellValue);
                     });
-                    $column = 'W';
+                    $column = 'V';
                 }
 
 
