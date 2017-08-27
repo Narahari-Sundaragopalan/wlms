@@ -257,27 +257,29 @@ class ScheduleController extends Controller
             }
         }
 
-        for($i = 0; $i < sizeof($this->schedule_array_2)-1; $i++) {
-            $icer = 'Temp'; $icerSet = false;
-            foreach($employees as $employee) {
-                if($employee->icer) {
-                    if (!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true))
-                        && !(array_search($employee->id, $mezArray, true)) && !(array_search($employee->id, $runnerArray, true))
-                        && !(array_search($employee->id, $icerArray, true))) {
-                        $icer = $employee->empfname . ' ' . $employee->emplname[0];
-                        $icerArray[$icerIndex++] = $employee->id;
-                        $icerSet = true;
+            for ($i = 0; $i < sizeof($this->schedule_array_2) - 1; $i++) {
+                $icer = 'Temp';
+                $icerSet = false;
+                foreach ($employees as $employee) {
+                    if ($employee->icer) {
+                        if (!(array_search($employee->id, $labeler_array, true)) && !(array_search($employee->id, $stocker_array, true))
+                            && !(array_search($employee->id, $mezArray, true)) && !(array_search($employee->id, $runnerArray, true))
+                            && !(array_search($employee->id, $icerArray, true))
+                        ) {
+                            $icer = $employee->empfname . ' ' . $employee->emplname[0];
+                            $icerArray[$icerIndex++] = $employee->id;
+                            $icerSet = true;
+                        }
+                    }
+                    if ($icerSet) {
+                        break;
                     }
                 }
-                if($icerSet) {
-                    break;
+                $this->schedule_array_2[$i]['icer'] = $icer;
+                if ($icer === 'Temp') {
+                    $numberOfTemps++;
                 }
             }
-            $this->schedule_array_2[$i]['icer'] = $icer;
-            if($icer === 'Temp') {
-                $numberOfTemps++;
-            }
-        }
 
 
         $this->viewData['schedule_array'] = $this->schedule_array;
@@ -644,7 +646,9 @@ class ScheduleController extends Controller
                         $linePos -= 24;
                         $row = 28;
                     } else {
-                        $linePos -= 12;
+                        if($linePos > 12) {
+                            $linePos -= 12;
+                        }
                     }
 
                     $offsetIndex = ($linePos - 1) * 2;
@@ -668,7 +672,9 @@ class ScheduleController extends Controller
                         $linePos -= 24;
                         $row = 31;
                     } else {
-                        $linePos -= 12;
+                        if($linePos > 12) {
+                            $linePos -= 12;
+                        }
                     }
 
                     $offsetIndex = ($linePos - 1) * 2;
@@ -692,7 +698,9 @@ class ScheduleController extends Controller
                         $linePos -= 24;
                         $row = 33;
                     } else {
-                        $linePos -= 12;
+                        if($linePos > 12) {
+                            $linePos -= 12;
+                        }
                     }
                     $offsetIndex = ($linePos - 1) * 2;
                     $column = chr(ord($column) -  $offsetIndex);
