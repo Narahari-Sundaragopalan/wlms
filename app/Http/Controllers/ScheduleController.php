@@ -42,7 +42,7 @@ class ScheduleController extends Controller
     }
 
     public function create() {
-        
+
         $conveyorLines = range(1,12);
         array_unshift($conveyorLines, "");
         unset($conveyorLines[0]);
@@ -1058,7 +1058,7 @@ class ScheduleController extends Controller
         $mezzanineStartLines = $request['mezzanine_Startlines'];
         $mezzanineEndLines = $request['mezzanine_Endlines'];
         $runnerStartLines = $request['runner_Startlines'];
-        $runnerEndLines = $request['runner_Startlines'];
+        $runnerEndLines = $request['runner_Endlines'];
         $qc = $request['qc'];
         $cleaner = $request['cleaner'];
         $giftBox = $request['giftBox'];
@@ -1216,15 +1216,19 @@ class ScheduleController extends Controller
         }
 
         for($i = 0; $i < sizeof($mezzanineStartLines) && $i < sizeof($mezzanineEndLines); $i++ ) {
-            if(!empty($mezzanineStartLines[$i]) && !empty($mezzanineEndLines[$i])) {
+            if(!empty($mezzanineStartLines[$i])) {
                 $mezzanineArray[$i]['startLine'] = $mezzanineStartLines[$i];
+            }
+            if(!empty($mezzanineEndLines[$i])) {
                 $mezzanineArray[$i]['endLine'] = $mezzanineEndLines[$i];
             }
         }
 
         for($i = 0; $i < sizeof($runnerStartLines) && $i < sizeof($runnerEndLines); $i++ ) {
-            if(!empty($runnerStartLines[$i]) && !empty($runnerEndLines[$i])) {
+            if(!empty($runnerStartLines[$i])) {
                 $runnerArray[$i]['startLine'] = $runnerStartLines[$i];
+            }
+            if(!empty($runnerEndLines[$i])) {
                 $runnerArray[$i]['endLine'] = $runnerEndLines[$i];
             }
         }
@@ -1351,5 +1355,3 @@ class ScheduleController extends Controller
 
     }
 }
-
-
